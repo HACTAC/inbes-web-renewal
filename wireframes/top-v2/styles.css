@@ -904,12 +904,21 @@ h3 {
   align-items: center;
   min-height: 30px;
   padding: 4px 10px;
-  color: var(--green);
-  background: #f6faf8;
-  border: 1px solid rgba(39, 107, 94, 0.24);
   border-radius: 999px;
   font-size: 12px;
   font-weight: 800;
+}
+
+.support-tags span.development {
+  color: var(--green);
+  background: #f6faf8;
+  border: 1px solid rgba(39, 107, 94, 0.24);
+}
+
+.support-tags span.design {
+  color: var(--blue);
+  background: #f3f7fa;
+  border: 1px solid rgba(24, 90, 125, 0.24);
 }
 
 .work-detail dl {
