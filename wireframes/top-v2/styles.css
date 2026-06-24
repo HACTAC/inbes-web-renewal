@@ -890,12 +890,6 @@ h3 {
   text-underline-offset: 4px;
 }
 
-.support-line {
-  margin-bottom: 12px;
-  color: var(--ink);
-  font-weight: 800;
-}
-
 .support-tags {
   display: flex;
   flex-wrap: wrap;
