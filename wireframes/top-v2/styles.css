@@ -883,18 +883,20 @@ h3 {
   color: var(--sub);
 }
 
-.work-detail h3 a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
 .support-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 18px;
+  margin: 14px 0 18px;
+}
+
+.work-url {
+  display: inline-block;
+  max-width: 100%;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
 }
 
 .support-tags span {
@@ -934,11 +936,6 @@ h3 {
 .work-detail dd {
   margin: 0;
   color: var(--sub);
-}
-
-.work-detail .external-link {
-  color: var(--blue);
-  font-weight: 800;
 }
 
 .company-profile {
