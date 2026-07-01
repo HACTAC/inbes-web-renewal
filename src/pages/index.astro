@@ -1,0 +1,120 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { works } from "@/data/works";
+---
+
+<BaseLayout title="INBES株式会社" description="海外製品のローカライズから、仕様整理、量産、輸入、パッケージ制作まで。日本で販売するための商品化を、一緒に進めます。">
+  <section class="container-page grid min-h-[calc(86vh-72px)] items-end gap-10 py-16 md:grid-cols-[1fr_360px] md:py-24">
+    <div>
+      <p class="eyebrow">Product Development Support</p>
+      <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.08] md:text-7xl">
+        日本で売るための、<br class="hidden md:block" />商品づくりを共に。
+      </h1>
+      <p class="mt-7 max-w-3xl text-lg text-sub">
+        海外製品のローカライズから、仕様整理、量産、輸入、パッケージ制作まで。
+        日本で販売するための商品化を、一緒に進めます。
+      </p>
+    </div>
+    <aside class="grid grid-cols-[104px_1fr] gap-4 rounded-lg border border-line bg-white/80 p-4 shadow-soft backdrop-blur">
+      <div class="placeholder aspect-square min-h-[104px]">Product</div>
+      <div>
+        <p class="mb-1 text-sm font-extrabold text-green">製品をお探しの方へ</p>
+        <p class="mb-4 text-sm text-sub">ポータブル電源、カー用品、防犯・監視機器などはこちら。</p>
+        <a href="/products/" class="text-sm font-extrabold text-blue underline underline-offset-4">自社製品一覧を見る</a>
+      </div>
+    </aside>
+  </section>
+
+  <section class="w-screen border-y border-line bg-white" style="margin-left: calc(50% - 50vw);">
+    <div class="grid md:grid-cols-2">
+      <a href="/services/" class="group min-h-[280px] border-line p-8 transition hover:bg-soft md:border-r md:p-14">
+        <p class="eyebrow">法人のお客様</p>
+        <h2 class="mb-5 text-3xl font-extrabold leading-tight md:text-5xl">商品化・OEM/ODMのご相談</h2>
+        <p class="mb-8 max-w-xl text-sub">OEM・ODM、受託開発、製品開発のご相談はこちら。</p>
+        <span class="font-extrabold text-blue underline underline-offset-4">開発支援を見る</span>
+      </a>
+      <a href="/products/" class="group min-h-[280px] bg-soft p-8 transition hover:bg-white md:p-14">
+        <p class="eyebrow">製品をご利用のお客様</p>
+        <h2 class="mb-5 text-3xl font-extrabold leading-tight md:text-5xl">製品情報・サポートについて</h2>
+        <p class="mb-8 max-w-xl text-sub">製品一覧、修理、サポート、お問い合わせはこちら。</p>
+        <span class="font-extrabold text-blue underline underline-offset-4">自社製品を見る</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Issue</p>
+      <h2>商品化で、よくあること。</h2>
+      <p>商品化の進め方は、一社一社異なります。INBESは、日本で販売するために必要な工程を、状況に合わせて一緒に整理します。</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {[
+        ["01", "エレクトロニクス商品を扱いたい", "認証や仕様の検討など、新規参入に必要な技術面・実務面をサポートします。"],
+        ["02", "商品化を前に進めたい", "営業や企画だけでは不足しがちな技術的な検討や仕様整理を、一緒に進めます。"],
+        ["03", "商品化をまとめて任せたい", "商品選定から量産、輸入、パッケージや取扱説明書まで、一つの窓口で対応します。"]
+      ].map(([number, title, text]) => (
+        <article class="border-t border-line bg-white p-6">
+          <span class="mb-5 block text-sm font-extrabold text-green">{number}</span>
+          <div class="placeholder mb-6 aspect-[4/3]">Image</div>
+          <h3 class="mb-3 text-xl font-extrabold">{title}</h3>
+          <p class="text-sm text-sub">{text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2 class="mb-5 text-3xl font-extrabold leading-tight md:text-5xl">商品化を支える、開発支援。</h2>
+        <p class="mb-8 text-sub">商品化に必要なことを、一緒に進めます。</p>
+        <div class="flex flex-wrap gap-3">
+          <a class="button button-primary" href="/services/">開発支援を見る</a>
+          <a class="button button-secondary" href="/works/">開発実績を見る</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        {works.slice(0, 6).map((work) => (
+          <div class="placeholder aspect-[4/3] p-4 text-center">{work.title}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="grid gap-8 rounded-lg border border-line bg-white p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10">
+      <div class="placeholder min-h-[260px]">Product Lineup</div>
+      <div>
+        <p class="eyebrow">Products</p>
+        <h2 class="mb-4 text-3xl font-extrabold md:text-5xl">製品情報</h2>
+        <p class="mb-3 text-xl font-extrabold">製品をお探しの方へ。</p>
+        <p class="mb-6 text-sub">INBESが企画・販売する製品をご紹介しています。</p>
+        <div class="mb-7 flex flex-wrap gap-2 text-xs font-bold text-sub">
+          {["ポータブル電源", "カー用品", "防犯・監視機器", "生活家電", "PC周辺機器"].map((tag) => (
+            <span class="rounded-full border border-line px-3 py-1">{tag}</span>
+          ))}
+        </div>
+        <a class="button button-secondary" href="/products/">自社製品一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page grid gap-8 md:grid-cols-[1fr_420px] md:items-center">
+    <div>
+      <p class="eyebrow">Company</p>
+      <h2 class="mb-5 text-3xl font-extrabold md:text-5xl">私たちについて</h2>
+      <p class="mb-8 max-w-2xl text-sub">INBESは、自社製品の企画・販売とOEM/ODMの経験を活かし、日本で売るための商品づくりを支えています。</p>
+      <a class="button button-secondary" href="/company/">会社概要を見る</a>
+    </div>
+    <div class="placeholder aspect-[4/3]">Company Image</div>
+  </section>
+
+  <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
+    <p class="eyebrow text-white/70">Contact</p>
+    <h2 class="mb-5 text-3xl font-extrabold md:text-5xl">商品化について相談する。</h2>
+    <p class="mb-8 max-w-3xl text-white/75">仕様や進め方が固まっていない段階でも、まずは状況をお聞かせください。日本で販売するために必要なことを、一緒に整理します。</p>
+    <a class="button border-white bg-white text-ink" href="/contact/">お問い合わせへ</a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const profile = [
+  ["会社名", "株式会社INBES（インベス）"],
+  ["本社", "〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F"],
+  ["TEL", "042-316-9823"],
+  ["FAX", "042-316-9824"],
+  ["設立", "1998年7月"],
+  ["代表者", "戸倉 敬介"],
+  ["資本金", "50,000,000円"],
+  ["主要取引銀行", "多摩信用金庫 永山支店、商工組合中央金庫 八王子支店、きらぼし銀行 稲城支店、日本政策金融公庫、住信SBIネット銀行"]
+];
+---
+
+<BaseLayout title="会社概要" description="INBESは、日本で売るための商品づくりを支える会社です。">
+  <Hero eyebrow="Company" title="会社概要" lead="日本で売るための商品づくりを支える会社です。" />
+
+  <section class="section container-page grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+    <div>
+      <p class="eyebrow">Message</p>
+      <h2 class="mb-6 text-3xl font-extrabold leading-tight md:text-5xl">世界にある技術を、日本の暮らしへ。</h2>
+      <div class="space-y-5 text-sub">
+        <p>世界には、優れた技術や製品が数多くあります。</p>
+        <p>それらを日本の市場やライフスタイルに合わせ、新しい価値へとつなげます。</p>
+        <p>つくることではなく、その先の暮らしを支えます。</p>
+      </div>
+    </div>
+    <div class="placeholder aspect-[4/3]">Company Image</div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page max-w-4xl">
+      <p class="eyebrow">About</p>
+      <h2 class="mb-6 text-3xl font-extrabold md:text-5xl">INBESについて</h2>
+      <div class="space-y-5 text-sub">
+        <p>自社製品の企画・販売とOEM/ODMで培った経験をもとに、日本市場に合わせた商品化を支援しています。</p>
+        <p>海外で実績のある製品を活用したローカライズ開発をはじめ、オリジナル開発や商品まわりのデザインまで、お客様や製品に合わせた最適な方法をご提案しています。</p>
+        <p>市場やライフスタイルの変化に合わせ、商品をつくるだけではなく、販売できる状態まで整えること。それが私たちの役割です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <p class="eyebrow">Profile</p>
+    <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">会社情報</h2>
+    <div class="overflow-hidden rounded-lg border border-line bg-white">
+      {profile.map(([label, value]) => (
+        <div class="grid border-b border-line last:border-b-0 md:grid-cols-[220px_1fr]">
+          <div class="bg-soft px-5 py-4 text-sm font-extrabold">{label}</div>
+          <div class="px-5 py-4 text-sub">
+            {label === "本社" ? (
+              <>
+                {value}
+                <a
+                  class="ml-3 font-extrabold text-blue underline underline-offset-4 after:ml-1 after:content-['↗']"
+                  href="https://www.google.com/maps/search/?api=1&query=%E3%80%92206-0012%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A4%9A%E6%91%A9%E5%B8%82%E8%B2%9D%E5%8F%961510-1%20%E6%B0%B8%E5%B1%B1JOY%E3%83%93%E3%83%AB5F"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  MAP
+                </a>
+              </>
+            ) : value}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,97 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const consultations = [
+  ["商品化について相談したい", "商品化の進め方や実現方法をご相談いただけます。"],
+  ["海外製品を日本向けに販売したい", "ローカライズや国内販売に向けた調整をご提案します。"],
+  ["OEM・ODMについて相談したい", "製品開発から量産まで対応しています。"],
+  ["商品まわりのデザインも相談したい", "パッケージや説明書、Webなども含めて対応できます。"]
+];
+
+const inquiryTypes = [
+  "商品化について相談したい",
+  "OEM・ODMについて相談したい",
+  "海外製品について相談したい",
+  "商品まわりのデザインについて相談したい",
+  "自社製品について",
+  "その他"
+];
+---
+
+<BaseLayout title="お問い合わせ" description="商品化のこと、OEM/ODMのこと、海外製品のこと。まずはお気軽にご相談ください。">
+  <Hero eyebrow="Contact" title="まずは、お話を聞かせてください。" />
+  <section class="container-page -mt-12 pb-12">
+    <div class="max-w-3xl space-y-5 text-lg text-sub">
+      <p>商品化のこと、OEM/ODMのこと、海外製品のこと。</p>
+      <p>作りたいものが決まっている方も、まだ方向性を探している方も、まずはお気軽にご相談ください。</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page">
+      <div class="section-heading">
+        <p class="eyebrow">Consultation</p>
+        <h2>こんなご相談をいただいています。</h2>
+      </div>
+      <div class="grid gap-5 md:grid-cols-4">
+        {consultations.map(([title, text]) => (
+          <article class="rounded-lg border border-line bg-paper p-6">
+            <h3 class="mb-3 text-lg font-extrabold">{title}</h3>
+            <p class="text-sm text-sub">{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="mb-8 rounded-lg border border-line bg-white p-6">
+      <p class="font-extrabold">お急ぎの方は、お電話でもお気軽にご相談ください。</p>
+      <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
+      <p class="text-sm text-sub">平日 9:00〜18:00</p>
+    </div>
+
+    <form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action="/contact/send.php" enctype="multipart/form-data">
+      <div class="grid gap-5 md:grid-cols-2">
+        <label class="grid gap-2 text-sm font-bold">
+          会社名
+          <input class="rounded border border-line px-4 py-3 font-normal" name="company" autocomplete="organization" />
+        </label>
+        <label class="grid gap-2 text-sm font-bold">
+          お名前
+          <input class="rounded border border-line px-4 py-3 font-normal" name="name" autocomplete="name" required />
+        </label>
+        <label class="grid gap-2 text-sm font-bold">
+          メールアドレス
+          <input class="rounded border border-line px-4 py-3 font-normal" type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="grid gap-2 text-sm font-bold">
+          電話番号 任意
+          <input class="rounded border border-line px-4 py-3 font-normal" name="tel" autocomplete="tel" />
+        </label>
+      </div>
+      <label class="grid gap-2 text-sm font-bold">
+        ご相談内容
+        <select class="rounded border border-line px-4 py-3 font-normal" name="type" required>
+          <option value="">選択してください</option>
+          {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
+        </select>
+      </label>
+      <label class="grid gap-2 text-sm font-bold">
+        補足情報
+        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="参考製品、販売先、希望時期など"></textarea>
+      </label>
+      <label class="grid gap-2 text-sm font-bold">
+        資料添付 任意
+        <input class="rounded border border-line px-4 py-3 font-normal" type="file" name="attachment" />
+        <span class="text-xs font-normal text-sub">参考資料、仕様書、製品写真などがあれば添付してください。</span>
+      </label>
+      <label class="flex gap-3 text-sm text-sub">
+        <input type="checkbox" name="privacy" required />
+        <span>個人情報の取り扱いに同意します。</span>
+      </label>
+      <button class="button button-primary w-fit" type="submit">相談内容を送信する</button>
+    </form>
+  </section>
+</BaseLayout>

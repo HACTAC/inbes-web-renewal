@@ -1,0 +1,105 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { fields, processSteps } from "@/data/services";
+---
+
+<BaseLayout title="開発支援" description="日本で販売するための商品化を、技術・仕様・量産・販売準備まで支援します。">
+  <Hero eyebrow="Services" title="開発支援" lead="日本で販売するための商品化を、技術・仕様・量産・販売準備まで支援します。" />
+
+  <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Fields</p>
+      <h2>主な取扱分野</h2>
+      <p>バッテリー・電源関連をはじめ、生活家電やカー用品、スマートフォン・PC周辺機器など、エレクトロニクス製品を中心に商品化を支援しています。</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {fields.map(([title, text]) => (
+        <article class="rounded-lg border border-line bg-white p-6">
+          <div class="placeholder mb-5 aspect-[4/3]">{title}</div>
+          <h3 class="mb-3 text-xl font-extrabold">{title}</h3>
+          <p class="text-sm text-sub">{text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page">
+      <div class="section-heading">
+        <p class="eyebrow">Development Approach</p>
+        <h2>商品化の考え方</h2>
+        <p>ゼロから作ることだけが、商品開発ではありません。INBESでは、海外で実績のある製品や新たに開発された製品を活用し、日本市場に合わせた商品化をご提案しています。</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+        <article class="rounded-lg border border-line bg-paper p-7 md:p-10">
+          <p class="eyebrow">Main Approach</p>
+          <h3 class="mb-4 text-2xl font-extrabold md:text-4xl">ローカライズ開発</h3>
+          <p class="mb-8 text-sub">海外で実績のある製品や、新たに開発された製品を、日本市場や販売先に合わせて商品化する開発手法です。</p>
+          <div class="grid gap-4 md:grid-cols-4">
+            {["製品・技術を選定", "日本市場へ最適化", "販売条件を整える", "商品として届ける"].map((step, index) => (
+              <div class="border-t border-line pt-4">
+                <span class="mb-3 block text-sm font-extrabold text-green">{String(index + 1).padStart(2, "0")}</span>
+                <p class="font-extrabold">{step}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+        <article class="rounded-lg border border-line p-7 md:p-10">
+          <h3 class="mb-4 text-2xl font-extrabold">オリジナル開発</h3>
+          <p class="text-sub">ローカライズ開発では対応できない場合の選択肢です。必要な機能や用途に合わせて、新規開発にも対応しています。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Process</p>
+      <h2>商品化の進め方</h2>
+      <p>作りたい商品が決まっている場合も、探すところから始めたい場合も、状況に合わせて商品化を進めます。</p>
+    </div>
+    <div class="grid gap-4">
+      {processSteps.map(([title, text], index) => (
+        <article class="grid gap-4 border-t border-line py-6 md:grid-cols-[120px_220px_1fr]">
+          <span class="text-sm font-extrabold text-green">STEP {index + 1}</span>
+          <h3 class="text-xl font-extrabold">{title}</h3>
+          <p class="text-sub">{text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page">
+      <div class="section-heading">
+        <p class="eyebrow">Design Support</p>
+        <h2>商品まわりのデザイン</h2>
+        <p>商品を販売するために必要なデザインや制作まで対応しています。</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        {[
+          ["商品に付帯するもの", ["パッケージ", "取扱説明書", "ラベル", "表示内容"]],
+          ["売り場に関わるもの", ["Webサイト", "EC掲載画像", "チラシ", "店頭POP", "展示会ツール"]],
+          ["ブランド設計", ["ロゴ", "ネーミング", "ブランドサイト", "ブランドガイドライン"]]
+        ].map(([title, items]) => (
+          <article class="rounded-lg border border-line bg-paper p-6">
+            <h3 class="mb-4 text-xl font-extrabold">{title}</h3>
+            <ul class="space-y-2 text-sm text-sub">
+              {(items as string[]).map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <a href="/works/#keeppot" class="mt-7 inline-block font-extrabold text-blue underline underline-offset-4">ブランド設計の実績を見る</a>
+    </div>
+  </section>
+
+  <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
+    <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">商品化をご検討中の方へ</h2>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <a class="button border-white bg-white text-ink" href="/contact/">商品化について相談する</a>
+      <a class="button border-white text-white" href="/works/">実績を見る</a>
+    </div>
+  </section>
+</BaseLayout>

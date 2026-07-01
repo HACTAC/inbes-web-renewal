@@ -1,0 +1,23 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { productCategories } from "@/data/products";
+---
+
+<BaseLayout title="自社製品" description="INBESが企画・販売する製品をご紹介しています。">
+  <Hero eyebrow="Products" title="自社製品" lead="INBESが企画・販売する製品をご紹介しています。" />
+  <section class="section container-page">
+    <div class="grid gap-5 md:grid-cols-3">
+      {productCategories.map((category) => (
+        <article class="rounded-lg border border-line bg-white p-6">
+          <div class="placeholder mb-5 aspect-[4/3]">{category.title}</div>
+          <h2 class="mb-3 text-xl font-extrabold">{category.title}</h2>
+          <p class="mb-5 text-sm text-sub">{category.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {category.items.map((item) => <span class="rounded-full border border-line px-3 py-1 text-xs font-bold text-sub">{item}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

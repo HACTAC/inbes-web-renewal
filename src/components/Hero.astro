@@ -1,0 +1,15 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+};
+
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="container-page py-20 md:py-28">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.08] md:text-7xl">{title}</h1>
+  {lead && <p class="mt-7 max-w-3xl text-lg text-sub">{lead}</p>}
+</section>

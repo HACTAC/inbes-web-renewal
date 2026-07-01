@@ -1,0 +1,37 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { works } from "@/data/works";
+---
+
+<BaseLayout title="開発実績" description="商品化を支援した製品をご紹介します。">
+  <Hero eyebrow="Works" title="開発実績" lead="商品化を支援した製品をご紹介します。" />
+  <section class="section container-page">
+    <div class="grid gap-6">
+      {works.map((work) => (
+        <article id={work.id} class="grid gap-6 rounded-lg border border-line bg-white p-5 md:grid-cols-[360px_1fr] md:p-7">
+          <div class="placeholder aspect-[4/3]">{work.title}</div>
+          <div>
+            <h2 class="mb-3 text-2xl font-extrabold md:text-3xl">{work.title}</h2>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="rounded-full bg-soft px-3 py-1 text-xs font-extrabold text-green">{work.category}</span>
+            </div>
+            <div class="mb-5 flex flex-wrap gap-2">
+              {work.supports.map((support) => <span class="rounded-full border border-line px-3 py-1 text-xs font-bold text-sub">{support}</span>)}
+            </div>
+            <p class="mb-5 text-sub">{work.description}</p>
+            <p class="mb-4 text-sm font-bold">クライアント：{work.client}</p>
+            {work.url && <a class="font-extrabold text-blue underline underline-offset-4" href={work.url} target="_blank" rel="noopener">公式サイトを見る</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
+    <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">商品化をご検討中の方へ</h2>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <a class="button border-white bg-white text-ink" href="/contact/">商品化について相談する</a>
+      <a class="button border-white text-white" href="/services/">開発支援を見る</a>
+    </div>
+  </section>
+</BaseLayout>
