@@ -34,7 +34,12 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
       !entrance && (
         <header class="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur">
           <div class="flex min-h-[72px] items-center justify-between gap-7 px-5 md:px-11">
-            <a href="/" class="text-[22px] font-extrabold tracking-normal">INBES</a>
+            <div class="flex items-center gap-4">
+              <a href="/" class="text-[22px] font-extrabold tracking-normal">INBES</a>
+              <a href={switchLink.href} class="hidden rounded-full border border-line bg-white px-3 py-1.5 text-xs font-bold text-blue transition hover:border-blue md:inline-flex">
+                {switchLink.label}
+              </a>
+            </div>
             <nav class="hidden items-center gap-6 text-sm text-sub md:flex" aria-label="グローバルナビゲーション">
               {headerNavigation.map((item) => (
                 <a
@@ -47,9 +52,6 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
                   {item.label}
                 </a>
               ))}
-              <a href={switchLink.href} class="rounded-full border border-line bg-white px-4 py-2 font-bold text-blue transition hover:border-blue">
-                {switchLink.label}
-              </a>
             </nav>
           </div>
         </header>
