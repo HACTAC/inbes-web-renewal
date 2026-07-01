@@ -6,7 +6,17 @@ const consultations = [
   ["商品化について相談したい", "商品化の進め方や実現方法をご相談いただけます。"],
   ["海外製品を日本向けに販売したい", "ローカライズや国内販売に向けた調整をご提案します。"],
   ["OEM・ODMについて相談したい", "製品開発から量産まで対応しています。"],
-  ["商品まわりのデザインも相談したい", "パッケージや説明書、Webなども含めて対応できます。"]
+  ["自社製品について確認したい", "修理、サポート、製品に関するお問い合わせも受け付けています。"]
+];
+
+const inquiryCategories = [
+  "商品化支援について",
+  "OEM・ODMについて",
+  "海外製品・ローカライズについて",
+  "商品まわりのデザインについて",
+  "自社製品の修理・サポートについて",
+  "自社製品の購入・仕様について",
+  "その他"
 ];
 
 const inquiryTypes = [
@@ -14,17 +24,18 @@ const inquiryTypes = [
   "OEM・ODMについて相談したい",
   "海外製品について相談したい",
   "商品まわりのデザインについて相談したい",
-  "自社製品について",
+  "修理・サポートについて",
+  "製品の仕様・使い方について",
   "その他"
 ];
 ---
 
-<BaseLayout title="お問い合わせ" description="商品化のこと、OEM/ODMのこと、海外製品のこと。まずはお気軽にご相談ください。">
+<BaseLayout title="お問い合わせ" description="商品化のご相談から、自社製品の修理・サポートまで、お問い合わせを受け付けています。">
   <Hero eyebrow="Contact" title="まずは、お話を聞かせてください。" />
   <section class="container-page -mt-12 pb-12">
     <div class="max-w-3xl space-y-5 text-lg text-sub">
-      <p>商品化のこと、OEM/ODMのこと、海外製品のこと。</p>
-      <p>作りたいものが決まっている方も、まだ方向性を探している方も、まずはお気軽にご相談ください。</p>
+      <p>商品化のこと、OEM/ODMのこと、海外製品のこと。自社製品の修理・サポートのこと。</p>
+      <p>法人のお客様も、製品をご利用のお客様も、まずは内容を選んでお問い合わせください。</p>
     </div>
   </section>
 
@@ -32,7 +43,7 @@ const inquiryTypes = [
     <div class="container-page">
       <div class="section-heading">
         <p class="eyebrow">Consultation</p>
-        <h2>こんなご相談をいただいています。</h2>
+        <h2>こんなお問い合わせをいただいています。</h2>
       </div>
       <div class="grid gap-5 md:grid-cols-4">
         {consultations.map(([title, text]) => (
@@ -46,16 +57,36 @@ const inquiryTypes = [
   </section>
 
   <section class="section container-page">
+    <div class="mb-8 grid gap-5 md:grid-cols-[1fr_1fr]">
+      <div class="rounded-lg border border-line bg-white p-6">
+        <p class="eyebrow">For Business</p>
+        <h2 class="mb-3 text-2xl font-extrabold">商品化のご相談</h2>
+        <p class="text-sub">仕様や進め方が固まっていない段階でも、状況をお聞かせください。</p>
+      </div>
+      <div class="rounded-lg border border-line bg-white p-6">
+        <p class="eyebrow">Product Support</p>
+        <h2 class="mb-3 text-2xl font-extrabold">製品に関するお問い合わせ</h2>
+        <p class="text-sub">修理、サポート、製品仕様の確認は電話またはフォームからお問い合わせください。</p>
+      </div>
+    </div>
+
     <div class="mb-8 rounded-lg border border-line bg-white p-6">
-      <p class="font-extrabold">お急ぎの方は、お電話でもお気軽にご相談ください。</p>
+      <p class="font-extrabold">お急ぎの方、製品一般のお問い合わせは、お電話でも受け付けています。</p>
       <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
       <p class="text-sm text-sub">平日 9:00〜18:00</p>
     </div>
 
     <form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action="/contact/send.php" enctype="multipart/form-data">
+      <label class="grid gap-2 text-sm font-bold">
+        お問い合わせの大カテゴリー
+        <select class="rounded border border-line px-4 py-3 font-normal" name="category" required>
+          <option value="">選択してください</option>
+          {inquiryCategories.map((category) => <option value={category}>{category}</option>)}
+        </select>
+      </label>
       <div class="grid gap-5 md:grid-cols-2">
         <label class="grid gap-2 text-sm font-bold">
-          会社名
+          会社名 任意
           <input class="rounded border border-line px-4 py-3 font-normal" name="company" autocomplete="organization" />
         </label>
         <label class="grid gap-2 text-sm font-bold">
@@ -72,7 +103,7 @@ const inquiryTypes = [
         </label>
       </div>
       <label class="grid gap-2 text-sm font-bold">
-        ご相談内容
+        詳細種別
         <select class="rounded border border-line px-4 py-3 font-normal" name="type" required>
           <option value="">選択してください</option>
           {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
@@ -80,7 +111,7 @@ const inquiryTypes = [
       </label>
       <label class="grid gap-2 text-sm font-bold">
         補足情報
-        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="参考製品、販売先、希望時期など"></textarea>
+        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="商品化のご相談は参考製品、販売先、希望時期など。製品サポートは製品名、購入時期、症状など。"></textarea>
       </label>
       <label class="grid gap-2 text-sm font-bold">
         資料添付 任意

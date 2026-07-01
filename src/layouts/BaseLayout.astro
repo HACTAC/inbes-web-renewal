@@ -1,20 +1,24 @@
 ---
 import "../styles/global.css";
-import { footerNavigation, navigation } from "@/data/navigation";
+import { businessNavigation, footerNavigation, modeSwitch, productNavigation } from "@/data/navigation";
 
 type Props = {
   title?: string;
   description?: string;
   entrance?: boolean;
+  siteMode?: "business" | "products";
 };
 
 const {
   title = "INBES株式会社",
   description = "INBESは、日本で売るための商品づくりを支える会社です。",
-  entrance = false
+  entrance = false,
+  siteMode = "business"
 } = Astro.props;
 
 const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株式会社`;
+const headerNavigation = siteMode === "products" ? productNavigation : businessNavigation;
+const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.business;
 ---
 
 <!doctype html>
@@ -32,7 +36,7 @@ const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株�
           <div class="flex min-h-[72px] items-center justify-between gap-7 px-5 md:px-11">
             <a href="/" class="text-[22px] font-extrabold tracking-normal">INBES</a>
             <nav class="hidden items-center gap-6 text-sm text-sub md:flex" aria-label="グローバルナビゲーション">
-              {navigation.map((item) => (
+              {headerNavigation.map((item) => (
                 <a
                   href={item.href}
                   class:list={[
@@ -43,6 +47,9 @@ const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株�
                   {item.label}
                 </a>
               ))}
+              <a href={switchLink.href} class="rounded-full border border-line bg-white px-4 py-2 font-bold text-blue transition hover:border-blue">
+                {switchLink.label}
+              </a>
             </nav>
           </div>
         </header>
