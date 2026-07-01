@@ -1,0 +1,78 @@
+---
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { processSteps } from "@/data/services";
+---
+
+<BaseLayout title="商品化の進め方" description="作りたい商品が決まっている場合も、探すところから始めたい場合も、状況に合わせて商品化を進めます。">
+  <Hero
+    eyebrow="Process"
+    title="商品化の進め方"
+    lead="作りたい商品が決まっている場合も、探すところから始めたい場合も、状況に合わせて商品化を進めます。"
+  />
+
+  <section class="section container-page">
+    <div class="grid gap-5 md:grid-cols-2">
+      <article class="rounded-lg border border-line bg-white p-6 md:p-8">
+        <p class="eyebrow">Start 01</p>
+        <h2 class="mb-3 text-2xl font-extrabold md:text-3xl">作りたい商品がある</h2>
+        <p class="text-sub">参考製品、仕様、販売先、希望時期などをもとに、商品化に必要な工程を整理します。</p>
+      </article>
+      <article class="rounded-lg border border-line bg-white p-6 md:p-8">
+        <p class="eyebrow">Start 02</p>
+        <h2 class="mb-3 text-2xl font-extrabold md:text-3xl">こんな商品を探したい</h2>
+        <p class="text-sub">海外で実績のある製品や新たに開発された製品を活用できる可能性から検討します。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page">
+      <div class="section-heading">
+        <p class="eyebrow">Flow</p>
+        <h2>相談から販売開始まで</h2>
+        <p>商品化に必要な工程を、状況に合わせて一緒に整理します。</p>
+      </div>
+      <div class="grid gap-4">
+        {processSteps.map(([title, text], index) => (
+          <article class="grid gap-4 border-t border-line py-6 md:grid-cols-[120px_220px_1fr]">
+            <span class="text-sm font-extrabold text-green">STEP {index + 1}</span>
+            <h3 class="text-xl font-extrabold">{title}</h3>
+            <p class="text-sub">{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Design Support</p>
+      <h2>商品まわりのデザイン</h2>
+      <p>商品を販売するために必要なデザインや制作まで対応しています。</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {[
+        ["商品に付帯するもの", ["パッケージ", "取扱説明書", "ラベル", "表示内容"]],
+        ["売り場に関わるもの", ["Webサイト", "EC掲載画像", "チラシ", "店頭POP", "展示会ツール"]],
+        ["ブランド設計", ["ロゴ", "ネーミング", "ブランドサイト", "ブランドガイドライン"]]
+      ].map(([title, items]) => (
+        <article class="rounded-lg border border-line bg-white p-6">
+          <h3 class="mb-4 text-xl font-extrabold">{title}</h3>
+          <ul class="space-y-2 text-sm text-sub">
+            {(items as string[]).map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <a href="/works/#keeppot" class="mt-7 inline-block font-extrabold text-blue underline underline-offset-4">ブランド設計の実績を見る</a>
+  </section>
+
+  <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
+    <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">商品化をご検討中の方へ</h2>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <a class="button border-white bg-white text-ink" href="/contact/">商品化について相談する</a>
+      <a class="button border-white text-white" href="/works/">実績を見る</a>
+    </div>
+  </section>
+</BaseLayout>
