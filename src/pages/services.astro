@@ -2,10 +2,37 @@
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { fields, processSteps } from "@/data/services";
+import { works } from "@/data/works";
 ---
 
-<BaseLayout title="開発支援" description="日本で販売するための商品化を、技術・仕様・量産・販売準備まで支援します。">
-  <Hero eyebrow="Services" title="開発支援" lead="日本で販売するための商品化を、技術・仕様・量産・販売準備まで支援します。" />
+<BaseLayout title="商品化支援" description="海外製品のローカライズから、仕様整理、量産、輸入、パッケージ制作まで。日本で販売するための商品化を、一緒に進めます。">
+  <Hero
+    eyebrow="Product Development Support"
+    title="日本で売るための、商品づくりを共に。"
+    lead="海外製品のローカライズから、仕様整理、量産、輸入、パッケージ制作まで。日本で販売するための商品化を、一緒に進めます。"
+  />
+
+  <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Issue</p>
+      <h2>商品化で、よくあること。</h2>
+      <p>商品化の進め方は、一社一社異なります。INBESは、日本で販売するために必要な工程を、状況に合わせて一緒に整理します。</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {[
+        ["01", "エレクトロニクス商品を扱いたい", "認証や仕様の検討など、新規参入に必要な技術面・実務面をサポートします。"],
+        ["02", "商品化を前に進めたい", "営業や企画だけでは不足しがちな技術的な検討や仕様整理を、一緒に進めます。"],
+        ["03", "商品化をまとめて任せたい", "商品選定から量産、輸入、パッケージや取扱説明書まで、一つの窓口で対応します。"]
+      ].map(([number, title, text]) => (
+        <article class="border-t border-line bg-white p-6">
+          <span class="mb-5 block text-sm font-extrabold text-green">{number}</span>
+          <div class="placeholder mb-6 aspect-[4/3]">Image</div>
+          <h3 class="mb-3 text-xl font-extrabold">{title}</h3>
+          <p class="text-sm text-sub">{text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
 
   <section class="section container-page">
     <div class="section-heading">
@@ -92,6 +119,22 @@ import { fields, processSteps } from "@/data/services";
         ))}
       </div>
       <a href="/works/#keeppot" class="mt-7 inline-block font-extrabold text-blue underline underline-offset-4">ブランド設計の実績を見る</a>
+    </div>
+  </section>
+
+  <section class="section container-page">
+    <div class="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+      <div>
+        <p class="eyebrow">Works</p>
+        <h2 class="mb-5 text-3xl font-extrabold leading-tight md:text-5xl">どんな商品を、どこまで支援したか。</h2>
+        <p class="mb-8 text-sub">開発実績では、商品化を支援した製品と関与範囲を一覧で確認できます。</p>
+        <a class="button button-secondary" href="/works/">開発実績を見る</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        {works.slice(0, 6).map((work) => (
+          <div class="placeholder aspect-[4/3] p-4 text-center">{work.title}</div>
+        ))}
+      </div>
     </div>
   </section>
 

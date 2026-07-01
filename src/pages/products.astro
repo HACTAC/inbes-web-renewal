@@ -5,8 +5,25 @@ import { productCategories } from "@/data/products";
 ---
 
 <BaseLayout title="自社製品" description="INBESが企画・販売する製品をご紹介しています。">
-  <Hero eyebrow="Products" title="自社製品" lead="INBESが企画・販売する製品をご紹介しています。" />
+  <Hero eyebrow="Products" title="自社製品" lead="INBESが企画・販売する製品をご紹介しています。製品情報、修理、サポートに関するお問い合わせはこちらから確認できます。" />
+
+  <section class="container-page pb-8">
+    <div class="grid gap-5 rounded-lg border border-line bg-white p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
+      <div>
+        <p class="eyebrow">Support</p>
+        <h2 class="mb-3 text-2xl font-extrabold md:text-3xl">製品の修理・サポートについて</h2>
+        <p class="text-sub">ご利用中の製品に関する修理、サポート、確認事項はお問い合わせページからご連絡ください。</p>
+      </div>
+      <a class="button button-primary" href="/contact/">サポートへ問い合わせる</a>
+    </div>
+  </section>
+
   <section class="section container-page">
+    <div class="section-heading">
+      <p class="eyebrow">Lineup</p>
+      <h2>製品情報</h2>
+      <p>販売中の製品はカテゴリごとに整理して掲載します。詳細な仕様や販売情報は、各製品ページで確認できます。</p>
+    </div>
     <div class="grid gap-5 md:grid-cols-3">
       {productCategories.map((category) => (
         <article class="rounded-lg border border-line bg-white p-6">
