@@ -2,19 +2,10 @@
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const consultations = [
-  ["商品化について相談したい", "商品化の進め方や実現方法をご相談いただけます。"],
-  ["海外製品を日本向けに販売したい", "ローカライズや国内販売に向けた調整をご提案します。"],
-  ["OEM・ODMについて相談したい", "製品開発から量産まで対応しています。"],
-  ["自社製品について確認したい", "修理、サポート、製品に関するお問い合わせも受け付けています。"]
-];
-
 const inquiryCategories = [
-  "商品化・OEM/ODMについて",
-  "海外製品・ローカライズについて",
-  "商品まわりのデザインについて",
-  "自社製品の修理・サポートについて",
-  "自社製品の購入・仕様について",
+  "自社製品について",
+  "修理・サポートについて",
+  "商品化の相談について",
   "その他"
 ];
 ---
@@ -23,49 +14,19 @@ const inquiryCategories = [
   <Hero eyebrow="Contact" title="まずは、お話を聞かせてください。" />
   <section class="container-page -mt-12 pb-12">
     <div class="max-w-3xl space-y-5 text-lg text-sub">
-      <p>商品化のこと、OEM/ODMのこと、海外製品のこと。自社製品の修理・サポートのこと。</p>
-      <p>法人のお客様も、製品をご利用のお客様も、まずは内容を選んでお問い合わせください。</p>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container-page">
-      <div class="section-heading">
-        <p class="eyebrow">Consultation</p>
-        <h2>こんなお問い合わせをいただいています。</h2>
-      </div>
-      <div class="grid gap-5 md:grid-cols-4">
-        {consultations.map(([title, text]) => (
-          <article class="rounded-lg border border-line bg-paper p-6">
-            <h3 class="mb-3 text-lg font-extrabold">{title}</h3>
-            <p class="text-sm text-sub">{text}</p>
-          </article>
-        ))}
-      </div>
+      <p>製品のこと、修理・サポートのこと、商品化のこと。</p>
+      <p>内容を選んで、必要な情報を分かる範囲でお送りください。</p>
     </div>
   </section>
 
   <section class="section container-page">
-    <div class="mb-8 grid gap-5 md:grid-cols-[1fr_1fr]">
-      <div class="rounded-lg border border-line bg-white p-6">
-        <p class="eyebrow">For Business</p>
-        <h2 class="mb-3 text-2xl font-extrabold">商品化のご相談</h2>
-        <p class="text-sub">仕様や進め方が固まっていない段階でも、状況をお聞かせください。</p>
-      </div>
-      <div class="rounded-lg border border-line bg-white p-6">
-        <p class="eyebrow">Product Support</p>
-        <h2 class="mb-3 text-2xl font-extrabold">製品に関するお問い合わせ</h2>
-        <p class="text-sub">修理、サポート、製品仕様の確認は電話またはフォームからお問い合わせください。</p>
-      </div>
-    </div>
-
     <div class="mb-8 rounded-lg border border-line bg-white p-6">
-      <p class="font-extrabold">お急ぎの方、製品一般のお問い合わせは、お電話でも受け付けています。</p>
+      <p class="font-extrabold">お急ぎの方は、お電話でも受け付けています。</p>
       <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
       <p class="text-sm text-sub">平日 9:00〜18:00</p>
     </div>
 
-    <form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action="/contact/send.php" enctype="multipart/form-data">
+    <form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action="/contact/send.php">
       <label class="grid gap-2 text-sm font-bold">
         お問い合わせ内容
         <select class="rounded border border-line px-4 py-3 font-normal" name="category" required>
@@ -74,10 +35,6 @@ const inquiryCategories = [
         </select>
       </label>
       <div class="grid gap-5 md:grid-cols-2">
-        <label class="grid gap-2 text-sm font-bold">
-          会社名 任意
-          <input class="rounded border border-line px-4 py-3 font-normal" name="company" autocomplete="organization" />
-        </label>
         <label class="grid gap-2 text-sm font-bold">
           お名前
           <input class="rounded border border-line px-4 py-3 font-normal" name="name" autocomplete="name" required />
@@ -93,12 +50,7 @@ const inquiryCategories = [
       </div>
       <label class="grid gap-2 text-sm font-bold">
         お問い合わせ内容の詳細
-        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="製品名、症状、相談したい内容、参考製品、希望時期など、分かる範囲でご記入ください。" required></textarea>
-      </label>
-      <label class="grid gap-2 text-sm font-bold">
-        資料添付 任意
-        <input class="rounded border border-line px-4 py-3 font-normal" type="file" name="attachment" />
-        <span class="text-xs font-normal text-sub">参考資料、仕様書、製品写真などがあれば添付してください。</span>
+        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="製品名、症状、ご相談内容など、分かる範囲でご記入ください。" required></textarea>
       </label>
       <label class="flex gap-3 text-sm text-sub">
         <input type="checkbox" name="privacy" required />

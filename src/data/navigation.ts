@@ -7,8 +7,8 @@ export const businessNavigation = [
 ];
 
 export const productNavigation = [
-  { label: "製品情報", href: "/products/" },
-  { label: "修理・サポート", href: "/contact/" },
+  { label: "製品情報", href: "/products/#lineup" },
+  { label: "修理・サポート", href: "/products/#support" },
   { label: "お問い合わせ", href: "/contact/", emphasis: true }
 ];
 
