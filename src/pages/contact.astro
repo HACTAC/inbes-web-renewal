@@ -1,62 +1,25 @@
 ---
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-
-const inquiryCategories = [
-  "自社製品について",
-  "修理・サポートについて",
-  "商品化の相談について",
-  "その他"
-];
 ---
 
-<BaseLayout title="お問い合わせ" description="商品化のご相談から、自社製品の修理・サポートまで、お問い合わせを受け付けています。">
-  <Hero eyebrow="Contact" title="まずは、お話を聞かせてください。" />
-  <section class="container-page -mt-12 pb-12">
-    <div class="max-w-3xl space-y-5 text-lg text-sub">
-      <p>製品のこと、修理・サポートのこと、商品化のこと。</p>
-      <p>内容を選んで、必要な情報を分かる範囲でお送りください。</p>
-    </div>
-  </section>
+<BaseLayout title="お問い合わせ" description="商品化のご相談と、自社製品のサポート窓口をご案内します。">
+  <Hero eyebrow="Contact" title="お問い合わせ" lead="内容に合わせて、お問い合わせ窓口をお選びください。" />
 
   <section class="section container-page">
-    <div class="mb-8 rounded-lg border border-line bg-white p-6">
-      <p class="font-extrabold">お急ぎの方は、お電話でも受け付けています。</p>
-      <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
-      <p class="text-sm text-sub">平日 9:00〜18:00</p>
+    <div class="grid gap-5 md:grid-cols-2">
+      <a href="/contact/business/" class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+        <p class="eyebrow">Business</p>
+        <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">商品化のご相談</h2>
+        <p class="mb-8 text-sub">OEM/ODM、ローカライズ開発、商品化の進め方について相談したい方はこちら。</p>
+        <span class="font-extrabold text-blue underline underline-offset-4">相談フォームへ</span>
+      </a>
+      <a href="/contact/support/" class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+        <p class="eyebrow">Support</p>
+        <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">製品サポート</h2>
+        <p class="mb-8 text-sub">INBESの自社製品について、確認やサポートが必要な方はこちら。</p>
+        <span class="font-extrabold text-blue underline underline-offset-4">サポートフォームへ</span>
+      </a>
     </div>
-
-    <form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action="/contact/send.php">
-      <label class="grid gap-2 text-sm font-bold">
-        お問い合わせ内容
-        <select class="rounded border border-line px-4 py-3 font-normal" name="category" required>
-          <option value="">選択してください</option>
-          {inquiryCategories.map((category) => <option value={category}>{category}</option>)}
-        </select>
-      </label>
-      <div class="grid gap-5 md:grid-cols-2">
-        <label class="grid gap-2 text-sm font-bold">
-          お名前
-          <input class="rounded border border-line px-4 py-3 font-normal" name="name" autocomplete="name" required />
-        </label>
-        <label class="grid gap-2 text-sm font-bold">
-          メールアドレス
-          <input class="rounded border border-line px-4 py-3 font-normal" type="email" name="email" autocomplete="email" required />
-        </label>
-        <label class="grid gap-2 text-sm font-bold">
-          電話番号 任意
-          <input class="rounded border border-line px-4 py-3 font-normal" name="tel" autocomplete="tel" />
-        </label>
-      </div>
-      <label class="grid gap-2 text-sm font-bold">
-        お問い合わせ内容の詳細
-        <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder="製品名、症状、ご相談内容など、分かる範囲でご記入ください。" required></textarea>
-      </label>
-      <label class="flex gap-3 text-sm text-sub">
-        <input type="checkbox" name="privacy" required />
-        <span>個人情報の取り扱いに同意します。</span>
-      </label>
-      <button class="button button-primary w-fit" type="submit">相談内容を送信する</button>
-    </form>
   </section>
 </BaseLayout>

@@ -1,0 +1,24 @@
+---
+import ContactForm from "@/components/ContactForm.astro";
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="製品サポート" description="INBESの自社製品に関するお問い合わせを受け付けています。" siteMode="products">
+  <Hero eyebrow="Product Support" title="製品サポート" lead="INBESの自社製品について、確認事項やサポートが必要な場合はこちらからお問い合わせください。" />
+
+  <section class="section container-page">
+    <div class="mb-8 rounded-lg border border-line bg-white p-6">
+      <p class="font-extrabold">お急ぎの方は、お電話でも受け付けています。</p>
+      <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
+      <p class="text-sm text-sub">平日 9:00〜18:00</p>
+    </div>
+
+    <ContactForm
+      categoryValue="製品サポート"
+      detailLabel="お問い合わせ内容"
+      detailPlaceholder="製品名、購入時期、確認したい内容など、分かる範囲でご記入ください。"
+      submitLabel="お問い合わせを送信する"
+    />
+  </section>
+</BaseLayout>

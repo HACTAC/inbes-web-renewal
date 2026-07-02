@@ -1,0 +1,52 @@
+---
+type Props = {
+  action?: string;
+  categoryValue: string;
+  detailLabel: string;
+  detailPlaceholder: string;
+  submitLabel: string;
+  showCompany?: boolean;
+};
+
+const {
+  action = "/contact/send.php",
+  categoryValue,
+  detailLabel,
+  detailPlaceholder,
+  submitLabel,
+  showCompany = false
+} = Astro.props;
+---
+
+<form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action={action}>
+  <input type="hidden" name="category" value={categoryValue} />
+  <div class="grid gap-5 md:grid-cols-2">
+    {showCompany && (
+      <label class="grid gap-2 text-sm font-bold">
+        会社名 任意
+        <input class="rounded border border-line px-4 py-3 font-normal" name="company" autocomplete="organization" />
+      </label>
+    )}
+    <label class="grid gap-2 text-sm font-bold">
+      お名前
+      <input class="rounded border border-line px-4 py-3 font-normal" name="name" autocomplete="name" required />
+    </label>
+    <label class="grid gap-2 text-sm font-bold">
+      メールアドレス
+      <input class="rounded border border-line px-4 py-3 font-normal" type="email" name="email" autocomplete="email" required />
+    </label>
+    <label class="grid gap-2 text-sm font-bold">
+      電話番号 任意
+      <input class="rounded border border-line px-4 py-3 font-normal" name="tel" autocomplete="tel" />
+    </label>
+  </div>
+  <label class="grid gap-2 text-sm font-bold">
+    {detailLabel}
+    <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder={detailPlaceholder} required></textarea>
+  </label>
+  <label class="flex gap-3 text-sm text-sub">
+    <input type="checkbox" name="privacy" required />
+    <span>個人情報の取り扱いに同意します。</span>
+  </label>
+  <button class="button button-primary w-fit" type="submit">{submitLabel}</button>
+</form>

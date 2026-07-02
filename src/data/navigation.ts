@@ -3,13 +3,13 @@ export const businessNavigation = [
   { label: "進め方", href: "/process/" },
   { label: "開発実績", href: "/works/" },
   { label: "会社概要", href: "/company/" },
-  { label: "お問い合わせ", href: "/contact/", emphasis: true }
+  { label: "お問い合わせ", href: "/contact/business/", emphasis: true }
 ];
 
 export const productNavigation = [
-  { label: "製品情報", href: "/products/#lineup" },
-  { label: "修理・サポート", href: "/products/#support" },
-  { label: "お問い合わせ", href: "/contact/", emphasis: true }
+  { label: "製品一覧", href: "/products/#lineup" },
+  { label: "サポート", href: "/products/#support" },
+  { label: "お問い合わせ", href: "/contact/support/", emphasis: true }
 ];
 
 export const modeSwitch = {

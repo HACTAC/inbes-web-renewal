@@ -1,0 +1,25 @@
+---
+import ContactForm from "@/components/ContactForm.astro";
+import Hero from "@/components/Hero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="商品化のご相談" description="OEM/ODM、ローカライズ開発、商品化についてのご相談を受け付けています。">
+  <Hero eyebrow="Business Contact" title="商品化について相談する。" lead="仕様や進め方が固まっていない段階でも、まずは状況をお聞かせください。" />
+
+  <section class="section container-page">
+    <div class="mb-8 rounded-lg border border-line bg-white p-6">
+      <p class="font-extrabold">お電話でのご相談も受け付けています。</p>
+      <p class="mt-2 text-2xl font-extrabold">TEL 042-316-9823</p>
+      <p class="text-sm text-sub">平日 9:00〜18:00</p>
+    </div>
+
+    <ContactForm
+      categoryValue="商品化の相談"
+      detailLabel="ご相談内容"
+      detailPlaceholder="作りたい商品、参考製品、販売先、希望時期など、分かる範囲でご記入ください。"
+      submitLabel="相談内容を送信する"
+      showCompany
+    />
+  </section>
+</BaseLayout>
