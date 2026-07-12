@@ -42,6 +42,14 @@ export const works = [
     client: "非公開"
   },
   {
+    id: "vibration-machine",
+    title: "ブルブルマシン",
+    category: "生活家電",
+    supports: ["ローカライズ開発", "パッケージ", "取扱説明書", "輸入"],
+    description: "パッケージ、取扱説明書、輸入など、販売に必要な制作と実務を支援しました。",
+    client: "株式会社ティーズネットワーク"
+  },
+  {
     id: "mobile-holder",
     title: "車載用モバイルホルダー",
     category: "カー用品",

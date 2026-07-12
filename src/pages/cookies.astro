@@ -4,12 +4,29 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="クッキーポリシー">
-  <Hero eyebrow="Cookie Policy" title="クッキーポリシー" lead="本ページは公開前確認用のドラフトです。アクセス解析等の導入内容に合わせて確認します。" />
+  <Hero eyebrow="Cookie Policy" title="クッキーポリシー" lead="当サイトにおけるCookieの利用目的と管理方法について定めます。" />
   <section class="section container-page max-w-4xl">
-    <div class="space-y-6 text-sub">
-      <p>本サイトでは、利便性向上やアクセス状況の把握のため、Cookieを使用する場合があります。</p>
-      <p>Cookieにより取得される情報には、個人を直接特定する情報は含まれません。</p>
-      <p>Cookieの利用を希望しない場合は、ブラウザ設定により無効化できます。</p>
+    <div class="space-y-10 text-sub">
+      <section>
+        <h2 class="mb-3 text-xl font-extrabold text-ink">Cookieの利用について</h2>
+        <p>当サイトでは、利便性の向上、アクセス状況の把握、サイト改善のためにCookieを利用する場合があります。</p>
+      </section>
+      <section>
+        <h2 class="mb-3 text-xl font-extrabold text-ink">利用目的</h2>
+        <ul class="list-disc space-y-2 pl-6">
+          <li>サイトの表示、動作の安定化</li>
+          <li>アクセス解析によるサイト改善</li>
+          <li>フォーム送信時のスパム対策</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="mb-3 text-xl font-extrabold text-ink">外部サービス</h2>
+        <p>アクセス解析やフォームのスパム対策に外部サービスを利用する場合は、利用するサービス名と目的を本ページに記載します。</p>
+      </section>
+      <section>
+        <h2 class="mb-3 text-xl font-extrabold text-ink">Cookieの管理</h2>
+        <p>利用者はブラウザの設定によりCookieを無効化できます。ただし、一部機能が正常に動作しない場合があります。</p>
+      </section>
     </div>
   </section>
 </BaseLayout>
