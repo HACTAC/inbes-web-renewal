@@ -1692,6 +1692,16 @@ input[type="radio"] {
   background: rgb(17 17 17 / 58%);
 }
 
+@media (max-width: 1320px) {
+  .hero {
+    gap: 64px;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+  }
+}
+
 @media (max-width: 1180px) {
   .site-header {
     grid-template-columns: 230px minmax(0, 1fr) auto;
