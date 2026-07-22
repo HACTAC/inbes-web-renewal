@@ -1,94 +1,72 @@
-# INBES Web Design System Notes
+# INBES Web Design System
 
-このディレクトリは、INBES Webサイトのデザインシステム設計概念を固めるための作業場所である。
+このディレクトリは、INBES Webサイトのデザイン判断を共有・検証するための独立した作業領域である。
 
-現時点では、ここに記載した内容をAstro実装やワイヤーフレームへ反映しない。ブランドイメージ、ムードボード、実装前のデザインシステム方針を分離して検討する。
+Astroサイトへ適用する前に、Brand OSをWebの具体的な値、部品、パターンへ変換し、ブラウザ上で確認する。現段階では既存ワイヤーフレームの見た目へ自動適用しない。
 
-## Source
+## Preview
+
+- Source: `design-system/site/`
+- Public preview: `https://hactac.github.io/inbes-web-renewal/design-system/`
+- Local preview: `python3 -m http.server 4173 --directory design-system/site`
+
+`main`へのpush時に、Astroの確認サイトとともにGitHub Pagesへ公開する。
+
+## Source Of Truth
 
 - Brand OS: `HACTAC/INBES-BrandOS`
 - Local reference: `references/INBES-BrandOS/`
-- Concept: 日本で売るための商品づくりを支える会社。
-- Message: 世界にある技術を、日本の暮らしへ。
+- Handoff: `references/INBES-BrandOS/prompts/design-system-handoff.md`
+- Moodboard: `site/assets/inbes-moodboard-typography-v1.png`
+- Adobe Fonts kit: `kkr3cfh`
 
-## Role
+ローカルのBrand OS参照データはGit管理対象外であり、本ディレクトリにはWebレビューに必要な成果物だけを置く。
 
-この設計メモの役割は、見た目を直接決めることではなく、後工程でデザインシステム化するときの判断基準を残すことである。
+## Design Status
 
-- ブランドの印象を整理する
-- 色、余白、写真、UI部品の方向性を仮説化する
-- Astro/Tailwind実装へ反映する前に、概念の整合性を確認する
-- ムードボードやロゴデータが追加された際の更新先にする
+デザインシステム内の値は、次の3段階で扱う。
 
-## Personality
+| Status | Meaning |
+| --- | --- |
+| `Confirmed` | Brand OSまたは決定記録で確定している |
+| `Proposed` | Web実装に必要な提案値。実ページで検証する |
+| `Review` | 元データ、権利、配信条件などの確認が必要 |
 
-- 誠実
-- 静か
-- 論理的
-- 実務的
-- 整理する
-- 編集する
-- 生活者視点
+暫定値を確定事項として扱わない。変更時は画面内のステータス、当README、必要に応じてBrand OSの決定記録を同時に更新する。
+
+## Included
+
+- Brand premiseとムードボード
+- 色、書体、余白、グリッド、角丸、写真比率
+- Button、Link、Navigation、Form、Tag、Accordion、Overlay、Card
+- Hero、Localization Process、Case Study、CTA
+- ページ別適用表
+- Desktop、Tablet、Mobileの差分
+- アクセシビリティ確認項目
+- Brand OSの未確定事項
 
 ## Visual Principle
 
-装飾ではなく、情報を理解しやすく整えるためのデザインとする。
+情報を飾るのではなく、理解しやすく整える。
 
-基本は白、黒、グレー、余白、グリッドで構成する。赤はブランド識別とUIアクセントに限定し、画面全体を支配させない。
+白、黒、グレー、余白、グリッドを基本とする。赤はロゴ、現在地、短い強調線へ限定する。写真は製品、工程、利用場面の実在感を示す証拠として扱う。
 
-## Initial Direction
+避ける表現:
 
-### Color
+- 赤を広い面で使う
+- 未来感だけをつくるグラデーションや発光
+- ガジェット感、強い営業感、擬似的な高級感
+- 情報を分断する過剰なカード化
+- 意味を持たない装飾やアニメーション
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `ink` | `#111111` | 本文、主要見出し |
-| `sub` | `#555555` | 補助本文 |
-| `muted` | `#888888` | プレースホルダー、弱い情報 |
-| `line` | `#DDDDDD` | 罫線、境界 |
-| `paper` | `#FFFFFF` | 背景 |
-| `soft` | `#F7F7F7` | 薄い面 |
-| `red` | `#E60012` | ロゴ赤の近似 |
-| `wine` | `#7A1E2C` | UIアクセント候補 |
+## Review Before Application
 
-赤は多用しない。ロゴ、状態表示、最小限の誘導に限定する。
+- Logo Redの正式なRGB / HEX
+- 正式ロゴとアイソレーション
+- Wine RedをUIへ採用するか
+- 写真素材の使用許諾と標準トリミング
+- Success、Warning、Errorの状態色
+- Adobe Fontsの本番公開ドメイン設定
+- Container幅とbreakpointsの代表ページ検証
 
-### Layout
-
-- グリッドを優先する
-- 余白は意味のまとまりを作るために使う
-- カードやUIの角丸は最大8px程度に抑える
-- 黒背景の多用は避ける
-- 写真を主役にできる余白を残す
-
-### UI
-
-- ボタンは過度に丸めない
-- CTAは強く売り込むのではなく、相談や選択を促す
-- テキストリンクはリンクであることが明確に分かる表現にする
-- 商品化支援側と自社製品側のナビゲーションは情報設計として分ける
-
-### Photography
-
-写真は主役として扱う。製品、質感、利用シーン、仕事の様子が伝わる実写を優先する。
-
-現時点では画像未確定のため、プレースホルダーはワイヤー上の仮表現として扱う。ムードボード確定後に写真ルールを更新する。
-
-## Anti-patterns
-
-- 赤を面で広く使う
-- 未来感だけを出すグラデーション
-- ガジェット感の強い光表現
-- 意味の薄いアイコン装飾
-- 情報を詰め込みすぎるレイアウト
-- 押し売り感の強いCTA
-- デザイン会社のサービス紹介に見える表現
-
-## Next Decisions
-
-- ムードボードの確定
-- ロゴデータの扱い
-- 写真トーン
-- 基本タイポグラフィ
-- ボタン、カード、フォーム、ヘッダーのコンポーネント方針
-- Astro/Tailwindへ反映するタイミング
+承認後は、FoundationをTailwind themeへ、ComponentsをAstroコンポーネントへ段階的に移す。最初の適用対象は商品化支援ページとする。

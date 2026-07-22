@@ -39,6 +39,11 @@ jobs:
           PUBLIC_SITE_URL: https://hactac.github.io
           PUBLIC_BASE_PATH: /inbes-web-renewal/
 
+      - name: Add design system preview
+        run: |
+          mkdir -p dist/design-system
+          cp -R design-system/site/. dist/design-system/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
