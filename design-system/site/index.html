@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="INBES Brand OSに基づくWebデザインシステム。" />
     <title>INBES Design System</title>
-    <link rel="stylesheet" href="./styles.css?v=0.2" />
+    <link rel="icon" href="./assets/brand/inbes-symbol-positive.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css?v=0.3" />
     <script>
       (function (d) {
         var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true },
@@ -36,11 +37,8 @@
 
     <header class="site-header">
       <a class="system-brand" href="#top" aria-label="INBES Design System トップ">
-        <span class="system-brand__marker" aria-hidden="true"></span>
-        <span>
-          <strong>INBES</strong>
-          <small>Design System</small>
-        </span>
+        <img class="system-brand__logo" src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" />
+        <small>Design System</small>
       </a>
       <nav class="system-nav" aria-label="デザインシステム内ナビゲーション">
         <a href="#brand">Brand</a>
@@ -49,7 +47,7 @@
         <a href="#patterns">Patterns</a>
         <a href="#application">Application</a>
       </nav>
-      <span class="version">v0.2</span>
+      <span class="version">v0.3</span>
     </header>
 
     <main id="main">
@@ -71,7 +69,7 @@
           </div>
           <div>
             <span class="status status--review">Review</span>
-            <strong>Logo Red・写真素材・状態色</strong>
+            <strong>写真素材・状態色・ロゴアイソレーション</strong>
           </div>
         </aside>
       </section>
@@ -97,6 +95,28 @@
             <div><strong>Dependable</strong><span>信頼できる</span></div>
           </div>
 
+          <div class="subsection brand-assets-section">
+            <div class="subsection-heading">
+              <h3>Logo & Symbol</h3>
+              <p>横組みロゴを基本とし、シンボルは表示面積が限られる場所や短い識別に使用します。</p>
+            </div>
+            <div class="brand-assets">
+              <figure class="brand-asset brand-asset--logo">
+                <div class="brand-asset__preview"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES 横組みロゴ" /></div>
+                <figcaption><strong>Primary Logo</strong><span>ヘッダー・フッター・会社表記</span></figcaption>
+              </figure>
+              <figure class="brand-asset">
+                <div class="brand-asset__preview brand-asset__preview--symbol"><img src="./assets/brand/inbes-symbol-positive.svg" alt="INBES ポジシンボル" /></div>
+                <figcaption><strong>Symbol / Positive</strong><span>ファビコン・小さい署名</span></figcaption>
+              </figure>
+              <figure class="brand-asset">
+                <div class="brand-asset__preview brand-asset__preview--symbol"><img src="./assets/brand/inbes-symbol-negative.svg" alt="INBES ネガシンボル" /></div>
+                <figcaption><strong>Symbol / Negative</strong><span>赤地での識別</span></figcaption>
+              </figure>
+            </div>
+            <p class="helper-text">変形、色変更、文字組みの再構成は行いません。正式な最小サイズとアイソレーションは別途確定します。</p>
+          </div>
+
           <figure class="moodboard">
             <img src="./assets/inbes-moodboard-typography-v1.png" alt="INBESのロゴ、開発風景、生活者、製品、パッケージ、書体と色をまとめたムードボード" />
             <figcaption>
@@ -120,8 +140,8 @@
               <p class="section-label">Needs review</p>
               <h3>公開前に確定すること</h3>
               <ul class="plain-list">
-                <li>Logo RedのWeb表示値とロゴデータ</li>
-                <li>Wine RedをUIへ採用するか</li>
+                <li>ロゴの最小サイズとアイソレーション</li>
+                <li>Site Primary / Deep / Pale Redの実ページ検証</li>
                 <li>写真素材の権利と標準トリミング</li>
                 <li>状態色とAdobe Fontsの本番配信条件</li>
               </ul>
@@ -150,9 +170,9 @@
             <div class="swatch-grid">
               <button class="swatch swatch--logo-red" data-copy="#E60012" type="button">
                 <span class="swatch__color"></span>
-                <strong>Logo Red Preview</strong>
+                <strong>Logo Red</strong>
                 <code>#E60012</code>
-                <small>要確認 / ロゴ原本と照合</small>
+                <small>確定 / 支給ロゴデータ</small>
               </button>
               <button class="swatch swatch--red" data-copy="#C8101E" type="button">
                 <span class="swatch__color"></span>
@@ -203,7 +223,7 @@
                 <small>確定 / 主背景</small>
               </button>
             </div>
-            <p class="helper-text">Logo Redはロゴ原本との照合待ちです。サイト用のPrimary・Deep・PaleはWeb表示用の提案値です。</p>
+            <p class="helper-text">Logo Redは支給ロゴデータの#E60012を使用します。Primary・Deep・PaleはWeb UI用の提案値です。</p>
           </div>
 
           <div class="subsection">
@@ -301,7 +321,7 @@
               <caption>Foundation token / Value / Status / Source</caption>
               <thead><tr><th>Token</th><th>Value</th><th>Status</th><th>Source</th></tr></thead>
               <tbody>
-                <tr><td><code>color.brand.logo-red</code></td><td>C0 M100 Y100 K0 / Web #E60012 preview</td><td><span class="status status--review">Review</span></td><td>Brand OS 04 LOOK</td></tr>
+                <tr><td><code>color.brand.logo-red</code></td><td>C0 M100 Y100 K0 / Web #E60012</td><td><span class="status status--fixed">Confirmed</span></td><td>Supplied logo data / 2026-07-22</td></tr>
                 <tr><td><code>color.brand.primary-red</code></td><td>#C8101E</td><td><span class="status status--proposal">Proposed</span></td><td>Darker than Logo Red</td></tr>
                 <tr><td><code>color.brand.red-dark</code></td><td>#990D17</td><td><span class="status status--proposal">Proposed</span></td><td>Hover / emphasis</td></tr>
                 <tr><td><code>color.brand.red-light</code></td><td>#F7E8EA</td><td><span class="status status--proposal">Proposed</span></td><td>Subtle surface</td></tr>
@@ -415,7 +435,7 @@
               <p>企業ロゴ、モード切替、主要ナビ、問い合わせを一つの帯で整理します。</p>
             </div>
             <div class="header-demo">
-              <a class="header-demo__brand" href="#components">INBES</a>
+              <a class="header-demo__brand" href="#components" aria-label="INBES トップ"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /></a>
               <a class="mode-link" href="#components">製品をお探しの方</a>
               <nav aria-label="ヘッダー例">
                 <a class="is-active" href="#components">商品化支援</a>
@@ -702,9 +722,8 @@
               <p class="section-label">Brand OS gap</p>
               <h3>要確認事項</h3>
               <ul class="plain-list">
-                <li>Logo RedのRGB / HEX</li>
                 <li>Site Primary / Deep / Pale Redの実ページ検証</li>
-                <li>正式ロゴとアイソレーション</li>
+                <li>ロゴの最小サイズとアイソレーション</li>
                 <li>写真素材の使用許諾とモバイルトリミング</li>
                 <li>Success / Warning / Error色</li>
                 <li>Adobe Fontsの公開ドメイン設定</li>
@@ -717,7 +736,7 @@
     </main>
 
     <footer class="system-footer">
-      <div><strong>INBES</strong><span>Design System v0.2</span></div>
+      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.3</span></div>
       <p>Source: INBES Brand OS / Moodboard typography v1</p>
     </footer>
 
@@ -733,6 +752,6 @@
     </aside>
     <div class="drawer-backdrop" data-close-drawer hidden></div>
 
-    <script src="./system.js?v=0.2"></script>
+    <script src="./system.js?v=0.3"></script>
   </body>
 </html>

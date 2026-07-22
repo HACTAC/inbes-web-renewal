@@ -190,25 +190,17 @@ code {
 .system-brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: max-content;
   color: var(--color-black);
   text-decoration: none;
 }
 
-.system-brand__marker {
-  width: 6px;
-  height: 32px;
-  background: var(--color-red);
+.system-brand__logo {
+  width: 108px;
+  height: auto;
 }
 
-.system-brand > span:last-child {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.system-brand strong,
 .system-brand small,
 .system-nav,
 .version,
@@ -219,12 +211,9 @@ code {
   font-family: var(--font-latin);
 }
 
-.system-brand strong {
-  font-size: 18px;
-  font-weight: 700;
-}
-
 .system-brand small {
+  padding-left: 12px;
+  border-left: 1px solid var(--color-line-strong);
   color: var(--color-secondary);
   font-size: 12px;
   font-weight: 500;
@@ -470,6 +459,63 @@ code {
 .principle-grid span {
   display: block;
   margin-top: 4px;
+  color: var(--color-secondary);
+  font-size: 12px;
+}
+
+.subsection.brand-assets-section {
+  margin: 0 0 64px;
+}
+
+.brand-assets {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+.brand-asset {
+  min-width: 0;
+  margin: 0;
+  border-right: 1px solid var(--color-line);
+}
+
+.brand-asset:last-child {
+  border-right: 0;
+}
+
+.brand-asset__preview {
+  display: grid;
+  place-items: center;
+  min-height: 224px;
+  padding: 40px;
+  background: var(--color-subtle);
+}
+
+.brand-asset__preview img {
+  width: min(100%, 330px);
+  height: auto;
+}
+
+.brand-asset__preview--symbol img {
+  width: 112px;
+}
+
+.brand-asset figcaption {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px 20px;
+  border-top: 1px solid var(--color-line);
+}
+
+.brand-asset figcaption strong {
+  font-family: var(--font-latin);
+  font-size: 13px;
+}
+
+.brand-asset figcaption span {
   color: var(--color-secondary);
   font-size: 12px;
 }
@@ -1212,11 +1258,14 @@ code {
 }
 
 .header-demo__brand {
-  color: var(--color-black);
-  font-family: var(--font-latin);
-  font-size: 20px;
-  font-weight: 700;
+  display: block;
+  width: 96px;
   text-decoration: none;
+}
+
+.header-demo__brand img {
+  width: 100%;
+  height: auto;
 }
 
 .mode-link {
@@ -1754,28 +1803,26 @@ input[type="radio"] {
   gap: 32px;
   min-height: 160px;
   padding: 48px max(40px, calc((100vw - var(--container)) / 2 + 40px));
-  color: var(--color-white);
-  background: var(--color-black);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-black);
+  background: var(--color-white);
 }
 
 .system-footer > div {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
-  border-left: 4px solid var(--color-red);
-  padding-left: 16px;
 }
 
-.system-footer strong {
-  font-family: var(--font-latin);
-  font-size: 22px;
-  font-weight: 700;
+.system-footer img {
+  width: 128px;
+  height: auto;
 }
 
 .system-footer span,
 .system-footer p {
   margin: 0;
-  color: #bdbdbd;
+  color: var(--color-secondary);
   font-family: var(--font-latin);
   font-size: 11px;
 }
@@ -1890,6 +1937,16 @@ input[type="radio"] {
   }
 
   .principle-grid > div:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .brand-assets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand-asset--logo {
+    grid-column: 1 / -1;
+    border-right: 0;
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -2039,14 +2096,8 @@ input[type="radio"] {
     padding-inline: 20px;
   }
 
-  .system-brand > span:last-child {
-    display: grid;
-    gap: 0;
-  }
-
-  .system-brand__marker {
-    width: 4px;
-    height: 28px;
+  .system-brand__logo {
+    width: 96px;
   }
 
   .system-nav {
@@ -2106,6 +2157,26 @@ input[type="radio"] {
 
   .principle-grid > div:nth-child(-n + 4) {
     border-bottom: 1px solid var(--color-line);
+  }
+
+  .brand-assets {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-asset,
+  .brand-asset--logo {
+    grid-column: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .brand-asset:last-child {
+    border-bottom: 0;
+  }
+
+  .brand-asset__preview {
+    min-height: 190px;
+    padding: 32px;
   }
 
   .moodboard figcaption {
