@@ -1,0 +1,91 @@
+---
+type WorkItem = {
+  title: string;
+  category: string;
+};
+
+type Props = {
+  items: WorkItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="min-w-0" data-works-carousel>
+  <div class="overflow-hidden rounded-lg border border-line bg-paper">
+    <div class="flex transition-transform duration-500 ease-out" data-carousel-track>
+      {items.map((work, index) => (
+        <article class="w-full shrink-0" data-carousel-slide aria-hidden={index === 0 ? "false" : "true"}>
+          <div class="placeholder aspect-[16/10] rounded-none border-0">{work.title}</div>
+          <div class="flex items-start justify-between gap-5 border-t border-line bg-white px-5 py-4">
+            <div>
+              <p class="text-xs font-extrabold text-green">{work.category}</p>
+              <h3 class="mt-1 font-extrabold">{work.title}</h3>
+            </div>
+            <span class="shrink-0 text-xs font-bold text-sub">{String(index + 1).padStart(2, "0")}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="mt-4 flex items-center justify-between">
+    <p class="text-xs font-bold text-sub"><span data-carousel-current>01</span> / {String(items.length).padStart(2, "0")}</p>
+    <div class="flex gap-2">
+      <button class="grid size-11 place-items-center rounded-full border border-line bg-white text-lg transition hover:border-ink" type="button" aria-label="前の実績を見る" data-carousel-previous>←</button>
+      <button class="grid size-11 place-items-center rounded-full border border-line bg-white text-lg transition hover:border-ink" type="button" aria-label="次の実績を見る" data-carousel-next>→</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-works-carousel]").forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>("[data-carousel-track]");
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"));
+    const previous = carousel.querySelector<HTMLButtonElement>("[data-carousel-previous]");
+    const next = carousel.querySelector<HTMLButtonElement>("[data-carousel-next]");
+    const current = carousel.querySelector<HTMLElement>("[data-carousel-current]");
+
+    if (!track || !previous || !next || !current || slides.length === 0) return;
+
+    let activeIndex = 0;
+    let timer: number | undefined;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const render = () => {
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      current.textContent = String(activeIndex + 1).padStart(2, "0");
+      slides.forEach((slide, index) => slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true"));
+    };
+
+    const move = (direction: number) => {
+      activeIndex = (activeIndex + direction + slides.length) % slides.length;
+      render();
+    };
+
+    const stop = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    const start = () => {
+      stop();
+      if (!reducedMotion && slides.length > 1) timer = window.setInterval(() => move(1), 4500);
+    };
+
+    previous.addEventListener("click", () => {
+      move(-1);
+      start();
+    });
+    next.addEventListener("click", () => {
+      move(1);
+      start();
+    });
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+    carousel.addEventListener("focusin", stop);
+    carousel.addEventListener("focusout", start);
+
+    render();
+    start();
+  });
+</script>

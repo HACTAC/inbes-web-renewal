@@ -1,4 +1,6 @@
 ---
+import { withBase } from "@/utils/paths";
+
 type Props = {
   action?: string;
   categoryValue: string;
@@ -18,7 +20,7 @@ const {
 } = Astro.props;
 ---
 
-<form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action={action}>
+<form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)}>
   <input type="hidden" name="category" value={categoryValue} />
   <div class="grid gap-5 md:grid-cols-2">
     {showCompany && (
@@ -46,7 +48,7 @@ const {
   </label>
   <label class="flex gap-3 text-sm text-sub">
     <input type="checkbox" name="privacy" required />
-    <span><a class="font-bold text-blue underline underline-offset-4" href="/privacy/" target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します。</span>
+    <span><a class="font-bold text-blue underline underline-offset-4" href={withBase("/privacy/")} target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します。</span>
   </label>
   <button class="button button-primary w-fit" type="submit">{submitLabel}</button>
 </form>

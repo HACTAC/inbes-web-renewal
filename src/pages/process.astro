@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { processSteps } from "@/data/services";
+import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout title="商品化の進め方" description="作りたい商品が決まっている場合も、探すところから始めたい場合も、状況に合わせて商品化を進めます。">
@@ -65,14 +66,14 @@ import { processSteps } from "@/data/services";
         </article>
       ))}
     </div>
-    <a href="/works/#keeppot" class="mt-7 inline-block font-extrabold text-blue underline underline-offset-4">ブランド設計の実績を見る</a>
+    <a href={withBase("/works/#keeppot")} class="mt-7 inline-block font-extrabold text-blue underline underline-offset-4">ブランド設計の実績を見る</a>
   </section>
 
   <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
     <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">商品化をご検討中の方へ</h2>
     <div class="flex flex-col gap-3 sm:flex-row">
-      <a class="button border-white bg-white text-ink" href="/contact/business/">商品化について相談する</a>
-      <a class="button border-white text-white" href="/works/">実績を見る</a>
+      <a class="button border-white bg-white text-ink" href={withBase("/contact/business/")}>商品化について相談する</a>
+      <a class="button border-white text-white" href={withBase("/works/")}>実績を見る</a>
     </div>
   </section>
 </BaseLayout>

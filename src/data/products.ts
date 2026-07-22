@@ -7,6 +7,7 @@ export type Product = {
 };
 
 export type ProductCategory = {
+  id: string;
   eyebrow: string;
   title: string;
   products: Product[];
@@ -14,6 +15,7 @@ export type ProductCategory = {
 
 export const productCategories: ProductCategory[] = [
   {
+    id: "power",
     eyebrow: "Power",
     title: "ポータブル電源/モバイルバッテリー",
     products: [
@@ -62,6 +64,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "dryer",
     eyebrow: "Dryer",
     title: "コンパクトマルチ乾燥機",
     products: [
@@ -75,6 +78,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "camera",
     eyebrow: "Camera",
     title: "3軸ジンバル・ポケットカメラ",
     products: [
@@ -88,6 +92,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "drive-recorder",
     eyebrow: "Drive Recorder",
     title: "ドライブレコーダー",
     products: [
@@ -108,6 +113,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "car-goods",
     eyebrow: "Car Goods",
     title: "カー用品",
     products: [
@@ -121,6 +127,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "pc-accessory",
     eyebrow: "PC Accessory",
     title: "PC周辺機器",
     products: [
@@ -134,6 +141,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "translator",
     eyebrow: "Translator",
     title: "翻訳機",
     products: [
@@ -147,6 +155,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "cleaning",
     eyebrow: "Cleaning",
     title: "高圧洗浄ホース",
     products: [
@@ -160,6 +169,7 @@ export const productCategories: ProductCategory[] = [
     ]
   },
   {
+    id: "security",
     eyebrow: "Security",
     title: "防犯・監視 セキュリティ機器",
     products: [

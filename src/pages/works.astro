@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { works } from "@/data/works";
+import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout title="開発実績" description="商品化を支援した製品をご紹介します。">
@@ -30,8 +31,8 @@ import { works } from "@/data/works";
   <section class="mx-5 mb-16 rounded-lg bg-ink px-6 py-14 text-white md:mx-11 md:px-12 md:py-20">
     <h2 class="mb-8 text-3xl font-extrabold md:text-5xl">商品化をご検討中の方へ</h2>
     <div class="flex flex-col gap-3 sm:flex-row">
-      <a class="button border-white bg-white text-ink" href="/contact/business/">商品化について相談する</a>
-      <a class="button border-white text-white" href="/services/">商品化支援を見る</a>
+      <a class="button border-white bg-white text-ink" href={withBase("/contact/business/")}>商品化について相談する</a>
+      <a class="button border-white text-white" href={withBase("/services/")}>商品化支援を見る</a>
     </div>
   </section>
 </BaseLayout>

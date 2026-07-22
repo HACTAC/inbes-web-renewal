@@ -1,6 +1,7 @@
 ---
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout title="お問い合わせ" description="商品化のご相談と、自社製品のサポート窓口をご案内します。">
@@ -8,13 +9,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
   <section class="section container-page">
     <div class="grid gap-5 md:grid-cols-2">
-      <a href="/contact/business/" class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+      <a href={withBase("/contact/business/")} class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
         <p class="eyebrow">Business</p>
         <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">商品化のご相談</h2>
         <p class="mb-8 text-sub">OEM/ODM、ローカライズ開発、商品化の進め方について相談したい方はこちら。</p>
         <span class="font-extrabold text-blue underline underline-offset-4">相談フォームへ</span>
       </a>
-      <a href="/contact/support/" class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+      <a href={withBase("/contact/support/")} class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
         <p class="eyebrow">Support</p>
         <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">製品サポート</h2>
         <p class="mb-8 text-sub">INBESの自社製品について、確認やサポートが必要な方はこちら。</p>

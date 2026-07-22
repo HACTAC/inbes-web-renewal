@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { businessNavigation, footerNavigation, modeSwitch, productNavigation } from "@/data/navigation";
+import { withBase } from "@/utils/paths";
 
 type Props = {
   title?: string;
@@ -36,15 +37,15 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
           <div class="px-5 md:px-11">
             <div class="flex min-h-16 items-center justify-between gap-5 md:min-h-[72px]">
               <div class="flex min-w-0 items-center gap-3 md:gap-4">
-              <a href="/" class="text-[22px] font-extrabold tracking-normal">INBES</a>
-              <a href={switchLink.href} class="rounded-full border border-line bg-white px-3 py-1.5 text-[11px] font-bold text-blue transition hover:border-blue md:text-xs">
+              <a href={withBase("/")} class="text-[22px] font-extrabold tracking-normal">INBES</a>
+              <a href={withBase(switchLink.href)} class="rounded-full border border-line bg-white px-3 py-1.5 text-[11px] font-bold text-blue transition hover:border-blue md:text-xs">
                 {switchLink.label}
               </a>
             </div>
             <nav class="hidden items-center gap-6 text-sm text-sub md:flex" aria-label="グローバルナビゲーション">
               {headerNavigation.map((item) => (
                 <a
-                  href={item.href}
+                  href={withBase(item.href)}
                   class:list={[
                     "transition hover:text-ink",
                     item.emphasis && "rounded-full bg-ink px-4 py-2 font-bold text-white hover:text-white"
@@ -58,7 +59,7 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
             <nav class="flex gap-4 overflow-x-auto border-t border-line/70 py-3 text-xs text-sub md:hidden" aria-label="モバイルナビゲーション">
               {headerNavigation.map((item) => (
                 <a
-                  href={item.href}
+                  href={withBase(item.href)}
                   class:list={[
                     "shrink-0 transition hover:text-ink",
                     item.emphasis && "rounded-full bg-ink px-3 py-1.5 font-bold text-white hover:text-white"
@@ -82,11 +83,11 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
         <footer class="border-t border-line px-5 py-10 md:px-11">
           <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
             <div>
-              <a href="/" class="mb-3 inline-block text-xl font-extrabold">INBES</a>
+              <a href={withBase("/")} class="mb-3 inline-block text-xl font-extrabold">INBES</a>
               <p class="max-w-xl text-sm text-sub">株式会社INBES 〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F</p>
             </div>
             <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-sub md:max-w-md md:justify-end" aria-label="フッターナビゲーション">
-              {footerNavigation.map((item) => <a href={item.href} class="hover:text-ink">{item.label}</a>)}
+              {footerNavigation.map((item) => <a href={withBase(item.href)} class="hover:text-ink">{item.label}</a>)}
             </nav>
           </div>
         </footer>
