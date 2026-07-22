@@ -6,7 +6,7 @@
     <meta name="description" content="INBES Brand OSに基づくWebデザインシステム。" />
     <title>INBES Design System</title>
     <link rel="icon" href="./assets/brand/inbes-symbol-positive.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=0.3" />
+    <link rel="stylesheet" href="./styles.css?v=0.3.1" />
     <script>
       (function (d) {
         var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true },
@@ -47,7 +47,7 @@
         <a href="#patterns">Patterns</a>
         <a href="#application">Application</a>
       </nav>
-      <span class="version">v0.3</span>
+      <span class="version">v0.3.1</span>
     </header>
 
     <main id="main">
@@ -337,7 +337,7 @@
                 <tr><td><code>media.aspect.default</code></td><td>3:2</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
                 <tr><td><code>layout.container</code></td><td>max 1200px</td><td><span class="status status--proposal">Proposed</span></td><td>Current IA + moodboard</td></tr>
                 <tr><td><code>icon.family</code></td><td>Iconoir Regular / outline</td><td><span class="status status--fixed">Confirmed</span></td><td>Phosphor comparison / 2026-07-22</td></tr>
-                <tr><td><code>icon.size</code></td><td>16 / 20 / 24 / 32</td><td><span class="status status--fixed">Confirmed</span></td><td>24px grid</td></tr>
+                <tr><td><code>icon.size</code></td><td>20 / 24 / 32 / 48</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
                 <tr><td><code>icon.stroke</code></td><td>1.5px / round cap and join</td><td><span class="status status--fixed">Confirmed</span></td><td>Iconoir Regular</td></tr>
               </tbody>
             </table>
@@ -384,10 +384,10 @@
                 <p class="section-label">Scale</p>
                 <h4>4 sizes</h4>
                 <div class="icon-scale" aria-label="アイコンサイズ">
-                  <div><i class="icon--16" data-icon="package"></i><code>16</code><span>Inline</span></div>
-                  <div><i class="icon--20" data-icon="package"></i><code>20</code><span>Default</span></div>
+                  <div><i class="icon--20" data-icon="package"></i><code>20</code><span>Inline</span></div>
                   <div><i class="icon--24" data-icon="package"></i><code>24</code><span>Control</span></div>
                   <div><i class="icon--32" data-icon="package"></i><code>32</code><span>Category</span></div>
+                  <div><i class="icon--48" data-icon="package"></i><code>48</code><span>Feature</span></div>
                 </div>
               </article>
               <article class="icon-system-panel">
@@ -422,10 +422,10 @@
               </article>
             </div>
             <ul class="icon-rules">
-              <li>24pxグリッド、1.5px stroke、round cap / joinを基本とする</li>
+              <li>20 / 24 / 32 / 48pxを、本文・操作・分類・重要概念で使い分ける</li>
               <li>色はcurrentColor。赤は選択・重要操作・注意に限定する</li>
               <li>操作アイコンのクリック領域は44px以上を確保する</li>
-              <li>分野アイコンは名称や写真を置き換えず、識別を補助する</li>
+              <li>32 / 48pxは名称や写真を置き換えず、分類と概念を補助する</li>
             </ul>
           </div>
 
@@ -736,7 +736,7 @@
     </main>
 
     <footer class="system-footer">
-      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.3</span></div>
+      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.3.1</span></div>
       <p>Source: INBES Brand OS / Moodboard typography v1</p>
     </footer>
 
@@ -752,6 +752,6 @@
     </aside>
     <div class="drawer-backdrop" data-close-drawer hidden></div>
 
-    <script src="./system.js?v=0.3"></script>
+    <script src="./system.js?v=0.3.1"></script>
   </body>
 </html>
