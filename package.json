@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:design-icons": "node design-system/scripts/build-icons.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.16.18",
+    "iconoir": "^7.11.0",
     "tailwindcss": "^3.4.17"
-  },
-  "devDependencies": {}
+  }
 }

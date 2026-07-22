@@ -1,8 +1,16 @@
-const iconLibrary = window.lucide;
+const iconSpriteUrl = "./assets/icons/iconoir.svg";
 
-if (iconLibrary) {
-  iconLibrary.createIcons({ attrs: { "aria-hidden": "true" } });
-}
+document.querySelectorAll("[data-icon]").forEach((placeholder) => {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+
+  svg.classList.add("icon", ...placeholder.classList);
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  use.setAttribute("href", `${iconSpriteUrl}#${placeholder.dataset.icon}`);
+  svg.append(use);
+  placeholder.replaceWith(svg);
+});
 
 const copyText = async (value) => {
   if (navigator.clipboard?.writeText) {
