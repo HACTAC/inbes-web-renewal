@@ -1,6 +1,7 @@
 ---
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@/components/Icon.astro";
 import { productCategories } from "@/data/products";
 ---
 
@@ -29,17 +30,49 @@ import { productCategories } from "@/data/products";
           <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {category.products.map((product) => (
               <article class="flex h-full flex-col rounded-md border border-line bg-white p-6">
-                <div class="placeholder mb-5 aspect-[3/2]">{product.title}</div>
+                <div class="mb-5 aspect-[3/2] overflow-hidden rounded-md bg-soft">
+                  <img
+                    class="h-full w-full object-cover"
+                    src={product.image}
+                    alt={product.imageAlt}
+                    loading="lazy"
+                  />
+                </div>
                 <p class="mb-2 font-latin text-xs font-bold text-primary">{product.tag}</p>
-                <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{product.title}</h3>
+                {product.name ? (
+                  <>
+                    <h3
+                      class:list={[
+                        "text-[22px] font-semibold leading-[1.4]",
+                        !product.models && "mb-4",
+                        product.nameLang === "en" && "font-latin"
+                      ]}
+                      lang={product.nameLang}
+                    >
+                      {product.name}
+                    </h3>
+                    {product.models && (
+                      <p class="mb-4 mt-1 font-product text-[18px] font-bold leading-[1.4] text-sub">
+                        <span class="sr-only">型番：</span>
+                        {product.models.join(" / ")}
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <h3 class="mb-4 font-product text-[22px] font-bold leading-[1.4]" lang="en">
+                    <span class="sr-only">{product.tag} 型番：</span>
+                    {product.models?.join(" / ")}
+                  </h3>
+                )}
                 <p class="mb-6 text-sm text-sub">{product.description}</p>
                 <a
-                  class="text-link mt-auto w-fit after:ml-1 after:content-['↗']"
+                  class="link-with-arrow mt-auto w-fit"
                   href={product.url}
                   target="_blank"
                   rel="noopener"
                 >
-                  {product.linkLabel}
+                  <span class="link-label">{product.linkLabel}</span>
+                  <Icon name="arrow-up-right-square" size={18} />
                 </a>
               </article>
             ))}

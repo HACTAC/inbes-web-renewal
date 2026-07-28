@@ -103,6 +103,14 @@
     @apply inline-flex items-center gap-2 font-semibold text-primary underline decoration-1 underline-offset-4 transition-colors hover:text-primary-dark;
   }
 
+  .link-with-arrow {
+    @apply inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark;
+  }
+
+  .link-with-arrow .link-label {
+    @apply no-underline decoration-1 underline-offset-4 hover:underline;
+  }
+
   .tag-category {
     @apply inline-flex rounded-full bg-primary-pale px-3 py-1 font-latin text-xs font-bold text-primary;
   }

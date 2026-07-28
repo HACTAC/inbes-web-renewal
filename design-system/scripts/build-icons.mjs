@@ -4,6 +4,7 @@ import path from "node:path";
 const icons = [
   "arrow-right",
   "arrow-up-right",
+  "arrow-up-right-square",
   "battery-charging",
   "car",
   "check",
