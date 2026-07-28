@@ -10,7 +10,7 @@ import { productCategories } from "@/data/products";
   <nav class="container-page pb-4" aria-label="製品カテゴリ">
     <div class="grid border-y border-line sm:grid-cols-2 lg:grid-cols-3">
       {productCategories.map((category) => (
-        <a class="flex items-center justify-between gap-4 border-b border-line px-3 py-4 text-sm font-bold last:border-b-0 hover:text-blue sm:px-5 lg:[&:nth-last-child(-n+3)]:border-b-0" href={`#${category.id}`}>
+        <a class="flex items-center justify-between gap-4 border-b border-line px-3 py-4 text-sm font-semibold last:border-b-0 hover:text-primary sm:px-5 lg:[&:nth-last-child(-n+3)]:border-b-0" href={`#${category.id}`}>
           <span>{category.title}</span>
           <span aria-hidden="true">↓</span>
         </a>
@@ -24,17 +24,17 @@ import { productCategories } from "@/data/products";
         <section id={category.id} class="scroll-mt-28">
           <div class="mb-7 border-t border-line pt-5">
             <p class="eyebrow">{category.eyebrow}</p>
-            <h2 class="text-2xl font-extrabold md:text-4xl">{category.title}</h2>
+            <h2 class="heading-3">{category.title}</h2>
           </div>
           <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {category.products.map((product) => (
-              <article class="flex h-full flex-col rounded-lg border border-line bg-white p-6">
-                <div class="placeholder mb-5 aspect-[4/3]">{product.title}</div>
-                <p class="mb-2 text-xs font-extrabold text-green">{product.tag}</p>
-                <h3 class="mb-3 text-xl font-extrabold">{product.title}</h3>
+              <article class="flex h-full flex-col rounded-md border border-line bg-white p-6">
+                <div class="placeholder mb-5 aspect-[3/2]">{product.title}</div>
+                <p class="mb-2 font-latin text-xs font-bold text-primary">{product.tag}</p>
+                <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{product.title}</h3>
                 <p class="mb-6 text-sm text-sub">{product.description}</p>
                 <a
-                  class="mt-auto w-fit font-extrabold text-blue underline underline-offset-4 after:ml-1 after:content-['↗']"
+                  class="text-link mt-auto w-fit after:ml-1 after:content-['↗']"
                   href={product.url}
                   target="_blank"
                   rel="noopener"

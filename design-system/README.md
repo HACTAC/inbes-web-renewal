@@ -2,11 +2,11 @@
 
 このディレクトリは、INBES Webサイトのデザイン判断を共有・検証するための独立した作業領域である。
 
-Astroサイトへ適用する前に、Brand OSをWebの具体的な値、部品、パターンへ変換し、ブラウザ上で確認する。現段階では既存ワイヤーフレームの見た目へ自動適用しない。
+Brand OSをWebの具体的な値、部品、パターンへ変換し、ブラウザ上で確認する。承認済みの内容はAstro実装へ移し、当ページを設計判断の確認面として維持する。
 
 ## Preview
 
-- Current version: `v0.3.1`
+- Current version: `v0.4.0`
 - Source: `design-system/site/`
 - Public preview: `https://hactac.github.io/inbes-web-renewal/design-system/`
 - Local preview: `python3 -m http.server 4173 --directory design-system/site`
@@ -17,7 +17,7 @@ Astroサイトへ適用する前に、Brand OSをWebの具体的な値、部品�
 ## Source Of Truth
 
 - Brand OS: `HACTAC/INBES-BrandOS`
-- Last synchronized decision: `D-0006-web-design-foundations`
+- Last synchronized decision: `D-0007-web-foundation-approval`
 - Local reference: `references/INBES-BrandOS/`
 - Handoff: `references/INBES-BrandOS/prompts/design-system-handoff.md`
 - Moodboard: `site/assets/inbes-moodboard-typography-v1.png`
@@ -50,12 +50,27 @@ Brand OSとWeb Design Systemは一つの文書やリポジトリへまとめず�
 
 全媒体に影響する変更はBrand OSのDecision Logから更新する。Web固有の値や振る舞いは当ディレクトリで検証し、承認後にAstro実装へ反映する。
 
+## Implementation Status
+
+`v0.4.0`のFoundationと共通UIは、2026-07-29にAstro全ページへ適用した。
+
+- Tailwind theme: `tailwind.config.mjs`
+- Base styles: `src/styles/global.css`
+- Header / Mobile Navigation / Footer: `src/layouts/BaseLayout.astro`
+- Form / states: `src/components/ContactForm.astro`
+- Icon: `src/components/Icon.astro` と `public/assets/icons/iconoir.svg`
+- Logo / Symbol: `public/assets/brand/`
+
+今後、Design Systemの確定値を変更する場合は、Brand OS、当ページ、Tailwind theme、Astroコンポーネントを同じ変更単位で更新する。
+
 ## Included
 
 - ロゴ、シンボル、Brand premise、ムードボード
 - 色、書体、余白、グリッド、角丸、写真比率
 - Button、Link、Navigation、Form、Tag、Accordion、Overlay、Card
 - Hero、Localization Process、Case Study、CTA
+- 商品化支援／自社製品の共通Header、右ドロワー型Mobile Navigation、Footer
+- ファイル添付を含むFormとSending、Success、Warning、Error状態
 - ページ別適用表
 - Desktop、Tablet、Mobileの差分
 - アクセシビリティ確認項目
@@ -70,14 +85,20 @@ Brand OSとWeb Design Systemは一つの文書やリポジトリへまとめず�
 現行の基準:
 
 - 本文: `18px / line-height 1.6`
-- 見出し: `H1 64px / H2 40px / H3 26px`
+- 見出し: `H1 40・52・64px / H2 32・36・40px / H3 22・24・26px`
+- Container: `1200px max`
+- Breakpoints: `768px / 1024px / 1280px`
+- Grid: `4 / 8 / 12 columns`
 - 角R: `4px / 8px / 12px`
 - 写真比率: `3:2`を基本とする
 - アイコン: `Iconoir Regular / 24px grid / 1.5px stroke / 20・24・32・48px`
 - Logo Red: `#E60012`（支給ロゴデータから確定）
-- Site Primary Red: `#C8101E`（提案値）
-- Deep Red: `#990D17`（提案値）
-- Pale Red: `#F7E8EA`（提案値）
+- Site Primary Red: `#C8101E`
+- Deep Red: `#990D17`
+- Pale Red: `#F7E8EA`
+- Success: `#1F684B / #EAF4EF`
+- Warning: `#805400 / #FFF4D8`
+- Error: `#A51D2A / #FBEAEC`
 - Header CTA: 「お問い合わせ」はRed solid（`#C8101E`）
 
 避ける表現:
@@ -92,14 +113,17 @@ IconoirはPhosphorと比較し、単一のRegularスタイルで線幅と形状�
 
 横組みロゴをWebサイトの基本署名とし、ポジ／ネガのシンボルはファビコンや表示面積が限られる場所に使用する。ロゴデータの変形、色変更、文字組みの再構成は行わない。
 
-## Review Before Application
+Webでの横組みロゴは幅104pxを最小、120–160pxを推奨とする。アイソレーションはシンボル高の1/4以上を確保する。シンボル単体は24px以上とし、社名の識別が必要な場所では横組みロゴを優先する。
 
-- ロゴの最小サイズとアイソレーション
+写真は3:2を基本とし、製品カードと事例一覧ではモバイルでも比率を維持する。Heroのみ4:5を許容し、被写体位置を画像ごとに指定する。中央トリミングで製品、手元、顔が欠ける場合は、モバイル用画像を別途用意する。
+
+商品化支援側と自社製品側のHeaderは同一構造とし、ロゴ横の相互リンク、ローカルナビ、右端のCTAだけを切り替える。モバイルはロゴと現在モードを残し、右から開くMenu Drawerへナビゲーションを収納する。
+
+## Review Before Production
+
 - 単色表示が必要になった場合の正式データ
-- Site Primary / Deep / Pale Redの実ページ検証
-- 写真素材の使用許諾とモバイルトリミング
-- Success、Warning、Errorの状態色
+- 本番写真素材の使用許諾と被写体ごとのトリミング
 - Adobe Fontsの本番公開ドメイン設定
-- Container幅とbreakpointsの代表ページ検証
+- 主要ブラウザ・実機でのレスポンシブ確認
 
-承認後は、FoundationをTailwind themeへ、ComponentsをAstroコンポーネントへ段階的に移す。最初の適用対象は商品化支援ページとする。
+Foundationと共通UIはAstroへ適用済みである。実画像を入れた段階で、被写体ごとのトリミング、文字量、CTAの視認性をページ単位で再確認する。

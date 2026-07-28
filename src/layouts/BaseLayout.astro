@@ -1,6 +1,7 @@
 ---
+import Icon from "@/components/Icon.astro";
+import { businessNavigation, modeSwitch, productNavigation } from "@/data/navigation";
 import "../styles/global.css";
-import { businessNavigation, footerNavigation, modeSwitch, productNavigation } from "@/data/navigation";
 import { withBase } from "@/utils/paths";
 
 type Props = {
@@ -19,7 +20,15 @@ const {
 
 const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株式会社`;
 const headerNavigation = siteMode === "products" ? productNavigation : businessNavigation;
+const localNavigation = headerNavigation.filter((item) => !item.emphasis);
+const headerCta = headerNavigation.find((item) => item.emphasis);
 const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.business;
+const modeLabel = siteMode === "products" ? "自社製品" : "商品化支援";
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => {
+  const resolved = withBase(href);
+  return currentPath === resolved || (resolved !== "/" && currentPath.startsWith(resolved));
+};
 ---
 
 <!doctype html>
@@ -28,70 +37,225 @@ const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.bu
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#FFFFFF" />
+    <link rel="icon" href={withBase("/assets/brand/inbes-symbol-positive.svg")} type="image/svg+xml" />
     <title>{pageTitle}</title>
+    <script is:inline>
+      (function (d) {
+        var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true };
+        var h = d.documentElement;
+        var t = setTimeout(function () {
+          h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+        }, config.scriptTimeout);
+        var tk = d.createElement("script");
+        var f = false;
+        var s = d.getElementsByTagName("script")[0];
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          var a = this.readyState;
+          if (f || (a && a !== "complete" && a !== "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
   </head>
   <body>
+    <a class="fixed left-4 top-4 z-[100] -translate-y-24 rounded bg-ink px-4 py-2 text-sm font-semibold text-white focus:translate-y-0" href="#main">
+      本文へ移動
+    </a>
+
     {
       !entrance && (
-        <header class="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur">
-          <div class="px-5 md:px-11">
-            <div class="flex min-h-16 items-center justify-between gap-5 md:min-h-[72px]">
-              <div class="flex min-w-0 items-center gap-3 md:gap-4">
-              <a href={withBase("/")} class="text-[22px] font-extrabold tracking-normal">INBES</a>
-              <a href={withBase(switchLink.href)} class="rounded-full border border-line bg-white px-3 py-1.5 text-[11px] font-bold text-blue transition hover:border-blue md:text-xs">
+        <>
+          <header class="sticky top-0 z-40 border-b border-line bg-white">
+            <div class="container-page flex min-h-[72px] items-center gap-4">
+              <div class="flex min-w-0 items-center gap-4">
+                <a href={withBase("/")} aria-label="INBES トップ">
+                  <img class="h-auto w-[120px] md:w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+                </a>
+                <a class="hidden items-center gap-2 border-l border-line pl-4 text-xs font-semibold text-sub transition-colors hover:text-primary sm:inline-flex" href={withBase(switchLink.href)}>
+                  {switchLink.label}
+                  <Icon name="arrow-right" size={20} />
+                </a>
+              </div>
+
+              <nav class="ml-auto hidden items-center gap-6 lg:flex" aria-label="グローバルナビゲーション">
+                {localNavigation.map((item) => (
+                  <a class="site-header-link" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                    {item.label}
+                  </a>
+                ))}
+                {headerCta && (
+                  <a class="button button-primary min-h-11 px-5 text-sm" href={withBase(headerCta.href)} aria-current={isCurrent(headerCta.href) ? "page" : undefined}>
+                    {headerCta.label}
+                  </a>
+                )}
+              </nav>
+
+              <div class="ml-auto flex items-center gap-3 lg:hidden">
+                <span class="hidden text-xs font-semibold text-sub sm:inline">{modeLabel}</span>
+                <button
+                  class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink"
+                  type="button"
+                  aria-label="メニューを開く"
+                  aria-controls="mobile-navigation"
+                  aria-expanded="false"
+                  data-nav-open
+                >
+                  <Icon name="menu" size={24} />
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <div class="pointer-events-none fixed inset-0 z-50" id="mobile-navigation" aria-hidden="true" data-nav-root inert>
+            <button class="absolute inset-0 bg-ink/45 opacity-0 transition-opacity" type="button" aria-label="メニューを閉じる" data-nav-close data-nav-backdrop />
+            <aside
+              class="absolute inset-y-0 right-0 flex w-[min(90vw,400px)] translate-x-full flex-col bg-white p-6 shadow-soft transition-transform duration-300"
+              role="dialog"
+              aria-modal="true"
+              aria-label="モバイルナビゲーション"
+              tabindex="-1"
+              data-nav-panel
+            >
+              <div class="flex items-center justify-between border-b border-line pb-5">
+                <img class="h-auto w-[120px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+                <button class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink" type="button" aria-label="メニューを閉じる" data-nav-close>
+                  <Icon name="xmark" size={24} />
+                </button>
+              </div>
+
+              <a class="mt-6 flex items-center justify-between rounded border border-line border-l-4 border-l-primary bg-soft px-4 py-4 font-semibold transition-colors hover:bg-primary-pale" href={withBase(switchLink.href)}>
                 {switchLink.label}
+                <Icon name="arrow-right" size={20} />
               </a>
-            </div>
-            <nav class="hidden items-center gap-6 text-sm text-sub md:flex" aria-label="グローバルナビゲーション">
-              {headerNavigation.map((item) => (
-                <a
-                  href={withBase(item.href)}
-                  class:list={[
-                    "transition hover:text-ink",
-                    item.emphasis && "rounded-full bg-ink px-4 py-2 font-bold text-white hover:text-white"
-                  ]}
-                >
-                  {item.label}
+
+              <p class="eyebrow mb-2 mt-7">{modeLabel}</p>
+              <nav class="grid border-t border-ink" aria-label={`${modeLabel}ナビゲーション`}>
+                {localNavigation.map((item) => (
+                  <a class="flex min-h-14 items-center border-b border-line font-semibold transition-colors hover:text-primary" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+
+              {headerCta && (
+                <a class="button button-primary mt-8 w-full" href={withBase(headerCta.href)}>
+                  {headerCta.label}
                 </a>
-              ))}
-            </nav>
-            </div>
-            <nav class="flex gap-4 overflow-x-auto border-t border-line/70 py-3 text-xs text-sub md:hidden" aria-label="モバイルナビゲーション">
-              {headerNavigation.map((item) => (
-                <a
-                  href={withBase(item.href)}
-                  class:list={[
-                    "shrink-0 transition hover:text-ink",
-                    item.emphasis && "rounded-full bg-ink px-3 py-1.5 font-bold text-white hover:text-white"
-                  ]}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+              )}
+            </aside>
           </div>
-        </header>
+        </>
       )
     }
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 
     {
       !entrance && (
-        <footer class="border-t border-line px-5 py-10 md:px-11">
-          <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
-            <div>
-              <a href={withBase("/")} class="mb-3 inline-block text-xl font-extrabold">INBES</a>
-              <p class="max-w-xl text-sm text-sub">株式会社INBES 〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F</p>
+        <footer class="border-t border-line bg-soft">
+          <div class="container-page py-12 md:py-16">
+            <div class="grid gap-10 border-b border-line pb-10 lg:grid-cols-[1.2fr_1fr]">
+              <div>
+                <a href={withBase("/")} aria-label="INBES トップ">
+                  <img class="h-auto w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+                </a>
+                <p class="mt-5 max-w-lg text-sm text-sub">株式会社INBES<br />〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F</p>
+              </div>
+              <div class="grid gap-8 sm:grid-cols-3">
+                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="商品化支援フッター">
+                  <strong class="mb-2 text-ink">商品化支援</strong>
+                  {businessNavigation.filter((item) => !item.emphasis).map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
+                </nav>
+                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="自社製品フッター">
+                  <strong class="mb-2 text-ink">自社製品</strong>
+                  {productNavigation.map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
+                </nav>
+                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="会社情報フッター">
+                  <strong class="mb-2 text-ink">Company</strong>
+                  <a class="hover:text-primary" href={withBase("/company/")}>会社概要</a>
+                  <a class="hover:text-primary" href={withBase("/contact/")}>お問い合わせ</a>
+                </nav>
+              </div>
             </div>
-            <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-sub md:max-w-md md:justify-end" aria-label="フッターナビゲーション">
-              {footerNavigation.map((item) => <a href={withBase(item.href)} class="hover:text-ink">{item.label}</a>)}
-            </nav>
+            <div class="flex flex-col gap-4 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+              <p>© INBES Co., Ltd.</p>
+              <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="法務情報">
+                <a class="underline underline-offset-4 hover:text-ink" href={withBase("/privacy/")}>プライバシーポリシー</a>
+                <a class="underline underline-offset-4 hover:text-ink" href={withBase("/cookies/")}>クッキーポリシー</a>
+              </nav>
+            </div>
           </div>
         </footer>
       )
     }
+
+    <script>
+      const navRoot = document.querySelector<HTMLElement>("[data-nav-root]");
+      const navPanel = document.querySelector<HTMLElement>("[data-nav-panel]");
+      const navBackdrop = document.querySelector<HTMLElement>("[data-nav-backdrop]");
+      const navOpen = document.querySelector<HTMLButtonElement>("[data-nav-open]");
+      const navClosers = document.querySelectorAll<HTMLElement>("[data-nav-close]");
+      let lastFocused: HTMLElement | null = null;
+
+      const navFocusable = () =>
+        Array.from(navPanel?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])') ?? []);
+
+      const closeNavigation = () => {
+        if (!navRoot || !navPanel || !navBackdrop || !navOpen) return;
+        navRoot.classList.add("pointer-events-none");
+        navPanel.classList.add("translate-x-full");
+        navBackdrop.classList.add("opacity-0");
+        navRoot.setAttribute("aria-hidden", "true");
+        navRoot.inert = true;
+        navOpen.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        lastFocused?.focus();
+      };
+
+      const openNavigation = () => {
+        if (!navRoot || !navPanel || !navBackdrop || !navOpen) return;
+        lastFocused = document.activeElement as HTMLElement;
+        navRoot.classList.remove("pointer-events-none");
+        navPanel.classList.remove("translate-x-full");
+        navBackdrop.classList.remove("opacity-0");
+        navRoot.setAttribute("aria-hidden", "false");
+        navRoot.inert = false;
+        navOpen.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+        navFocusable()[0]?.focus();
+      };
+
+      navOpen?.addEventListener("click", openNavigation);
+      navClosers.forEach((closer) => closer.addEventListener("click", closeNavigation));
+      navPanel?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNavigation));
+      navPanel?.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeNavigation();
+          return;
+        }
+        if (event.key !== "Tab") return;
+        const focusable = navFocusable();
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    </script>
   </body>
 </html>

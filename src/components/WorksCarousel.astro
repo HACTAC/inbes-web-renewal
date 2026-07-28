@@ -12,15 +12,15 @@ const { items } = Astro.props;
 ---
 
 <div class="min-w-0" data-works-carousel>
-  <div class="overflow-hidden rounded-lg border border-line bg-paper">
+  <div class="overflow-hidden rounded-md border border-line bg-paper">
     <div class="flex transition-transform duration-500 ease-out" data-carousel-track>
       {items.map((work, index) => (
         <article class="w-full shrink-0" data-carousel-slide aria-hidden={index === 0 ? "false" : "true"}>
-          <div class="placeholder aspect-[16/10] rounded-none border-0">{work.title}</div>
+          <div class="placeholder aspect-[3/2] rounded-none border-0">{work.title}</div>
           <div class="flex items-start justify-between gap-5 border-t border-line bg-white px-5 py-4">
             <div>
-              <p class="text-xs font-extrabold text-green">{work.category}</p>
-              <h3 class="mt-1 font-extrabold">{work.title}</h3>
+              <p class="font-latin text-xs font-bold text-primary">{work.category}</p>
+              <h3 class="mt-1 font-semibold">{work.title}</h3>
             </div>
             <span class="shrink-0 text-xs font-bold text-sub">{String(index + 1).padStart(2, "0")}</span>
           </div>
@@ -29,10 +29,10 @@ const { items } = Astro.props;
     </div>
   </div>
   <div class="mt-4 flex items-center justify-between">
-    <p class="text-xs font-bold text-sub"><span data-carousel-current>01</span> / {String(items.length).padStart(2, "0")}</p>
+    <p class="font-latin text-xs font-bold text-sub"><span data-carousel-current>01</span> / {String(items.length).padStart(2, "0")}</p>
     <div class="flex gap-2">
-      <button class="grid size-11 place-items-center rounded-full border border-line bg-white text-lg transition hover:border-ink" type="button" aria-label="前の実績を見る" data-carousel-previous>←</button>
-      <button class="grid size-11 place-items-center rounded-full border border-line bg-white text-lg transition hover:border-ink" type="button" aria-label="次の実績を見る" data-carousel-next>→</button>
+      <button class="grid size-11 place-items-center rounded border border-line bg-white text-lg transition-colors hover:border-ink hover:bg-ink hover:text-white" type="button" aria-label="前の実績を見る" data-carousel-previous>←</button>
+      <button class="grid size-11 place-items-center rounded border border-line bg-white text-lg transition-colors hover:border-ink hover:bg-ink hover:text-white" type="button" aria-label="次の実績を見る" data-carousel-next>→</button>
     </div>
   </div>
 </div>

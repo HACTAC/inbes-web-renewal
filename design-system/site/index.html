@@ -6,7 +6,7 @@
     <meta name="description" content="INBES Brand OSに基づくWebデザインシステム。" />
     <title>INBES Design System</title>
     <link rel="icon" href="./assets/brand/inbes-symbol-positive.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=0.3.1" />
+    <link rel="stylesheet" href="./styles.css?v=0.4.0" />
     <script>
       (function (d) {
         var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true },
@@ -47,7 +47,7 @@
         <a href="#patterns">Patterns</a>
         <a href="#application">Application</a>
       </nav>
-      <span class="version">v0.3.1</span>
+      <span class="version">v0.4.0</span>
     </header>
 
     <main id="main">
@@ -61,15 +61,15 @@
         <aside class="hero__status" aria-label="設計状況">
           <div>
             <span class="status status--fixed">Confirmed</span>
-            <strong>ブランド原則・書体構成・余白単位</strong>
+            <strong>ブランド原則・Foundation・基本UI</strong>
           </div>
           <div>
             <span class="status status--proposal">Proposed</span>
-            <strong>Web用サイズ・グリッド・コンポーネント</strong>
+            <strong>実ページ固有の組み合わせと写真選定</strong>
           </div>
           <div>
             <span class="status status--review">Review</span>
-            <strong>写真素材・状態色・ロゴアイソレーション</strong>
+            <strong>本番写真の権利・Adobe Fonts配信条件</strong>
           </div>
         </aside>
       </section>
@@ -114,7 +114,32 @@
                 <figcaption><strong>Symbol / Negative</strong><span>赤地での識別</span></figcaption>
               </figure>
             </div>
-            <p class="helper-text">変形、色変更、文字組みの再構成は行いません。正式な最小サイズとアイソレーションは別途確定します。</p>
+            <div class="brand-usage-grid">
+              <article>
+                <p class="section-label">Primary Logo</p>
+                <h4>横組みロゴを基本署名にする</h4>
+                <dl class="token-list">
+                  <div><dt>Minimum</dt><dd>Web幅 104px</dd></div>
+                  <div><dt>Recommended</dt><dd>120–160px</dd></div>
+                  <div><dt>Clear space</dt><dd>シンボル高の1/4以上</dd></div>
+                </dl>
+              </article>
+              <article>
+                <p class="section-label">Symbol</p>
+                <h4>短い識別に限定する</h4>
+                <dl class="token-list">
+                  <div><dt>Minimum</dt><dd>24px</dd></div>
+                  <div><dt>Positive</dt><dd>白・淡い無彩色背景</dd></div>
+                  <div><dt>Negative</dt><dd>Logo Red・Deep Red背景</dd></div>
+                </dl>
+              </article>
+            </div>
+            <ul class="brand-usage-rules">
+              <li>社名の識別が必要なヘッダー・フッターでは横組みロゴを使用する</li>
+              <li>シンボル単体はファビコン、アプリアイコン、小面積の識別に限定する</li>
+              <li>横組みロゴとシンボルを同じ領域で重複表示しない</li>
+              <li>変形、色変更、アウトライン化、文字組みの再構成を行わない</li>
+            </ul>
           </div>
 
           <figure class="moodboard">
@@ -140,10 +165,10 @@
               <p class="section-label">Needs review</p>
               <h3>公開前に確定すること</h3>
               <ul class="plain-list">
-                <li>ロゴの最小サイズとアイソレーション</li>
-                <li>Site Primary / Deep / Pale Redの実ページ検証</li>
-                <li>写真素材の権利と標準トリミング</li>
-                <li>状態色とAdobe Fontsの本番配信条件</li>
+                <li>使用写真の権利と被写体ごとの最終トリミング</li>
+                <li>Adobe Fontsの本番公開ドメイン設定</li>
+                <li>実ページ上での文字量と余白の最終調整</li>
+                <li>主要ブラウザ・実機での表示確認</li>
               </ul>
             </article>
           </div>
@@ -159,7 +184,7 @@
           <header class="section-heading">
             <p class="section-label">Foundation</p>
             <h2>色・文字・余白・写真</h2>
-            <p>確定事項を基準に、Web実装に必要な値だけを提案として補います。</p>
+            <p>Brand OSを基準に、Web実装で共通利用する値を確定しています。</p>
           </header>
 
           <div class="subsection">
@@ -178,43 +203,43 @@
                 <span class="swatch__color"></span>
                 <strong>Site Primary Red</strong>
                 <code>#C8101E</code>
-                <small>提案 / サイト基調色</small>
+                <small>確定 / サイト基調色</small>
               </button>
               <button class="swatch swatch--red-dark" data-copy="#990D17" type="button">
                 <span class="swatch__color"></span>
                 <strong>Deep Red</strong>
                 <code>#990D17</code>
-                <small>提案 / ホバー・強い強調</small>
+                <small>確定 / ホバー・強い強調</small>
               </button>
               <button class="swatch swatch--red-light" data-copy="#F7E8EA" type="button">
                 <span class="swatch__color"></span>
                 <strong>Pale Red</strong>
                 <code>#F7E8EA</code>
-                <small>提案 / 薄い背景・選択状態</small>
+                <small>確定 / 薄い背景・選択状態</small>
               </button>
               <button class="swatch swatch--black" data-copy="#111111" type="button">
                 <span class="swatch__color"></span>
                 <strong>Text Primary</strong>
                 <code>#111111</code>
-                <small>提案 / K100基準</small>
+                <small>確定 / K100基準</small>
               </button>
               <button class="swatch swatch--gray" data-copy="#5A5A5A" type="button">
                 <span class="swatch__color"></span>
                 <strong>Text Secondary</strong>
                 <code>#5A5A5A</code>
-                <small>提案 / 補助本文</small>
+                <small>確定 / 補助本文</small>
               </button>
               <button class="swatch swatch--line" data-copy="#D9D9D9" type="button">
                 <span class="swatch__color"></span>
                 <strong>Border</strong>
                 <code>#D9D9D9</code>
-                <small>提案 / 境界線</small>
+                <small>確定 / 境界線</small>
               </button>
               <button class="swatch swatch--subtle" data-copy="#F5F5F3" type="button">
                 <span class="swatch__color"></span>
                 <strong>Background Subtle</strong>
                 <code>#F5F5F3</code>
-                <small>提案 / 面の区切り</small>
+                <small>確定 / 面の区切り</small>
               </button>
               <button class="swatch swatch--white" data-copy="#FFFFFF" type="button">
                 <span class="swatch__color"></span>
@@ -223,7 +248,22 @@
                 <small>確定 / 主背景</small>
               </button>
             </div>
-            <p class="helper-text">Logo Redは支給ロゴデータの#E60012を使用します。Primary・Deep・PaleはWeb UI用の提案値です。</p>
+            <p class="helper-text">Logo Redはロゴ資産に限定し、操作にはSite Primary Redを使用します。DeepはHover、Paleは選択状態と薄い面に限定します。</p>
+
+            <div class="status-color-grid" aria-label="状態色">
+              <article class="status-color status-color--success">
+                <i data-icon="check-circle"></i>
+                <div><strong>Success</strong><code>#1F684B / #EAF4EF</code><p>完了・受付済み</p></div>
+              </article>
+              <article class="status-color status-color--warning">
+                <i data-icon="warning-triangle"></i>
+                <div><strong>Warning</strong><code>#805400 / #FFF4D8</code><p>注意・要確認</p></div>
+              </article>
+              <article class="status-color status-color--error">
+                <i data-icon="xmark-circle"></i>
+                <div><strong>Error</strong><code>#A51D2A / #FBEAEC</code><p>入力不備・失敗</p></div>
+              </article>
+            </div>
           </div>
 
           <div class="subsection">
@@ -251,9 +291,9 @@
             </div>
 
             <div class="type-scale" aria-label="書体スケール">
-              <div><span>Heading 1</span><strong class="type-h1">日本で売るための商品づくり</strong><code>64 / 1.2 / W6</code></div>
-              <div><span>Heading 2</span><strong class="type-h2">ローカライズ開発</strong><code>40 / 1.35 / W6</code></div>
-              <div><span>Heading 3</span><strong class="type-h3">日本市場へ最適化</strong><code>26 / 1.5 / W6</code></div>
+              <div><span>Heading 1</span><strong class="type-h1">日本で売るための商品づくり</strong><code>40 / 52 / 64</code></div>
+              <div><span>Heading 2</span><strong class="type-h2">ローカライズ開発</strong><code>32 / 36 / 40</code></div>
+              <div><span>Heading 3</span><strong class="type-h3">日本市場へ最適化</strong><code>22 / 24 / 26</code></div>
               <div><span>Body</span><p>商品仕様、説明、デザイン、販売準備を一つの流れとして整えます。</p><code>18 / 1.6 / W3</code></div>
               <div><span>Small</span><p class="type-small">注記や補足など、本文より優先度の低い情報に使用します。</p><code>14 / 1.6 / W3</code></div>
               <div><span>Label</span><strong class="type-label">DEVELOPMENT APPROACH</strong><code>12 / 1.4 / 700</code></div>
@@ -280,12 +320,13 @@
             <article class="foundation-panel">
               <div class="subsection-heading">
                 <h3>Grid</h3>
-                <p>提案値。実ページで検証します。</p>
+                <p>Tailwindへの移行を前提とした共通値です。</p>
               </div>
               <dl class="token-list">
-                <div><dt>Desktop</dt><dd>12 columns / 24 gap / 1200 max</dd></div>
-                <div><dt>Tablet</dt><dd>8 columns / 20 gap / 32 gutter</dd></div>
-                <div><dt>Mobile</dt><dd>4 columns / 16 gap / 20 gutter</dd></div>
+                <div><dt>Desktop</dt><dd>12 columns / 24 gap / 48 gutter</dd></div>
+                <div><dt>Tablet</dt><dd>8 columns / 24 gap / 32 gutter</dd></div>
+                <div><dt>Mobile</dt><dd>4 columns / 16 gap / 24 gutter</dd></div>
+                <div><dt>Container</dt><dd>1200px max</dd></div>
                 <div><dt>Breakpoints</dt><dd>768 / 1024 / 1280</dd></div>
               </dl>
             </article>
@@ -313,6 +354,16 @@
                 <div><dt>Mobile</dt><dd>同じ場面から主題に合わせて別トリミング</dd></div>
                 <div><dt>Exception</dt><dd>1:1はEC一覧など外部仕様に限る</dd></div>
               </dl>
+              <div class="crop-rule-demo">
+                <div class="crop-frame crop-frame--desktop"><span class="crop-subject"></span><small>3:2 / 基本</small></div>
+                <div class="crop-frame crop-frame--mobile"><span class="crop-subject"></span><small>4:5 / Hero例外</small></div>
+              </div>
+              <ul class="photo-rules">
+                <li>製品カードと事例一覧ではPC・モバイルとも3:2を維持する</li>
+                <li>Heroのみ4:5を許容し、被写体位置を画像ごとに指定する</li>
+                <li>製品全体、手元、顔を中途半端に切らない</li>
+                <li>1枚の中央切り抜きで成立しない場合はモバイル用画像を用意する</li>
+              </ul>
             </article>
           </div>
 
@@ -322,20 +373,23 @@
               <thead><tr><th>Token</th><th>Value</th><th>Status</th><th>Source</th></tr></thead>
               <tbody>
                 <tr><td><code>color.brand.logo-red</code></td><td>C0 M100 Y100 K0 / Web #E60012</td><td><span class="status status--fixed">Confirmed</span></td><td>Supplied logo data / 2026-07-22</td></tr>
-                <tr><td><code>color.brand.primary-red</code></td><td>#C8101E</td><td><span class="status status--proposal">Proposed</span></td><td>Darker than Logo Red</td></tr>
-                <tr><td><code>color.brand.red-dark</code></td><td>#990D17</td><td><span class="status status--proposal">Proposed</span></td><td>Hover / emphasis</td></tr>
-                <tr><td><code>color.brand.red-light</code></td><td>#F7E8EA</td><td><span class="status status--proposal">Proposed</span></td><td>Subtle surface</td></tr>
-                <tr><td><code>color.action.black-hover</code></td><td>#3A3A3A</td><td><span class="status status--proposal">Proposed</span></td><td>Interaction contrast</td></tr>
-                <tr><td><code>color.text.primary</code></td><td>#111111</td><td><span class="status status--proposal">Proposed</span></td><td>K100 principle</td></tr>
+                <tr><td><code>color.brand.primary-red</code></td><td>#C8101E</td><td><span class="status status--fixed">Confirmed</span></td><td>Web Foundation / 2026-07-29</td></tr>
+                <tr><td><code>color.brand.red-dark</code></td><td>#990D17</td><td><span class="status status--fixed">Confirmed</span></td><td>Web Foundation / 2026-07-29</td></tr>
+                <tr><td><code>color.brand.red-light</code></td><td>#F7E8EA</td><td><span class="status status--fixed">Confirmed</span></td><td>Web Foundation / 2026-07-29</td></tr>
+                <tr><td><code>color.action.black-hover</code></td><td>#3A3A3A</td><td><span class="status status--fixed">Confirmed</span></td><td>Interaction contrast</td></tr>
+                <tr><td><code>color.text.primary</code></td><td>#111111</td><td><span class="status status--fixed">Confirmed</span></td><td>K100 principle</td></tr>
+                <tr><td><code>color.state.success</code></td><td>#1F684B / #EAF4EF</td><td><span class="status status--fixed">Confirmed</span></td><td>WCAG contrast verified</td></tr>
+                <tr><td><code>color.state.warning</code></td><td>#805400 / #FFF4D8</td><td><span class="status status--fixed">Confirmed</span></td><td>WCAG contrast verified</td></tr>
+                <tr><td><code>color.state.error</code></td><td>#A51D2A / #FBEAEC</td><td><span class="status status--fixed">Confirmed</span></td><td>WCAG contrast verified</td></tr>
                 <tr><td><code>font.family.japanese</code></td><td>Hiragino Kaku Gothic ProN</td><td><span class="status status--fixed">Confirmed</span></td><td>D-0005</td></tr>
                 <tr><td><code>font.family.latin</code></td><td>Neue Haas Grotesk</td><td><span class="status status--fixed">Confirmed</span></td><td>D-0005</td></tr>
                 <tr><td><code>font.family.product</code></td><td>URW DIN Bold</td><td><span class="status status--fixed">Confirmed</span></td><td>D-0005</td></tr>
                 <tr><td><code>font.size.body</code></td><td>18px / line-height 1.6</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
-                <tr><td><code>font.scale.heading</code></td><td>64 / 40 / 26</td><td><span class="status status--proposal">Proposed</span></td><td>Body 18px baseline</td></tr>
+                <tr><td><code>font.scale.heading</code></td><td>H1 40/52/64・H2 32/36/40・H3 22/24/26</td><td><span class="status status--fixed">Confirmed</span></td><td>Responsive / 2026-07-29</td></tr>
                 <tr><td><code>space.1–8</code></td><td>4 / 8 / 16 / 24 / 32 / 48 / 64 / 96</td><td><span class="status status--fixed">Confirmed</span></td><td>05 BUILD</td></tr>
                 <tr><td><code>radius.sm–lg</code></td><td>4 / 8 / 12</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
                 <tr><td><code>media.aspect.default</code></td><td>3:2</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
-                <tr><td><code>layout.container</code></td><td>max 1200px</td><td><span class="status status--proposal">Proposed</span></td><td>Current IA + moodboard</td></tr>
+                <tr><td><code>layout.container</code></td><td>max 1200px / 768・1024・1280</td><td><span class="status status--fixed">Confirmed</span></td><td>Tailwind aligned / 2026-07-29</td></tr>
                 <tr><td><code>icon.family</code></td><td>Iconoir Regular / outline</td><td><span class="status status--fixed">Confirmed</span></td><td>Phosphor comparison / 2026-07-22</td></tr>
                 <tr><td><code>icon.size</code></td><td>20 / 24 / 32 / 48</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
                 <tr><td><code>icon.stroke</code></td><td>1.5px / round cap and join</td><td><span class="status status--fixed">Confirmed</span></td><td>Iconoir Regular</td></tr>
@@ -432,18 +486,46 @@
           <div class="component-block">
             <div class="component-heading">
               <h3>Header & Navigation</h3>
-              <p>企業ロゴ、モード切替、主要ナビ、問い合わせを一つの帯で整理します。</p>
+              <p>構造は共通化し、モード切替とローカルナビだけを変えます。二つのサイトではなく、一つの企業にある二つの入口として扱います。</p>
             </div>
-            <div class="header-demo">
-              <a class="header-demo__brand" href="#components" aria-label="INBES トップ"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /></a>
-              <a class="mode-link" href="#components">製品をお探しの方</a>
-              <nav aria-label="ヘッダー例">
-                <a class="is-active" href="#components">商品化支援</a>
-                <a href="#components">進め方</a>
-                <a href="#components">開発実績</a>
-                <a href="#components">会社概要</a>
-              </nav>
-              <a class="button button--red button--small" href="#components">お問い合わせ</a>
+            <div class="header-demo-stack">
+              <article class="header-variant">
+                <p class="header-variant__label"><span>Business</span> 商品化支援側</p>
+                <div class="header-demo">
+                  <a class="header-demo__brand" href="#components" aria-label="INBES トップ"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /></a>
+                  <a class="mode-link" href="#components">製品をお探しの方</a>
+                  <nav aria-label="商品化支援側ヘッダー例">
+                    <a class="is-active" href="#components">商品化支援</a>
+                    <a href="#components">進め方</a>
+                    <a href="#components">開発実績</a>
+                    <a href="#components">会社概要</a>
+                  </nav>
+                  <a class="button button--red button--small" href="#components">お問い合わせ</a>
+                </div>
+              </article>
+              <article class="header-variant">
+                <p class="header-variant__label"><span>Products</span> 自社製品側</p>
+                <div class="header-demo">
+                  <a class="header-demo__brand" href="#components" aria-label="INBES トップ"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /></a>
+                  <a class="mode-link" href="#components">商品化をご相談の方</a>
+                  <nav aria-label="自社製品側ヘッダー例">
+                    <a class="is-active" href="#components">製品一覧</a>
+                  </nav>
+                  <a class="button button--red button--small" href="#components">サポート</a>
+                </div>
+              </article>
+            </div>
+            <div class="mobile-header-spec">
+              <div class="mobile-header-demo">
+                <a href="#components" aria-label="INBES トップ"><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /></a>
+                <span>商品化支援</span>
+                <button class="icon-button" data-open-drawer type="button" aria-label="メニューを開く" aria-controls="demo-drawer" aria-expanded="false"><i data-icon="menu"></i></button>
+              </div>
+              <div>
+                <p class="section-label">Mobile navigation</p>
+                <h4>右から開くメニュードロワー</h4>
+                <p>ロゴと現在のモードだけをヘッダーに残します。メニュー内の最上部で、もう一方の入口へ切り替えられるようにします。</p>
+              </div>
             </div>
             <nav class="breadcrumb" aria-label="パンくず例">
               <a href="#components">トップ</a><i data-icon="nav-arrow-right"></i><span>商品化支援</span>
@@ -481,9 +563,9 @@
           <div class="component-block">
             <div class="component-heading">
               <h3>Form</h3>
-              <p>ラベルを常に表示し、補足とエラーを入力欄の直下へ置きます。</p>
+              <p>企業窓口として落ち着いた入力面をつくり、状態は色・アイコン・言葉を併用して伝えます。</p>
             </div>
-            <form class="form-demo" novalidate>
+            <form class="form-demo" data-demo-form novalidate>
               <label class="field">
                 <span>会社名 <small>任意</small></span>
                 <input type="text" value="株式会社サンプル" />
@@ -506,14 +588,36 @@
                 <span>ご相談内容</span>
                 <textarea>参考製品、販売先、希望時期など</textarea>
               </label>
+              <label class="field field--wide file-field">
+                <span>資料添付 <small>任意</small></span>
+                <input type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx" />
+                <small>参考資料、仕様書、製品写真など。1ファイル10MBまで。</small>
+              </label>
               <fieldset class="choice-group">
                 <legend>ご希望の連絡方法</legend>
                 <label><input type="radio" name="contact-method" checked /> メール</label>
                 <label><input type="radio" name="contact-method" /> 電話</label>
               </fieldset>
               <label class="check-control field--wide"><input type="checkbox" checked /> 個人情報の取り扱いに同意します。</label>
-              <div class="field--wide"><button class="button button--primary" type="button">相談内容を送信する</button></div>
+              <div class="form-submit field--wide">
+                <button class="button button--red" type="submit">相談内容を送信する</button>
+                <p>送信後、受付完了画面と自動返信メールで受信を確認できます。</p>
+              </div>
             </form>
+            <div class="form-state-grid" aria-label="フォーム状態">
+              <article class="feedback feedback--sending">
+                <i data-icon="info-circle"></i>
+                <div><strong>送信中です</strong><p>画面を閉じずにお待ちください。</p></div>
+              </article>
+              <article class="feedback feedback--success">
+                <i data-icon="check-circle"></i>
+                <div><strong>ご相談を受け付けました</strong><p>受付完了メールをお送りしました。</p></div>
+              </article>
+              <article class="feedback feedback--error">
+                <i data-icon="xmark-circle"></i>
+                <div><strong>送信できませんでした</strong><p>入力内容と通信環境をご確認ください。</p></div>
+              </article>
+            </div>
           </div>
 
           <div class="component-grid">
@@ -534,9 +638,9 @@
               </div>
               <div class="button-showcase button-showcase--compact">
                 <button class="button button--secondary" data-open-modal type="button">モーダルを開く</button>
-                <button class="button button--quiet" data-open-drawer type="button">右シートを開く</button>
+                <button class="button button--quiet" data-open-drawer type="button" aria-controls="demo-drawer" aria-expanded="false">右シートを開く</button>
               </div>
-              <div class="feedback feedback--neutral"><i data-icon="check"></i><div><strong>送信しました</strong><p>ご相談内容を受け付けました。</p></div></div>
+              <div class="feedback feedback--warning"><i data-icon="warning-triangle"></i><div><strong>確認が必要です</strong><p>未入力の項目があります。</p></div></div>
             </article>
           </div>
 
@@ -576,6 +680,29 @@
             </div>
           </div>
 
+          <div class="component-block">
+            <div class="component-heading">
+              <h3>Footer</h3>
+              <p>会社情報、主要導線、法務情報だけを静かに整理します。ページ本文より目立たせません。</p>
+            </div>
+            <footer class="footer-demo">
+              <div class="footer-demo__brand">
+                <img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" />
+                <p>日本で売るための商品づくりを支える会社です。</p>
+              </div>
+              <nav aria-label="フッター例">
+                <div><strong>商品化支援</strong><a href="#components">商品化支援</a><a href="#components">進め方</a><a href="#components">開発実績</a></div>
+                <div><strong>自社製品</strong><a href="#components">製品一覧</a><a href="#components">サポート</a></div>
+                <div><strong>Company</strong><a href="#components">会社概要</a><a href="#components">お問い合わせ</a></div>
+              </nav>
+              <div class="footer-demo__legal">
+                <span>© INBES Co., Ltd.</span>
+                <a href="#components">プライバシーポリシー</a>
+                <a href="#components">クッキーポリシー</a>
+              </div>
+            </footer>
+          </div>
+
           <div class="token-table-wrap">
             <table class="data-table">
               <caption>Component / Variant / State / Usage</caption>
@@ -604,7 +731,7 @@
           <header class="section-heading">
             <p class="section-label">Patterns</p>
             <h2>ページを組み立てる型</h2>
-            <p>ワイヤーフレームの情報順序を変えず、共通部品で一貫性をつくります。</p>
+            <p>現行の情報順序を基礎に、共通部品で一貫性をつくります。</p>
           </header>
 
           <div class="pattern-stack">
@@ -676,8 +803,8 @@
         <div class="section-body">
           <header class="section-heading">
             <p class="section-label">Application</p>
-            <h2>ワイヤーフレームへの適用</h2>
-            <p>構造とコピーは維持し、下記の部品と写真ルールを適用します。</p>
+            <h2>Astro実装への適用状況</h2>
+            <p><span class="status status--fixed">Applied</span> v0.4.0のFoundationと共通UIを、現行の情報設計とコピーを変えずに全ページへ適用しています。</p>
           </header>
 
           <div class="token-table-wrap">
@@ -698,7 +825,7 @@
           </div>
 
           <div class="responsive-grid">
-            <article><p class="section-label">Desktop</p><h3>12 columns</h3><ul><li>写真と本文を横並びで比較</li><li>ナビゲーションを一列に表示</li><li>最大幅1200pxを提案</li></ul></article>
+            <article><p class="section-label">Desktop</p><h3>12 columns</h3><ul><li>写真と本文を横並びで比較</li><li>ナビゲーションを一列に表示</li><li>最大幅1200pxを使用</li></ul></article>
             <article><p class="section-label">Tablet</p><h3>8 columns</h3><ul><li>カードを2列へ整理</li><li>主要CTAは横並びを維持</li><li>長い表は横スクロール</li></ul></article>
             <article><p class="section-label">Mobile</p><h3>4 columns</h3><ul><li>情報順序を変えず1列化</li><li>操作領域44px以上</li><li>写真、見出し、本文の順を維持</li></ul></article>
           </div>
@@ -722,12 +849,9 @@
               <p class="section-label">Brand OS gap</p>
               <h3>要確認事項</h3>
               <ul class="plain-list">
-                <li>Site Primary / Deep / Pale Redの実ページ検証</li>
-                <li>ロゴの最小サイズとアイソレーション</li>
-                <li>写真素材の使用許諾とモバイルトリミング</li>
-                <li>Success / Warning / Error色</li>
+                <li>本番写真の使用許諾と被写体ごとのトリミング</li>
                 <li>Adobe Fontsの公開ドメイン設定</li>
-                <li>Container幅とbreakpointsの実ページ検証</li>
+                <li>主要ブラウザ・実機でのレスポンシブ確認</li>
               </ul>
             </article>
           </div>
@@ -736,7 +860,7 @@
     </main>
 
     <footer class="system-footer">
-      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.3.1</span></div>
+      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.4.0</span></div>
       <p>Source: INBES Brand OS / Moodboard typography v1</p>
     </footer>
 
@@ -746,12 +870,22 @@
       <div class="modal__actions"><button class="button button--secondary" data-close-modal type="button">戻る</button><button class="button button--primary" type="button">相談フォームへ</button></div>
     </dialog>
 
-    <aside class="drawer" id="demo-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawer-title" tabindex="-1">
-      <div class="modal__header"><h2 id="drawer-title">支援内容</h2><button class="icon-button" data-close-drawer type="button" aria-label="閉じる"><i data-icon="xmark"></i></button></div>
-      <ul class="plain-list"><li>仕様整理</li><li>日本市場向けローカライズ</li><li>量産・輸入</li><li>販売準備</li></ul>
+    <aside class="drawer" id="demo-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="メニュー" tabindex="-1">
+      <div class="mobile-drawer__top">
+        <img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" />
+        <button class="icon-button" data-close-drawer type="button" aria-label="メニューを閉じる"><i data-icon="xmark"></i></button>
+      </div>
+      <a class="mobile-mode-link" href="#components">製品をお探しの方 <i data-icon="arrow-right"></i></a>
+      <nav class="mobile-drawer__nav" aria-label="モバイルナビゲーション例">
+        <a aria-current="page" href="#components">商品化支援</a>
+        <a href="#components">進め方</a>
+        <a href="#components">開発実績</a>
+        <a href="#components">会社概要</a>
+      </nav>
+      <a class="button button--red" href="#components">お問い合わせ</a>
     </aside>
     <div class="drawer-backdrop" data-close-drawer hidden></div>
 
-    <script src="./system.js?v=0.3.1"></script>
+    <script src="./system.js?v=0.4.0"></script>
   </body>
 </html>

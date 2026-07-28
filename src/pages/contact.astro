@@ -9,17 +9,17 @@ import { withBase } from "@/utils/paths";
 
   <section class="section container-page">
     <div class="grid gap-5 md:grid-cols-2">
-      <a href={withBase("/contact/business/")} class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+      <a href={withBase("/contact/business/")} class="group rounded-md border border-line border-l-4 border-l-primary bg-white p-7 transition-colors hover:bg-primary-pale md:p-9">
         <p class="eyebrow">Business</p>
-        <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">商品化のご相談</h2>
+        <h2 class="heading-3 mb-4">商品化のご相談</h2>
         <p class="mb-8 text-sub">OEM/ODM、ローカライズ開発、商品化の進め方について相談したい方はこちら。</p>
-        <span class="font-extrabold text-blue underline underline-offset-4">相談フォームへ</span>
+        <span class="text-link">相談フォームへ <span aria-hidden="true">→</span></span>
       </a>
-      <a href={withBase("/contact/support/")} class="group rounded-lg border border-line bg-white p-7 transition hover:bg-soft md:p-9">
+      <a href={withBase("/contact/support/")} class="group rounded-md border border-line bg-white p-7 transition-colors hover:bg-soft md:p-9">
         <p class="eyebrow">Support</p>
-        <h2 class="mb-4 text-2xl font-extrabold md:text-4xl">製品サポート</h2>
+        <h2 class="heading-3 mb-4">製品サポート</h2>
         <p class="mb-8 text-sub">INBESの自社製品について、確認やサポートが必要な方はこちら。</p>
-        <span class="font-extrabold text-blue underline underline-offset-4">サポートフォームへ</span>
+        <span class="text-link">サポートフォームへ <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </section>

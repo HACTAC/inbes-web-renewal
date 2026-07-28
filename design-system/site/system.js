@@ -71,11 +71,13 @@ const closeDrawer = () => {
   drawer.setAttribute("aria-hidden", "true");
   drawerBackdrop.hidden = true;
   document.body.classList.remove("is-locked");
+  drawerTrigger?.setAttribute("aria-expanded", "false");
   drawerTrigger?.focus();
 };
 
 const openDrawer = (trigger) => {
   drawerTrigger = trigger;
+  drawerTrigger.setAttribute("aria-expanded", "true");
   drawerBackdrop.hidden = false;
   drawer.setAttribute("aria-hidden", "false");
   document.body.classList.add("is-locked");

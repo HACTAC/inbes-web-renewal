@@ -4,46 +4,48 @@ import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout title="INBES株式会社" description="INBESは、自社製品の企画・販売と、日本で売るための商品化支援を行う会社です。" entrance>
-  <section class="relative min-h-screen overflow-hidden">
-    <div class="absolute left-1/2 top-6 z-10 -translate-x-1/2 text-center md:top-10">
-      <h1 class="text-2xl font-extrabold tracking-normal">INBES</h1>
+  <section class="relative min-h-[100svh] overflow-hidden bg-white">
+    <div class="pointer-events-none absolute left-1/2 top-5 z-10 -translate-x-1/2 rounded bg-white px-4 py-2 md:top-8">
+      <h1>
+        <img class="h-auto w-[136px] md:w-[152px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+      </h1>
     </div>
 
-    <div class="grid min-h-screen md:grid-cols-2">
+    <div class="grid min-h-[100svh] md:grid-cols-2">
       <a
         href={withBase("/products/")}
-        class="group relative flex min-h-[50vh] items-end border-b border-line bg-white p-7 transition md:min-h-screen md:border-b-0 md:border-r md:p-12 lg:p-16"
+        class="group relative block min-h-[50svh] border-b border-line bg-white transition-colors hover:bg-soft md:flex md:min-h-[100svh] md:items-end md:border-b-0 md:border-r md:p-12 md:pt-28 lg:p-16 lg:pt-32"
         aria-label="自社製品ページへ"
       >
-        <div class="absolute inset-x-7 top-24 h-[34vh] min-h-[220px] overflow-hidden rounded-lg md:inset-x-12 md:top-28 lg:inset-x-16">
-          <div class="placeholder h-full w-full transition duration-500 group-hover:scale-[1.03]">Product Image</div>
+        <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
+          <div class="placeholder h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border">Product Image / Mobile Hero Crop</div>
         </div>
-        <div class="relative z-10 max-w-xl pt-[42vh] md:pt-0">
-          <p class="eyebrow">For Users</p>
-          <h2 class="mb-5 text-4xl font-extrabold leading-tight md:text-6xl">自社製品</h2>
-          <p class="mb-8 text-sub">INBESが企画・販売する製品一覧、サポートをお探しの方へ。</p>
-          <span class="font-extrabold text-blue underline underline-offset-4">製品一覧を見る</span>
+        <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-white px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
+          <p class="eyebrow mb-2 md:mb-4">For Users</p>
+          <h2 class="heading-2 mb-4">自社製品</h2>
+          <p class="mb-6 hidden text-sub sm:block">製品一覧、サポートをお探しの方へ。</p>
+          <span class="text-link">製品一覧を見る <span aria-hidden="true">→</span></span>
         </div>
       </a>
 
       <a
         href={withBase("/services/")}
-        class="group relative flex min-h-[50vh] items-end bg-soft p-7 pb-24 transition hover:bg-paper md:min-h-screen md:p-12 lg:p-16"
+        class="group relative block min-h-[50svh] bg-soft transition-colors hover:bg-primary-pale md:flex md:min-h-[100svh] md:items-end md:p-12 md:pt-28 lg:p-16 lg:pt-32"
         aria-label="商品化支援ページへ"
       >
-        <div class="absolute inset-x-7 top-24 h-[34vh] min-h-[220px] overflow-hidden rounded-lg md:inset-x-12 md:top-28 lg:inset-x-16">
-          <div class="placeholder h-full w-full transition duration-500 group-hover:scale-[1.03]">Development Image</div>
+        <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
+          <div class="placeholder h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border">Development Image / Mobile Hero Crop</div>
         </div>
-        <div class="relative z-10 max-w-xl pt-[42vh] md:pt-0">
-          <p class="eyebrow">For Business</p>
-          <h2 class="mb-5 text-4xl font-extrabold leading-tight md:text-6xl">商品化支援</h2>
-          <p class="mb-8 text-sub">OEM・ODM、ローカライズ開発、販売準備まで。日本で売るための商品づくりを支援します。</p>
-          <span class="font-extrabold text-blue underline underline-offset-4">商品化支援を見る</span>
+        <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-soft px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
+          <p class="eyebrow mb-2 md:mb-4">For Business</p>
+          <h2 class="heading-2 mb-4">商品化支援</h2>
+          <p class="mb-6 hidden text-sub sm:block">日本で売るための商品づくりを支援します。</p>
+          <span class="text-link">商品化支援を見る <span aria-hidden="true">→</span></span>
         </div>
       </a>
     </div>
 
-    <nav class="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-5 rounded-full border border-line bg-paper/80 px-5 py-2 text-xs font-bold text-sub backdrop-blur" aria-label="補助ナビゲーション">
+    <nav class="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 gap-5 rounded border border-line bg-white px-5 py-2 text-xs font-semibold text-sub md:flex" aria-label="補助ナビゲーション">
       <a href={withBase("/company/")} class="hover:text-ink">会社概要</a>
       <a href={withBase("/contact/")} class="hover:text-ink">お問い合わせ</a>
     </nav>

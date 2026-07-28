@@ -11,6 +11,7 @@ const icons = [
   "computer",
   "download",
   "info-circle",
+  "menu",
   "media-image",
   "nav-arrow-left",
   "nav-arrow-right",

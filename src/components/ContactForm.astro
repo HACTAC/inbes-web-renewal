@@ -20,35 +20,56 @@ const {
 } = Astro.props;
 ---
 
-<form class="grid gap-5 rounded-lg border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)}>
+<form class="grid gap-6 rounded-md border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)} enctype="multipart/form-data" data-contact-form>
   <input type="hidden" name="category" value={categoryValue} />
   <div class="grid gap-5 md:grid-cols-2">
     {showCompany && (
-      <label class="grid gap-2 text-sm font-bold">
+      <label class="grid gap-2 text-sm font-semibold">
         会社名 任意
-        <input class="rounded border border-line px-4 py-3 font-normal" name="company" autocomplete="organization" />
+        <input class="form-field font-light" name="company" autocomplete="organization" />
       </label>
     )}
-    <label class="grid gap-2 text-sm font-bold">
+    <label class="grid gap-2 text-sm font-semibold">
       お名前
-      <input class="rounded border border-line px-4 py-3 font-normal" name="name" autocomplete="name" required />
+      <input class="form-field font-light" name="name" autocomplete="name" required />
     </label>
-    <label class="grid gap-2 text-sm font-bold">
+    <label class="grid gap-2 text-sm font-semibold">
       メールアドレス
-      <input class="rounded border border-line px-4 py-3 font-normal" type="email" name="email" autocomplete="email" required />
+      <input class="form-field font-light" type="email" name="email" autocomplete="email" required />
     </label>
-    <label class="grid gap-2 text-sm font-bold">
+    <label class="grid gap-2 text-sm font-semibold">
       電話番号 任意
-      <input class="rounded border border-line px-4 py-3 font-normal" name="tel" autocomplete="tel" />
+      <input class="form-field font-light" name="tel" autocomplete="tel" inputmode="tel" />
     </label>
   </div>
-  <label class="grid gap-2 text-sm font-bold">
+  <label class="grid gap-2 text-sm font-semibold">
     {detailLabel}
-    <textarea class="min-h-40 rounded border border-line px-4 py-3 font-normal" name="message" placeholder={detailPlaceholder} required></textarea>
+    <textarea class="form-field min-h-40 font-light" name="message" placeholder={detailPlaceholder} required></textarea>
   </label>
-  <label class="flex gap-3 text-sm text-sub">
+  <label class="grid gap-2 text-sm font-semibold">
+    <span>資料添付 <small class="ml-1 font-light text-muted">任意</small></span>
+    <input class="form-file font-light" type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" />
+    <span class="font-light text-muted">参考資料、仕様書、製品写真など。1ファイル10MBまで。</span>
+  </label>
+  <label class="flex items-start gap-3 text-sm text-sub">
     <input type="checkbox" name="privacy" required />
-    <span><a class="font-bold text-blue underline underline-offset-4" href={withBase("/privacy/")} target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します。</span>
+    <span><a class="font-semibold text-primary underline underline-offset-4" href={withBase("/privacy/")} target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します。</span>
   </label>
-  <button class="button button-primary w-fit" type="submit">{submitLabel}</button>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <button class="button button-primary w-full sm:w-fit" type="submit">{submitLabel}</button>
+    <p class="text-xs text-muted">送信後、受付完了画面と自動返信メールで受信を確認できます。</p>
+  </div>
+
+  <div class="form-status" data-state="sending" role="status" aria-live="polite">
+    <strong>送信中です</strong>
+    <span class="ml-2">画面を閉じずにお待ちください。</span>
+  </div>
+  <div class="form-status" data-state="success" role="status" aria-live="polite">
+    <strong>ご相談を受け付けました</strong>
+    <span class="ml-2">受付完了メールをお送りしました。</span>
+  </div>
+  <div class="form-status" data-state="error" role="alert">
+    <strong>送信できませんでした</strong>
+    <span class="ml-2">入力内容と通信環境をご確認ください。</span>
+  </div>
 </form>
