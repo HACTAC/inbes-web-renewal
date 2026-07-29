@@ -20,8 +20,8 @@ export type ProductCategory = {
 export const productCategories: ProductCategory[] = [
   {
     id: "power",
-    eyebrow: "Power",
-    title: "ポータブル電源/モバイルバッテリー",
+    eyebrow: "Power & Charging",
+    title: "電源・充電関連",
     products: [
       {
         tag: "ポータブル電源",
@@ -90,7 +90,7 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "lifestyle",
-    eyebrow: "Dryer",
+    eyebrow: "Lifestyle",
     title: "生活家電・生活用品",
     products: [
       {
@@ -117,7 +117,7 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "smartphone-pc",
-    eyebrow: "Camera",
+    eyebrow: "Digital Accessories",
     title: "スマートフォン・PC周辺機器",
     products: [
       {
@@ -146,7 +146,7 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "car-products",
-    eyebrow: "Drive Recorder",
+    eyebrow: "Automotive",
     title: "カー用品・車載機器",
     products: [
       {
@@ -201,7 +201,7 @@ export const productCategories: ProductCategory[] = [
   {
     id: "security",
     eyebrow: "Security",
-    title: "防犯・監視 セキュリティ機器",
+    title: "防犯・監視機器",
     products: [
       {
         tag: "録画機器",
