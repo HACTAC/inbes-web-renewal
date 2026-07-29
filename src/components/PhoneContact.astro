@@ -1,0 +1,15 @@
+---
+type Props = {
+  message: string;
+};
+
+const { message } = Astro.props;
+---
+
+<div class="mb-8 rounded-md border border-line border-l-4 border-l-primary bg-soft p-6">
+  <p class="font-semibold">{message}</p>
+  <a class="mt-2 block w-fit font-product text-[26px] font-bold text-ink transition-colors hover:text-primary" href="tel:0423169823">
+    TEL 042-316-9823
+  </a>
+  <p class="text-sm text-sub">平日 9:00〜18:00</p>
+</div>

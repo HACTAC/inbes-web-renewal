@@ -53,7 +53,11 @@ const {
   </label>
   <label class="flex items-start gap-3 text-sm text-sub">
     <input type="checkbox" name="privacy" required />
-    <span><a class="font-semibold text-primary underline underline-offset-4" href={withBase("/privacy/")} target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します。</span>
+    <span>
+      <a class="font-semibold text-primary underline underline-offset-4" href={withBase("/privacy/")} target="_blank" rel="noopener noreferrer">
+        個人情報の取り扱い<span class="sr-only">（新しいタブで開きます）</span>
+      </a>に同意します。
+    </span>
   </label>
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
     <button class="button button-primary w-full sm:w-fit" type="submit">{submitLabel}</button>

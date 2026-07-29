@@ -1,0 +1,29 @@
+---
+import { withBase } from "@/utils/paths";
+
+type Props = {
+  title?: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+};
+
+const {
+  title = "商品化をご検討中の方へ",
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref
+} = Astro.props;
+---
+
+<section class="border-y border-line bg-soft">
+  <div class="container-page py-16 md:py-20">
+    <h2 class="heading-2 mb-8">{title}</h2>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <a class="button button-primary" href={withBase(primaryHref)}>{primaryLabel}</a>
+      <a class="button button-outline-dark" href={withBase(secondaryHref)}>{secondaryLabel}</a>
+    </div>
+  </div>
+</section>

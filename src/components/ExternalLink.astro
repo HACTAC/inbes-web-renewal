@@ -1,0 +1,22 @@
+---
+import Icon from "@/components/Icon.astro";
+
+type Props = {
+  href: string;
+  class?: string;
+  iconSize?: 18 | 20;
+};
+
+const { href, class: className, iconSize = 18 } = Astro.props;
+---
+
+<a
+  class:list={["external-link", className]}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <span class="external-link__label"><slot /></span>
+  <Icon name="arrow-up-right-square" size={iconSize} />
+  <span class="sr-only">（新しいタブで開きます）</span>
+</a>

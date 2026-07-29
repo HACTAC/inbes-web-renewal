@@ -1,7 +1,7 @@
 ---
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Icon from "@/components/Icon.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
 import { productCategories } from "@/data/products";
 import { withBase } from "@/utils/paths";
 ---
@@ -67,15 +67,9 @@ import { withBase } from "@/utils/paths";
                   </h3>
                 )}
                 <p class="mb-6 text-sm text-sub">{product.description}</p>
-                <a
-                  class="link-with-arrow mt-auto w-fit"
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span class="link-label">{product.linkLabel}</span>
-                  <Icon name="arrow-up-right-square" size={18} />
-                </a>
+                <ExternalLink class="mt-auto w-fit" href={product.url}>
+                  {product.linkLabel}
+                </ExternalLink>
               </article>
             ))}
           </div>

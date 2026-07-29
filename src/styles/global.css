@@ -103,12 +103,16 @@
     @apply inline-flex items-center gap-2 font-semibold text-primary underline decoration-1 underline-offset-4 transition-colors hover:text-primary-dark;
   }
 
-  .link-with-arrow {
+  .external-link {
     @apply inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark;
   }
 
-  .link-with-arrow .link-label {
-    @apply no-underline decoration-1 underline-offset-4 hover:underline;
+  .external-link__label {
+    @apply no-underline decoration-1 underline-offset-4;
+  }
+
+  .external-link:hover .external-link__label {
+    @apply underline;
   }
 
   .tag-category {

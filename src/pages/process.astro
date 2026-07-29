@@ -1,5 +1,6 @@
 ---
 import Hero from "@/components/Hero.astro";
+import PageCta from "@/components/PageCta.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { processSteps } from "@/data/services";
 import { withBase } from "@/utils/paths";
@@ -69,13 +70,10 @@ import { withBase } from "@/utils/paths";
     <a href={withBase("/works/#keeppot")} class="text-link mt-7">ブランド設計の実績を見る <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="border-y border-line bg-soft">
-    <div class="container-page py-16 md:py-20">
-      <h2 class="heading-2 mb-8">商品化をご検討中の方へ</h2>
-      <div class="flex flex-col gap-3 sm:flex-row">
-        <a class="button button-primary" href={withBase("/contact/business/")}>商品化について相談する</a>
-        <a class="button button-outline-dark" href={withBase("/works/")}>実績を見る</a>
-      </div>
-    </div>
-  </section>
+  <PageCta
+    primaryLabel="商品化について相談する"
+    primaryHref="/contact/business/"
+    secondaryLabel="実績を見る"
+    secondaryHref="/works/"
+  />
 </BaseLayout>
