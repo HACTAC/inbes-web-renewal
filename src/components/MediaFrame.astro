@@ -1,0 +1,37 @@
+---
+import { withBase } from "@/utils/paths";
+
+type Props = {
+  src?: string;
+  alt?: string;
+  label?: string;
+  aspect?: "3/2" | "4/5" | "16/9";
+  class?: string;
+  imageClass?: string;
+  loading?: "eager" | "lazy";
+};
+
+const {
+  src,
+  alt = "",
+  label = "Image placeholder",
+  aspect = "3/2",
+  class: className,
+  imageClass = "object-cover",
+  loading = "lazy"
+} = Astro.props;
+
+const aspectClass = {
+  "3/2": "aspect-[3/2]",
+  "4/5": "aspect-[4/5]",
+  "16/9": "aspect-video"
+}[aspect];
+---
+
+<div class:list={["media-frame", aspectClass, className]}>
+  {src ? (
+    <img class:list={["h-full w-full", imageClass]} src={withBase(src)} alt={alt} loading={loading} decoding="async" />
+  ) : (
+    <span class="font-latin text-xs font-bold uppercase text-muted">{label}</span>
+  )}
+</div>

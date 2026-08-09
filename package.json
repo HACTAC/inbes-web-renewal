@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "check:links": "node scripts/check-static-links.mjs",
     "build:design-icons": "node design-system/scripts/build-icons.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },

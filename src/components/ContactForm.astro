@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 ---
 
-<form class="grid gap-6 rounded-md border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)} enctype="multipart/form-data" data-contact-form>
+<form class="grid gap-6 rounded-md border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)} enctype="multipart/form-data" data-contact-form data-max-file-size="10485760">
   <input type="hidden" name="category" value={categoryValue} />
   <div class="grid gap-5 md:grid-cols-2">
     {showCompany && (
@@ -64,16 +64,44 @@ const {
     <p class="text-xs text-muted">送信後、受付完了画面と自動返信メールで受信を確認できます。</p>
   </div>
 
-  <div class="form-status" data-state="sending" role="status" aria-live="polite">
+  <div class="form-status" data-state="sending" role="status" aria-live="polite" hidden>
     <strong>送信中です</strong>
     <span class="ml-2">画面を閉じずにお待ちください。</span>
   </div>
-  <div class="form-status" data-state="success" role="status" aria-live="polite">
+  <div class="form-status" data-state="success" role="status" aria-live="polite" hidden>
     <strong>ご相談を受け付けました</strong>
     <span class="ml-2">受付完了メールをお送りしました。</span>
   </div>
-  <div class="form-status" data-state="error" role="alert">
+  <div class="form-status" data-state="error" role="alert" hidden>
     <strong>送信できませんでした</strong>
     <span class="ml-2">入力内容と通信環境をご確認ください。</span>
   </div>
 </form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const file = form.querySelector<HTMLInputElement>('input[type="file"]');
+    const error = form.querySelector<HTMLElement>('[data-state="error"]');
+    const maxFileSize = Number(form.dataset.maxFileSize ?? 10485760);
+
+    if (!submit || !error) return;
+
+    form.addEventListener("submit", (event) => {
+      const selectedFile = file?.files?.[0];
+      if (selectedFile && selectedFile.size > maxFileSize) {
+        event.preventDefault();
+        error.hidden = false;
+        error.querySelector("span")?.replaceChildren(document.createTextNode("添付ファイルは10MB以内にしてください。"));
+        file?.focus();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.setAttribute("aria-disabled", "true");
+      form.setAttribute("aria-busy", "true");
+      const sending = form.querySelector<HTMLElement>('[data-state="sending"]');
+      if (sending) sending.hidden = false;
+    });
+  });
+</script>

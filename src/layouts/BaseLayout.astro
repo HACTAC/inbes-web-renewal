@@ -9,16 +9,20 @@ type Props = {
   description?: string;
   entrance?: boolean;
   siteMode?: "business" | "products";
+  ogImage?: string;
 };
 
 const {
   title = "INBES株式会社",
   description = "INBESは、日本で売るための商品づくりを支える会社です。",
   entrance = false,
-  siteMode = "business"
+  siteMode = "business",
+  ogImage
 } = Astro.props;
 
 const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株式会社`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const socialImage = ogImage ? new URL(withBase(ogImage), Astro.site ?? Astro.url).href : undefined;
 const headerNavigation = siteMode === "products" ? productNavigation : businessNavigation;
 const localNavigation = headerNavigation.filter((item) => !item.emphasis);
 const headerCta = headerNavigation.find((item) => item.emphasis);
@@ -38,6 +42,31 @@ const isCurrent = (href: string) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#FFFFFF" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="INBES株式会社" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "INBES株式会社",
+      url: canonicalUrl,
+      logo: new URL(withBase("/assets/brand/inbes-logo-horizontal.svg"), Astro.site ?? Astro.url).href,
+      telephone: "+81-42-316-9823",
+      address: {
+        "@type": "PostalAddress",
+        postalCode: "206-0012",
+        addressRegion: "東京都",
+        addressLocality: "多摩市",
+        streetAddress: "貝取1510-1 永山JOYビル5F",
+        addressCountry: "JP"
+      }
+    })}></script>
     <link rel="icon" href={withBase("/assets/brand/inbes-symbol-positive.svg")} type="image/svg+xml" />
     <title>{pageTitle}</title>
     <script is:inline>

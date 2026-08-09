@@ -71,6 +71,14 @@
     @apply grid place-items-center overflow-hidden rounded-md border border-line bg-[#ECECEA] font-latin text-xs font-bold uppercase text-muted;
   }
 
+  .media-frame {
+    @apply grid place-items-center overflow-hidden rounded-md border border-line bg-[#ECECEA];
+  }
+
+  .media-frame img {
+    @apply block;
+  }
+
   .section {
     @apply py-[72px] md:py-24 lg:py-[104px];
   }
@@ -132,7 +140,11 @@
   }
 
   .form-status {
-    @apply hidden rounded border px-4 py-3 text-sm;
+    @apply rounded border px-4 py-3 text-sm;
+  }
+
+  .form-status[hidden] {
+    display: none;
   }
 
   .form-status[data-state="sending"] {

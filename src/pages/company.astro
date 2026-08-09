@@ -2,6 +2,7 @@
 import ExternalLink from "@/components/ExternalLink.astro";
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import MediaFrame from "@/components/MediaFrame.astro";
 
 const profile = [
   ["会社名", "株式会社INBES（インベス）"],
@@ -28,7 +29,7 @@ const profile = [
         <p>つくることではなく、その先の暮らしを支えます。</p>
       </div>
     </div>
-    <div class="placeholder aspect-[3/2]">Company Image / 3:2</div>
+    <MediaFrame label="Company image / 3:2" />
   </section>
 
   <section class="section bg-white">

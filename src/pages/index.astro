@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import MediaFrame from "@/components/MediaFrame.astro";
 import { withBase } from "@/utils/paths";
 ---
 
@@ -18,7 +19,7 @@ import { withBase } from "@/utils/paths";
         aria-label="自社製品ページへ"
       >
         <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
-          <div class="placeholder h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border">Product Image / Mobile Hero Crop</div>
+          <MediaFrame class="h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border" label="Product image / mobile hero crop" />
         </div>
         <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-white px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
           <p class="eyebrow mb-2 md:mb-4">For Users</p>
@@ -34,7 +35,7 @@ import { withBase } from "@/utils/paths";
         aria-label="商品化支援ページへ"
       >
         <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
-          <div class="placeholder h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border">Development Image / Mobile Hero Crop</div>
+          <MediaFrame class="h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border" label="Development image / mobile hero crop" />
         </div>
         <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-soft px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
           <p class="eyebrow mb-2 md:mb-4">For Business</p>
