@@ -1,0 +1,1044 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/HACTAC/ai-agent-development-standard/blob/main/schemas/knowledge.schema.json",
+  "title": "AI Agent Development Knowledge Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "status",
+    "promotion_target",
+    "confidence",
+    "visibility",
+    "fact_type",
+    "source_project_ref",
+    "source_candidate_id",
+    "evidence",
+    "created_by",
+    "created_at",
+    "confidentiality_review",
+    "promotion_history"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^K-[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?-[0-9]{4}-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "pattern",
+        "pitfall",
+        "decision",
+        "lesson"
+      ]
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "approved",
+        "promoted",
+        "standard-candidate",
+        "standardized",
+        "rejected",
+        "deprecated"
+      ]
+    },
+    "promotion_target": {
+      "enum": [
+        "knowledge",
+        "standard"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "visibility": {
+      "const": "internal"
+    },
+    "fact_type": {
+      "enum": [
+        "observed",
+        "inferred",
+        "hypothesis"
+      ]
+    },
+    "source_project_ref": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?$"
+    },
+    "source_candidate_id": {
+      "type": "string",
+      "pattern": "^K-[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?-[0-9]{4}-[0-9]{3}$"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validated_projects": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?$"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_by": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reviewed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "approval_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approved_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "promotion_review_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard_approval_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard_approved_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard_approved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "standard_promotion_review_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard_reviewed_by": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "standard_reviewed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "standard_review_decision": {
+      "enum": [
+        "approved",
+        "revise",
+        "reject",
+        null
+      ]
+    },
+    "related_standard": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidentiality_review": {
+      "enum": [
+        "pending",
+        "passed",
+        "failed"
+      ]
+    },
+    "promotion_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from_status",
+          "to_status",
+          "at",
+          "reason"
+        ],
+        "properties": {
+          "from_status": {
+            "enum": [
+              "candidate",
+              "approved",
+              "promoted",
+              "standard-candidate",
+              "standardized",
+              "rejected",
+              "deprecated"
+            ]
+          },
+          "to_status": {
+            "enum": [
+              "candidate",
+              "approved",
+              "promoted",
+              "standard-candidate",
+              "standardized",
+              "rejected",
+              "deprecated"
+            ]
+          },
+          "at": {
+            "type": "string",
+            "format": "date"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "record_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "candidate"
+                  },
+                  "to_status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "candidate"
+                  },
+                  "to_status": {
+                    "const": "rejected"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "approved"
+                  },
+                  "to_status": {
+                    "const": "promoted"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "approved"
+                  },
+                  "to_status": {
+                    "const": "rejected"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "promoted"
+                  },
+                  "to_status": {
+                    "const": "standard-candidate"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "promoted"
+                  },
+                  "to_status": {
+                    "const": "deprecated"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "standard-candidate"
+                  },
+                  "to_status": {
+                    "const": "standardized"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "standard-candidate"
+                  },
+                  "to_status": {
+                    "const": "promoted"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "standard-candidate"
+                  },
+                  "to_status": {
+                    "const": "deprecated"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              },
+              {
+                "properties": {
+                  "from_status": {
+                    "const": "standardized"
+                  },
+                  "to_status": {
+                    "const": "deprecated"
+                  }
+                },
+                "required": [
+                  "from_status",
+                  "to_status"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "deprecated_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "promotion_pr_merge_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard_pr_merge_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sanitization_review": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "status",
+        "reviewed_by",
+        "reviewed_at",
+        "record_ref",
+        "removed_categories"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "passed",
+            "failed"
+          ]
+        },
+        "reviewed_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "record_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "removed_categories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "dedupe_conflict_review": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "knowledge_checked",
+        "standard_checked",
+        "result",
+        "reviewed_by",
+        "reviewed_at",
+        "record_ref",
+        "resolution_ref"
+      ],
+      "properties": {
+        "knowledge_checked": {
+          "const": true
+        },
+        "standard_checked": {
+          "const": true
+        },
+        "result": {
+          "enum": [
+            "clear",
+            "conflict-resolved"
+          ]
+        },
+        "reviewed_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "record_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolution_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "conflict-resolved"
+              }
+            },
+            "required": [
+              "result"
+            ]
+          },
+          "then": {
+            "properties": {
+              "resolution_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "candidate",
+              "approved",
+              "promoted",
+              "rejected"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "promotion_target": {
+            "const": "knowledge"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "standard-candidate",
+              "standardized"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "promotion_target": {
+            "const": "standard"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "approved",
+              "promoted",
+              "standard-candidate",
+              "standardized"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reviewed_by",
+          "reviewed_at",
+          "approval_ref",
+          "approved_by",
+          "approved_at",
+          "promotion_review_ref",
+          "sanitization_review",
+          "dedupe_conflict_review"
+        ],
+        "properties": {
+          "reviewed_by": {
+            "minItems": 1
+          },
+          "evidence": {
+            "minItems": 1
+          },
+          "confidentiality_review": {
+            "const": "passed"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "approval_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "promotion_review_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sanitization_review": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "passed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "dedupe_conflict_review": {
+            "type": "object"
+          },
+          "promotion_history": {
+            "contains": {
+              "properties": {
+                "from_status": {
+                  "const": "candidate"
+                },
+                "to_status": {
+                  "const": "approved"
+                }
+              },
+              "required": [
+                "from_status",
+                "to_status"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "promoted"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "promotion_pr_merge_ref"
+        ],
+        "properties": {
+          "promotion_target": {
+            "const": "knowledge"
+          },
+          "promotion_pr_merge_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "promotion_history": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "candidate"
+                    },
+                    "to_status": {
+                      "const": "approved"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "approved"
+                    },
+                    "to_status": {
+                      "const": "promoted"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "standard-candidate"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "validated_projects",
+          "standard_reviewed_by",
+          "standard_reviewed_at",
+          "standard_review_decision",
+          "standard_promotion_review_ref",
+          "promotion_pr_merge_ref",
+          "standard_approval_ref",
+          "standard_approved_by",
+          "standard_approved_at",
+          "standard_pr_merge_ref"
+        ],
+        "properties": {
+          "promotion_target": {
+            "const": "standard"
+          },
+          "validated_projects": {
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "standard_reviewed_by": {
+            "minItems": 1
+          },
+          "standard_reviewed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "standard_review_decision": {
+            "const": "approved"
+          },
+          "standard_promotion_review_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "promotion_pr_merge_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "standard_approval_ref": {
+            "const": null
+          },
+          "standard_approved_by": {
+            "const": null
+          },
+          "standard_approved_at": {
+            "const": null
+          },
+          "standard_pr_merge_ref": {
+            "const": null
+          },
+          "promotion_history": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "candidate"
+                    },
+                    "to_status": {
+                      "const": "approved"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "approved"
+                    },
+                    "to_status": {
+                      "const": "promoted"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "promoted"
+                    },
+                    "to_status": {
+                      "const": "standard-candidate"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "standardized"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "validated_projects",
+          "standard_reviewed_by",
+          "standard_reviewed_at",
+          "standard_review_decision",
+          "standard_approval_ref",
+          "standard_approved_by",
+          "standard_approved_at",
+          "standard_promotion_review_ref",
+          "promotion_pr_merge_ref",
+          "standard_pr_merge_ref",
+          "related_standard"
+        ],
+        "properties": {
+          "promotion_target": {
+            "const": "standard"
+          },
+          "validated_projects": {
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "standard_reviewed_by": {
+            "minItems": 1
+          },
+          "standard_reviewed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "standard_review_decision": {
+            "const": "approved"
+          },
+          "standard_approval_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "standard_approved_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "standard_approved_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "standard_promotion_review_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "related_standard": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "promotion_pr_merge_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "standard_pr_merge_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "promotion_history": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "candidate"
+                    },
+                    "to_status": {
+                      "const": "approved"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "approved"
+                    },
+                    "to_status": {
+                      "const": "promoted"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "promoted"
+                    },
+                    "to_status": {
+                      "const": "standard-candidate"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "from_status": {
+                      "const": "standard-candidate"
+                    },
+                    "to_status": {
+                      "const": "standardized"
+                    }
+                  },
+                  "required": [
+                    "from_status",
+                    "to_status"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "rejected"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "promotion_history": {
+            "contains": {
+              "properties": {
+                "to_status": {
+                  "const": "rejected"
+                }
+              },
+              "required": [
+                "to_status"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "deprecated_reason"
+        ],
+        "properties": {
+          "deprecated_reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "promotion_history": {
+            "contains": {
+              "properties": {
+                "to_status": {
+                  "const": "deprecated"
+                }
+              },
+              "required": [
+                "to_status"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
