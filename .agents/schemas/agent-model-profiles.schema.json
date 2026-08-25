@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent capability and runtime routing profiles",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "capability_tiers",
+    "task_classes",
+    "model_profiles",
+    "compatibility_aliases"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "capability_tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["luna", "terra", "sol"],
+      "properties": {
+        "luna": {
+          "allOf": [
+            {"$ref": "#/$defs/capabilityTier"},
+            {"properties": {"level": {"const": "low"}}}
+          ]
+        },
+        "terra": {
+          "allOf": [
+            {"$ref": "#/$defs/capabilityTier"},
+            {"properties": {"level": {"const": "standard"}}}
+          ]
+        },
+        "sol": {
+          "allOf": [
+            {"$ref": "#/$defs/capabilityTier"},
+            {"properties": {"level": {"const": "advanced"}}}
+          ]
+        }
+      }
+    },
+    "task_classes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["A", "B", "C", "D"],
+      "properties": {
+        "A": {
+          "allOf": [
+            {"$ref": "#/$defs/taskClass"},
+            {"properties": {"default_capability_tier": {"const": "luna"}}}
+          ]
+        },
+        "B": {
+          "allOf": [
+            {"$ref": "#/$defs/taskClass"},
+            {"properties": {"default_capability_tier": {"const": "terra"}}}
+          ]
+        },
+        "C": {
+          "allOf": [
+            {"$ref": "#/$defs/taskClass"},
+            {"properties": {"default_capability_tier": {"const": "sol"}}}
+          ]
+        },
+        "D": {
+          "allOf": [
+            {"$ref": "#/$defs/taskClass"},
+            {
+              "required": [
+                "requires_independent_review",
+                "requires_human_approval_when_state_changing"
+              ],
+              "properties": {
+                "default_capability_tier": {"const": "sol"},
+                "requires_independent_review": {"const": true},
+                "requires_human_approval_when_state_changing": {"const": true}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "model_profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
+      "additionalProperties": {"$ref": "#/$defs/modelProfile"}
+    },
+    "compatibility_aliases": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+      }
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+      }
+    },
+    "capabilityTier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "intended_for"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["low", "standard", "advanced"]
+        },
+        "intended_for": {"$ref": "#/$defs/stringList"}
+      }
+    },
+    "taskClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "default_capability_tier", "examples"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "default_capability_tier": {
+          "type": "string",
+          "enum": ["luna", "terra", "sol"]
+        },
+        "requires_independent_review": {"type": "boolean"},
+        "requires_human_approval_when_state_changing": {"type": "boolean"},
+        "examples": {"$ref": "#/$defs/stringList"}
+      }
+    },
+    "modelProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_label",
+        "runtime_model_candidates",
+        "capability_tier",
+        "quota_pool",
+        "availability",
+        "preferred_agent_name",
+        "intended_use",
+        "fallback_profile"
+      ],
+      "properties": {
+        "model_label": {"type": "string", "minLength": 1},
+        "runtime_model_candidates": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9.-]*$"
+          }
+        },
+        "capability_tier": {
+          "type": "string",
+          "enum": ["luna", "terra", "sol"]
+        },
+        "quota_pool": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "availability": {"const": "runtime_check_required"},
+        "preferred_agent_name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*$"
+        },
+        "intended_use": {"$ref": "#/$defs/stringList"},
+        "fallback_profile": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      }
+    }
+  }
+}

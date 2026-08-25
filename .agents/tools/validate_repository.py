@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate release metadata and knowledge-entry governance invariants."""
+"""Validate release metadata, agent routing, and knowledge governance invariants."""
 from __future__ import annotations
 
 import json
@@ -14,8 +14,12 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ID = re.compile(r"^K-(?P<project>.+)-[0-9]{4}-[0-9]{3}$")
-CHANGELOG_VERSION = re.compile(r"^## \[([^]]+)\]", re.MULTILINE)
+CHANGELOG_VERSION = re.compile(
+    r"^## \[([0-9]+\.[0-9]+\.[0-9]+(?:-rc\.[0-9]+)?)\]",
+    re.MULTILINE,
+)
 LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
+CAPABILITY_LEVEL = {"luna": 0, "terra": 1, "sol": 2}
 
 
 def relative(root: Path, path: Path) -> str:
@@ -157,6 +161,224 @@ def validate_knowledge(root: Path, errors: list[str]) -> None:
         validate_standard_review(root, path, entry, errors)
 
 
+def validate_agent_names(root: Path, errors: list[str]) -> None:
+    schema_path = root / "schemas" / "agent-names.schema.json"
+    registry_path = root / "config" / "agent-names.yml"
+    if not registry_path.exists():
+        registry_path = root / "AGENT_NAMES.yml"
+    try:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
+    except Exception as error:
+        fail(root, errors, schema_path, f"cannot load a valid JSON Schema: {error}")
+        return
+    try:
+        registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError) as error:
+        fail(root, errors, registry_path, f"cannot load agent name registry: {error}")
+        return
+    validator = Draft202012Validator(schema)
+    for error in sorted(validator.iter_errors(registry), key=lambda item: list(item.path)):
+        field = ".".join(map(str, error.absolute_path)) or "registry"
+        fail(root, errors, registry_path, f"schema validation failed at {field}: {error.message}")
+
+
+def resolve_profile_reference(
+    reference: str,
+    profiles: dict,
+    aliases: dict,
+) -> tuple[str | None, list[str] | None]:
+    """Resolve compatibility aliases to a concrete profile and report alias cycles."""
+    current = reference
+    path: list[str] = []
+    while current in aliases:
+        if current in path:
+            cycle_start = path.index(current)
+            return None, path[cycle_start:] + [current]
+        path.append(current)
+        current = aliases[current]
+    if current not in profiles:
+        return None, None
+    return current, None
+
+
+def validate_agent_model_profiles(root: Path, errors: list[str]) -> None:
+    schema_path = root / "schemas" / "agent-model-profiles.schema.json"
+    registry_path = root / "config" / "agent-model-profiles.yml"
+    if not registry_path.exists():
+        registry_path = root / "AGENT_MODEL_PROFILES.yml"
+    names_path = root / "config" / "agent-names.yml"
+    if not names_path.exists():
+        names_path = root / "AGENT_NAMES.yml"
+    try:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
+    except Exception as error:
+        fail(root, errors, schema_path, f"cannot load a valid JSON Schema: {error}")
+        return
+    try:
+        registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError) as error:
+        fail(root, errors, registry_path, f"cannot load agent model profiles: {error}")
+        return
+    validator = Draft202012Validator(schema)
+    schema_errors = sorted(validator.iter_errors(registry), key=lambda item: list(item.path))
+    for error in schema_errors:
+        field = ".".join(map(str, error.absolute_path)) or "registry"
+        fail(root, errors, registry_path, f"schema validation failed at {field}: {error.message}")
+    if schema_errors or not isinstance(registry, dict):
+        return
+    try:
+        names_registry = yaml.safe_load(names_path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError) as error:
+        fail(root, errors, names_path, f"cannot load agent name registry: {error}")
+        return
+
+    names = names_registry.get("agent_names", []) if isinstance(names_registry, dict) else []
+    profiles = registry["model_profiles"]
+    aliases = registry.get("compatibility_aliases", {})
+
+    for alias_name in aliases:
+        if alias_name in profiles:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"compatibility_aliases.{alias_name} must not shadow a model profile",
+            )
+            continue
+        resolved, cycle = resolve_profile_reference(alias_name, profiles, aliases)
+        if cycle:
+            fail(
+                root,
+                errors,
+                registry_path,
+                "compatibility alias cycle detected: " + " -> ".join(cycle),
+            )
+        elif resolved is None:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"compatibility_aliases.{alias_name} references unknown profile {aliases[alias_name]!r}",
+            )
+
+    for profile_name, profile in profiles.items():
+        preferred_name = profile["preferred_agent_name"]
+        fallback = profile["fallback_profile"]
+        if preferred_name not in names:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"model_profiles.{profile_name}.preferred_agent_name must be registered",
+            )
+        if fallback is None:
+            continue
+        resolved_fallback, alias_cycle = resolve_profile_reference(fallback, profiles, aliases)
+        if alias_cycle:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"model_profiles.{profile_name}.fallback_profile resolves through alias cycle: "
+                + " -> ".join(alias_cycle),
+            )
+            continue
+        if resolved_fallback is None:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"model_profiles.{profile_name}.fallback_profile references unknown profile {fallback!r}",
+            )
+            continue
+        if resolved_fallback == profile_name:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"model_profiles.{profile_name}.fallback_profile must not resolve to itself",
+            )
+            continue
+        source_tier = profile["capability_tier"]
+        target_tier = profiles[resolved_fallback]["capability_tier"]
+        if CAPABILITY_LEVEL[target_tier] < CAPABILITY_LEVEL[source_tier]:
+            fail(
+                root,
+                errors,
+                registry_path,
+                f"model_profiles.{profile_name}.fallback_profile must not reduce capability "
+                f"from {source_tier!r} to {target_tier!r}",
+            )
+
+    reported_cycles: set[frozenset[str]] = set()
+    for profile_name in profiles:
+        path: list[str] = []
+        current: str | None = profile_name
+        while current is not None and current in profiles:
+            if current in path:
+                cycle = frozenset(path[path.index(current) :])
+                if cycle not in reported_cycles:
+                    fail(
+                        root,
+                        errors,
+                        registry_path,
+                        "fallback_profile cycle detected: "
+                        + " -> ".join(path[path.index(current) :] + [current]),
+                    )
+                    reported_cycles.add(cycle)
+                break
+            path.append(current)
+            fallback = profiles[current]["fallback_profile"]
+            if fallback is None:
+                break
+            resolved, alias_cycle = resolve_profile_reference(fallback, profiles, aliases)
+            if alias_cycle or resolved is None:
+                break
+            current = resolved
+
+
+NAMING_CONTRACT_START = "<!-- agent-display-name-contract:v1 -->"
+NAMING_CONTRACT_END = "<!-- /agent-display-name-contract:v1 -->"
+EXPECTED_NAMING_CONTRACT = """Every sub-agent must receive a registered romanized aquatic-creature name as `task_name` and human-readable identity. Use a lowercase ASCII base name from `.agents/AGENT_NAMES.yml`, such as `hirame` or `medaka`. An explicit request uses the registered name; otherwise Main reserves an available registered name before creation. Invalid and unregistered names are rejected by default. Projects must not edit the adopted registry; project additions belong in project-specific rules.
+
+For every spawn, pass the reserved name at creation, retain the returned `agent_id`, and read back the observed display name. If a generated non-aquatic default appears, use the supported task or sub-agent rename operation with that `agent_id`, then read back the same agent again. Renaming the chat or parent thread title does not count. Record `verified`, `renamed_and_verified`, or `alias_only`; do not claim visible-name success before readback."""
+
+
+def validate_agent_naming_contract(root: Path, errors: list[str]) -> None:
+    """Require the complete versioned naming contract in distributed snapshots."""
+    if (root / "AGENT_NAMING.md").exists():
+        contract_paths = (root / "templates" / "standard-snapshot.md",)
+    elif (root / "STANDARD.md").exists():
+        contract_paths = (root / "STANDARD.md",)
+    else:
+        return
+
+    for path in contract_paths:
+        if not path.exists():
+            errors.append(f"{path}: mandatory naming contract file is missing")
+            continue
+        content = path.read_text(encoding="utf-8")
+        if (
+            content.count(NAMING_CONTRACT_START) != 1
+            or content.count(NAMING_CONTRACT_END) != 1
+        ):
+            errors.append(
+                f"{path}: versioned naming contract markers must occur exactly once"
+            )
+            continue
+        start = content.find(NAMING_CONTRACT_START)
+        end = content.find(NAMING_CONTRACT_END)
+        if end <= start:
+            errors.append(f"{path}: versioned naming contract markers are out of order")
+            continue
+        start += len(NAMING_CONTRACT_START)
+        observed = content[start:end].strip()
+        if observed != EXPECTED_NAMING_CONTRACT:
+            errors.append(f"{path}: versioned naming contract differs from the canonical lifecycle")
+
+
 def validate_links(root: Path, errors: list[str]) -> None:
     for path in sorted(root.rglob("*.md")):
         if ".git" in path.parts:
@@ -215,6 +437,9 @@ def parse_args() -> tuple[Path, bool]:
 def main() -> int:
     root, knowledge_only = parse_args()
     errors: list[str] = []
+    validate_agent_names(root, errors)
+    validate_agent_naming_contract(root, errors)
+    validate_agent_model_profiles(root, errors)
     validate_knowledge(root, errors)
     validate_links(root, errors)
     if not knowledge_only:

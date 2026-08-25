@@ -1,0 +1,114 @@
+version: 2
+capability_tiers:
+  luna:
+    level: low
+    intended_for:
+      - mechanical
+      - bounded
+      - low_risk
+  terra:
+    level: standard
+    intended_for:
+      - general
+      - multi_step
+      - moderate_risk
+  sol:
+    level: advanced
+    intended_for:
+      - complex
+      - high_uncertainty
+      - high_impact
+
+task_classes:
+  A:
+    label: mechanical
+    default_capability_tier: luna
+    examples:
+      - search
+      - extraction
+      - rename
+      - bounded_fix
+  B:
+    label: standard
+    default_capability_tier: terra
+    examples:
+      - general_implementation
+      - testing
+      - ordinary_exploration
+  C:
+    label: complex
+    default_capability_tier: sol
+    examples:
+      - architecture
+      - ambiguous_debugging
+      - multi_constraint_reasoning
+  D:
+    label: high_impact
+    default_capability_tier: sol
+    requires_independent_review: true
+    requires_human_approval_when_state_changing: true
+    examples:
+      - production
+      - security
+      - customer_data
+      - destructive_change
+
+model_profiles:
+  codex_spark:
+    model_label: 5.3 Codex Spark
+    runtime_model_candidates:
+      - gpt-5.3-codex-spark
+    capability_tier: luna
+    quota_pool: codex_spark
+    availability: runtime_check_required
+    preferred_agent_name: medaka
+    intended_use:
+      - coding
+      - bounded
+      - low_risk
+      - fast_iteration
+    fallback_profile: standard_luna
+
+  standard_luna:
+    model_label: Environment-selected Luna capability model
+    runtime_model_candidates: []
+    capability_tier: luna
+    quota_pool: general
+    availability: runtime_check_required
+    preferred_agent_name: aji
+    intended_use:
+      - mechanical
+      - bounded
+      - low_risk
+    fallback_profile: standard_terra
+
+  standard_terra:
+    model_label: Environment-selected Terra capability model
+    runtime_model_candidates: []
+    capability_tier: terra
+    quota_pool: general
+    availability: runtime_check_required
+    preferred_agent_name: hirame
+    intended_use:
+      - general_implementation
+      - testing
+      - exploration
+      - ordinary_reasoning
+    fallback_profile: standard_sol
+
+  standard_sol:
+    model_label: Environment-selected Sol capability model
+    runtime_model_candidates: []
+    capability_tier: sol
+    quota_pool: general
+    availability: runtime_check_required
+    preferred_agent_name: maguro
+    intended_use:
+      - architecture
+      - high_uncertainty
+      - high_impact
+      - advanced_review
+    fallback_profile: null
+
+compatibility_aliases:
+  standard_fast: standard_terra

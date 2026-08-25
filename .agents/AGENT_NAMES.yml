@@ -1,0 +1,20 @@
+version: 2
+agent_names:
+  - medaka
+  - saba
+  - aji
+  - hirame
+  - fugu
+  - iwashi
+  - maguro
+  - tai
+  - buri
+  - katsuo
+  - sanma
+  - suzuki
+  - koi
+  - ayu
+  - unagi
+  - anago
+  - tara
+  - kajiki

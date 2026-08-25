@@ -19,7 +19,7 @@ git diff --check
 ## Knowledge Validation
 
 ```bash
-python .agents/tools/validate_repository.py --root .agents --knowledge-only
+python3 .agents/tools/validate_repository.py --root .agents --knowledge-only
 ```
 
 実行には`.agents/requirements-dev.txt`のPyYAMLとjsonschemaが必要である。グローバルへ無断インストールしない。
