@@ -11,10 +11,16 @@ export const productNavigation = [
   { label: "サポート", href: "/contact/support/", emphasis: true }
 ];
 
-export const modeSwitch = {
-  business: { label: "個人向け製品サイト", href: "/products/" },
-  products: { label: "法人向けサイト", href: "/services/" }
-};
+export const sharedNavigation = [
+  { label: "お知らせ", href: "/news/" },
+  { label: "会社概要", href: "/company/" },
+  { label: "お問い合わせ", href: "/contact/", emphasis: true }
+];
+
+export const audienceNavigation = [
+  { mode: "products", label: "個人のお客様", href: "/products/" },
+  { mode: "business", label: "法人のお客様", href: "/services/" }
+] as const;
 
 export const navigation = [
   { label: "自社製品", href: "/products/" },

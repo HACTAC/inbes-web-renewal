@@ -1,7 +1,7 @@
 ---
 import Icon from "@/components/Icon.astro";
 import HomeHeader from "@/components/HomeHeader.astro";
-import { businessNavigation, modeSwitch, productNavigation } from "@/data/navigation";
+import { audienceNavigation, businessNavigation, productNavigation, sharedNavigation } from "@/data/navigation";
 import "../styles/global.css";
 import { withBase } from "@/utils/paths";
 
@@ -9,7 +9,7 @@ type Props = {
   title?: string;
   description?: string;
   entrance?: boolean;
-  siteMode?: "business" | "products";
+  siteMode?: "business" | "products" | "shared";
   ogImage?: string;
 };
 
@@ -17,18 +17,21 @@ const {
   title = "INBES株式会社",
   description = "INBESは、日本で売るための商品づくりを支える会社です。",
   entrance = false,
-  siteMode = "business",
+  siteMode = "shared",
   ogImage
 } = Astro.props;
 
 const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株式会社`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const socialImage = ogImage ? new URL(withBase(ogImage), Astro.site ?? Astro.url).href : undefined;
-const headerNavigation = siteMode === "products" ? productNavigation : businessNavigation;
+const headerNavigation = siteMode === "products"
+  ? productNavigation
+  : siteMode === "business"
+    ? businessNavigation
+    : sharedNavigation;
 const localNavigation = headerNavigation.filter((item) => !item.emphasis);
 const headerCta = headerNavigation.find((item) => item.emphasis);
-const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.business;
-const modeLabel = siteMode === "products" ? "自社製品" : "商品化支援";
+const modeLabel = siteMode === "products" ? "自社製品" : siteMode === "business" ? "商品化支援" : "INBES";
 const currentPath = Astro.url.pathname;
 const deployEnvironment = import.meta.env.PUBLIC_DEPLOY_ENV ?? "production";
 const preventIndexing = deployEnvironment !== "production";
@@ -123,9 +126,23 @@ const isCurrent = (href: string) => {
                 <a href={withBase("/")} aria-label="INBES トップ">
                   <img class="h-auto w-[120px] md:w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
                 </a>
-                <a class="hidden min-h-9 items-center rounded border border-line bg-white px-3.5 text-xs font-semibold text-sub transition-colors hover:border-muted hover:bg-soft hover:text-ink sm:inline-flex" href={withBase(switchLink.href)}>
-                  {switchLink.label}
-                </a>
+                <nav class="hidden overflow-hidden rounded border border-line sm:flex" aria-label="お客様区分">
+                  {audienceNavigation.map((item, index) => (
+                    <a
+                      class:list={[
+                        "flex min-h-9 items-center px-3.5 text-xs font-semibold transition-colors",
+                        index > 0 && "border-l border-line",
+                        siteMode === item.mode
+                          ? "bg-primary-pale text-primary"
+                          : "bg-white text-sub hover:bg-soft hover:text-ink"
+                      ]}
+                      href={withBase(item.href)}
+                      aria-current={siteMode === item.mode ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
               </div>
 
               <nav class="ml-auto hidden items-center gap-6 lg:flex" aria-label="グローバルナビゲーション">
@@ -174,9 +191,23 @@ const isCurrent = (href: string) => {
                 </button>
               </div>
 
-              <a class="mt-6 flex min-h-12 items-center rounded border border-line bg-soft px-4 font-semibold text-sub transition-colors hover:border-muted hover:text-ink" href={withBase(switchLink.href)}>
-                {switchLink.label}
-              </a>
+              <nav class="mt-6 grid grid-cols-2 overflow-hidden rounded border border-line" aria-label="お客様区分">
+                {audienceNavigation.map((item, index) => (
+                  <a
+                    class:list={[
+                      "flex min-h-12 items-center justify-center px-3 text-sm font-semibold transition-colors",
+                      index > 0 && "border-l border-line",
+                      siteMode === item.mode
+                        ? "bg-primary-pale text-primary"
+                        : "bg-white text-sub hover:bg-soft hover:text-ink"
+                    ]}
+                    href={withBase(item.href)}
+                    aria-current={siteMode === item.mode ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
 
               <p class="eyebrow mb-2 mt-7">{modeLabel}</p>
               <nav class="grid border-t border-ink" aria-label={`${modeLabel}ナビゲーション`}>

@@ -1,11 +1,10 @@
 ---
 import Icon from "@/components/Icon.astro";
+import { sharedNavigation } from "@/data/navigation";
 import { withBase } from "@/utils/paths";
 
-const navigation = [
-  { label: "お知らせ", href: "/news/" },
-  { label: "会社概要", href: "/company/" }
-];
+const navigation = sharedNavigation.filter((item) => !item.emphasis);
+const headerCta = sharedNavigation.find((item) => item.emphasis);
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-white">
@@ -18,11 +17,11 @@ const navigation = [
       {navigation.map((item) => (
         <a class="site-header-link" href={withBase(item.href)}>{item.label}</a>
       ))}
-      <a class="button button-primary min-h-11 px-5 text-sm" href={withBase("/contact/")}>お問い合わせ</a>
+      {headerCta && <a class="button button-primary min-h-11 px-5 text-sm" href={withBase(headerCta.href)}>{headerCta.label}</a>}
     </nav>
 
     <div class="ml-auto flex items-center gap-2 lg:hidden">
-      <a class="button button-primary min-h-10 px-4 text-sm sm:min-h-11" href={withBase("/contact/")}>お問い合わせ</a>
+      {headerCta && <a class="button button-primary min-h-10 px-4 text-sm sm:min-h-11" href={withBase(headerCta.href)}>{headerCta.label}</a>}
       <button
         class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink"
         type="button"
@@ -60,6 +59,6 @@ const navigation = [
       ))}
     </nav>
 
-    <a class="button button-primary mt-8 w-full" href={withBase("/contact/")}>お問い合わせ</a>
+    {headerCta && <a class="button button-primary mt-8 w-full" href={withBase(headerCta.href)}>{headerCta.label}</a>}
   </aside>
 </div>
