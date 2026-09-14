@@ -1,10 +1,9 @@
 ---
 import DevelopmentCapabilitySlider from "@/components/DevelopmentCapabilitySlider.astro";
 import Hero from "@/components/Hero.astro";
-import WorksCarousel from "@/components/WorksCarousel.astro";
+import Icon from "@/components/Icon.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { fields } from "@/data/services";
-import { works } from "@/data/works";
 import { withBase } from "@/utils/paths";
 
 const developmentCapabilities = [
@@ -147,28 +146,68 @@ const developmentCapabilities = [
   </section>
 
   <section class="section bg-white">
-    <div class="container-page grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-      <div>
-        <p class="eyebrow">Process</p>
-        <h2 class="heading-2 mb-5">作りたい、からでも。<br />探したい、からでも。</h2>
-        <p class="max-w-2xl text-sub">作りたい商品が決まっている場合も、探すところから始めたい場合も、状況に合わせて商品化を進めます。</p>
+    <div class="container-page">
+      <div class="grid gap-5 md:grid-cols-2">
+        {[
+          {
+            eyebrow: "Process",
+            title: "商品化の進め方",
+            text: "ご相談から仕様整理、量産、輸入、販売準備まで。商品化の流れと各段階の支援内容をご紹介します。",
+            href: "/process/",
+            image: "/assets/page-visuals/process-v3.png",
+            imageAlt: "商品化の段階を表す空間と、その先へ進む人物"
+          },
+          {
+            eyebrow: "Works",
+            title: "開発実績",
+            text: "生活家電や車載機器など、日本で販売するための商品化を支援してきた製品をご紹介します。",
+            href: "/works/",
+            image: "/assets/page-visuals/works-v3.png",
+            imageAlt: "INBESが商品化を支援した家電やエレクトロニクス製品"
+          }
+        ].map((item) => (
+          <a
+            class="group flex h-full flex-col overflow-hidden rounded-md border border-line bg-white transition-colors duration-300 hover:border-primary hover:bg-primary-pale focus-visible:border-primary"
+            href={withBase(item.href)}
+            aria-label={`${item.title}を見る`}
+          >
+            <div class="aspect-[16/9] overflow-hidden border-b border-line bg-soft">
+              <img
+                class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+                src={withBase(item.image)}
+                alt={item.imageAlt}
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-6 md:p-8">
+              <div class="flex items-start justify-between gap-5">
+                <div>
+                  <p class="eyebrow">{item.eyebrow}</p>
+                  <h2 class="text-[28px] leading-[1.3] md:text-[32px]">{item.title}</h2>
+                </div>
+                <span class="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark" aria-hidden="true">
+                  <Icon name="arrow-right" size={20} />
+                </span>
+              </div>
+              <p class="mt-5 text-sub">{item.text}</p>
+            </div>
+          </a>
+        ))}
       </div>
-      <a class="button button-secondary" href={withBase("/process/")}>進め方を見る</a>
     </div>
   </section>
 
-  <section class="section container-page">
-    <div class="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+  <section class="section bg-soft">
+    <div class="container-page grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
       <div>
-        <p class="eyebrow">Works</p>
-        <h2 class="heading-2 mb-5">商品化を支援した製品</h2>
-        <p class="mb-8 text-sub">生活家電や車載機器など、日本で販売するための商品化を支援してきました。</p>
-        <div class="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
-          <a class="button button-primary" href={withBase("/contact/business/")}>商品化について相談する</a>
-          <a class="button button-outline-dark" href={withBase("/works/")}>開発実績を見る</a>
-        </div>
+        <p class="eyebrow">Contact</p>
+        <h2 class="heading-2 mb-5">商品化について相談する</h2>
+        <p class="max-w-3xl text-sub">アイデア段階でも、探すところからでもご相談いただけます。貴社の状況に合わせて、商品化の進め方を整理します。</p>
       </div>
-      <WorksCarousel items={works} />
+      <a class="button button-primary" href={withBase("/contact/business/")}>お問い合わせ</a>
     </div>
   </section>
 </BaseLayout>
