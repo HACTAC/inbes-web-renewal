@@ -8,11 +8,11 @@ import MediaFrame from "@/components/MediaFrame.astro";
 ---
 
 <BaseLayout title="開発実績" description="商品化を支援した製品をご紹介します。">
-  <Hero eyebrow="Works" title="開発実績" lead="商品化を支援した製品をご紹介します。" />
+  <Hero eyebrow="Works" title="開発実績" image="/assets/page-visuals/works-v3.png" imageClass="object-[56%_52%]" />
   <section class="section container-page">
     <div class="grid gap-6">
       {works.map((work) => (
-        <article id={work.id} class="grid scroll-mt-28 gap-6 rounded-md border border-line bg-white p-5 md:grid-cols-[minmax(280px,420px)_1fr] md:p-7">
+        <article id={work.id} class="grid scroll-mt-28 gap-6 rounded-md border border-line bg-white p-5 md:grid-cols-[minmax(280px,480px)_minmax(0,1fr)] md:p-7">
           <MediaFrame label={`${work.title} image`} />
           <div>
             <h2 class="heading-3 mb-3">{work.title}</h2>
@@ -22,7 +22,7 @@ import MediaFrame from "@/components/MediaFrame.astro";
             <div class="mb-5 flex flex-wrap gap-2">
               {work.supports.map((support) => <span class="tag-support">{support}</span>)}
             </div>
-            <p class="mb-5 text-sub">{work.description}</p>
+            <p class="mb-5 max-w-3xl text-sub">{work.description}</p>
             <p class="mb-4 text-sm font-semibold">クライアント：{work.client}</p>
             {work.url && (
               <ExternalLink href={work.url}>

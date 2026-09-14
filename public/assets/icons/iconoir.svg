@@ -62,6 +62,13 @@
 <path d="M20 5.99999L20 18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H18C19.1045 4 19.9999 4.89543 20 5.99999Z" stroke="currentColor"   stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 9V4" stroke="currentColor"   stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="phone" viewBox="0 0 24 24">
+<path d="M18.1182 14.702L14 15.5C11.2183 14.1038 9.5 12.5 8.5 10L9.26995 5.8699L7.81452 2L4.0636 2C2.93605 2 2.04814 2.93178 2.21654 4.04668C2.63695 6.83 3.87653 11.8765 7.5 15.5C11.3052 19.3052 16.7857 20.9564 19.802 21.6127C20.9668 21.8662 22 20.9575 22 19.7655L22 16.1812L18.1182 14.702Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="printer" viewBox="0 0 24 24">
+<path d="M17 13.01L17.01 12.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 17H17M6 10V3.6C6 3.26863 6.26863 3 6.6 3H17.4C17.7314 3 18 3.26863 18 3.6V10M21 20.4V14C21 11.7909 19.2091 10 17 10H7C4.79086 10 3 11.7909 3 14V20.4C3 20.7314 3.26863 21 3.6 21H20.4C20.7314 21 21 20.7314 21 20.4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="plus" viewBox="0 0 24 24">
 <path d="M6 12H12M18 12H12M12 12V6M12 12V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>

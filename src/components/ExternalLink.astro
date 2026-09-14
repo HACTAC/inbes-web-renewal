@@ -5,9 +5,10 @@ type Props = {
   href: string;
   class?: string;
   iconSize?: 18 | 20;
+  ariaLabel?: string;
 };
 
-const { href, class: className, iconSize = 18 } = Astro.props;
+const { href, class: className, iconSize = 18, ariaLabel } = Astro.props;
 ---
 
 <a
@@ -15,6 +16,7 @@ const { href, class: className, iconSize = 18 } = Astro.props;
   href={href}
   target="_blank"
   rel="noopener noreferrer"
+  aria-label={ariaLabel}
 >
   <span class="external-link__label"><slot /></span>
   <Icon name="arrow-up-right-square" size={iconSize} />

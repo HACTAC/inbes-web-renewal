@@ -1,83 +1,184 @@
 ---
+import DevelopmentCapabilitySlider from "@/components/DevelopmentCapabilitySlider.astro";
 import Hero from "@/components/Hero.astro";
 import WorksCarousel from "@/components/WorksCarousel.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { fields } from "@/data/services";
 import { works } from "@/data/works";
 import { withBase } from "@/utils/paths";
-import MediaFrame from "@/components/MediaFrame.astro";
 
-const localizationItems = ["国内仕様", "表示・ラベル", "取扱説明書", "許認可・国内試験", "パッケージ", "品質・輸入条件"];
+const developmentCapabilities = [
+  {
+    title: "法令・許認可",
+    text: "日本で販売するために必要な法令や許認可を確認し、対応条件を整理します。",
+    image: "/assets/services/development/01-regulatory-review.jpg",
+    imageAlt: "国内販売に必要な法令や許認可の資料を確認する商品開発の現場"
+  },
+  {
+    title: "国内試験・品質確認",
+    text: "安全性・性能・品質を国内の基準や販売条件に照らして確認します。",
+    image: "/assets/services/development/02-domestic-testing.jpg",
+    imageAlt: "小型家電を測定機器につないで安全性と品質を確認する試験工程"
+  },
+  {
+    title: "仕様・機能追加",
+    text: "販売先や用途に合わせて仕様を変更し、必要な機能を追加します。",
+    image: "/assets/services/development/03-specification-development.jpg",
+    imageAlt: "小型家電の内部部品を確認しながら仕様と機能を検討する開発工程"
+  },
+  {
+    title: "意匠・カラー",
+    text: "日本の嗜好や売り場、ブランドに合う外観・色・素材を検討します。",
+    image: "/assets/services/development/04-design-color.jpg",
+    imageAlt: "形状を揃えた小型家電の色と素材を比較するデザイン検討"
+    },
+  {
+    title: "使い方・販売提案",
+    text: "暮らしの中での使い方を捉え直し、価値の伝え方や販売方法まで考えます。",
+    image: "/assets/services/development/05-use-sales-proposal.jpg",
+    imageAlt: "日本の暮らしの中で小型家電の使い方と価値を検討する場面"
+  },
+  {
+    title: "表示・取扱説明書・パッケージ",
+    text: "国内向けの表示、取扱説明書、パッケージを整え、販売準備につなげます。",
+    image: "/assets/services/development/06-packaging-launch.jpg",
+    imageAlt: "国内販売に向けて小型家電の表示や取扱説明書とパッケージを整えた状態"
+  }
+];
+
+const localizationSteps = [
+  {
+    number: "01",
+    title: "起点となる製品・技術を探す",
+    text: "用途・価格・販売先に合うベース製品や技術を選定します。"
+  },
+  {
+    number: "02",
+    title: "日本で販売できる条件を確認する",
+    text: "法令、許認可、国内試験、品質基準、表示・輸入条件を整理します。"
+  },
+  {
+    number: "03",
+    title: "市場・暮らしに合わせてカスタムする",
+    text: "色・意匠・仕様・機能を見直し、足りない部分は新しく設計して補います。",
+    featured: true
+  },
+  {
+    number: "04",
+    title: "量産し、販売できる状態へ整える",
+    text: "試作・品質確認・量産・輸入から、取扱説明書、パッケージ、販売準備まで進めます。"
+  }
+];
 ---
 
 <BaseLayout title="商品化支援" description="日本で販売するための商品化を、仕様整理から販売準備まで支援します。">
-  <Hero eyebrow="Product Development Support" title="商品化支援" />
+  <Hero eyebrow="Product Development Support" title="商品化支援" image="/assets/page-visuals/commercialization-v3.png" imageClass="object-[62%_56%]" />
 
   <section class="section container-page">
-    <div class="section-heading">
+    <div class="section-heading max-w-5xl">
       <p class="eyebrow">Issue</p>
       <h2>日本で売るための、商品づくりを共に。</h2>
-      <p>海外製品のローカライズから、仕様整理、量産、輸入、販売準備まで。日本で販売できる状態へ整えます。</p>
+      <p>商品開発が初めての場合、構想を具体化したい場合、開発全体を任せたい場合など、貴社の課題や体制に合わせた商品化支援を行います。海外製品のローカライズから、仕様整理、量産、輸入、販売準備まで、日本で販売できる状態へ整えます。</p>
     </div>
     <div class="grid gap-5 md:grid-cols-3">
       {[
-        ["01", "エレクトロニクス商品を扱いたい", "認証や仕様など、新規参入に必要な技術面・実務面を整理します。"],
-        ["02", "商品化を前に進めたい", "営業や企画だけでは不足しがちな技術検討や仕様整理を支援します。"],
-        ["03", "商品化をまとめて任せたい", "商品選定から量産、輸入、販売準備まで一つの窓口で対応します。"]
-      ].map(([number, title, text]) => (
-        <article class="border-t border-line px-1 py-6 md:pr-6">
-          <span class="mb-5 block font-latin text-sm font-bold text-primary">{number}</span>
-          <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{title}</h3>
-          <p class="text-sm text-sub">{text}</p>
+        {
+          number: "01",
+          title: "エレクトロニクス商品を扱いたい",
+          text: "異業種からの参入や、これまで雑貨などを扱ってきた企業に向けて、エレクトロニクス製品特有の仕様・認証・生産の進め方を整理し、商品化まで伴走します。",
+          image: "/assets/services/issues/enter-electronics-line-v2.png",
+          imageAlt: "製品仕様を検討する担当者のイラスト"
+        },
+        {
+          number: "02",
+          title: "商品化を前に進めたい",
+          text: "営業・企画段階のアイデアはあるものの、製造ノウハウを持たない企業に向けて、仕様設計、技術検討、工場選定、認証、輸入手配までを支援します。",
+          image: "/assets/services/issues/find-factory-line-v2.png",
+          imageAlt: "製造先の選定に迷う担当者のイラスト"
+        },
+        {
+          number: "03",
+          title: "商品化をまとめて任せたい",
+          text: "既存の販売ルートを活かした新商品展開に向けて、企画・開発から生産、輸入、入荷、販促準備までを一括して進めます。",
+          image: "/assets/services/issues/private-brand-line-v1.png",
+          imageAlt: "企画から生産・物流までを一括して進めるイラスト"
+        }
+      ].map((item) => (
+        <article class="flex h-full flex-col overflow-hidden rounded-md border border-line bg-white">
+          <img
+            class="aspect-[3/2] w-full border-b border-line object-cover"
+            src={withBase(item.image)}
+            alt={item.imageAlt}
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="flex flex-1 flex-col p-6">
+            <span class="mb-5 block font-latin text-sm font-bold text-primary">NEED {item.number}</span>
+            <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{item.title}</h3>
+            <p class="text-sm text-sub">{item.text}</p>
+          </div>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="section overflow-x-clip bg-white">
     <div class="container-page">
-      <div class="section-heading">
-        <p class="eyebrow">Development Approach</p>
-        <h2>商品化の考え方</h2>
-        <p>ゼロから作ることだけが、商品開発ではありません。海外で実績のある製品や新たに開発された製品を活用し、日本市場に合わせた商品化をご提案しています。</p>
+      <div class="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:gap-16">
+        <div>
+          <p class="eyebrow">Development Approach</p>
+          <h2 class="heading-2 mb-6">商品化の考え方</h2>
+          <div class="space-y-5 text-sub">
+            <p>多くの案件では、ベースとなる既存商品をもとに国内市場向けにカスタマイズしていくローカライズ開発の可能性からご提案していきます。</p>
+            <p>海外で実績のある製品・技術を日本市場に合わせることで、開発期間やリスクを抑えながら商品化が可能です。</p>
+            <p>独自性が必要な場合やベース製品がない場合は、ゼロからのオリジナル開発も対応可能です。</p>
+          </div>
+        </div>
+
+        <DevelopmentCapabilitySlider items={developmentCapabilities} />
       </div>
-      <div class="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
-        <article class="rounded-md border border-line border-t-4 border-t-primary bg-paper p-7 md:p-10">
-          <p class="eyebrow">Main Approach</p>
-          <h3 class="heading-3 mb-4">ローカライズ開発</h3>
-          <p class="mb-6 text-sub">海外で実績のある製品や、新たに開発された製品を、日本市場や販売先に合わせて商品化する開発手法です。</p>
-          <div class="mb-9 flex flex-wrap gap-x-4 gap-y-2 border-y border-line py-4 text-sm font-bold text-sub">
-            {localizationItems.map((item) => <span>{item}</span>)}
+
+      <div class="mt-14 grid gap-4 border-t border-line pt-8 lg:mt-20 lg:grid-cols-[0.9fr_0.9fr_1.4fr_0.9fr]">
+        {localizationSteps.map((step) => (
+          <div
+            class:list={[
+              "border-t border-line px-1 py-5",
+              step.featured && "border-t-2 border-primary bg-primary-pale px-5 pb-6 pt-[18px]"
+            ]}
+          >
+            <span class="mb-3 block font-latin text-sm font-bold text-primary">{step.number}</span>
+            <p class="font-semibold leading-[1.55]">{step.title}</p>
+            <p class="mt-3 text-sm text-sub">{step.text}</p>
           </div>
-          <div class="grid gap-4 md:grid-cols-4">
-            {["製品・技術を選定", "日本市場へ最適化", "販売条件を整える", "商品として届ける"].map((step, index) => (
-              <div class="border-t border-line pt-4">
-                <span class="mb-3 block font-latin text-sm font-bold text-primary">{String(index + 1).padStart(2, "0")}</span>
-                <p class="font-semibold">{step}</p>
-              </div>
-            ))}
-          </div>
-        </article>
-        <article class="rounded-md border border-line bg-white p-7 md:p-10">
-          <h3 class="heading-3 mb-4">オリジナル開発</h3>
-          <p class="text-sub">ローカライズ開発では対応できない場合の選択肢です。必要な機能や用途に合わせて、新規開発にも対応しています。</p>
-        </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section container-page">
+  <section class="section container-page scroll-mt-24" id="fields">
     <div class="section-heading">
       <p class="eyebrow">Fields</p>
       <h2>主な取扱分野</h2>
       <p>バッテリー・電源関連をはじめ、生活家電やカー用品、スマートフォン・PC周辺機器など、エレクトロニクス製品を中心に商品化を支援しています。</p>
     </div>
     <div class="grid gap-5 md:grid-cols-3">
-      {fields.map(([title, text]) => (
-        <article class="rounded-md border border-line bg-white p-6">
-          <MediaFrame class="mb-5" label={`${title} image`} />
-          <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{title}</h3>
-          <p class="text-sm text-sub">{text}</p>
+      {fields.map((field) => (
+        <article class="overflow-hidden rounded-md border border-line bg-white">
+          <img
+            class="aspect-[3/2] w-full object-cover"
+            src={withBase(field.image)}
+            alt={field.imageAlt}
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="p-6">
+            <h3 class="mb-3 text-[22px] font-semibold leading-[1.4]">{field.title}</h3>
+            <p class="text-sm text-sub">{field.description}</p>
+          </div>
         </article>
       ))}
     </div>

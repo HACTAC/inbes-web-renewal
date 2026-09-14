@@ -6,7 +6,7 @@
     <meta name="description" content="INBES Brand OSに基づくWebデザインシステム。" />
     <title>INBES Design System</title>
     <link rel="icon" href="./assets/brand/inbes-symbol-positive.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=0.4.0" />
+    <link rel="stylesheet" href="./styles.css?v=0.5.0" />
     <script>
       (function (d) {
         var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true },
@@ -47,7 +47,7 @@
         <a href="#patterns">Patterns</a>
         <a href="#application">Application</a>
       </nav>
-      <span class="version">v0.4.0</span>
+      <span class="version">v0.5.0</span>
     </header>
 
     <main id="main">
@@ -323,10 +323,10 @@
                 <p>Tailwindへの移行を前提とした共通値です。</p>
               </div>
               <dl class="token-list">
-                <div><dt>Desktop</dt><dd>12 columns / 24 gap / 48 gutter</dd></div>
-                <div><dt>Tablet</dt><dd>8 columns / 24 gap / 32 gutter</dd></div>
-                <div><dt>Mobile</dt><dd>4 columns / 16 gap / 24 gutter</dd></div>
-                <div><dt>Container</dt><dd>1200px max</dd></div>
+                <div><dt>Desktop</dt><dd>12 columns / 24 gap / 5% gutter</dd></div>
+                <div><dt>Tablet</dt><dd>8 columns / 24 gap / 5% gutter</dd></div>
+                <div><dt>Mobile</dt><dd>4 columns / 16 gap / 5% gutter</dd></div>
+                <div><dt>Container</dt><dd>90% / 1728・1440・1200・960 max</dd></div>
                 <div><dt>Breakpoints</dt><dd>768 / 1024 / 1280</dd></div>
               </dl>
             </article>
@@ -345,22 +345,25 @@
             <article class="foundation-panel">
               <div class="subsection-heading">
                 <h3>Photography</h3>
-                <p>3:2を標準とし、製品・工程・暮らしを実在感のある写真で伝えます。</p>
+                <p>比率とトリミングを用途別に固定し、製品・工程・暮らしを実在感のある写真で伝えます。</p>
               </div>
               <dl class="token-list">
-                <div><dt>Default</dt><dd>3:2</dd></div>
+                <div><dt>Product</dt><dd>16:9 / object-contain</dd></div>
+                <div><dt>Editorial</dt><dd>3:2 / object-cover</dd></div>
+                <div><dt>Page Hero</dt><dd>固定高 / object-cover / 個別position</dd></div>
                 <div><dt>Subject</dt><dd>製品・手元・工程・利用場面</dd></div>
                 <div><dt>Tone</dt><dd>自然光・軽い補正・実際の質感</dd></div>
                 <div><dt>Mobile</dt><dd>同じ場面から主題に合わせて別トリミング</dd></div>
                 <div><dt>Exception</dt><dd>1:1はEC一覧など外部仕様に限る</dd></div>
               </dl>
               <div class="crop-rule-demo">
-                <div class="crop-frame crop-frame--desktop"><span class="crop-subject"></span><small>3:2 / 基本</small></div>
-                <div class="crop-frame crop-frame--mobile"><span class="crop-subject"></span><small>4:5 / Hero例外</small></div>
+                <div class="crop-frame crop-frame--desktop"><span class="crop-subject"></span><small>16:9 / Product</small></div>
+                <div class="crop-frame crop-frame--mobile"><span class="crop-subject"></span><small>Hero / Position</small></div>
               </div>
               <ul class="photo-rules">
-                <li>製品カードと事例一覧ではPC・モバイルとも3:2を維持する</li>
-                <li>Heroのみ4:5を許容し、被写体位置を画像ごとに指定する</li>
+                <li>製品カードは支給バナーに合わせてPC・モバイルとも16:9を維持する</li>
+                <li>事例、取扱分野、課題カードは3:2を基本とする</li>
+                <li>HEROは固定高の全面写真とし、被写体位置を画像ごとに指定する</li>
                 <li>製品全体、手元、顔を中途半端に切らない</li>
                 <li>1枚の中央切り抜きで成立しない場合はモバイル用画像を用意する</li>
               </ul>
@@ -388,8 +391,10 @@
                 <tr><td><code>font.scale.heading</code></td><td>H1 40/52/64・H2 32/36/40・H3 22/24/26</td><td><span class="status status--fixed">Confirmed</span></td><td>Responsive / 2026-07-29</td></tr>
                 <tr><td><code>space.1–8</code></td><td>4 / 8 / 16 / 24 / 32 / 48 / 64 / 96</td><td><span class="status status--fixed">Confirmed</span></td><td>05 BUILD</td></tr>
                 <tr><td><code>radius.sm–lg</code></td><td>4 / 8 / 12</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
-                <tr><td><code>media.aspect.default</code></td><td>3:2</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
-                <tr><td><code>layout.container</code></td><td>max 1200px / 768・1024・1280</td><td><span class="status status--fixed">Confirmed</span></td><td>Tailwind aligned / 2026-07-29</td></tr>
+                <tr><td><code>media.aspect.product</code></td><td>16:9 / contain</td><td><span class="status status--fixed">Confirmed</span></td><td>Site review / 2026-09-13</td></tr>
+                <tr><td><code>media.aspect.editorial</code></td><td>3:2 / cover</td><td><span class="status status--fixed">Confirmed</span></td><td>Site review / 2026-09-13</td></tr>
+                <tr><td><code>media.hero</code></td><td>260–320px / per-image position / white scrim</td><td><span class="status status--fixed">Confirmed</span></td><td>Site review / 2026-09-13</td></tr>
+                <tr><td><code>layout.container</code></td><td>90% / wide 1728・page 1440・content 1200・copy 960</td><td><span class="status status--fixed">Confirmed</span></td><td>Tailwind aligned / 2026-09-13</td></tr>
                 <tr><td><code>icon.family</code></td><td>Iconoir Regular / outline</td><td><span class="status status--fixed">Confirmed</span></td><td>Phosphor comparison / 2026-07-22</td></tr>
                 <tr><td><code>icon.size</code></td><td>20 / 24 / 32 / 48</td><td><span class="status status--fixed">Confirmed</span></td><td>Design review / 2026-07-22</td></tr>
                 <tr><td><code>icon.stroke</code></td><td>1.5px / round cap and join</td><td><span class="status status--fixed">Confirmed</span></td><td>Iconoir Regular</td></tr>
@@ -650,15 +655,15 @@
               <p>カードは反復する個別項目にだけ使用します。</p>
             </div>
             <div class="content-card-grid">
-              <article class="product-card">
-                <div class="media-placeholder"><i data-icon="media-image"></i><span>Product image / 3:2</span></div>
+              <a class="product-card product-card--linked" href="#components">
+                <div class="product-card__media"><img src="./assets/samples/product-card.png" alt="ポータブル電源の製品バナー例" /></div>
                 <div>
                   <p class="section-label">Portable Power</p>
-                  <h4>ポータブル電源</h4>
-                  <p>製品概要を短く示し、詳細は個別ページへ分けます。</p>
-                  <a class="text-link" href="#components">製品情報を見る <i data-icon="arrow-up-right"></i></a>
+                  <h4>POWERBANK CUBE NEO</h4>
+                  <p>画像、見出し、本文、リンクを一つのクリック領域として扱います。</p>
+                  <span class="text-link">製品情報を見る <i data-icon="arrow-up-right"></i></span>
                 </div>
-              </article>
+              </a>
               <article class="case-card">
                 <div class="media-placeholder media-placeholder--wide"><i data-icon="media-image"></i><span>Case image / 3:2</span></div>
                 <div>
@@ -686,19 +691,19 @@
               <p>会社情報、主要導線、法務情報だけを静かに整理します。ページ本文より目立たせません。</p>
             </div>
             <footer class="footer-demo">
-              <div class="footer-demo__brand">
-                <img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" />
-                <p>日本で売るための商品づくりを支える会社です。</p>
+              <div class="footer-demo__main">
+                <div class="footer-demo__brand">
+                  <img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" />
+                  <address>〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F<br />TEL 042-316-9823　FAX 042-316-9824<br /><strong>製品に関するお問い合わせ　TEL 042-400-0787</strong></address>
+                </div>
+                <nav aria-label="フッター例">
+                  <div><strong>個人のお客様</strong><a href="#components">製品一覧</a><a href="#components">サポート</a></div>
+                  <div><strong>法人のお客様</strong><a href="#components">商品化支援</a><a href="#components">進め方</a><a href="#components">開発実績</a></div>
+                </nav>
               </div>
-              <nav aria-label="フッター例">
-                <div><strong>商品化支援</strong><a href="#components">商品化支援</a><a href="#components">進め方</a><a href="#components">開発実績</a></div>
-                <div><strong>自社製品</strong><a href="#components">製品一覧</a><a href="#components">サポート</a></div>
-                <div><strong>Company</strong><a href="#components">会社概要</a><a href="#components">お問い合わせ</a></div>
-              </nav>
               <div class="footer-demo__legal">
                 <span>© INBES Co., Ltd.</span>
-                <a href="#components">プライバシーポリシー</a>
-                <a href="#components">クッキーポリシー</a>
+                <div><a href="#components">お知らせ</a><a href="#components">会社概要</a><a href="#components">お問い合わせ</a><b aria-hidden="true">｜</b><a href="#components">プライバシーポリシー</a><a href="#components">クッキーポリシー</a></div>
               </div>
             </footer>
           </div>
@@ -736,9 +741,11 @@
 
           <div class="pattern-stack">
             <article class="pattern-demo pattern-demo--hero">
-              <div>
-                <p class="section-label">Product Development Support</p>
-                <h3>商品化支援</h3>
+              <img class="pattern-hero__image" src="./assets/samples/page-hero.png" alt="商品開発を行う明るいオフィス" />
+              <div class="pattern-hero__scrim" aria-hidden="true"></div>
+              <div class="pattern-hero__copy">
+                <h3>会社概要</h3>
+                <p class="section-label">Company</p>
               </div>
               <span class="pattern-name">Hero</span>
             </article>
@@ -747,16 +754,36 @@
               <header>
                 <p class="section-label">Development Approach</p>
                 <h3>商品化の考え方</h3>
+                <p>既存商品を国内市場向けにカスタマイズし、足りない部分は開発で補います。</p>
               </header>
-              <div class="approach-grid">
-                <div class="approach-main">
-                  <h4>ローカライズ開発</h4>
-                  <p>海外製品や既存技術を、日本市場に合わせて商品化します。</p>
-                  <ol><li>製品・技術を選定</li><li>日本市場へ最適化</li><li>販売条件を整える</li><li>商品として届ける</li></ol>
+              <div class="capability-demo">
+                <div class="capability-track">
+                  <article class="capability-card">
+                    <img src="./assets/samples/development-slide.jpg" alt="白い調理家電の意匠とカラーバリエーションの検討" />
+                    <div class="capability-card__body">
+                      <span class="section-label">What We Customize</span>
+                      <b>04</b>
+                      <h4>意匠・カラー</h4>
+                      <p>日本の嗜好や売り場、ブランドに合う外観・色・素材を検討します。</p>
+                    </div>
+                  </article>
+                  <article class="capability-card capability-card--preview" aria-hidden="true">
+                    <img src="./assets/samples/page-hero.png" alt="" />
+                    <div class="capability-card__body"><span class="section-label">What We Customize</span><b>05</b><h4>使い方・販売提案</h4></div>
+                  </article>
                 </div>
-                <div class="approach-sub"><h4>オリジナル開発</h4><p>必要な場合の選択肢として扱います。</p></div>
+                <div class="capability-toolbar">
+                  <div aria-label="スライド位置"><i></i><i></i><i></i><i class="is-active"></i><i></i><i></i></div>
+                  <span><button type="button" aria-label="前へ"><i data-icon="nav-arrow-left"></i></button><button type="button" aria-label="次へ"><i data-icon="arrow-right"></i></button></span>
+                </div>
               </div>
-              <span class="pattern-name">Localization Process</span>
+              <ol class="approach-steps">
+                <li><b>01</b><span>製品・技術を選定</span></li>
+                <li><b>02</b><span>国内仕様へ最適化</span></li>
+                <li><b>03</b><span>量産・輸入条件を整える</span></li>
+                <li><b>04</b><span>販売できる状態で届ける</span></li>
+              </ol>
+              <span class="pattern-name">Development Slider</span>
             </article>
 
             <article class="pattern-demo pattern-demo--case">
@@ -769,6 +796,19 @@
                 <a class="text-link" href="#application">実績を見る <i data-icon="arrow-right"></i></a>
               </div>
               <span class="pattern-name">Case Study</span>
+            </article>
+
+            <article class="pattern-demo pattern-demo--news">
+              <header>
+                <div><p class="section-label">News</p><h3>お知らせ</h3></div>
+                <a class="text-link" href="#application">お知らせ一覧へ <i data-icon="arrow-right"></i></a>
+              </header>
+              <div class="news-demo-list">
+                <a href="#application"><time datetime="2026-09-13">2026.09.13</time><span class="tag">お知らせ</span><strong>コーポレートサイト リニューアルのお知らせ</strong><i data-icon="arrow-right"></i></a>
+                <a href="#application"><time datetime="2026-09-13">2026.09.13</time><span class="tag">製品情報</span><strong>自社製品の情報を更新しました</strong><i data-icon="arrow-right"></i></a>
+                <a href="#application"><time datetime="2026-09-13">2026.09.13</time><span class="tag">商品化支援</span><strong>商品化支援の開発実績を更新しました</strong><i data-icon="arrow-right"></i></a>
+              </div>
+              <span class="pattern-name">News List</span>
             </article>
 
             <article class="pattern-demo pattern-demo--cta">
@@ -785,8 +825,9 @@
               <tbody>
                 <tr><td>Hero</td><td>Eyebrow / H1 / Lead / Media</td><td>商品化支援、進め方、実績、会社概要</td></tr>
                 <tr><td>Product Overview</td><td>Category index / Product card / External link</td><td>製品一覧</td></tr>
-                <tr><td>Localization Process</td><td>Heading / Main approach / Steps / Option</td><td>商品化支援</td></tr>
+                <tr><td>Development Slider</td><td>Heading / Capability card / Drag / Arrow / Position</td><td>商品化支援</td></tr>
                 <tr><td>Case Study</td><td>Media / Tag / Client / Link</td><td>商品化支援、開発実績</td></tr>
+                <tr><td>News List</td><td>Date / Category / Title / Link</td><td>トップ、お知らせ一覧</td></tr>
                 <tr><td>Contact Section</td><td>Heading / Primary / Secondary</td><td>進め方、実績</td></tr>
                 <tr><td>Contact Form</td><td>Field / Choice / Consent / Submit</td><td>商品化相談、製品サポート</td></tr>
               </tbody>
@@ -804,7 +845,7 @@
           <header class="section-heading">
             <p class="section-label">Application</p>
             <h2>Astro実装への適用状況</h2>
-            <p><span class="status status--fixed">Applied</span> v0.4.0のFoundationと共通UIを、現行の情報設計とコピーを変えずに全ページへ適用しています。</p>
+            <p><span class="status status--fixed">Applied</span> v0.5.0のFoundationと共通UIを、現行のAstro実装に同期しています。</p>
           </header>
 
           <div class="token-table-wrap">
@@ -812,20 +853,21 @@
               <caption>Page / Primary patterns / Design emphasis / Check</caption>
               <thead><tr><th>Page</th><th>Primary patterns</th><th>Design emphasis</th><th>Check</th></tr></thead>
               <tbody>
-                <tr><td>トップ</td><td>Two-way entrance</td><td>2導線と写真を同格にする</td><td>モバイルで両入口を認識できるか</td></tr>
-                <tr><td>製品一覧</td><td>Category index / Product card</td><td>写真と製品名を先に見せる</td><td>既存ユーザーが迷わないか</td></tr>
-                <tr><td>商品化支援</td><td>Hero / Approach / Fields / Works</td><td>ローカライズ開発を主軸にする</td><td>説明過多になっていないか</td></tr>
+                <tr><td>トップ</td><td>Two-way entrance / News / Company</td><td>2導線と写真を同格にする</td><td>モバイルで両入口を認識できるか</td></tr>
+                <tr><td>製品一覧</td><td>Category index / Linked product card</td><td>16:9の写真と製品名を先に見せる</td><td>カード全体のリンクが明確か</td></tr>
+                <tr><td>商品化支援</td><td>Hero / Needs / Development slider / Fields</td><td>既存品を起点に不足部分を開発で補う</td><td>対応範囲を視覚的に理解できるか</td></tr>
                 <tr><td>進め方</td><td>Start choice / Timeline / Design support</td><td>相談から伴走する順序</td><td>工程説明だけに見えないか</td></tr>
                 <tr><td>開発実績</td><td>Case Study / Gallery / Tag</td><td>写真と支援範囲を先に見せる</td><td>文章を読まず理解できるか</td></tr>
                 <tr><td>会社概要</td><td>Message / About / Profile</td><td>思想・事業・事実を分ける</td><td>サービス説明と重複しないか</td></tr>
                 <tr><td>お問い合わせ</td><td>Chooser / Form / Phone</td><td>商品化相談と製品サポートを分ける</td><td>心理的負担が小さいか</td></tr>
+                <tr><td>お知らせ</td><td>News List / Article</td><td>日付・分類・見出しを一定の順序で見せる</td><td>一覧と詳細を往復しやすいか</td></tr>
                 <tr><td>Policy</td><td>Text document</td><td>可読幅と見出し階層</td><td>リンクと更新日が明確か</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="responsive-grid">
-            <article><p class="section-label">Desktop</p><h3>12 columns</h3><ul><li>写真と本文を横並びで比較</li><li>ナビゲーションを一列に表示</li><li>最大幅1200pxを使用</li></ul></article>
+            <article><p class="section-label">Desktop</p><h3>12 columns</h3><ul><li>写真と本文を横並びで比較</li><li>ナビゲーションを一列に表示</li><li>90%幅と4段階の最大幅を使い分ける</li></ul></article>
             <article><p class="section-label">Tablet</p><h3>8 columns</h3><ul><li>カードを2列へ整理</li><li>主要CTAは横並びを維持</li><li>長い表は横スクロール</li></ul></article>
             <article><p class="section-label">Mobile</p><h3>4 columns</h3><ul><li>情報順序を変えず1列化</li><li>操作領域44px以上</li><li>写真、見出し、本文の順を維持</li></ul></article>
           </div>
@@ -860,7 +902,7 @@
     </main>
 
     <footer class="system-footer">
-      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.4.0</span></div>
+      <div><img src="./assets/brand/inbes-logo-horizontal.svg" alt="INBES" /><span>Design System v0.5.0</span></div>
       <p>Source: INBES Brand OS / Moodboard typography v1</p>
     </footer>
 
@@ -886,6 +928,6 @@
     </aside>
     <div class="drawer-backdrop" data-close-drawer hidden></div>
 
-    <script src="./system.js?v=0.4.0"></script>
+    <script src="./system.js?v=0.5.0"></script>
   </body>
 </html>

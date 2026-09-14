@@ -6,13 +6,13 @@ Brand OSをWebの具体的な値、部品、パターンへ変換し、ブラウ
 
 ## Preview
 
-- Current version: `v0.4.0`
+- Current version: `v0.5.0`
 - Source: `design-system/site/`
 - Public preview: `https://hactac.github.io/inbes-web-renewal/design-system/`
 - Local preview: `python3 -m http.server 4173 --directory design-system/site`
 - Icon sprite: `npm run build:design-icons`
 
-`main`へのpush時に、Astroの確認サイトとともにGitHub Pagesへ公開する。
+`main`へのpush時に、Astroの現行ReviewサイトとともにGitHub Pagesへ公開する。`dev.inbes.jp`のCloudflare Pages Stagingは導入予定であり、稼働開始までは公開済みと扱わない。
 
 ## Source Of Truth
 
@@ -52,11 +52,15 @@ Brand OSとWeb Design Systemは一つの文書やリポジトリへまとめず�
 
 ## Implementation Status
 
-`v0.4.0`のFoundationと共通UIは、2026-07-29にAstro全ページへ適用した。
+`v0.5.0`は、2026-09-14時点のAstro実装から、階層別コンテナ、画像HERO、二系統ヘッダー、カード状態、ニュース、スライダー、フッターを同期した。
 
 - Tailwind theme: `tailwind.config.mjs`
 - Base styles: `src/styles/global.css`
 - Header / Mobile Navigation / Footer: `src/layouts/BaseLayout.astro`
+- Top Header: `src/components/HomeHeader.astro`
+- Page Hero: `src/components/Hero.astro`
+- News list: `src/components/NewsList.astro`
+- Development slider: `src/components/DevelopmentCapabilitySlider.astro`
 - Form / states: `src/components/ContactForm.astro`
 - Icon: `src/components/Icon.astro` と `public/assets/icons/iconoir.svg`
 - Logo / Symbol: `public/assets/brand/`
@@ -68,7 +72,7 @@ Brand OSとWeb Design Systemは一つの文書やリポジトリへまとめず�
 - ロゴ、シンボル、Brand premise、ムードボード
 - 色、書体、余白、グリッド、角丸、写真比率
 - Button、Link、Navigation、Form、Tag、Accordion、Overlay、Card
-- Hero、Localization Process、Case Study、CTA
+- Hero、Development Slider、News List、Case Study、CTA
 - 商品化支援／自社製品の共通Header、右ドロワー型Mobile Navigation、Footer
 - ファイル添付を含むFormとSending、Success、Warning、Error状態
 - ページ別適用表
@@ -86,11 +90,11 @@ Brand OSとWeb Design Systemは一つの文書やリポジトリへまとめず�
 
 - 本文: `18px / line-height 1.6`
 - 見出し: `H1 40・52・64px / H2 32・36・40px / H3 22・24・26px`
-- Container: `1200px max`
+- Container: `90% width`を共通とし、`wide 1728px / page 1440px / content 1200px / copy 960px`
 - Breakpoints: `768px / 1024px / 1280px`
 - Grid: `4 / 8 / 12 columns`
 - 角R: `4px / 8px / 12px`
-- 写真比率: `3:2`を基本とする
+- 写真比率: 製品カード`16:9`、事例・分野カード`3:2`、HEROは固定高の全面写真
 - アイコン: `Iconoir Regular / 24px grid / 1.5px stroke / 20・24・32・48px`
 - Logo Red: `#E60012`（支給ロゴデータから確定）
 - Site Primary Red: `#C8101E`
@@ -115,9 +119,20 @@ IconoirはPhosphorと比較し、単一のRegularスタイルで線幅と形状�
 
 Webでの横組みロゴは幅104pxを最小、120–160pxを推奨とする。アイソレーションはシンボル高の1/4以上を確保する。シンボル単体は24px以上とし、社名の識別が必要な場所では横組みロゴを優先する。
 
-写真は3:2を基本とし、製品カードと事例一覧ではモバイルでも比率を維持する。Heroのみ4:5を許容し、被写体位置を画像ごとに指定する。中央トリミングで製品、手元、顔が欠ける場合は、モバイル用画像を別途用意する。
+写真比率は用途で固定する。製品カードは支給バナーに合わせて16:9、事例・取扱分野・課題カードは3:2を基本とする。階層ページHEROは固定高の全面写真に白いscrimを重ね、被写体位置を画像ごとに指定する。中央トリミングで製品、手元、顔が欠ける場合は、モバイル用画像を別途用意する。
 
-商品化支援側と自社製品側のHeaderは同一構造とし、ロゴ横の相互リンク、ローカルナビ、右端のCTAだけを切り替える。モバイルはロゴと現在モードを残し、右から開くMenu Drawerへナビゲーションを収納する。
+トップHeaderは会社情報への短い導線、階層ページHeaderは商品化支援側と自社製品側の二系統で構成する。階層ページはロゴ横の相互リンク、ローカルナビ、右端のCTAを切り替える。モバイルはロゴと現在モードを残し、右から開くMenu Drawerへナビゲーションを収納する。
+
+## v0.5.0 Changes
+
+- 90%幅を共通にした4段階のコンテナ階層を追加
+- 階層ページの画像HEROと白い方向性scrimを追加
+- 製品カードを16:9、カード全体リンク、薄い赤のhover/focusへ更新
+- 商品化の考え方を単一の開発方針と横送りスライダーで表現
+- お知らせ一覧と詳細ページの構造を追加
+- フッターを「個人のお客様」「法人のお客様」と会社・法務リンクへ再編
+- 会社住所、TEL、FAX、製品問い合わせ窓口の表示規則を追加
+- ドラッグ・スワイプ、disabled、reduced motionをスライダー状態へ追加
 
 ## Review Before Production
 

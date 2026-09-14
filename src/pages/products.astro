@@ -7,10 +7,10 @@ import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout title="製品一覧" description="INBESが企画・販売する製品をご紹介しています。" siteMode="products">
-  <Hero eyebrow="Products" title="製品一覧" lead="INBESが企画・販売する製品をご紹介しています。詳しい仕様や販売情報は、各製品ページで確認できます。" />
+  <Hero eyebrow="Products" title="製品一覧" image="/assets/page-visuals/products-generated-v1.png" imageClass="object-[58%_82%]" />
 
-  <nav class="container-page pb-4" aria-label="製品カテゴリ">
-    <div class="grid border-y border-line sm:grid-cols-2 lg:grid-cols-3">
+  <nav class="container-page pb-4 pt-2" aria-label="製品カテゴリ">
+    <div class="grid border-b border-line sm:grid-cols-2 lg:grid-cols-3">
       {productCategories.map((category) => (
         <a class="flex items-center justify-between gap-4 border-b border-line px-3 py-4 text-sm font-semibold last:border-b-0 hover:text-primary sm:px-5 lg:[&:nth-last-child(-n+3)]:border-b-0" href={`#${category.id}`}>
           <span>{category.title}</span>
@@ -30,10 +30,10 @@ import { withBase } from "@/utils/paths";
           </div>
           <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {category.products.map((product) => (
-              <article class="flex h-full flex-col rounded-md border border-line bg-white p-6">
-                <div class="mb-5 aspect-[3/2] overflow-hidden rounded-md bg-soft">
+              <article class="group relative flex h-full flex-col rounded-md border border-line bg-white p-6 transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out hover:border-primary/40 hover:bg-primary/[0.03] hover:shadow-[0_8px_24px_rgba(198,16,30,0.08)] focus-within:border-primary/40 focus-within:bg-primary/[0.03] focus-within:shadow-[0_8px_24px_rgba(198,16,30,0.08)] motion-safe:hover:-translate-y-0.5 motion-safe:focus-within:-translate-y-0.5">
+                <div class="mb-5 aspect-video overflow-hidden rounded-md bg-soft">
                   <img
-                    class="h-full w-full object-contain"
+                    class="h-full w-full object-contain transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.015] motion-safe:group-focus-within:scale-[1.015]"
                     src={withBase(product.image)}
                     alt={product.imageAlt}
                     loading="lazy"
@@ -67,7 +67,11 @@ import { withBase } from "@/utils/paths";
                   </h3>
                 )}
                 <p class="mb-6 text-sm text-sub">{product.description}</p>
-                <ExternalLink class="mt-auto w-fit" href={product.url}>
+                <ExternalLink
+                  class="mt-auto w-fit after:absolute after:inset-0 after:rounded-md after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary focus-visible:after:ring-offset-2"
+                  href={product.url}
+                  ariaLabel={`${product.name ?? product.models?.join(" / ") ?? product.tag}の製品ページを新しいタブで開く`}
+                >
                   {product.linkLabel}
                 </ExternalLink>
               </article>

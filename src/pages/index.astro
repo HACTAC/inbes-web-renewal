@@ -1,54 +1,110 @@
 ---
+import Icon from "@/components/Icon.astro";
+import NewsList from "@/components/NewsList.astro";
+import { newsItems } from "@/data/news";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import MediaFrame from "@/components/MediaFrame.astro";
 import { withBase } from "@/utils/paths";
+
+const entrances = [
+  {
+    audience: "個人のお客様",
+    title: "自社製品",
+    english: "For Consumer",
+    href: "/products/",
+    image: "/assets/hero/for-consumer.png",
+    imageAlt: "INBESのポータブル電源、ソーラーパネル、カメラ関連製品など",
+    imageClass: "origin-bottom object-[62%_center] group-hover:scale-[1.015]"
+  },
+  {
+    audience: "法人のお客様",
+    title: "商品化支援",
+    english: "For Business",
+    href: "/services/",
+    image: "/assets/hero/for-business.png",
+    imageAlt: "商品開発中の家電、映像機器、設計図面、試作部品",
+    imageClass: "origin-bottom object-center group-hover:scale-[1.015]"
+  }
+];
 ---
 
-<BaseLayout title="INBES株式会社" description="INBESは、自社製品の企画・販売と、日本で売るための商品化支援を行う会社です。" entrance>
-  <section class="relative min-h-[100svh] overflow-hidden bg-white">
-    <div class="pointer-events-none absolute left-1/2 top-5 z-10 -translate-x-1/2 rounded bg-white px-4 py-2 md:top-8">
-      <h1>
-        <img class="h-auto w-[136px] md:w-[152px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
-      </h1>
-    </div>
+<BaseLayout
+  title="INBES株式会社"
+  description="INBESは、自社製品の企画・販売と、日本で売るための商品化支援を行う会社です。"
+  entrance
+  ogImage="/assets/hero/for-consumer.png"
+>
+  <h1 class="sr-only">INBES株式会社</h1>
 
-    <div class="grid min-h-[100svh] md:grid-cols-2">
+  <section class="grid bg-white md:grid-cols-2" aria-label="お客様別メニュー">
+    {entrances.map((entrance, index) => (
       <a
-        href={withBase("/products/")}
-        class="group relative block min-h-[50svh] border-b border-line bg-white transition-colors hover:bg-soft md:flex md:min-h-[100svh] md:items-end md:border-b-0 md:border-r md:p-12 md:pt-28 lg:p-16 lg:pt-32"
-        aria-label="自社製品ページへ"
+        href={withBase(entrance.href)}
+        class:list={[
+          "group relative block min-h-[68svh] overflow-hidden bg-soft md:min-h-[calc(100svh-72px)]",
+          index === 0 ? "border-b border-line md:border-b-0 md:border-r" : ""
+        ]}
+        aria-label={`${entrance.audience}向け ${entrance.title}ページへ`}
       >
-        <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
-          <MediaFrame class="h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border" label="Product image / mobile hero crop" />
-        </div>
-        <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-white px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
-          <p class="eyebrow mb-2 md:mb-4">For Users</p>
-          <h2 class="heading-2 mb-4">自社製品</h2>
-          <p class="mb-6 hidden text-sub sm:block">製品一覧、サポートをお探しの方へ。</p>
-          <span class="text-link">製品一覧を見る <span aria-hidden="true">→</span></span>
+        <img
+          class:list={["absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out", entrance.imageClass]}
+          src={withBase(entrance.image)}
+          alt={entrance.imageAlt}
+          width={index === 0 ? 2210 : 1536}
+          height={index === 0 ? 1474 : 1024}
+          fetchpriority={index === 0 ? "high" : "auto"}
+        />
+        <div class="home-entrance-copy absolute inset-x-0 bottom-0 grid h-[170px] content-center px-6 py-6 sm:px-8 md:h-[180px] md:px-10 lg:h-[190px] lg:px-12 xl:px-16">
+          <p class="mb-2 text-sm font-semibold text-ink md:mb-3 md:text-base">{entrance.audience}</p>
+          <div class="flex items-center gap-4 md:gap-5">
+            <h2 class="heading-1 text-[36px] md:text-[44px] lg:text-[52px]">{entrance.title}</h2>
+            <span class="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark md:size-14" aria-hidden="true">
+              <Icon name="arrow-right" size={24} />
+            </span>
+          </div>
+          <p class="mt-2 font-latin text-base font-bold text-primary md:mt-3 md:text-lg">{entrance.english}</p>
         </div>
       </a>
+    ))}
+  </section>
 
-      <a
-        href={withBase("/services/")}
-        class="group relative block min-h-[50svh] bg-soft transition-colors hover:bg-primary-pale md:flex md:min-h-[100svh] md:items-end md:p-12 md:pt-28 lg:p-16 lg:pt-32"
-        aria-label="商品化支援ページへ"
-      >
-        <div class="absolute inset-0 overflow-hidden md:inset-x-12 md:bottom-auto md:top-28 md:rounded-md lg:inset-x-16 lg:top-32">
-          <MediaFrame class="h-full w-full rounded-none border-0 md:aspect-[3/2] md:h-auto md:rounded-md md:border" label="Development image / mobile hero crop" />
+  <section class="section scroll-mt-20 border-t border-line bg-white" id="news" aria-labelledby="news-title">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16">
+        <div>
+          <p class="eyebrow">News</p>
+          <h2 class="heading-2" id="news-title">お知らせ</h2>
+          <a class="text-link mt-6" href={withBase("/news/")}>
+            お知らせ一覧へ
+            <Icon name="arrow-right" size={20} />
+          </a>
         </div>
-        <div class="absolute inset-x-0 bottom-0 z-10 max-w-xl bg-soft px-6 py-5 md:relative md:inset-auto md:bg-transparent md:px-0 md:py-0">
-          <p class="eyebrow mb-2 md:mb-4">For Business</p>
-          <h2 class="heading-2 mb-4">商品化支援</h2>
-          <p class="mb-6 hidden text-sub sm:block">日本で売るための商品づくりを支援します。</p>
-          <span class="text-link">商品化支援を見る <span aria-hidden="true">→</span></span>
+
+        <div>
+          <NewsList items={newsItems.slice(0, 3)} />
         </div>
-      </a>
+      </div>
     </div>
+  </section>
 
-    <nav class="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 gap-5 rounded border border-line bg-white px-5 py-2 text-xs font-semibold text-sub md:flex" aria-label="補助ナビゲーション">
-      <a href={withBase("/company/")} class="hover:text-ink">会社概要</a>
-      <a href={withBase("/contact/")} class="hover:text-ink">お問い合わせ</a>
-    </nav>
+  <section aria-label="会社概要">
+    <a class="group relative block min-h-[460px] overflow-hidden bg-soft md:min-h-[520px] lg:min-h-[560px]" href={withBase("/company/")} aria-label="会社概要ページへ">
+      <img
+        class="absolute inset-0 h-full w-full origin-bottom object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+        src={withBase("/assets/hero/company.png")}
+        alt="商品開発の検討を進めるワークスペース"
+        width="1672"
+        height="941"
+        loading="lazy"
+      />
+      <div class="home-entrance-copy absolute inset-x-0 bottom-0 px-[5%] py-8 md:inset-y-0 md:left-0 md:right-auto md:grid md:w-[36%] md:min-w-[400px] md:content-center md:px-[5%] md:py-12 lg:w-[34%]">
+        <div class="flex items-center gap-4 md:gap-5">
+          <h2 class="heading-2 md:text-[40px] lg:text-[44px]">会社概要</h2>
+          <span class="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark md:size-14" aria-hidden="true">
+            <Icon name="arrow-right" size={24} />
+          </span>
+        </div>
+        <p class="mt-2 font-latin text-base font-bold text-primary md:mt-3 md:text-lg">Company</p>
+      </div>
+    </a>
   </section>
 </BaseLayout>

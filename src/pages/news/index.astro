@@ -1,0 +1,16 @@
+---
+import Hero from "@/components/Hero.astro";
+import NewsList from "@/components/NewsList.astro";
+import { newsItems } from "@/data/news";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="お知らせ" description="INBESからの製品情報、商品化支援、会社に関するお知らせです。">
+  <Hero eyebrow="News" title="お知らせ" image="/assets/hero/news-v1.png" />
+
+  <section class="section">
+    <div class="container-content">
+      <NewsList items={newsItems} showSummary />
+    </div>
+  </section>
+</BaseLayout>

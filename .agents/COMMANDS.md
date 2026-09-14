@@ -31,6 +31,21 @@ npm run dev
 npm run preview
 ```
 
+## Staging Build
+
+Cloudflare Pagesでは次の環境値で静的ビルドする。DNS、Access、Git連携などの外部サービス設定は、このファイルのコマンドだけでは変更しない。
+
+```bash
+PUBLIC_SITE_URL=https://dev.inbes.jp PUBLIC_DEPLOY_ENV=staging npm run build
+```
+
+GitHub Pages Reviewをローカルで再現する場合は、ビルドとリンク監査の両方へ同じbase pathを渡す。
+
+```bash
+PUBLIC_SITE_URL=https://hactac.github.io PUBLIC_BASE_PATH=/inbes-web-renewal/ PUBLIC_DEPLOY_ENV=review npm run build
+PUBLIC_BASE_PATH=/inbes-web-renewal/ npm run check:links
+```
+
 ## Read-Only Health Checks
 
 - `git status --short`

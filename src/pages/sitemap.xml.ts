@@ -1,4 +1,5 @@
 import { withBase } from "@/utils/paths";
+import { getNewsHref, newsItems } from "@/data/news";
 
 const routes = [
   "/",
@@ -11,7 +12,9 @@ const routes = [
   "/contact/business/",
   "/contact/support/",
   "/privacy/",
-  "/cookies/"
+  "/cookies/",
+  "/news/",
+  ...newsItems.map(getNewsHref)
 ];
 
 export const GET = ({ site, url }: { site?: URL; url: URL }) => {

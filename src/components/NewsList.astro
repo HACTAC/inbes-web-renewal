@@ -1,0 +1,32 @@
+---
+import Icon from "@/components/Icon.astro";
+import { getNewsHref, type NewsItem } from "@/data/news";
+import { withBase } from "@/utils/paths";
+
+type Props = {
+  items: NewsItem[];
+  showSummary?: boolean;
+};
+
+const { items, showSummary = false } = Astro.props;
+---
+
+<div class="border-t border-ink">
+  {items.map((item) => (
+    <article class="border-b border-line">
+      <a
+        class="group grid gap-2 py-5 transition-colors hover:bg-soft sm:grid-cols-[112px_116px_minmax(0,1fr)_24px] sm:items-center sm:gap-5 sm:px-3 md:py-6"
+        href={withBase(getNewsHref(item))}
+        aria-label={`${item.title}を読む`}
+      >
+        <time class="font-product text-sm font-medium text-sub" datetime={item.dateTime}>{item.date}</time>
+        <p><span class="tag-support">{item.category}</span></p>
+        <div>
+          <h2 class="font-semibold decoration-1 underline-offset-4 group-hover:text-primary group-hover:underline">{item.title}</h2>
+          {showSummary && <p class="mt-2 text-sm text-sub">{item.summary}</p>}
+        </div>
+        <Icon name="arrow-right" size={20} class="hidden shrink-0 text-primary sm:block" />
+      </a>
+    </article>
+  ))}
+</div>

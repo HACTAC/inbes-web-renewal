@@ -18,9 +18,20 @@ const {
   submitLabel,
   showCompany = false
 } = Astro.props;
+
+const deploymentEnvironment = import.meta.env.PUBLIC_DEPLOY_ENV ?? "production";
+const isFormEnabled = deploymentEnvironment === "production";
 ---
 
-<form class="grid gap-6 rounded-md border border-line bg-white p-6 md:p-8" method="post" action={withBase(action)} enctype="multipart/form-data" data-contact-form data-max-file-size="10485760">
+<form
+  class="grid gap-6 rounded-md border border-line bg-white p-6 md:p-8"
+  method="post"
+  action={isFormEnabled ? withBase(action) : undefined}
+  enctype="multipart/form-data"
+  data-contact-form
+  data-form-enabled={String(isFormEnabled)}
+  data-max-file-size="10485760"
+>
   <input type="hidden" name="category" value={categoryValue} />
   <div class="grid gap-5 md:grid-cols-2">
     {showCompany && (
@@ -60,8 +71,12 @@ const {
     </span>
   </label>
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-    <button class="button button-primary w-full sm:w-fit" type="submit">{submitLabel}</button>
-    <p class="text-xs text-muted">送信後、受付完了画面と自動返信メールで受信を確認できます。</p>
+    <button class="button button-primary w-full sm:w-fit" type="submit" disabled={!isFormEnabled} aria-disabled={!isFormEnabled ? "true" : undefined}>
+      {isFormEnabled ? submitLabel : "ステージング環境では送信できません"}
+    </button>
+    <p class="text-xs text-muted">
+      {isFormEnabled ? "送信後、受付完了画面と自動返信メールで受信を確認できます。" : "フォームの表示確認専用です。実メール送信は行われません。"}
+    </p>
   </div>
 
   <div class="form-status" data-state="sending" role="status" aria-live="polite" hidden>
@@ -80,6 +95,11 @@ const {
 
 <script>
   document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    if (form.dataset.formEnabled !== "true") {
+      form.addEventListener("submit", (event) => event.preventDefault());
+      return;
+    }
+
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const file = form.querySelector<HTMLInputElement>('input[type="file"]');
     const error = form.querySelector<HTMLElement>('[data-state="error"]');

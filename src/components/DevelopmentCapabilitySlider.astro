@@ -1,0 +1,172 @@
+---
+import Icon from "@/components/Icon.astro";
+import MediaFrame from "@/components/MediaFrame.astro";
+
+type Capability = {
+  title: string;
+  text: string;
+  image?: string;
+  imageAlt?: string;
+};
+
+type Props = {
+  items: Capability[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="development-slider min-w-0" data-development-slider>
+  <div class="cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing" data-development-viewport>
+    <div class="flex gap-4 transition-transform duration-500 ease-out" data-development-track>
+      {items.map((item, index) => (
+        <article
+          class="w-[88%] shrink-0 overflow-hidden rounded-md border border-line bg-white md:w-[84%]"
+          data-development-slide
+          aria-hidden={index === 0 ? "false" : "true"}
+        >
+          <div class="relative" data-development-visual>
+            <MediaFrame
+              src={item.image}
+              alt={item.imageAlt ?? item.title}
+              label={`${item.title} visual`}
+              aspect="16/9"
+              class="rounded-none border-0 bg-soft"
+              imageClass="pointer-events-none object-cover"
+            />
+          </div>
+          <div class="border-t border-line bg-white p-5 md:p-6">
+            <div class="flex items-start justify-between gap-5">
+              <div>
+                <p class="font-latin text-xs font-bold uppercase text-primary">What We Customize</p>
+                <h3 class="mt-2 text-[22px] font-semibold leading-[1.4]">{item.title}</h3>
+              </div>
+              <span class="shrink-0 font-latin text-xs font-bold text-sub">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <p class="mt-3 text-sm text-sub">{item.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="development-slider-toolbar mt-4 flex items-center justify-between gap-5">
+    <div class="flex items-center gap-2" aria-label="スライド位置">
+      {items.map((item, index) => (
+        <button
+          class="h-2 w-8 border-0 bg-line transition-colors hover:bg-primary-dark data-[active=true]:bg-primary"
+          type="button"
+          aria-label={`${item.title}を表示`}
+          aria-current={index === 0 ? "true" : undefined}
+          data-development-index={index}
+          data-active={index === 0 ? "true" : "false"}
+        ></button>
+      ))}
+    </div>
+    <div class="flex shrink-0 gap-2" data-development-controls>
+      <button class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-line disabled:hover:bg-white disabled:hover:text-ink" type="button" aria-label="前のできることを見る" data-development-previous>
+        <Icon name="nav-arrow-left" size={20} />
+      </button>
+      <button class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-line disabled:hover:bg-white disabled:hover:text-ink" type="button" aria-label="次のできることを見る" data-development-next>
+        <Icon name="arrow-right" size={20} />
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-development-slider]").forEach((slider) => {
+    const viewport = slider.querySelector<HTMLElement>("[data-development-viewport]");
+    const track = slider.querySelector<HTMLElement>("[data-development-track]");
+    const slides = Array.from(slider.querySelectorAll<HTMLElement>("[data-development-slide]"));
+    const previous = slider.querySelector<HTMLButtonElement>("[data-development-previous]");
+    const next = slider.querySelector<HTMLButtonElement>("[data-development-next]");
+    const indicators = Array.from(slider.querySelectorAll<HTMLButtonElement>("[data-development-index]"));
+
+    if (!viewport || !track || !previous || !next || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let startX = 0;
+    let startOffset = 0;
+    let dragging = false;
+
+    const slideOffset = (index: number) => slides[index].offsetLeft - slides[0].offsetLeft;
+
+    const show = (index: number) => {
+      currentIndex = Math.min(Math.max(index, 0), slides.length - 1);
+      track.style.transitionDuration = "";
+      track.style.transform = `translateX(-${slideOffset(currentIndex)}px)`;
+
+      previous.disabled = currentIndex === 0;
+      next.disabled = currentIndex === slides.length - 1;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.setAttribute("aria-hidden", slideIndex === currentIndex ? "false" : "true");
+      });
+
+      indicators.forEach((indicator, indicatorIndex) => {
+        const active = indicatorIndex === currentIndex;
+        indicator.dataset.active = active ? "true" : "false";
+        if (active) indicator.setAttribute("aria-current", "true");
+        else indicator.removeAttribute("aria-current");
+      });
+    };
+
+    previous.addEventListener("click", () => show(currentIndex - 1));
+    next.addEventListener("click", () => show(currentIndex + 1));
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => show(Number(indicator.dataset.developmentIndex)));
+    });
+
+    viewport.addEventListener("dragstart", (event) => event.preventDefault());
+    viewport.addEventListener("pointerdown", (event) => {
+      if ((event.target as HTMLElement).closest("button")) return;
+      dragging = true;
+      startX = event.clientX;
+      startOffset = slideOffset(currentIndex);
+      track.style.transitionDuration = "0ms";
+      viewport.setPointerCapture(event.pointerId);
+    });
+
+    viewport.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const dragOffset = startOffset + startX - event.clientX;
+      const maximumOffset = slideOffset(slides.length - 1);
+      const constrainedOffset = Math.min(Math.max(dragOffset, 0), maximumOffset);
+      track.style.transform = `translateX(-${constrainedOffset}px)`;
+    });
+
+    const finishDrag = (event: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      const distance = startX - event.clientX;
+      const threshold = Math.min(80, viewport.clientWidth * 0.12);
+
+      if (distance > threshold) show(currentIndex + 1);
+      else if (distance < -threshold) show(currentIndex - 1);
+      else show(currentIndex);
+    };
+
+    viewport.addEventListener("pointerup", finishDrag);
+    viewport.addEventListener("pointercancel", finishDrag);
+
+    window.addEventListener("resize", () => window.requestAnimationFrame(() => show(currentIndex)));
+    show(0);
+  });
+</script>
+
+<style>
+  .development-slider {
+    width: calc(100% + max(5vw, (100vw - 1440px) / 2));
+  }
+
+  .development-slider-toolbar {
+    width: 88%;
+  }
+
+  @media (min-width: 768px) {
+    .development-slider-toolbar {
+      width: 84%;
+    }
+  }
+</style>

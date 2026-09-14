@@ -44,7 +44,7 @@ PCでは左右2分割、モバイルでは上下2分割とし、原則として�
 
 デザインシステムは `design-system/` で管理する。
 
-Brand OSをWeb用のFoundation、Component、Patternへ展開したレビュー用ページを `design-system/site/` に置く。`v0.4.0`の確定内容はAstro全ページへ適用済みである。
+Brand OSをWeb用のFoundation、Component、Patternへ展開したレビュー用ページを `design-system/site/` に置く。`v0.5.0`は、現行サイトで確定した階層別コンテナ、画像HERO、カード、スライダー、ニュース、フッターを反映する。
 
 ブランド表現の参照元は `HACTAC/INBES-BrandOS` とする。ローカル参照データは `references/INBES-BrandOS/` に置き、Git管理対象には含めない。
 
@@ -118,15 +118,15 @@ INBESが何を支援するか、どのような考え方で商品化するかを
 主な内容:
 
 - 商品化で起きやすい課題
-- ローカライズ開発
-- オリジナル開発
+- 既存商品を起点にした商品化の考え方
+- 国内市場向けに調整できる領域を示す開発スライダー
 - 主な取扱分野
 - 進め方への導線
 - 開発実績カルーセルと相談導線
 
-ローカライズ開発を主軸とし、オリジナル開発は必要に応じた選択肢として扱う。ページの順序は「課題 → 商品化の考え方 → 取扱分野 → 進め方 → 開発実績・相談」とする。
+多くの案件では既存商品を国内市場向けにカスタマイズし、足りない部分は開発で補う。ベース製品がない場合や独自性が必要な場合は、結果としてオリジナル開発まで対応する。ページの順序は「課題 → 商品化の考え方 → 取扱分野 → 進め方 → 開発実績・相談」とする。
 
-ローカライズ開発では、国内仕様、表示・ラベル、取扱説明書、許認可・国内試験、パッケージ、品質・輸入条件を日本市場に合わせて整えることを簡潔に示す。
+開発スライダーでは、法令・許認可、国内試験・品質確認、仕様・機能追加、意匠・カラー、使い方・販売提案、表示・取扱説明書・パッケージを、画像と短い説明で示す。
 
 ページ末尾は、開発実績のカルーセルと次の2つの行動を一つのセクションに統合する。
 
@@ -206,13 +206,25 @@ Message、About、Profileの3層で構成する。
 - CMS: 初期公開では使用しない
 - 将来拡張: microCMS
 
-VercelやGitHub Pagesを本番環境には使用しない。GitHub Pagesは確認用としてのみ利用する。
+Vercel、GitHub Pages、Cloudflare Pagesを本番環境には使用しない。GitHub Pagesは現行Review、Cloudflare Pagesは`dev.inbes.jp`のStagingとして利用する。Stagingは導入完了が確認できるまで予定環境として扱う。
 
 ### ワイヤー確認URL
 
 - GitHub Pages: `https://hactac.github.io/inbes-web-renewal/`
 - `main`へプッシュすると、GitHub ActionsがAstroをビルドして確認サイトを更新する
 - GitHub Pagesではフォーム送信を確認できない。フォーム送信はmixhost上のPHP実装後に検証する
+
+### ステージング環境
+
+- Target URL: `https://dev.inbes.jp/`
+- Hosting: Cloudflare Pages
+- Status: 導入予定。DNS、Pages、Access、Git連携の設定と動作確認後に稼働中へ変更する
+- Access: Cloudflare Accessで許可した外部確認者に限定する
+- Search: `noindex, nofollow`とし、検索エンジン向けsitemap送信を行わない
+- Forms: 本番PHP送信先、実メール、自動返信へ接続しない
+- Deploy source: 承認されたブランチまたはcommitを使用し、確認対象commitを記録する
+
+初期設定やDNS・Access・ホスティング変更は外部サービス設定に該当するため、実行直前にHuman Approvalを得る。Staging確認は本番反映の承認を兼ねない。
 
 製品、実績、サービスなどの情報は、将来microCMSへ置き換えられるよう、データと表示コンポーネントを分離する。
 
@@ -258,11 +270,11 @@ VercelやGitHub Pagesを本番環境には使用しない。GitHub Pagesは確�
 - Site Primary / Deep / Pale Red: `#C8101E / #990D17 / #F7E8EA`
 - 本文: `18px / line-height 1.6`
 - 見出し: `H1 40・52・64px / H2 32・36・40px / H3 22・24・26px`
-- Container: `1200px max`
+- Container: `90% width` / `wide 1728px` / `page 1440px` / `content 1200px` / `copy 960px`
 - Breakpoints: `768px / 1024px / 1280px`
 - Grid: `4 / 8 / 12 columns`
 - 角R: `4px / 8px / 12px`
-- 写真: `3:2`を基本、Heroのみ必要に応じて`4:5`
+- 写真: 製品カード`16:9`、事例・分野カード`3:2`、HEROは固定高＋画像別position
 - Icon: Iconoir Regular / `20・24・32・48px`
 
 ## 現在できていること
@@ -281,9 +293,9 @@ VercelやGitHub Pagesを本番環境には使用しない。GitHub Pagesは確�
 - 会社概要、プライバシーポリシー、クッキーポリシーの仮ページ
 - フォーム同意文からプライバシーポリシーへの導線
 - 静的ビルド
-- GitHub Pagesへの確認用自動デプロイ
+- GitHub Pagesへの現行Review用自動デプロイ
 - Brand OSとムードボードを反映したデザインシステムレビュー用ページ
-- デザインシステムv0.4.0のFoundation確定
+- デザインシステムv0.5.0への更新
 - 正式ロゴ、シンボル、IconoirスプライトのAstro反映
 - 商品化支援側と自社製品側の共通ヘッダー
 - 右ドロワー型モバイルナビゲーション
@@ -291,7 +303,7 @@ VercelやGitHub Pagesを本番環境には使用しない。GitHub Pagesは確�
 - ファイル添付と送信状態を含むフォームUI
 - 全11ページへのデザインシステム適用
 - 390px / 1440pxでの全ページ横幅、見出し、画像表示確認
-- 共通画像枠（3:2基準、4:5 / 16:9対応）の導入
+- 用途別画像枠（製品16:9、事例・分野3:2、HERO固定高）の導入
 - canonical、OGP、Organization構造化データの共通実装
 - 404ページの追加
 - 静的ビルド後の内部リンクチェックコマンド
@@ -334,7 +346,7 @@ VercelやGitHub Pagesを本番環境には使用しない。GitHub Pagesは確�
 
 1. 自社製品と開発実績の写真素材を整理する
 2. 公開対象、掲載順、クライアント表記を確定する
-3. 実画像を3:2基準で反映し、モバイルトリミングを確認する
+3. 実画像を用途別比率で反映し、モバイルトリミングを確認する
 4. 問い合わせ送信先と自動返信情報を確定する
 
 ### 今週やる

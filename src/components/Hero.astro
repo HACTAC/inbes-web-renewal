@@ -1,17 +1,32 @@
 ---
+import { withBase } from "@/utils/paths";
+
 type Props = {
   eyebrow: string;
   title: string;
-  lead?: string;
+  image?: string;
+  imageClass?: string;
 };
 
-const { eyebrow, title, lead } = Astro.props;
+const { eyebrow, title, image, imageClass } = Astro.props;
 ---
 
-<section class="border-b border-line">
-  <div class="container-page py-[72px] md:py-24 lg:py-[112px]">
-    <p class="eyebrow">{eyebrow}</p>
+<section class:list={["relative overflow-hidden border-b border-line", image ? "h-[260px] sm:h-[280px] md:h-[300px] lg:h-[320px]" : "bg-white"]}>
+  {image && (
+    <>
+      <img
+        class:list={["absolute inset-0 h-full w-full object-cover", imageClass ?? "object-center"]}
+        src={withBase(image)}
+        alt=""
+        width="1672"
+        height="941"
+        fetchpriority="high"
+      />
+      <div class="page-hero-scrim absolute inset-0" aria-hidden="true"></div>
+    </>
+  )}
+  <div class:list={[image ? "container-wide relative z-10 grid h-full content-center" : "container-page py-14 md:py-16"]}>
     <h1 class="heading-1 max-w-5xl">{title}</h1>
-    {lead && <p class="mt-7 max-w-3xl text-sub">{lead}</p>}
+    <p class="mt-3 font-latin text-base font-bold text-primary md:text-lg">{eyebrow}</p>
   </div>
 </section>

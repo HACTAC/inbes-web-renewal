@@ -40,7 +40,10 @@ export default {
         product: ["\"urw-din\"", "\"DIN Alternate\"", "Arial", "sans-serif"]
       },
       maxWidth: {
-        page: "1200px"
+        wide: "1728px",
+        page: "1440px",
+        content: "1200px",
+        copy: "960px"
       },
       borderRadius: {
         sm: "4px",

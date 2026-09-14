@@ -38,6 +38,12 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://hactac.github.io
           PUBLIC_BASE_PATH: /inbes-web-renewal/
+          PUBLIC_DEPLOY_ENV: review
+
+      - name: Check internal links
+        run: npm run check:links
+        env:
+          PUBLIC_BASE_PATH: /inbes-web-renewal/
 
       - name: Add design system preview
         run: |

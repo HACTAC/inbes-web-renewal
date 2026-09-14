@@ -1,0 +1,94 @@
+---
+import Icon from "@/components/Icon.astro";
+import { getNewsHref, newsItems, type NewsItem } from "@/data/news";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/utils/paths";
+
+export const getStaticPaths = () =>
+  newsItems.map((item, index) => ({
+    params: { slug: item.slug },
+    props: {
+      item,
+      newerItem: index > 0 ? newsItems[index - 1] : undefined,
+      olderItem: index < newsItems.length - 1 ? newsItems[index + 1] : undefined
+    }
+  }));
+
+type Props = {
+  item: NewsItem;
+  newerItem?: NewsItem;
+  olderItem?: NewsItem;
+};
+
+const { item, newerItem, olderItem } = Astro.props;
+---
+
+<BaseLayout title={item.title} description={item.summary}>
+  <article>
+    <header class="border-b border-line bg-white">
+      <div class="container-copy py-14 md:py-20 lg:py-24">
+        <a class="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-sub transition-colors hover:text-primary" href={withBase("/news/")}>
+          <Icon name="nav-arrow-left" size={20} />
+          お知らせ一覧
+        </a>
+        <div class="mb-5 flex flex-wrap items-center gap-4">
+          <time class="font-product text-sm font-medium text-sub" datetime={item.dateTime}>{item.date}</time>
+          <span class="tag-support">{item.category}</span>
+        </div>
+        <h1 class="max-w-4xl text-[32px] font-semibold leading-[1.35] md:text-[42px] lg:text-[48px]">{item.title}</h1>
+        <p class="mt-7 max-w-3xl text-sub">{item.summary}</p>
+      </div>
+    </header>
+
+    <div class="section container-copy">
+      <div class="space-y-12">
+        {item.sections.map((section) => (
+          <section>
+            {section.heading && <h2 class="heading-3 mb-5">{section.heading}</h2>}
+            <div class="space-y-5 text-sub">
+              {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {item.relatedLink && (
+        <div class="mt-12 border-t border-line pt-8">
+          <a class="button button-outline" href={withBase(item.relatedLink.href)}>
+            {item.relatedLink.label}
+            <Icon name="arrow-right" size={20} />
+          </a>
+        </div>
+      )}
+    </div>
+  </article>
+
+  <nav class="border-t border-line bg-soft" aria-label="前後のお知らせ">
+    <div class="container-content grid min-h-28 sm:grid-cols-2">
+      {
+        newerItem ? (
+          <a class="group flex items-center gap-3 border-b border-line py-6 transition-colors hover:text-primary sm:border-b-0 sm:border-r sm:pr-8" href={withBase(getNewsHref(newerItem))}>
+            <Icon name="nav-arrow-left" size={20} class="shrink-0 text-primary" />
+            <span>
+              <span class="block text-xs text-sub">新しいお知らせ</span>
+              <span class="mt-1 block text-sm font-semibold">{newerItem.title}</span>
+            </span>
+          </a>
+        ) : (
+          <span></span>
+        )
+      }
+      {
+        olderItem && (
+          <a class="group flex items-center justify-end gap-3 py-6 text-right transition-colors hover:text-primary sm:pl-8" href={withBase(getNewsHref(olderItem))}>
+            <span>
+              <span class="block text-xs text-sub">前のお知らせ</span>
+              <span class="mt-1 block text-sm font-semibold">{olderItem.title}</span>
+            </span>
+            <Icon name="arrow-right" size={20} class="shrink-0 text-primary" />
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</BaseLayout>

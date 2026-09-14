@@ -2,6 +2,9 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const distRoot = join(process.cwd(), "dist");
+const configuredBasePath = process.env.PUBLIC_BASE_PATH ?? "/";
+const trimmedBasePath = configuredBasePath.replace(/^\/+|\/+$/g, "");
+const basePath = trimmedBasePath ? `/${trimmedBasePath}/` : "/";
 
 if (!existsSync(distRoot)) {
   console.error("dist/がありません。先に npm run build を実行してください。");
@@ -23,7 +26,10 @@ const failures = [];
 
 const targetCandidates = (href) => {
   const cleanPath = href.split("#")[0].split("?")[0];
-  const normalized = cleanPath.replace(/^\//, "");
+  const pathWithoutBase = basePath !== "/" && cleanPath.startsWith(basePath)
+    ? cleanPath.slice(basePath.length)
+    : cleanPath;
+  const normalized = pathWithoutBase.replace(/^\//, "");
   if (!normalized) return [join(distRoot, "index.html")];
   return [
     join(distRoot, normalized, "index.html"),

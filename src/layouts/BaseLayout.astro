@@ -1,5 +1,6 @@
 ---
 import Icon from "@/components/Icon.astro";
+import HomeHeader from "@/components/HomeHeader.astro";
 import { businessNavigation, modeSwitch, productNavigation } from "@/data/navigation";
 import "../styles/global.css";
 import { withBase } from "@/utils/paths";
@@ -29,6 +30,8 @@ const headerCta = headerNavigation.find((item) => item.emphasis);
 const switchLink = siteMode === "products" ? modeSwitch.products : modeSwitch.business;
 const modeLabel = siteMode === "products" ? "自社製品" : "商品化支援";
 const currentPath = Astro.url.pathname;
+const deployEnvironment = import.meta.env.PUBLIC_DEPLOY_ENV ?? "production";
+const preventIndexing = deployEnvironment !== "production";
 const isCurrent = (href: string) => {
   const resolved = withBase(href);
   return currentPath === resolved || (resolved !== "/" && currentPath.startsWith(resolved));
@@ -41,6 +44,7 @@ const isCurrent = (href: string) => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {preventIndexing && <meta name="robots" content="noindex, nofollow, noarchive" />}
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:locale" content="ja_JP" />
@@ -54,10 +58,19 @@ const isCurrent = (href: string) => {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "INBES株式会社",
+      name: "株式会社INBES",
+      alternateName: "INBES",
       url: canonicalUrl,
       logo: new URL(withBase("/assets/brand/inbes-logo-horizontal.svg"), Astro.site ?? Astro.url).href,
       telephone: "+81-42-316-9823",
+      faxNumber: "+81-42-316-9824",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+81-42-400-0787",
+        contactType: "customer support",
+        areaServed: "JP",
+        availableLanguage: "Japanese"
+      },
       address: {
         "@type": "PostalAddress",
         postalCode: "206-0012",
@@ -100,10 +113,12 @@ const isCurrent = (href: string) => {
     </a>
 
     {
-      !entrance && (
+      entrance ? (
+        <HomeHeader />
+      ) : (
         <>
           <header class="sticky top-0 z-40 border-b border-line bg-white">
-            <div class="container-page flex min-h-[72px] items-center gap-4">
+            <div class="container-wide flex min-h-[72px] items-center gap-4">
               <div class="flex min-w-0 items-center gap-4">
                 <a href={withBase("/")} aria-label="INBES トップ">
                   <img class="h-auto w-[120px] md:w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
@@ -189,44 +204,62 @@ const isCurrent = (href: string) => {
       <slot />
     </main>
 
-    {
-      !entrance && (
-        <footer class="border-t border-line bg-soft">
-          <div class="container-page py-12 md:py-16">
+    <footer class="border-t border-line bg-soft">
+          <div class="container-wide py-12 md:py-16">
             <div class="grid gap-10 border-b border-line pb-10 lg:grid-cols-[1.2fr_1fr]">
               <div>
                 <a href={withBase("/")} aria-label="INBES トップ">
                   <img class="h-auto w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
                 </a>
-                <p class="mt-5 max-w-lg text-sm text-sub">株式会社INBES<br />〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F</p>
+                <address class="mt-5 grid max-w-xl gap-1.5 text-sm not-italic text-sub">
+                  <span>〒206-0012 東京都多摩市貝取1510-1 永山JOYビル5F</span>
+                  <span class="flex flex-wrap items-center gap-x-5 gap-y-1">
+                    <a class="inline-flex items-center gap-1.5 hover:text-ink" href="tel:0423169823">
+                      <Icon name="phone" size={16} label="TEL" />
+                      <span>042-316-9823</span>
+                    </a>
+                    <span class="inline-flex items-center gap-1.5">
+                      <Icon name="printer" size={16} label="FAX" />
+                      <span>042-316-9824</span>
+                    </span>
+                  </span>
+                  <span class="flex flex-wrap items-center gap-x-2 gap-y-1 font-bold text-ink">
+                    <span>製品に関するお問い合わせ</span>
+                    <a class="inline-flex items-center gap-1.5 hover:text-primary" href="tel:0424000787">
+                      <Icon name="phone" size={16} label="TEL" />
+                      <span>042-400-0787</span>
+                    </a>
+                  </span>
+                </address>
               </div>
-              <div class="grid gap-8 sm:grid-cols-3">
-                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="商品化支援フッター">
-                  <strong class="mb-2 text-ink">商品化支援</strong>
-                  {businessNavigation.filter((item) => !item.emphasis).map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
-                </nav>
-                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="自社製品フッター">
-                  <strong class="mb-2 text-ink">自社製品</strong>
+              <div class="grid gap-8 sm:grid-cols-2">
+                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="個人のお客様向けフッター">
+                  <strong class="mb-2 text-ink">個人のお客様</strong>
                   {productNavigation.map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
                 </nav>
-                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="会社情報フッター">
-                  <strong class="mb-2 text-ink">Company</strong>
-                  <a class="hover:text-primary" href={withBase("/company/")}>会社概要</a>
-                  <a class="hover:text-primary" href={withBase("/contact/")}>お問い合わせ</a>
+                <nav class="grid content-start gap-2 text-sm text-sub" aria-label="法人のお客様向けフッター">
+                  <strong class="mb-2 text-ink">法人のお客様</strong>
+                  {businessNavigation.filter((item) => !item.emphasis && item.href !== "/company/").map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
                 </nav>
               </div>
             </div>
             <div class="flex flex-col gap-4 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
               <p>© INBES Co., Ltd.</p>
-              <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="法務情報">
-                <a class="underline underline-offset-4 hover:text-ink" href={withBase("/privacy/")}>プライバシーポリシー</a>
-                <a class="underline underline-offset-4 hover:text-ink" href={withBase("/cookies/")}>クッキーポリシー</a>
-              </nav>
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+                <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="会社情報">
+                  <a class="hover:text-ink" href={withBase("/news/")}>お知らせ</a>
+                  <a class="hover:text-ink" href={withBase("/company/")}>会社概要</a>
+                  <a class="hover:text-ink" href={withBase("/contact/")}>お問い合わせ</a>
+                </nav>
+                <span class="hidden text-line sm:inline" aria-hidden="true">｜</span>
+                <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="法務情報">
+                  <a class="underline underline-offset-4 hover:text-ink" href={withBase("/privacy/")}>プライバシーポリシー</a>
+                  <a class="underline underline-offset-4 hover:text-ink" href={withBase("/cookies/")}>クッキーポリシー</a>
+                </nav>
+              </div>
             </div>
           </div>
-        </footer>
-      )
-    }
+    </footer>
 
     <script>
       const navRoot = document.querySelector<HTMLElement>("[data-nav-root]");

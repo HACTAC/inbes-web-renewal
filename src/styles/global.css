@@ -40,7 +40,19 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-page px-6 md:px-8 lg:px-12;
+    @apply mx-auto w-[90%] max-w-page;
+  }
+
+  .container-wide {
+    @apply mx-auto w-[90%] max-w-wide;
+  }
+
+  .container-content {
+    @apply mx-auto w-[90%] max-w-content;
+  }
+
+  .container-copy {
+    @apply mx-auto w-[90%] max-w-copy;
   }
 
   .eyebrow {
@@ -165,6 +177,20 @@
 
   .site-header-link[aria-current="page"] {
     @apply border-primary text-ink;
+  }
+
+  .home-entrance-copy {
+    background: linear-gradient(90deg, rgb(255 255 255 / 90%) 10%, rgb(255 255 255 / 0%) 100%);
+  }
+
+  .page-hero-scrim {
+    background: linear-gradient(90deg, rgb(255 255 255 / 96%) 0%, rgb(255 255 255 / 90%) 34%, rgb(255 255 255 / 36%) 68%, rgb(255 255 255 / 0%) 100%);
+  }
+
+  @media (min-width: 768px) {
+    .page-hero-scrim {
+      background: linear-gradient(90deg, rgb(255 255 255 / 96%) 0%, rgb(255 255 255 / 84%) 22%, rgb(255 255 255 / 34%) 42%, rgb(255 255 255 / 0%) 64%);
+    }
   }
 
   .legal-copy h2 {

@@ -1,0 +1,65 @@
+---
+import Icon from "@/components/Icon.astro";
+import { withBase } from "@/utils/paths";
+
+const navigation = [
+  { label: "お知らせ", href: "/news/" },
+  { label: "会社概要", href: "/company/" }
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-white">
+  <div class="container-wide flex min-h-[72px] items-center gap-4">
+    <a href={withBase("/")} aria-label="INBES トップ">
+      <img class="h-auto w-[120px] md:w-[136px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+    </a>
+
+    <nav class="ml-auto hidden items-center gap-7 lg:flex" aria-label="グローバルナビゲーション">
+      {navigation.map((item) => (
+        <a class="site-header-link" href={withBase(item.href)}>{item.label}</a>
+      ))}
+      <a class="button button-primary min-h-11 px-5 text-sm" href={withBase("/contact/")}>お問い合わせ</a>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2 lg:hidden">
+      <a class="button button-primary min-h-10 px-4 text-sm sm:min-h-11" href={withBase("/contact/")}>お問い合わせ</a>
+      <button
+        class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink"
+        type="button"
+        aria-label="メニューを開く"
+        aria-controls="mobile-navigation"
+        aria-expanded="false"
+        data-nav-open
+      >
+        <Icon name="menu" size={24} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="pointer-events-none fixed inset-0 z-50" id="mobile-navigation" aria-hidden="true" data-nav-root inert>
+  <button class="absolute inset-0 bg-ink/45 opacity-0 transition-opacity" type="button" aria-label="メニューを閉じる" data-nav-close data-nav-backdrop></button>
+  <aside
+    class="absolute inset-y-0 right-0 flex w-[min(90vw,400px)] translate-x-full flex-col bg-white p-6 shadow-soft transition-transform duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-label="モバイルナビゲーション"
+    tabindex="-1"
+    data-nav-panel
+  >
+    <div class="flex items-center justify-between border-b border-line pb-5">
+      <img class="h-auto w-[120px]" src={withBase("/assets/brand/inbes-logo-horizontal.svg")} alt="INBES" />
+      <button class="grid size-11 place-items-center rounded border border-line bg-white transition-colors hover:border-ink" type="button" aria-label="メニューを閉じる" data-nav-close>
+        <Icon name="xmark" size={24} />
+      </button>
+    </div>
+
+    <nav class="mt-7 grid border-t border-ink" aria-label="グローバルナビゲーション">
+      {navigation.map((item) => (
+        <a class="flex min-h-14 items-center border-b border-line font-semibold transition-colors hover:text-primary" href={withBase(item.href)}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a class="button button-primary mt-8 w-full" href={withBase("/contact/")}>お問い合わせ</a>
+  </aside>
+</div>
