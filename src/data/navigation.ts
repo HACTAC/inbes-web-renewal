@@ -12,8 +12,8 @@ export const productNavigation = [
 ];
 
 export const modeSwitch = {
-  business: { label: "製品をお探しの方", href: "/products/" },
-  products: { label: "商品化をご相談の方", href: "/services/" }
+  business: { label: "個人向け製品サイト", href: "/products/" },
+  products: { label: "法人向けサイト", href: "/services/" }
 };
 
 export const navigation = [
