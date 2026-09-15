@@ -105,11 +105,11 @@ const developmentCapabilities = [
       <div class="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:gap-16">
         <div>
           <p class="eyebrow">Development Approach</p>
-          <h2 class="heading-2 mb-6">商品化の考え方</h2>
+          <h2 class="heading-2 mb-6">商品開発のアプローチ</h2>
           <div class="space-y-5 text-sub">
-            <p>多くの案件では、ベースとなる既存商品をもとに国内市場向けにカスタマイズしていくローカライズ開発の可能性からご提案していきます。</p>
-            <p>海外で実績のある製品・技術を日本市場に合わせることで、開発期間やリスクを抑えながら商品化が可能です。</p>
-            <p>独自性が必要な場合やベース製品がない場合は、ゼロからのオリジナル開発も対応可能です。</p>
+            <p>ベースとなる既存製品を起点に、国内市場に合う仕様へ手を加えるローカライズ開発からご提案致します。</p>
+            <p>法令や品質を確かめ、機能や意匠を調整し、パッケージやブランドまで一つずつ整えることで、開発期間とリスクを抑えながら、販売できる商品へ仕上げます。</p>
+            <p>求める製品が見つからない場合や、より高い独自性が必要な場合は、足りない部分を新たに開発し、オリジナル商品として形にすることも可能です。</p>
           </div>
         </div>
 
@@ -200,14 +200,16 @@ const developmentCapabilities = [
     </div>
   </section>
 
-  <section class="section bg-soft">
-    <div class="container-page grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2 class="heading-2 mb-5">商品化について相談する</h2>
-        <p class="max-w-3xl text-sub">アイデア段階でも、探すところからでもご相談いただけます。貴社の状況に合わせて、商品化の進め方を整理します。</p>
+  <section class="section">
+    <div class="container-content">
+      <div class="grid gap-8 border border-line bg-soft p-7 sm:p-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:p-12">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="heading-2 mb-5">商品化について相談する</h2>
+          <p class="max-w-3xl text-sub">アイデア段階でも、探すところからでもご相談いただけます。貴社の状況に合わせて、商品化の進め方を整理します。</p>
+        </div>
+        <a class="button button-primary" href={withBase("/contact/business/")}>お問い合わせ</a>
       </div>
-      <a class="button button-primary" href={withBase("/contact/business/")}>お問い合わせ</a>
     </div>
   </section>
 </BaseLayout>
