@@ -82,14 +82,13 @@ import { withBase } from "@/utils/paths";
     </div>
   </section>
 
-  <section class="border-y border-line bg-soft">
-    <div class="container-page grid gap-8 py-14 md:grid-cols-[1fr_auto] md:items-end md:py-16">
-      <div class="max-w-3xl">
-        <p class="eyebrow">Product Archive</p>
-        <h2 class="heading-2">過去の製品をお探しの方へ</h2>
-        <p class="mt-5 text-sub">生産を完了した製品の仕様や取扱説明書などをご案内しています。</p>
+  <section class="py-12 md:py-16">
+    <div class="container-content rounded-md border border-line bg-soft px-5 py-5 sm:flex sm:items-center sm:justify-between sm:gap-8 md:px-7">
+      <div>
+        <p class="font-semibold">生産完了品をお探しの方へ</p>
+        <p class="mt-1 text-sm text-sub">過去の製品情報と旧製品ページをご案内しています。</p>
       </div>
-      <a class="button button-outline-dark" href={withBase("/products/discontinued/")}>生産完了品一覧を見る</a>
+      <a class="text-link mt-4 shrink-0 text-sm sm:mt-0" href={withBase("/products/discontinued/")}>生産完了品一覧を見る <span aria-hidden="true">→</span></a>
     </div>
   </section>
 </BaseLayout>
