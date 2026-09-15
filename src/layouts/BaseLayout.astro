@@ -1,7 +1,7 @@
 ---
 import Icon from "@/components/Icon.astro";
 import HomeHeader from "@/components/HomeHeader.astro";
-import { audienceNavigation, businessNavigation, productNavigation, sharedNavigation } from "@/data/navigation";
+import { audienceNavigation, businessNavigation, productFooterNavigation, productNavigation, sharedNavigation } from "@/data/navigation";
 import "../styles/global.css";
 import { withBase } from "@/utils/paths";
 
@@ -264,7 +264,7 @@ const isCurrent = (href: string) => {
               <div class="grid gap-8 sm:grid-cols-2">
                 <nav class="grid content-start gap-2 text-sm text-sub" aria-label="個人のお客様向けフッター">
                   <strong class="mb-2 text-ink">個人のお客様</strong>
-                  {productNavigation.map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
+                  {productFooterNavigation.map((item) => <a class="hover:text-primary" href={withBase(item.href)}>{item.label}</a>)}
                 </nav>
                 <nav class="grid content-start gap-2 text-sm text-sub" aria-label="法人のお客様向けフッター">
                   <strong class="mb-2 text-ink">法人のお客様</strong>

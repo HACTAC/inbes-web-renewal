@@ -1,0 +1,121 @@
+---
+import ExternalLink from "@/components/ExternalLink.astro";
+import Hero from "@/components/Hero.astro";
+import Icon from "@/components/Icon.astro";
+import { discontinuedProductCategories } from "@/data/discontinued-products";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/utils/paths";
+---
+
+<BaseLayout
+  title="生産完了品・生産終了品一覧"
+  description="INBESが過去に販売した生産完了品の一覧です。製品の特定や仕様、取扱説明書などの確認にご利用ください。"
+  siteMode="products"
+>
+  <Hero eyebrow="Discontinued Products" title="生産完了品" />
+
+  <section class="border-b border-line bg-white">
+    <div class="container-content py-12 md:py-16">
+      <p class="text-sub">
+        生産を完了した製品をご案内しています。掲載している製品情報は生産完了時点の内容です。製品の仕様や取扱説明書は、掲載のある旧製品ページからご確認ください。
+      </p>
+      <a class="text-link mt-6" href={withBase("/products/")}>現在販売中の製品を見る <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <nav class="container-page pb-4 pt-8" aria-label="生産完了品カテゴリ">
+    <div class="grid border-b border-line sm:grid-cols-2 lg:grid-cols-4">
+      {discontinuedProductCategories.map((category) => (
+        <a class="flex items-center justify-between gap-4 border-b border-line px-3 py-4 text-sm font-semibold last:border-b-0 hover:text-primary sm:px-5 lg:border-b-0 lg:border-r lg:last:border-r-0" href={`#${category.id}`}>
+          <span>{category.title}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <section class="section container-page pt-12 md:pt-16">
+    <div class="grid gap-14 md:gap-20">
+      {discontinuedProductCategories.map((category) => (
+        <section id={category.id} class="scroll-mt-28">
+          <div class="mb-7 border-t border-line pt-5">
+            <p class="eyebrow">{category.eyebrow}</p>
+            <h2 class="heading-3">{category.title}</h2>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {category.products.map((product) => (
+              <article class="flex h-full flex-col rounded-md border border-line bg-white p-6">
+                <div class="relative mb-5 aspect-video overflow-hidden rounded-md bg-soft">
+                  <span class="absolute left-3 top-3 z-10 rounded-full border border-line bg-white/95 px-3 py-1 text-xs font-semibold text-sub">
+                    生産完了
+                  </span>
+                  {product.images?.length ? (
+                    <div class:list={["grid h-full w-full", product.images.length > 1 && "grid-cols-2 divide-x divide-line"]}>
+                      {product.images.map((image) => (
+                        <img
+                          class="h-full min-w-0 w-full object-contain"
+                          src={withBase(image.src)}
+                          alt={image.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div class="grid h-full place-items-center text-muted">
+                      <div class="grid justify-items-center gap-2">
+                        <Icon name="car" size={48} />
+                        <span class="text-xs font-semibold">製品画像未掲載</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <p class="mb-2 text-sm font-semibold text-sub">{product.tag}</p>
+                {product.name ? (
+                  <>
+                    <h3 class:list={["text-[22px] font-semibold leading-[1.4]", product.nameLang === "en" && "font-latin"]} lang={product.nameLang}>
+                      {product.name}
+                    </h3>
+                    {product.models?.length && (
+                      <p class="mt-1 font-product text-[18px] font-bold leading-[1.4] text-ink">
+                        <span class="sr-only">型番：</span>
+                        {product.models.join(" / ")}
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <h3 class="font-product text-[22px] font-bold leading-[1.4] text-ink">
+                    <span class="sr-only">{product.tag} 型番：</span>
+                    {product.models?.join(" / ")}
+                  </h3>
+                )}
+                {product.url ? (
+                  <ExternalLink
+                    class="mt-auto w-fit pt-6"
+                    href={product.url}
+                    ariaLabel={`${product.name ?? product.models?.join(" / ") ?? product.tag}の旧製品ページを新しいタブで開く`}
+                  >
+                    旧製品ページを見る
+                  </ExternalLink>
+                ) : (
+                  <a class="text-link mt-auto w-fit pt-6" href={withBase("/contact/support/")}>サポートへ <span aria-hidden="true">→</span></a>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-y border-line bg-soft">
+    <div class="container-page grid gap-8 py-16 md:grid-cols-[1fr_auto] md:items-end md:py-20">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Product Support</p>
+        <h2 class="heading-2">お使いの製品についてお困りですか？</h2>
+        <p class="mt-5 text-sub">製品本体や取扱説明書に記載された型番をご確認のうえ、サポート窓口へお問い合わせください。</p>
+      </div>
+      <a class="button button-primary" href={withBase("/contact/support/")}>製品サポートへ</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -4,6 +4,7 @@ import { getNewsHref, newsItems } from "@/data/news";
 const routes = [
   "/",
   "/products/",
+  "/products/discontinued/",
   "/services/",
   "/process/",
   "/works/",

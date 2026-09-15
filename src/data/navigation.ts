@@ -11,6 +11,11 @@ export const productNavigation = [
   { label: "サポート", href: "/contact/support/", emphasis: true }
 ];
 
+export const productFooterNavigation = [
+  ...productNavigation,
+  { label: "生産完了品", href: "/products/discontinued/" }
+];
+
 export const sharedNavigation = [
   { label: "お知らせ", href: "/news/" },
   { label: "会社概要", href: "/company/" },
