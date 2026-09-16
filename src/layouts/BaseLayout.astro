@@ -145,7 +145,7 @@ const isCurrent = (href: string) => {
                 </nav>
               </div>
 
-              <nav class="ml-auto hidden items-center gap-6 lg:flex" aria-label="グローバルナビゲーション">
+              <nav class="ml-auto hidden items-center gap-4 xl:gap-6 lg:flex" aria-label="グローバルナビゲーション">
                 {localNavigation.map((item) => (
                   <a class="site-header-link" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
                     {item.label}

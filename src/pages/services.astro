@@ -3,7 +3,7 @@ import DevelopmentCapabilitySlider from "@/components/DevelopmentCapabilitySlide
 import Hero from "@/components/Hero.astro";
 import Icon from "@/components/Icon.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { fields } from "@/data/services";
+import { fields, processSteps } from "@/data/services";
 import { withBase } from "@/utils/paths";
 
 const developmentCapabilities = [
@@ -100,7 +100,7 @@ const developmentCapabilities = [
     </div>
   </section>
 
-  <section class="section overflow-x-clip bg-white">
+  <section class="section scroll-mt-24 overflow-x-clip bg-white" id="approach">
     <div class="container-page">
       <div class="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:gap-16">
         <div>
@@ -115,6 +115,38 @@ const developmentCapabilities = [
 
         <DevelopmentCapabilitySlider items={developmentCapabilities} />
       </div>
+    </div>
+  </section>
+
+  <section class="section scroll-mt-24 bg-soft" id="flow">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-12">
+        <div class="section-heading mb-0">
+          <p class="eyebrow">Flow</p>
+          <h2>相談から販売開始まで</h2>
+          <p>必要な工程を、商品や貴社の体制に合わせて組み合わせながら進めます。</p>
+        </div>
+        <img
+          class="aspect-[16/9] w-full rounded-md border border-line object-cover object-[58%_54%]"
+          src={withBase("/assets/page-visuals/process-v3.png")}
+          alt="商品化の段階を表す空間と、その先へ進む人物"
+          width="1672"
+          height="941"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="mt-10 border-y border-line bg-white px-6 md:mt-12 md:px-8">
+        {processSteps.map(([title, text], index) => (
+          <article class:list={["grid gap-3 py-6 md:grid-cols-[104px_260px_1fr] md:gap-6 md:py-7", index > 0 && "border-t border-line"]}>
+            <span class="font-latin text-sm font-bold text-primary">STEP {String(index + 1).padStart(2, "0")}</span>
+            <h3 class="text-[21px] font-semibold leading-[1.4] md:text-[22px]">{title}</h3>
+            <p class="text-sub">{text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-sub">追加生産や改良、シリーズ展開など、販売開始後の継続支援にも対応します。</p>
     </div>
   </section>
 
@@ -147,56 +179,35 @@ const developmentCapabilities = [
 
   <section class="section bg-white">
     <div class="container-page">
-      <div class="grid gap-5 md:grid-cols-2">
-        {[
-          {
-            eyebrow: "Process",
-            title: "商品化の進め方",
-            text: "ご相談から仕様整理、量産、輸入、販売準備まで。商品化の流れと各段階の支援内容をご紹介します。",
-            href: "/process/",
-            image: "/assets/page-visuals/process-v3.png",
-            imageAlt: "商品化の段階を表す空間と、その先へ進む人物"
-          },
-          {
-            eyebrow: "Works",
-            title: "開発実績",
-            text: "生活家電や車載機器など、日本で販売するための商品化を支援してきた製品をご紹介します。",
-            href: "/works/",
-            image: "/assets/page-visuals/works-v3.png",
-            imageAlt: "INBESが商品化を支援した家電やエレクトロニクス製品"
-          }
-        ].map((item) => (
-          <a
-            class="group flex h-full flex-col overflow-hidden rounded-md border border-line bg-white transition-colors duration-300 hover:border-primary hover:bg-primary-pale focus-visible:border-primary"
-            href={withBase(item.href)}
-            aria-label={`${item.title}を見る`}
-          >
-            <div class="aspect-[16/9] overflow-hidden border-b border-line bg-soft">
-              <img
-                class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
-                src={withBase(item.image)}
-                alt={item.imageAlt}
-                width="1672"
-                height="941"
-                loading="lazy"
-                decoding="async"
-              />
+      <a
+        class="group grid overflow-hidden rounded-md border border-line bg-white transition-colors duration-300 hover:border-primary hover:bg-primary-pale focus-visible:border-primary md:grid-cols-[0.9fr_1.1fr]"
+        href={withBase("/works/")}
+        aria-label="開発実績を見る"
+      >
+        <div class="flex flex-col justify-center p-7 md:p-10 lg:p-12">
+          <div class="flex items-start justify-between gap-5">
+            <div>
+              <p class="eyebrow">Works</p>
+              <h2 class="text-[28px] leading-[1.3] md:text-[32px]">開発実績</h2>
             </div>
-            <div class="flex flex-1 flex-col p-6 md:p-8">
-              <div class="flex items-start justify-between gap-5">
-                <div>
-                  <p class="eyebrow">{item.eyebrow}</p>
-                  <h2 class="text-[28px] leading-[1.3] md:text-[32px]">{item.title}</h2>
-                </div>
-                <span class="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark" aria-hidden="true">
-                  <Icon name="arrow-right" size={20} />
-                </span>
-              </div>
-              <p class="mt-5 text-sub">{item.text}</p>
-            </div>
-          </a>
-        ))}
-      </div>
+            <span class="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-white transition-colors group-hover:bg-primary-dark" aria-hidden="true">
+              <Icon name="arrow-right" size={20} />
+            </span>
+          </div>
+          <p class="mt-5 text-sub">生活家電や車載機器など、日本で販売するための商品化を支援してきた製品をご紹介します。</p>
+        </div>
+        <div class="aspect-[16/9] overflow-hidden border-t border-line bg-soft md:aspect-auto md:border-l md:border-t-0">
+          <img
+            class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+            src={withBase("/assets/page-visuals/works-v3.png")}
+            alt="INBESが商品化を支援した家電やエレクトロニクス製品"
+            width="1672"
+            height="941"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </a>
     </div>
   </section>
 
