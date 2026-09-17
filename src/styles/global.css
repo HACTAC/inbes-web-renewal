@@ -175,8 +175,12 @@
     @apply border-b-2 border-transparent py-2 text-sm font-semibold text-sub transition-colors hover:text-ink;
   }
 
-  .site-header-link[aria-current="page"] {
+  .site-header-link[aria-current] {
     @apply border-primary text-ink;
+  }
+
+  .site-mobile-link[aria-current] {
+    @apply bg-primary-pale text-primary;
   }
 
   .home-entrance-copy {

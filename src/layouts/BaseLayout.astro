@@ -145,7 +145,7 @@ const isCurrent = (href: string) => {
                 </nav>
               </div>
 
-              <nav class="ml-auto hidden items-center gap-4 xl:gap-6 lg:flex" aria-label="グローバルナビゲーション">
+              <nav class="ml-auto hidden items-center gap-4 xl:gap-6 lg:flex" aria-label="グローバルナビゲーション" data-local-nav>
                 {localNavigation.map((item) => (
                   <a class="site-header-link" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
                     {item.label}
@@ -210,9 +210,9 @@ const isCurrent = (href: string) => {
               </nav>
 
               <p class="eyebrow mb-2 mt-7">{modeLabel}</p>
-              <nav class="grid border-t border-ink" aria-label={`${modeLabel}ナビゲーション`}>
+              <nav class="grid border-t border-ink" aria-label={`${modeLabel}ナビゲーション`} data-local-nav>
                 {localNavigation.map((item) => (
-                  <a class="flex min-h-14 items-center border-b border-line font-semibold transition-colors hover:text-primary" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                  <a class="site-mobile-link flex min-h-14 items-center border-b border-line px-3 font-semibold transition-colors hover:text-primary" href={withBase(item.href)} aria-current={isCurrent(item.href) ? "page" : undefined}>
                     {item.label}
                   </a>
                 ))}
@@ -296,7 +296,30 @@ const isCurrent = (href: string) => {
       const navBackdrop = document.querySelector<HTMLElement>("[data-nav-backdrop]");
       const navOpen = document.querySelector<HTMLButtonElement>("[data-nav-open]");
       const navClosers = document.querySelectorAll<HTMLElement>("[data-nav-close]");
+      const localLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-local-nav] a[href]"));
       let lastFocused: HTMLElement | null = null;
+
+      const updateCurrentNavigation = () => {
+        const sectionHash = localLinks.some((link) => {
+          const target = new URL(link.href);
+          return target.pathname === location.pathname && target.hash && target.hash === location.hash;
+        }) ? location.hash : "";
+
+        localLinks.forEach((link) => {
+          const target = new URL(link.href);
+          const onPage = target.pathname === location.pathname || (target.pathname !== "/" && location.pathname.startsWith(target.pathname));
+          const active = onPage && (sectionHash ? target.hash === sectionHash : !target.hash);
+          if (active) {
+            link.setAttribute("aria-current", target.hash ? "location" : "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      updateCurrentNavigation();
+      window.addEventListener("hashchange", updateCurrentNavigation);
+      window.addEventListener("popstate", updateCurrentNavigation);
 
       const navFocusable = () =>
         Array.from(navPanel?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])') ?? []);
