@@ -2,7 +2,6 @@
 import ExternalLink from "@/components/ExternalLink.astro";
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import MediaFrame from "@/components/MediaFrame.astro";
 
 const profile = [
   ["会社名", "株式会社INBES（インベス）"],
@@ -19,36 +18,71 @@ const profile = [
 <BaseLayout title="会社概要" description="INBESは、日本で売るための商品づくりを支える会社です。" siteMode="business">
   <Hero eyebrow="Company" title="会社概要" image="/assets/hero/company.png" imageClass="object-[62%_54%]" />
 
-  <section class="section container-page grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+  <nav class="border-b border-line" aria-label="会社概要のページ内ナビゲーション">
+    <ul class="container-content grid grid-cols-2 gap-x-6 gap-y-4 py-6 text-center text-sm font-semibold text-sub sm:flex sm:justify-center sm:gap-8 md:gap-12">
+      <li><a class="transition-colors hover:text-primary" href="#philosophy">企業理念</a></li>
+      <li><a class="transition-colors hover:text-primary" href="#message">代表挨拶</a></li>
+      <li><a class="transition-colors hover:text-primary" href="#management">財務理念</a></li>
+      <li><a class="transition-colors hover:text-primary" href="#profile">会社情報</a></li>
+    </ul>
+  </nav>
+
+  <section id="philosophy" aria-labelledby="philosophy-heading" class="section container-content scroll-mt-28 grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
+    <div>
+      <p class="eyebrow">Philosophy</p>
+      <h2 id="philosophy-heading" class="heading-2">企業理念</h2>
+    </div>
+    <div class="min-w-0">
+      <p class="heading-2 mb-8 font-semibold">技術とアイデアをつなぎ、<br class="hidden md:block" />価値ある製品をかたちに。</p>
+      <div class="space-y-5 text-sub">
+        <p>私たちは、国内外の技術やものづくりの力を活かし、お客様のアイデアを価値ある製品として世の中に届けることを使命としています。</p>
+        <p>製品の企画・開発から、試作、量産、品質管理、販売に向けた準備まで。一つひとつの製品に誠実に向き合い、安全で信頼されるものづくりを追求します。</p>
+        <p>自社製品の開発で培ってきた経験と、国内・中国・台湾のパートナーとのネットワークを活かし、お客様とともに新しい価値を創造していきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="message" aria-labelledby="message-heading" class="section container-content scroll-mt-28 border-t border-line grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
     <div>
       <p class="eyebrow">Message</p>
-      <h2 class="heading-2 mb-6">世界にある技術を、日本の暮らしへ。</h2>
-      <div class="space-y-5 text-sub">
-        <p>世界には、優れた技術や製品が数多くあります。</p>
-        <p>それらを日本の市場やライフスタイルに合わせ、新しい価値へとつなげます。</p>
-        <p>つくることではなく、その先の暮らしを支えます。</p>
-      </div>
+      <h2 id="message-heading" class="heading-2">代表挨拶</h2>
     </div>
-    <MediaFrame label="Company image / 3:2" />
-  </section>
-
-  <section class="section bg-white">
-    <div class="container-copy">
-      <p class="eyebrow">About</p>
-      <h2 class="heading-2 mb-6">INBESについて</h2>
-      <div class="space-y-5 text-sub">
-        <p>自社製品の企画・販売とOEM/ODMで培った経験をもとに、日本市場に合わせた商品化を支援しています。</p>
-        <p>ローカライズ開発を中心に、必要に応じてオリジナル開発や商品まわりのデザインまで対応し、日本で販売できる状態へ整えます。</p>
+    <div class="min-w-0">
+      <div class="space-y-6 text-sub">
+        <p>私たちが大切にしているのは、単に「製品を作る」ことではありません。お客様のアイデアを、安心して販売できる商品へと育てていくことです。</p>
+        <p>自社製品を企画し、市場へ送り出してきたメーカーだからこそ、分かることがあります。<strong class="font-semibold text-ink">「作れるかどうか」だけではなく、実際に販売する立場まで考えたものづくり。</strong>それがINBESの商品開発です。</p>
+        <p>当社は大きな会社ではありません。だからこそ、一つひとつの案件にしっかりと向き合い、迅速で柔軟に対応することを大切にしています。商品化に向けた課題をお客様と一緒に考え、解決していくことが、私たちの役割です。</p>
+        <p>これからも、お客様のアイデアに真摯に向き合い、ともに考え、ともに製品を育てていける開発パートナーとして、着実に歩み続けてまいります。</p>
       </div>
+      <p class="mt-8 text-right text-sub">株式会社INBES<br />代表取締役　<span class="font-semibold text-ink">戸倉 敬介</span></p>
     </div>
   </section>
 
-  <section class="section container-content">
-    <p class="eyebrow">Profile</p>
-    <h2 class="heading-2 mb-8">会社情報</h2>
-    <div class="overflow-hidden rounded-md border border-line bg-white">
+  <section id="management" aria-labelledby="management-heading" class="section scroll-mt-28 bg-soft">
+    <div class="container-content grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
+      <div>
+        <p class="eyebrow">Management</p>
+        <h2 id="management-heading" class="heading-2">財務理念</h2>
+      </div>
+      <div class="min-w-0">
+        <p class="mb-6 font-semibold">堅実な財務基盤を維持し、持続的な成長と責任ある事業運営を実現する。</p>
+        <div class="space-y-5 text-sub">
+          <p>私たちは、無理な事業拡大や短期的な利益の追求に偏ることなく、安定した財務基盤のもとで、継続的に価値を提供できる企業であることを大切にしています。</p>
+          <p>健全な資金管理と将来を見据えた適切な投資を行い、変化する事業環境にも柔軟に対応できる経営基盤を築いてまいります。</p>
+          <p>そして、お客様・取引先をはじめとするすべてのステークホルダーに対して責任ある事業運営を行い、長期にわたり信頼される企業を目指します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profile" aria-labelledby="profile-heading" class="section container-content scroll-mt-28 grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
+    <div>
+      <p class="eyebrow">Profile</p>
+      <h2 id="profile-heading" class="heading-2">会社情報</h2>
+    </div>
+    <div class="min-w-0 overflow-hidden rounded-md border border-line bg-white">
       {profile.map(([label, value]) => (
-        <div class="grid border-b border-line last:border-b-0 md:grid-cols-[220px_1fr]">
+        <div class="grid border-b border-line last:border-b-0 md:grid-cols-[160px_minmax(0,1fr)]">
           <div class="bg-soft px-5 py-4 text-sm font-semibold">{label}</div>
           <div class="px-5 py-4 text-sub">
             {label === "本社" ? (
