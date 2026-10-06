@@ -95,7 +95,7 @@ export const works: Work[] = [
   {
     id: "action-camera",
     title: "防水・防塵アクションカメラ",
-    category: "その他エレクトロニクス製品",
+    category: "スマートフォン・PC周辺機器",
     description: "海外メーカーと連携し、日本市場向けに商品化。評価・検証から量産まで対応。",
     supports: ["工場選定", "設計", "評価", "量産", "輸入"]
   },
