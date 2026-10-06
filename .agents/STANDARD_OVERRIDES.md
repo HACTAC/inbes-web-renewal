@@ -7,7 +7,7 @@ updated: 2026-10-07
 
 ## INBES-STAGING-20261007-02
 
-- Status: `active`
+- Status: `expired`（今回の公開完了により失効）
 - 対象: 開発実績18機種の生成画像を既存Cloudflare Pages Stagingへ公開する1回のみ。
 - 例外: Reviewerの表示名を指定できないため、`alias_only`での独立レビューを許可する。レビューそのものは省略しない。
 - 理由: 作成APIに表示名指定・変更の操作がなく、返却された表示名は`Zeno`。希望名`hirame`はaliasのみ。
@@ -17,6 +17,7 @@ updated: 2026-10-07
 - 検証: ビルド、リンク監査、Validator、差分確認、18画像の読み込みと3:2、390/768/1024/1440pxで横はみ出しなし、AIイメージ注記。
 - 安全境界: mixhost本番、DNS、アクセス権、認証、フォーム送信先の変更には適用しない。
 - ロールバック: Stagingを直前の承認済みcommit `fa3d6f9`の生成物へ戻す。
+- 完了: 2026-10-07 08:18 JST。commit `4c138bb`を公開し、固定URLで18画像の読み込み、3:2、モバイル表示、noindexを確認。
 
 ## INBES-STAGING-20261007-01
 
