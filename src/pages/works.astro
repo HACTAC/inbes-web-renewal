@@ -10,6 +10,10 @@ import MediaFrame from "@/components/MediaFrame.astro";
 <BaseLayout title="開発実績" description="商品化を支援した製品をご紹介します。" siteMode="business">
   <Hero eyebrow="Works" title="開発実績" image="/assets/page-visuals/works-v3.png" imageClass="object-[56%_52%]" />
   <section class="section container-page">
+    <div class="mb-10 space-y-5 text-sub md:mb-12">
+      <p>INBESでは、電源・バッテリー関連製品をはじめ、ドライブレコーダー、監視カメラ、カー用品、家電製品など、さまざまな電気製品の商品化に携わってきました。</p>
+      <p class="text-base">OEM・ODMという事業の特性上、クライアント企業名は掲載していません。ここでは、当社が開発・商品化に携わった製品の一部をご紹介します。</p>
+    </div>
     <div class="grid gap-6">
       {works.map((work) => (
         <article id={work.id} class="grid scroll-mt-28 gap-6 rounded-md border border-line bg-white p-5 md:grid-cols-[minmax(280px,480px)_minmax(0,1fr)] md:p-7">
@@ -23,7 +27,6 @@ import MediaFrame from "@/components/MediaFrame.astro";
               {work.supports.map((support) => <span class="tag-support">{support}</span>)}
             </div>
             <p class="mb-5 max-w-3xl text-sub">{work.description}</p>
-            <p class="mb-4 text-sm font-semibold">クライアント：{work.client}</p>
             {work.url && (
               <ExternalLink href={work.url}>
                 公式サイトを見る
