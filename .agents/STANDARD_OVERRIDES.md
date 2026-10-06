@@ -5,6 +5,19 @@ updated: 2026-10-07
 
 # Standard Overrides
 
+## INBES-STAGING-20261007-02
+
+- Status: `active`
+- 対象: 開発実績18機種の生成画像を既存Cloudflare Pages Stagingへ公開する1回のみ。
+- 例外: Reviewerの表示名を指定できないため、`alias_only`での独立レビューを許可する。レビューそのものは省略しない。
+- 理由: 作成APIに表示名指定・変更の操作がなく、返却された表示名は`Zeno`。希望名`hirame`はaliasのみ。
+- Reviewer: `01a111d3-87a4-7e70-910d-a7f4fce66c5d`。実装に参加せずread-onlyで18画像と統合を確認。修正必須の指摘なし。
+- Human Approval: TAKIWAKI Daisuke、2026-10-07 08:15 JST。今回限りの例外承認を求めた質問に対し「公開承認します」と明示承認。
+- 期限: 今回のStaging公開完了まで。他の公開へ再利用しない。
+- 検証: ビルド、リンク監査、Validator、差分確認、18画像の読み込みと3:2、390/768/1024/1440pxで横はみ出しなし、AIイメージ注記。
+- 安全境界: mixhost本番、DNS、アクセス権、認証、フォーム送信先の変更には適用しない。
+- ロールバック: Stagingを直前の承認済みcommit `fa3d6f9`の生成物へ戻す。
+
 ## INBES-STAGING-20261007-01
 
 - Status: `expired`（今回の公開完了により失効）
