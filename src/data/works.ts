@@ -18,6 +18,8 @@ export type Work = {
   description: string;
   supports: WorkSupport[];
   highlight?: string;
+  image?: string;
+  imageScale?: number;
 };
 
 export const works: Work[] = [
@@ -30,6 +32,7 @@ export const works: Work[] = [
   },
   {
     id: "semi-solid-mobile-battery",
+    image: "/assets/works/semi-solid-mobile-battery-v2.webp",
     title: "半固体モバイルバッテリー",
     category: "バッテリー・電源関連",
     description: "次世代電池を採用したモバイルバッテリー。工場選定から量産まで対応。",
@@ -44,6 +47,7 @@ export const works: Work[] = [
   },
   {
     id: "digital-mirror-drive-recorder",
+    imageScale: 0.85,
     title: "デジタルインナーミラー型ドライブレコーダー",
     category: "カー用品・車載機器",
     description: "自社企画をベースにOEM専用モデルを開発。日本市場向けに仕様を最適化。",
@@ -51,6 +55,7 @@ export const works: Work[] = [
   },
   {
     id: "low-cost-drive-recorder",
+    imageScale: 0.7,
     title: "ローコストタイプドライブレコーダー",
     category: "カー用品・車載機器",
     description: "お客様の価格要求に合わせ、品質とコストのバランスを考慮して商品化。",
@@ -58,6 +63,7 @@ export const works: Work[] = [
   },
   {
     id: "compact-drive-recorder",
+    imageScale: 0.6,
     title: "超小型ドライブレコーダー",
     category: "カー用品・車載機器",
     description: "ミラー裏に収まるコンパクト設計。小型ながら必要機能を搭載。",
@@ -65,6 +71,7 @@ export const works: Work[] = [
   },
   {
     id: "rear-camera-drive-recorder",
+    image: "/assets/works/rear-camera-drive-recorder-v2.webp",
     title: "4インチ リアカメラ付きドライブレコーダー",
     category: "カー用品・車載機器",
     description: "目標販売価格から逆算して商品を企画。コストを抑えた大ロット生産を実現。",
@@ -72,6 +79,7 @@ export const works: Work[] = [
   },
   {
     id: "display-audio",
+    image: "/assets/works/display-audio-v2.webp",
     title: "ディスプレイオーディオ",
     category: "カー用品・車載機器",
     description: "海外展示会で製品を探索し、日本向け仕様への変更や専用部品の製作まで対応。",
@@ -79,6 +87,7 @@ export const works: Work[] = [
   },
   {
     id: "mobile-holder",
+    image: "/assets/works/mobile-holder-v2.webp",
     title: "車載用モバイルホルダー",
     category: "カー用品・車載機器",
     description: "量販店向けに特徴ある車載ホルダーを企画。工場探索から量産まで対応。",
@@ -86,6 +95,7 @@ export const works: Work[] = [
   },
   {
     id: "construction-site-camera",
+    image: "/assets/works/construction-site-camera-v2.webp",
     title: "工事現場向け屋外カメラ",
     category: "防犯・監視機器",
     description: "お客様専用の完全特注品として新規開発。電源のない環境での長時間撮影を実現。",
@@ -94,6 +104,7 @@ export const works: Work[] = [
   },
   {
     id: "action-camera",
+    imageScale: 0.7,
     title: "防水・防塵アクションカメラ",
     category: "スマートフォン・PC周辺機器",
     description: "海外メーカーと連携し、日本市場向けに商品化。評価・検証から量産まで対応。",
@@ -101,6 +112,7 @@ export const works: Work[] = [
   },
   {
     id: "sd-recorder",
+    image: "/assets/works/sd-recorder-v2.webp",
     title: "監視カメラ・SDカードレコーダー",
     category: "防犯・監視機器",
     description: "海外メーカーの窓口として、製品調達・生産管理・輸入・国内供給まで対応。",
@@ -108,6 +120,7 @@ export const works: Work[] = [
   },
   {
     id: "vacuum-rice-container",
+    image: "/assets/works/vacuum-rice-container-v2.webp",
     title: "真空米びつ",
     category: "生活家電",
     description: "市場性を確認したお客様からの依頼を受け、工場探索から金型対応まで実施。",
@@ -115,6 +128,7 @@ export const works: Work[] = [
   },
   {
     id: "cooking-pot",
+    image: "/assets/works/cooking-pot-v2.webp",
     title: "全自動調理ポット",
     category: "生活家電",
     description: "輸入ルートの再構築からPSE対応、取扱説明書・レシピ整備まで対応。",
@@ -122,6 +136,7 @@ export const works: Work[] = [
   },
   {
     id: "multi-dryer",
+    image: "/assets/works/multi-dryer-v2.webp",
     title: "マルチ乾燥機",
     category: "生活家電",
     description: "国内では珍しいマルチタイプの乾燥機を海外で探索し、日本向けに商品化。",
@@ -136,6 +151,7 @@ export const works: Work[] = [
   },
   {
     id: "high-pressure-hose",
+    image: "/assets/works/high-pressure-hose-v2.webp",
     title: "高圧洗浄ホース",
     category: "生活家電",
     description: "自社企画製品をベースにテレビ通販向けOEMとして展開。量産・輸入まで対応。",
@@ -144,6 +160,7 @@ export const works: Work[] = [
   },
   {
     id: "bidirectional-translator",
+    image: "/assets/works/bidirectional-translator-v2.webp",
     title: "双方向翻訳機",
     category: "スマートフォン・PC周辺機器",
     description: "1万円以下で販売できる翻訳機の開発を支援。2社へのOEM供給を行い、約半年で6万台以上を販売。",

@@ -18,7 +18,9 @@ import MediaFrame from "@/components/MediaFrame.astro";
     <div class="grid gap-6">
       {works.map((work) => (
         <article id={work.id} class="grid scroll-mt-28 gap-6 rounded-md border border-line bg-white p-5 lg:grid-cols-[minmax(280px,480px)_minmax(0,1fr)] md:p-7">
-          <MediaFrame src={`/assets/works/${work.id}-v1.webp`} alt={`${work.title}の製品イメージ`} aspect="3/2" class="self-start" />
+          <div class="work-visual self-start" style={`--work-image-scale: ${work.imageScale ?? 1}`}>
+            <MediaFrame src={work.image ?? `/assets/works/${work.id}-v1.webp`} alt={`${work.title}の製品イメージ`} aspect="3/2" class="bg-white" />
+          </div>
           <div class="flex min-w-0 flex-col justify-center">
             <p class="mb-3 text-sm font-bold text-primary">{work.category}</p>
             <div class="mb-4 flex flex-wrap items-center gap-3">
@@ -49,3 +51,9 @@ import MediaFrame from "@/components/MediaFrame.astro";
     secondaryHref="/services/"
   />
 </BaseLayout>
+
+<style>
+  .work-visual :global(img) {
+    transform: scale(var(--work-image-scale));
+  }
+</style>
