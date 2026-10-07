@@ -1,7 +1,7 @@
 ---
 title: Works additional image polish
 date: 2026-10-07
-status: approved
+status: published
 ---
 
 # Works Additional Image Polish
@@ -28,3 +28,12 @@ status: approved
 - User explicitly approved review-site publication and the naming exception for this batch with "これで公開してください。例外を承認します。" on 2026-10-07. Exception04 is scoped to this release; production publication is not authorized.
 - Rollback: preceding approved source 58b71b87f2f8d92bd7d672d94130ad45929100fa, deployment 7aa993ae.
 - No DNS, authentication, form routing or production changes.
+
+## Publication
+
+- Completed: 2026-10-07 09:12 JST.
+- Source: bb71b5dbe70151ca3ca4883e76287eba336dac38.
+- Deployment: https://2bddc07d.inbes-dev.pages.dev; fixed https://inbes-dev.pages.dev/works/ verified.
+- Live: all 18 images loaded at 1200 x 800; v3 assets match local SHA-256; title and three scales correct; noindex retained. Desktop and 390px mobile have no horizontal overflow.
+- Screenshot: /tmp/inbes-works-rice-public-v3.png.
+- Exception04 expired after verification.
