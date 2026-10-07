@@ -98,7 +98,7 @@ export const works: Work[] = [
   },
   {
     id: "construction-site-camera",
-    image: "/assets/works/construction-site-camera-v2.webp",
+    image: "/assets/works/outdoor-camera-v3.webp",
     title: "工事現場向け屋外カメラ",
     category: "防犯・監視機器",
     description: "お客様専用の完全特注品として新規開発。電源のない環境での長時間撮影を実現。",

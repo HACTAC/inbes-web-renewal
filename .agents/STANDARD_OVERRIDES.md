@@ -5,6 +5,18 @@ updated: 2026-10-07
 
 # Standard Overrides
 
+## INBES-STAGING-20261007-07
+
+- Status: `active`
+- 対象: 直立コーン版の工事現場向け屋外カメラ、TOPと製品一覧の画面清掃、会社概要HEROの筐体修正を確認用サイトへ公開する1回のみ。
+- 例外: Reviewer表示名の指定APIがないため`alias_only`を許可する。独立レビューは省略しない。
+- Reviewer: `01a115cf-a0f7-7b02-907b-3f6754f6371f`、返却表示名`Kepler`、希望alias`hirame`、実装不参加read-only。
+- Human Approval: TAKIWAKI Daisuke、2026-10-07。「これで公開してください」、表示名例外の確認へ「今回の例外を承認して公開する」。同じ公開準備中に会社概要画像の追加修正を依頼。
+- 期限: 今回の確認用公開完了まで。他の公開へ再利用しない。
+- 安全境界: mixhost本番、DNS、認証、アクセス権、フォーム送信先は変更しない。
+- 検証: ビルド、リンク、Validator、差分、独立レビュー、画像読み込みとPC・モバイル表示。
+- ロールバック: commit `305395e`、deployment `973e7504`。
+
 ## INBES-STAGING-20261007-06
 
 - Status: `expired`（公開完了）
