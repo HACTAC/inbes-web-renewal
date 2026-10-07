@@ -1,7 +1,7 @@
 ---
 title: Works product image revisions
 date: 2026-10-07
-status: approved
+status: published
 ---
 
 # Works Product Image Revisions
@@ -114,6 +114,18 @@ Use case: product-mockup. Create ONE1536x1024 landscape3:2 white seamless studio
 ## Release Boundary
 
 Prepared for existing Cloudflare Pages staging only. No DNS, access-policy, form routing or production changes. Review and scoped naming exception are required before release. Rollback: preceding approved snapshot 4c138bb.
+
+## Published Release
+
+- Environment: existing public review site https://inbes-dev.pages.dev/works/ (Cloudflare Pages staging project inbes-dev, main deployment branch).
+- Final source commit: 58b71b87f2f8d92bd7d672d94130ad45929100fa.
+- Final deployment: https://7aa993ae.inbes-dev.pages.dev.
+- Completed: 2026-10-07 09:09 JST. Human approval includes this image revision batch; subsequent requests added disclaimer removal, image-border removal and shared services CTA during the same release operation.
+- Live readback: 18 images load at 1200 x 800; all 11 v2 asset hashes match local files. Exact scale transforms retained. Image borders 0px, case borders 1px, disclaimer absent, noindex/nofollow/noarchive retained.
+- CTA: identical shared services component, one /contact/business/ link; desktop and 390px mobile render without overflow. Screenshots: /tmp/inbes-works-cta-public.png and /tmp/inbes-works-cta-public-mobile.png.
+- Intermediate deployments: c744b263 (image revisions and disclaimer removal), e8ee5ca7 (image borders). Final deployment above supersedes both.
+- Naming exception INBES-STAGING-20261007-03 expired on completion and cannot be reused.
+- Unrelated untracked knowledge and security files were not staged or published. Wrangler dirty-worktree warning concerns these preserved files; deployed source changes were explicitly committed.
 
 ## Verification
 
