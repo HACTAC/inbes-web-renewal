@@ -52,6 +52,10 @@ import MediaFrame from "@/components/MediaFrame.astro";
 </BaseLayout>
 
 <style>
+  .work-visual :global(.media-frame) {
+    border: 0;
+  }
+
   .work-visual :global(img) {
     transform: scale(var(--work-image-scale));
   }
