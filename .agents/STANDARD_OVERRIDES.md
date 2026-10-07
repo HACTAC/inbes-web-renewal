@@ -13,6 +13,7 @@ updated: 2026-10-07
 - Reviewer: `01a11398-ba45-7150-9cac-d875f30feb4e`、実際の表示名`Feynman`、希望alias`hirame`。実装不参加のread-onlyレビューで修正必須の不具合なし。
 - 追加差分Reviewer: `01a113aa-a015-72f3-9fd5-015e3373c4f7`、表示名`Cicero`、希望alias`hirame`。公開前に依頼された注記削除をread-onlyで確認し、指摘なし。
 - 枠線差分Reviewer: `01a113ab-b99f-7c21-8684-2e5eb5098543`、表示名`Copernicus`、希望alias`hirame`。同一公開作業中の画像枠線削除をread-onlyで確認し、指摘なし。
+- CTA差分Reviewer: `01a113ad-eeed-7030-b722-d71590729971`、表示名`Singer`、希望alias`hirame`。同一公開作業中の商品化支援CTA共通化をread-onlyで確認し、指摘なし。
 - Human Approval: TAKIWAKI Daisuke、2026-10-07。「今回限りの表示名ルール例外が承認待ち」と報告した後、「承認します」と明示承認。
 - 期限: 今回のStaging公開完了まで。他の公開へ再利用しない。
 - 検証: ビルド、リンク監査、Validator、差分確認、18画像の読み込みと3:2、390/768/1024/1440pxの表示、支給画像のハッシュ一致。

@@ -1,7 +1,7 @@
 ---
 import Icon from "@/components/Icon.astro";
 import Hero from "@/components/Hero.astro";
-import PageCta from "@/components/PageCta.astro";
+import BusinessContactCta from "@/components/BusinessContactCta.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { works, workSupportIcons } from "@/data/works";
 import MediaFrame from "@/components/MediaFrame.astro";
@@ -43,12 +43,7 @@ import MediaFrame from "@/components/MediaFrame.astro";
       ))}
     </div>
   </section>
-  <PageCta
-    primaryLabel="商品化について相談する"
-    primaryHref="/contact/business/"
-    secondaryLabel="商品化支援を見る"
-    secondaryHref="/services/"
-  />
+  <BusinessContactCta />
 </BaseLayout>
 
 <style>

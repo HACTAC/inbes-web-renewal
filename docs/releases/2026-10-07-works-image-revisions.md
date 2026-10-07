@@ -14,6 +14,7 @@ status: approved
 - Existing 18 cases, copy, support icons and category labels unchanged.
 - Subsequent user instruction: remove the visible AI-image disclaimer from the introductory section before publication. Product titles, scopes and case descriptions remain unchanged.
 - Subsequent user instruction: remove only image-frame borders on works; retain each case container border. This is scoped to .work-visual, not shared MediaFrame.
+- Subsequent user instruction: use the services contact CTA on works. Extracted unchanged services markup into BusinessContactCta and used it on both pages. Works secondary services link removed; business contact destination unchanged.
 - Display-only scale: action camera and low-cost recorder 0.7, mirror recorder 0.85, compact recorder 0.6. Original files retained; exact scaling in CSS.
 - Dryer: hose shown attached to the top outlet to clarify matching geometry.
 - AI images are illustrative, not engineering drawings or proof of exact product specifications. Battery LED layout and other small details may differ from actual products.
@@ -120,6 +121,7 @@ Prepared for existing Cloudflare Pages staging only. No DNS, access-policy, form
 - Independent Reviewer: 01a11398-ba45-7150-9cac-d875f30feb4e, actual nickname Feynman, requested alias hirame (alias_only). No implementation participation. No mandatory implementation or image defects found.
 - Disclaimer-removal delta reviewer: 01a113aa-a015-72f3-9fd5-015e3373c4f7, nickname Cicero, alias hirame (alias_only); read-only, no findings. Rebuild and internal link audit passed after removal.
 - Image-border delta reviewer: 01a113ab-b99f-7c21-8684-2e5eb5098543, nickname Copernicus, alias hirame (alias_only); read-only, no findings. Shared component and case borders unchanged. Build and link audit passed.
+- CTA delta reviewer: 01a113ad-eeed-7030-b722-d71590729971, nickname Singer, alias hirame (alias_only); read-only, no blockers. Original services CTA preserved exactly in shared component. Build and link audit passed.
 - Browser: all 18 images load at 1200 x 800. 390/768/1024/1440px checked without horizontal overflow; scaled images preserve frame dimensions.
 - Cooking pot source and installed file SHA-256 both ff2921e479eaa55fcc8fe3a63e93b7db55123e7527468942350198921ae0cdba. Exact copy verified after review.
 - User explicitly requested publication of this revision batch and approved the scoped naming exception on 2026-10-07 with "承認します". Exception INBES-STAGING-20261007-03 applies only to this release; previous exceptions are not reused.
