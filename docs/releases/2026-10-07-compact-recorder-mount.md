@@ -1,7 +1,7 @@
 ---
 title: Compact dashcam integrated mount image
 date: 2026-10-07
-status: approved
+status: published
 ---
 
 # Compact Dashcam Integrated Mount Image
@@ -27,3 +27,13 @@ Edit the compact camera into a credible compact dashcam with short integrated hi
 - Browser: new asset loads at 1200 x 800, exact 0.6 transform retained, image border 0px / case border 1px, desktop and 390px mobile have no overflow.
 - Rollback: source 71cb774e0db046096c4303165c1a1092c0a6cd7c, deployment c1f1813c.
 - No DNS, permissions, authentication or form routing changes. No reusable Knowledge Candidate.
+
+## Publication
+
+- Completed: 2026-10-07 09:25 JST.
+- Source commit: 305395e9348c4a49ced73c50397270899980eac8.
+- Deployment: https://973e7504.inbes-dev.pages.dev.
+- Fixed page: https://inbes-dev.pages.dev/works/.
+- Live verification: compact-drive-recorder-v2.webp loads at 1200 x 800, exact 0.6 transform retained; noindex/nofollow/noarchive unchanged; desktop and 390px mobile without horizontal overflow.
+- Screenshot: /tmp/inbes-compact-recorder-v2-public.png.
+- Naming exception06 expired after verification; preceding approved deployment c1f1813c retained for rollback.

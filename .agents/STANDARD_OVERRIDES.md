@@ -7,7 +7,7 @@ updated: 2026-10-07
 
 ## INBES-STAGING-20261007-06
 
-- Status: `active`
+- Status: `expired`（公開完了）
 - 対象: 超小型ドライブレコーダーを貼付け固定部一体型・2インチ背面液晶を想定した本体形状の画像へ差し替え、確認用サイトへ公開する1回のみ。
 - 例外: 表示名を指定できないためReviewerの`alias_only`を許可する。独立レビューは省略しない。
 - Reviewer: `01a113be-1738-7de2-b429-4a67108ab85d`、表示名`McClintock`、希望alias`hirame`、実装不参加read-only。
@@ -16,6 +16,7 @@ updated: 2026-10-07
 - 検証: ビルド、リンク、差分、Validator、独立レビュー、公開先の画像ロード・表示サイズ・モバイル表示。
 - 安全境界: 本番、DNS、アクセス権、認証、フォーム送信先は変更しない。
 - ロールバック: commit `71cb774`、deployment `c1f1813c`。
+- 完了: 2026-10-07 09:25 JST。commit `305395e`、deployment `973e7504`。固定URLの画像ロード1200x800、0.6表示、noindex、デスクトップ/モバイル表示を確認。
 
 ## INBES-STAGING-20261007-05
 
