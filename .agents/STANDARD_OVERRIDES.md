@@ -5,6 +5,19 @@ updated: 2026-10-07
 
 # Standard Overrides
 
+## INBES-STAGING-20261007-05
+
+- Status: `active`
+- 対象: 開発実績HEROと商品化支援CTAの共通画像修正、および18事例の見出しを「対応領域」へ変更し、確認用サイトへ公開する1回のみ。
+- 例外: 表示名指定APIがないためReviewerの`alias_only`を許可する。独立レビューは省略しない。
+- Reviewer: HEROを`01a113b6-38b6-7d21-bb50-f59623b4c9f7`、表示名`Beauvoir`、希望alias`hirame`がread-onlyで確認、修正必須指摘なし。最終追加差分レビューを別途実施。
+- 最終Reviewer: `01a113ba-2d41-7e23-9751-430712ada748`、表示名`Pasteur`、希望alias`hirame`。見出し変更と画像実寸を含む最終差分をread-only確認、ブロッカーなし。
+- Human Approval: TAKIWAKI Daisuke、2026-10-07。HERO修正の確認用公開と今回の表示名例外を確認した後、「公開承認します」と明示承認。
+- 期限: 今回の確認用公開完了まで。他の公開へ再利用しない。
+- 安全境界: 本番、DNS、認証、アクセス権、フォーム送信先は変更しない。
+- 検証: ビルド、リンク監査、Validator、差分、共通画像の読み込み、18見出し、デスクトップとモバイル表示。
+- ロールバック: commit `bb71b5d`、deployment `2bddc07d`。
+
 ## INBES-STAGING-20261007-04
 
 - Status: `expired`（公開完了）
