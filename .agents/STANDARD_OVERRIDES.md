@@ -7,7 +7,7 @@ updated: 2026-10-07
 
 ## INBES-STAGING-20261007-05
 
-- Status: `active`
+- Status: `expired`（公開完了）
 - 対象: 開発実績HEROと商品化支援CTAの共通画像修正、および18事例の見出しを「対応領域」へ変更し、確認用サイトへ公開する1回のみ。
 - 例外: 表示名指定APIがないためReviewerの`alias_only`を許可する。独立レビューは省略しない。
 - Reviewer: HEROを`01a113b6-38b6-7d21-bb50-f59623b4c9f7`、表示名`Beauvoir`、希望alias`hirame`がread-onlyで確認、修正必須指摘なし。最終追加差分レビューを別途実施。
@@ -17,6 +17,7 @@ updated: 2026-10-07
 - 安全境界: 本番、DNS、認証、アクセス権、フォーム送信先は変更しない。
 - 検証: ビルド、リンク監査、Validator、差分、共通画像の読み込み、18見出し、デスクトップとモバイル表示。
 - ロールバック: commit `bb71b5d`、deployment `2bddc07d`。
+- 完了: 2026-10-07 09:21 JST。commit `71cb774`、deployment `c1f1813c`。固定URLで共通修正画像2か所の読み込み、対応領域18見出し、noindex、デスクトップ/390pxモバイル表示を確認。
 
 ## INBES-STAGING-20261007-04
 

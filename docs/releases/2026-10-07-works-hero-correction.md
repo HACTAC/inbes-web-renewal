@@ -1,7 +1,7 @@
 ---
 title: Works shared hero product correction
 date: 2026-10-07
-status: approved
+status: published
 ---
 
 # Works Shared Hero Product Correction
@@ -29,3 +29,13 @@ Edit only the central power station. Use reference product geometry: broad flat 
 - No reusable Knowledge Candidate: product-specific image correction only.
 - Final read-only reviewer: 01a113ba-2d41-7e23-9751-430712ada748, nickname Pasteur, alias hirame; no blockers. Includes support-heading rename and services actual image dimensions.
 - Final build, links, Knowledge Validator and diff checks passed. Built output contains all 18 対応領域 headings and both shared asset references.
+
+## Publication
+
+- Completed: 2026-10-07 09:21 JST.
+- Source commit: 71cb774e0db046096c4303165c1a1092c0a6cd7c.
+- Deployment: https://c1f1813c.inbes-dev.pages.dev.
+- Fixed URLs: https://inbes-dev.pages.dev/works/ and https://inbes-dev.pages.dev/services/.
+- Live verification: both shared-image consumers loaded actual 1670 x 942 asset; works has 18 対応領域 headings; noindex/nofollow/noarchive retained; desktop and 390px mobile have no horizontal overflow.
+- Screenshot: /tmp/inbes-works-hero-v4-public.png.
+- Scoped naming exception05 expired on completion. Previous source bb71b5d / deployment 2bddc07d retained for rollback.
