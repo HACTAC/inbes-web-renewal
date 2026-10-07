@@ -71,8 +71,8 @@ export const works: Work[] = [
   },
   {
     id: "rear-camera-drive-recorder",
-    image: "/assets/works/rear-camera-drive-recorder-v2.webp",
-    title: "4インチ リアカメラ付きドライブレコーダー",
+    image: "/assets/works/rear-camera-drive-recorder-v3.webp",
+    title: "リアカメラ付きドライブレコーダー",
     category: "カー用品・車載機器",
     description: "目標販売価格から逆算して商品を企画。コストを抑えた大ロット生産を実現。",
     supports: ["企画", "工場選定", "評価", "量産", "輸入"]
@@ -80,6 +80,7 @@ export const works: Work[] = [
   {
     id: "display-audio",
     image: "/assets/works/display-audio-v2.webp",
+    imageScale: 0.85,
     title: "ディスプレイオーディオ",
     category: "カー用品・車載機器",
     description: "海外展示会で製品を探索し、日本向け仕様への変更や専用部品の製作まで対応。",
@@ -88,6 +89,7 @@ export const works: Work[] = [
   {
     id: "mobile-holder",
     image: "/assets/works/mobile-holder-v2.webp",
+    imageScale: 0.95,
     title: "車載用モバイルホルダー",
     category: "カー用品・車載機器",
     description: "量販店向けに特徴ある車載ホルダーを企画。工場探索から量産まで対応。",
@@ -120,7 +122,7 @@ export const works: Work[] = [
   },
   {
     id: "vacuum-rice-container",
-    image: "/assets/works/vacuum-rice-container-v2.webp",
+    image: "/assets/works/vacuum-rice-container-v3.webp",
     title: "真空米びつ",
     category: "生活家電",
     description: "市場性を確認したお客様からの依頼を受け、工場探索から金型対応まで実施。",
@@ -144,6 +146,7 @@ export const works: Work[] = [
   },
   {
     id: "vibration-machine",
+    imageScale: 0.85,
     title: "振動フィットネスマシン",
     category: "生活家電",
     description: "テレビ通販向け専用商品としてOEM開発。目標価格に合わせた提案から納品まで対応。",
