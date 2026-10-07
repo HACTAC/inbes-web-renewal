@@ -63,6 +63,7 @@ export const works: Work[] = [
   },
   {
     id: "compact-drive-recorder",
+    image: "/assets/works/compact-drive-recorder-v2.webp",
     imageScale: 0.6,
     title: "超小型ドライブレコーダー",
     category: "カー用品・車載機器",
