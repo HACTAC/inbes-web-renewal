@@ -7,7 +7,7 @@ updated: 2026-10-07
 
 ## INBES-STAGING-20261007-07
 
-- Status: `active`
+- Status: `expired`（公開完了）
 - 対象: 直立コーン版の工事現場向け屋外カメラ、TOPと製品一覧の画面清掃、会社概要HEROの筐体修正を確認用サイトへ公開する1回のみ。
 - 例外: Reviewer表示名の指定APIがないため`alias_only`を許可する。独立レビューは省略しない。
 - Reviewer: `01a115cf-a0f7-7b02-907b-3f6754f6371f`、返却表示名`Kepler`、希望alias`hirame`、実装不参加read-only。
@@ -16,6 +16,7 @@ updated: 2026-10-07
 - 安全境界: mixhost本番、DNS、認証、アクセス権、フォーム送信先は変更しない。
 - 検証: ビルド、リンク、Validator、差分、独立レビュー、画像読み込みとPC・モバイル表示。
 - ロールバック: commit `305395e`、deployment `973e7504`。
+- 完了: 2026-10-07 19:08 JST。commit `1e69a55`、deployment `623f0497`。固定URLの4画像読み込み・ファイルハッシュ一致・noindex・実表示を確認。
 
 ## INBES-STAGING-20261007-06
 

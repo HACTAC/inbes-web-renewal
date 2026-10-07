@@ -1,7 +1,7 @@
 ---
 title: Cone Camera And Hero Polish
 date: 2026-10-07
-status: prepared
+status: published
 environment: Cloudflare Pages review
 ---
 
@@ -36,4 +36,10 @@ environment: Cloudflare Pages review
 
 ## 公開結果
 
-公開後に追記する。
+- 公開日時: 2026-10-07 19:08 JST。
+- Source commit: `1e69a55f8e44626bda0629af84886843a188851e`。
+- Deployment: https://623f0497.inbes-dev.pages.dev
+- 固定確認URL: https://inbes-dev.pages.dev/company/ と https://inbes-dev.pages.dev/works/
+- 固定URLで4画像のロード・実表示、noindex、配信ファイルのSHA-256一致を確認。
+- TOP会社概要導線とOG画像の修正版参照を確認。
+- 表示名例外07は公開完了により失効。
