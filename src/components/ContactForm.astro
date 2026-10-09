@@ -33,6 +33,11 @@ const isFormEnabled = deploymentEnvironment === "production";
   data-max-file-size="10485760"
 >
   <input type="hidden" name="category" value={categoryValue} />
+  <input type="hidden" name="token" value="" />
+  <label class="hidden" aria-hidden="true">
+    Website
+    <input name="website" autocomplete="off" tabindex="-1" />
+  </label>
   <div class="grid gap-5 md:grid-cols-2">
     {showCompany && (
       <label class="grid gap-2 text-sm font-semibold">
@@ -71,11 +76,11 @@ const isFormEnabled = deploymentEnvironment === "production";
     </span>
   </label>
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-    <button class="button button-primary w-full sm:w-fit" type="submit" disabled={!isFormEnabled} aria-disabled={!isFormEnabled ? "true" : undefined}>
+    <button class="button button-primary w-full sm:w-fit" type="submit" disabled aria-disabled="true">
       {isFormEnabled ? submitLabel : "ステージング環境では送信できません"}
     </button>
     <p class="text-xs text-muted">
-      {isFormEnabled ? "送信後、受付完了画面と自動返信メールで受信を確認できます。" : "フォームの表示確認専用です。実メール送信は行われません。"}
+      {isFormEnabled ? "送信後、この画面に受付結果を表示します。" : "フォームの表示確認専用です。実メール送信は行われません。"}
     </p>
   </div>
 
@@ -85,7 +90,7 @@ const isFormEnabled = deploymentEnvironment === "production";
   </div>
   <div class="form-status" data-state="success" role="status" aria-live="polite" hidden>
     <strong>ご相談を受け付けました</strong>
-    <span class="ml-2">受付完了メールをお送りしました。</span>
+    <span class="ml-2">内容を確認のうえ、ご連絡いたします。</span>
   </div>
   <div class="form-status" data-state="error" role="alert" hidden>
     <strong>送信できませんでした</strong>
@@ -103,25 +108,73 @@ const isFormEnabled = deploymentEnvironment === "production";
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const file = form.querySelector<HTMLInputElement>('input[type="file"]');
     const error = form.querySelector<HTMLElement>('[data-state="error"]');
+    const success = form.querySelector<HTMLElement>('[data-state="success"]');
+    const sending = form.querySelector<HTMLElement>('[data-state="sending"]');
+    const token = form.querySelector<HTMLInputElement>('[name="token"]');
     const maxFileSize = Number(form.dataset.maxFileSize ?? 10485760);
 
-    if (!submit || !error) return;
+    if (!submit || !error || !success || !sending || !token) return;
 
-    form.addEventListener("submit", (event) => {
+    const setEnabled = (enabled: boolean) => {
+      submit.disabled = !enabled;
+      submit.setAttribute("aria-disabled", String(!enabled));
+    };
+    const refreshToken = async () => {
+      const response = await fetch(form.action, { credentials: "same-origin", cache: "no-store" });
+      if (!response.ok) throw new Error("Form unavailable");
+      const result = await response.json();
+      if (result.ok !== true || typeof result.token !== "string" || !/^[a-f0-9]{64}$/.test(result.token)) {
+        throw new Error("Invalid form token");
+      }
+      token.value = result.token;
+      setEnabled(true);
+    };
+    const showError = (message: string) => {
+      error.hidden = false;
+      error.querySelector("span")?.replaceChildren(document.createTextNode(message));
+    };
+    void refreshToken().catch(() => {
+      showError("現在フォームをご利用いただけません。時間をおいて再度お試しください。");
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (submit.disabled || !form.reportValidity()) return;
+      error.hidden = true;
       const selectedFile = file?.files?.[0];
       if (selectedFile && selectedFile.size > maxFileSize) {
-        event.preventDefault();
-        error.hidden = false;
-        error.querySelector("span")?.replaceChildren(document.createTextNode("添付ファイルは10MB以内にしてください。"));
+        showError("添付ファイルは10MB以内にしてください。");
         file?.focus();
         return;
       }
 
-      submit.disabled = true;
-      submit.setAttribute("aria-disabled", "true");
+      setEnabled(false);
       form.setAttribute("aria-busy", "true");
-      const sending = form.querySelector<HTMLElement>('[data-state="sending"]');
-      if (sending) sending.hidden = false;
+      sending.hidden = false;
+      try {
+        const response = await fetch(form.action, { method: "POST", body: new FormData(form), credentials: "same-origin" });
+        const result = await response.json();
+        if (!response.ok || result.ok !== true) {
+          if (result.uncertain === true) {
+            showError("受付結果を確認できませんでした。重複送信を避けるため、再送前にお電話でご確認ください。");
+            return;
+          }
+          showError(response.status === 429 ? "送信回数の上限に達しました。時間をおいてお試しください。" : "送信できませんでした。入力内容をご確認のうえ、再度お試しください。");
+          await refreshToken();
+          return;
+        }
+        success.hidden = false;
+        success.querySelector("span")?.replaceChildren(document.createTextNode(
+          result.replySent === true ? "受付完了メールをお送りしました。" : "内容を確認のうえ、ご連絡いたします。"
+        ));
+        form.reset();
+      } catch {
+        // A lost response does not prove the server rejected the inquiry.
+        showError("受付結果を確認できませんでした。重複送信を避けるため、再送前にお電話でご確認ください。");
+      } finally {
+        sending.hidden = true;
+        form.removeAttribute("aria-busy");
+      }
     });
   });
 </script>

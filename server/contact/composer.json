@@ -1,0 +1,15 @@
+{
+  "name": "inbes/contact-handler",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "ext-fileinfo": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "ext-zip": "*",
+    "phpmailer/phpmailer": "7.1.1"
+  },
+  "config": {
+    "allow-plugins": false
+  }
+}

@@ -3,3 +3,7 @@ node_modules/
 dist/
 .astro/
 references/
+
+__pycache__/
+.venv/
+node_modules

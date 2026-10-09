@@ -40,6 +40,17 @@ If creation-time naming or readback is unavailable, record `alias_only` and do n
 - Real payment or billing: 対象外。
 - External service configuration: DNS、メール、解析、CMS、ホスティング設定の変更は実行直前に承認を得る。
 
+## Infisical Project Read Authority
+
+- 2026-10-08の本人明示指示により、専用macOS Identityによる既存`inbes.jp` Project全体の読取りを許可する。dev/staging/prod、全path・key、現在/将来の項目が対象。環境・path・keyごとの追加承認を要求しない。
+- Project境界を維持し、他Projectへのmembership、書込み、権限管理は許可しない。NASのIdentity/資格を流用しない。
+- Project Viewerの広い読取り能力と、個々の処理で必要な項目の選択は区別する。処理の取得selectorを新たな権限承認gateとして扱わない。
+- 秘密値をチャット、ログ、スクリーンショット、コマンド引数、Git、Knowledgeへ表示・保存しない。bulk exportや任意コマンドへ秘密を渡す操作を通常コマンドに追加しない。
+- 認証発行、持続的bootstrap保存、資格入力/伝送、ネットワーク設定変更、本番公開はProject読取りの許可と別。具体方式の確認または本人の安全な入力が必要。
+- 現在の平文bootstrap候補はRepo外・directory0700/file0600・ACLなし。同一macOSユーザーの別プロセスから隔離できない限界を明記する。
+- Project新設・情報移動は行わない。連携は必要な最小処理をまず実装し、通常の読取り成功を1回確認する。成功後の故意失効・削除・再発行試験を要求しない。問題発生時に調査・修正する。秘密非出力・Project境界・書込み禁止を維持し、高影響変更のレビューと承認を省略しない。
+- 2026-10-08の本人明示承認により、既存専用Identity/inbes.jp Viewerで無期限実運用とする。承認済み設定はClient Secret TTL0/利用上限0、Token TTL/Max TTL43200秒・上限20・Period0。発行の最終操作と安全な非表示入力は本人が行い、秘密の抽出・伝送による代行は行わない。成功後は資格を維持し、故意失効試験・撤去・再設定の受入サイクルを要求しない。
+
 ## Project Behavior and Operations
 
 - Core business rules: トップは自社製品と商品化支援の2入口。自社製品側と商品化支援側のナビゲーションを分ける。

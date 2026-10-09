@@ -383,3 +383,7 @@ Vercel、GitHub Pages、Cloudflare Pagesを本番環境には使用しない。G
 - 実装、README、公開状態の整合性を保つ
 
 ローカルの変更がGitHubより先行している場合は、内容を確認してからプッシュする。
+
+## NAS運用
+
+引き継ぎ済みソースと限定した旧ページ修正をGitで管理する。更新手順は [NAS運用とGitHub統合](docs/handoff/nas-operations.md) を参照。
