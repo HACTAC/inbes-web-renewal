@@ -35,6 +35,8 @@ const modeLabel = siteMode === "products" ? "自社製品" : siteMode === "busin
 const currentPath = Astro.url.pathname;
 const deployEnvironment = import.meta.env.PUBLIC_DEPLOY_ENV ?? "production";
 const preventIndexing = deployEnvironment !== "production";
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";
+const enableAnalytics = import.meta.env.PUBLIC_DEPLOY_ENV === "production" && /^G-[A-Z0-9]+$/.test(measurementId);
 const isCurrent = (href: string) => {
   const resolved = withBase(href);
   return currentPath === resolved || (resolved !== "/" && currentPath.startsWith(resolved));
@@ -85,6 +87,29 @@ const isCurrent = (href: string) => {
     })}></script>
     <link rel="icon" href={withBase("/assets/brand/inbes-symbol-positive.svg")} type="image/svg+xml" />
     <title>{pageTitle}</title>
+    {enableAnalytics && <script is:inline define:vars={{ measurementId }}>
+      if (location.hostname === "inbes.jp") {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        const cleanUrl = (value) => {
+          try {
+            const url = new URL(value);
+            return url.origin + url.pathname;
+          } catch { return ""; }
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", measurementId, {
+          page_location: cleanUrl(location.href),
+          page_referrer: cleanUrl(document.referrer),
+          allow_google_signals: false,
+          allow_ad_personalization_signals: false
+        });
+        const tag = document.createElement("script");
+        tag.async = true;
+        tag.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+        document.head.appendChild(tag);
+      }
+    </script>}
     <script is:inline>
       (function (d) {
         var config = { kitId: "kkr3cfh", scriptTimeout: 3000, async: true };

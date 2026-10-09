@@ -42,7 +42,7 @@ export const productCategories: ProductCategory[] = [
         image: "/assets/products/hbp80s21w_baner.jpg",
         imageAlt: "POWERBANK CUBEのポータブル電源",
         description: "手のひらサイズの安心をテーマにした、軽量コンパクトなポータブル電源です。",
-        url: "https://inbes.jp/products.php",
+        url: "https://inbes.jp/cubele/HBP-80S21W/",
         linkLabel: "製品ページへ"
       },
       {
@@ -100,7 +100,7 @@ export const productCategories: ProductCategory[] = [
         image: "/assets/products/drysmart_thumnail.jpg",
         imageAlt: "ドライスマートの製品写真",
         description: "布団の暖め、衣類や靴の乾燥まで対応する、小型でパワフルなコンパクト乾燥機です。",
-        url: "https://inbes.jp/products.php",
+        url: "https://inbes.jp/products/md1500/",
         linkLabel: "製品ページへ"
       },
       {

@@ -1,0 +1,3 @@
+# Preserve byte-identical historical/public overlay files; do not reformat on integration.
+legacy-public/** -whitespace
+*.pdf binary

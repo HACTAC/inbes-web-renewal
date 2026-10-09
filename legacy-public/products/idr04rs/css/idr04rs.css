@@ -1,0 +1,817 @@
+@charset "UTF-8";
+html {
+  visibility: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
+body {
+  width: 100%;
+  font-size: 16px;
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background: rgba(250, 250, 250, 1.00);
+  margin: 0 auto 0 auto;
+  padding: 0;
+  color: #000;
+  line-height: 1.5rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: fot-udkakugo-large-pr6n, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+p {
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+p {
+  line-height: 1.9rem;
+}
+/* ~~ エレメント / タグセレクター ~~ */
+ul, ol, dl {
+  padding: 0;
+  margin: 0;
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+/* ~~ ソリッド線にフロートクリア要素を追加 ~~ */
+hr {
+  height: 1px;
+  border: none;
+  border-top: 1px #999999 solid;
+  clear: both;
+}
+a img { /* このセレクターは、一部のブラウザーでイメージをリンクで囲んだ場合にイメージの周囲に表示される初期設定の青いボーダーを削除します。 */
+  border: none;
+}
+/* ~~ サイトのリンクのスタイル付けは、ホバー効果を作成するセレクターグループも含め、この順序にする必要があります。~~ */
+a:link {
+  color: #414958;
+  text-decoration: none;
+  padding-bottom: 1px;
+}
+a:visited {
+  color: #4E5869;
+}
+a:hover, a:active, a:focus {
+  text-decoration: underline;
+}
+header {
+  width: 100%;
+  margin: 0 auto 30px auto;
+  padding: 150px 0 100px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background: #555 url("../img/main_bg.jpg") no-repeat;
+  background-blend-mode: multiply;
+}
+header h1 {
+  width: 60%;
+  max-width: 600px;
+  margin: 100px auto 0;
+}
+.obi {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.78);
+  position: fixed;
+  margin: 0;
+  z-index: 10;
+}
+.head_waku {
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.logo {
+  width: 160px;
+  position: absolute;
+  top: 20px;
+  left: 3%;
+}
+h2 {
+  font-size: 2.5rem;
+  line-height: 180%;
+}
+h3 {
+  font-size: 1.6rem;
+  line-height: 180%;
+}
+h4 {
+  font-size: 1.3rem;
+  line-height: 180%;
+}
+/* TOP動画
+-----------------------------------------*/
+.headvideo {
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+  max-width: 800px;
+  width: 80%;
+  min-width: 320px;
+  box-shadow: 0px 15px 50px;
+}
+/* コンテンツ部分の動画
+-----------------------------------------*/
+.normal_video {
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+  max-width: 800px;
+  width: 80%;
+  min-width: 320px;
+}
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.youtube iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.main_p {
+  width: 150px;
+  text-align: center;
+}
+.m_copy {
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.p_name {
+  font-weight: 300;
+  font-size: 1.2rem;
+  text-align: center;
+}
+/* コンテンツ
+-----------------------------------------*/
+article {}
+section {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 0;
+  margin-bottom: 0;
+}
+section h2 {
+  text-align: center;
+  margin-bottom: 1.8em;
+}
+.busi {
+  padding-top: 50px !important;
+}
+/* 機種紹介 */
+.model {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+.model div {
+  width: 43%;
+  text-align: left;
+}
+.pp {
+  width: 100%;
+}
+.model h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+  font-family: mr-eaves-modern, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.model h5 {
+  font-size: 1rem;
+  margin: 40px 0 0 0;
+}
+.model_ic {
+  width: 30%;
+}
+.jancode {
+  font-size: 0.9rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5em;
+}
+.acclist {
+  font-size: 0.9rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5em;
+}
+/* オプション紹介 */
+.op_model {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+.op_model div {
+  width: 43%;
+  text-align: left;
+}
+.op_model h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+  font-family: mr-eaves-modern, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6rem;
+}
+.op_model h3 span {
+  font-size: 1.1rem;
+  margin-bottom: 0.5em;
+  font-family: fot-udkakugo-large-pr6n, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  display: block;
+}
+.acc_text {
+  font-size: 0.9rem;
+  width: 100%;
+  margin: 30px auto 0 auto;
+  padding: 0;
+  line-height: 1.5em;
+}
+.acc_dl_text a {
+  font-size: 1.1rem;
+  width: 100%;
+  margin: 40px auto 40px auto;
+  padding: 0;
+  line-height: 1.5em;
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+.acc_dl_text a:hover {
+  text-decoration: none;
+}
+/* 視野角 */
+.g_bg {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#333333+0,000000+100 */
+  background: rgb(51, 51, 51); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(51, 51, 51, 1) 0%, rgba(0, 0, 0, 1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(51, 51, 51, 1) 0%, rgba(0, 0, 0, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(51, 51, 51, 1) 0%, rgba(0, 0, 0, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#000000', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+  color: rgba(255, 255, 255, 1.00);
+}
+.view {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.view div {
+  width: 45%;
+  text-align: left;
+  margin-bottom: 4em;
+}
+.view div figure {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.view div figure img {
+  width: 100%;
+}
+.view div h3 {
+  margin: 0 0 0.75em 0;
+}
+.view div p {
+  margin: 15px 0 0 0;
+}
+.shiya {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.shiya div {
+  width: 47%;
+  text-align: left;
+  margin-bottom: 4em;
+}
+.shiya_box {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.shiya_box figure {
+  width: 34%;
+  margin: 0;
+  padding: 0;
+}
+.shiya_box figure img {
+  width: 100%;
+}
+.shiya_box div {
+  width: 60%;
+}
+.shiya_box h3 {
+  margin: 0;
+  padding: 0;
+}
+.shiya_box p {
+  margin: 0.5em 0 0 0;
+}
+.maru {
+  border-radius: 50%;
+  width: 30%;
+}
+/* 使いやすい機能 */
+.bg_func {
+  background: #555 url("../img/bg2.jpg") no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  color: rgba(255, 255, 255, 1.00);
+}
+.function {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.function div {
+  width: 25%;
+  text-align: center;
+}
+.function div figure {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.function div figure img {
+  width: 100%;
+}
+.function div h3 {
+  margin: 0;
+}
+.function div p {
+  margin: 15px 0 0 0;
+}
+/* 製品仕様セクション */
+.spec_section {
+  margin: 0 auto;
+}
+.spec_section h3 {
+  width: 90%;
+  font-size: 1.5rem;
+  margin: 60px auto 30px;
+  text-align: center;
+}
+.spec_section p {
+  width: 90%;
+  font-size: 1rem;
+  margin: 10px auto 30px;
+  text-align: left;
+}
+/* 録画時間テーブル */
+.recseat {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.recseat tr {
+  border-bottom: solid 1px #999;
+}
+.recseat th {
+  background: rgba(80, 80, 80, 1.00);
+  color: #fff;
+  padding: 2%;
+}
+.recseat td {
+  padding: 2%;
+  text-align: center;
+  border-left: solid 1px #999;
+}
+.recseat td span {
+  min-width: 95px;
+  display: inline-block;
+}
+/* 製品仕様テーブル */
+.specseat {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.specseat tr {
+  border-bottom: solid 1px #999;
+}
+.specseat th {
+  background: rgba(80, 80, 80, 1.00);
+  color: #fff;
+  padding: 2%;
+}
+.specseat td {
+  padding: 2%;
+  border-left: solid 1px #999;
+}
+.specseat td span {
+  min-width: 95px;
+  display: inline-block;
+}
+/* ダウンロード */
+.d_load {}
+.d_load ul {
+  width: 90%;
+  margin: 0 auto 100px auto;
+  padding: 2% 0;
+  text-align: left;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.d_load ul a {
+  padding: 0;
+  margin: 0 0 0 0;
+  text-decoration: none;
+  text-align: center;
+  width: 18%;
+}
+.d_load ul a li {
+  list-style: none;
+  margin: 0 0 0 0;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 13% 10% 10% 10%;
+  text-align: center;
+}
+.d_load ul a li img {
+  width: 20%;
+  margin: -1% auto 5% auto;
+  vertical-align: middle;
+  display: block;
+}
+.d_load ul a li:hover {
+  background-color: #ccc;
+}
+.br_pc {
+  display: block;
+}
+.br_sp {
+  display: none;
+}
+.txtred {
+  color: #CC0000;
+}
+.pc_hide {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  header {
+    padding: 100px 0 50px;
+  }
+  header h1 {
+    margin-top: 40px;
+  }
+  .Nav {
+    border-top: none;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  /* 見出し */
+  h2 {
+    font-size: 1.8rem;
+    line-height: 180%;
+  }
+  h3 {
+    font-size: 1.5rem;
+    line-height: 180%;
+  }
+  h4 {
+    font-size: 1.3rem;
+    line-height: 180%;
+  }
+  section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 0;
+    margin-bottom: 0;
+  }
+  /* 機種紹介 */
+  .model {
+    display: block;
+  }
+  .model div {
+    width: 70%;
+    margin: 0 auto 30px auto;
+  }
+  .pp {
+    width: 100%;
+  }
+  .model h3 {
+    font-size: 2.5rem;
+    margin: 0.5em 0 0 0;
+    padding: 0;
+  }
+  .model h5 {
+    font-size: 1rem;
+    margin: 20px 0 0 0;
+  }
+  .jancode {}
+  .acclist {}
+  .acc_text {
+    margin: 20px 0 0 0;
+  }
+  /* どんな瞬間も見逃さない */
+  .view {}
+  .view div {
+    width: 70%;
+    margin: auto;
+    text-align: left;
+    margin-bottom: 4em;
+  }
+  .view div figure {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .view div figure img {
+    width: 100%;
+  }
+  .view div h3 {
+    margin: 0 0 0.75em 0;
+    text-align: center;
+  }
+  .view div p {
+    margin: 15px 0 0 0;
+  }
+  .shiya {
+    margin: 0 auto;
+  }
+  .shiya div {
+    width: 85%;
+    margin: 0 auto 2.5em;
+  }
+  .shiya_box figure {
+    width: 30%;
+  }
+  .shiya_box div {
+    width: 58%;
+  }
+  .shiya_box h3 {}
+  /* 使いやすい機能 */
+  .function {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .function div {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto 3em;
+  }
+  .function div figure {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .function div figure img {
+    width: 100%;
+  }
+  .function div h3 {
+    margin: 0;
+  }
+  .function div p {
+    margin: 15px 0 0 0;
+  }
+  /* 製品仕様テーブル */
+  .spec_section p {
+    width: 80%;
+    ;
+  }
+  .recseat {
+    width: 80%;
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .recseat th, .recseat td {
+    padding: auto 1.5em;
+  }
+  .recseat th {
+    min-width: 90px;
+  }
+  /* 製品仕様テーブル */
+  .specseat {
+    width: 80%;
+    margin: auto;
+  }
+  .specseat .thead {
+    display: none;
+  }
+  .specseat tr {
+    width: 100%;
+    border: none;
+  }
+  .specseat td, .specseat th {
+    display: block;
+    text-align: center;
+  }
+  .specseat td {
+    margin-bottom: 0;
+    border: none;
+  }
+  .specseat th:first-child {
+    background: rgba(80, 80, 80, 1.00);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: 1em 0 0.5em;
+    padding: 1em 0;
+  }
+  .specseat td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin: 0 0 0 0;
+    display: block;
+  }
+  /* ダウンロード */
+  .d_load ul a {
+    margin: 4% auto;
+    width: 51%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* 見出し */
+  h2 {
+    font-size: 1.5rem;
+    line-height: 180%;
+  }
+  h3 {
+    font-size: 1.4rem;
+    line-height: 180%;
+  }
+  h4 {
+    font-size: 1.2rem;
+    line-height: 180%;
+  }
+  .logo {
+    width: 120px;
+    top: 16px;
+  }
+  header {
+    padding: 100px 0 60px;
+  }
+  header h1 {
+    width: 90%;
+    margin-top: 60px;
+  }
+  .obi {
+    height: 60px;
+  }
+  /* TOP動画
+-----------------------------------------*/
+  .headvideo {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+  }
+  /* 機種紹介 */
+  .model {
+    display: block;
+  }
+  .model div {
+    width: 90%;
+    margin: 0 auto 30px auto;
+  }
+  .model h3 {
+    font-size: 2rem;
+    margin: 10px 0 0 0;
+    line-height: 1.2;
+    padding: 0;
+  }
+  .model h5 {
+    font-size: 1rem;
+    margin: 15px 0 10px 0;
+  }
+  .jancode {}
+  .acclist {}
+  .acc_text {
+    margin: 15px 0 10px 0;
+  }
+  section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px 0;
+    margin-bottom: 0;
+  }
+  /* どんな瞬間も見逃さない */
+  .view {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .view div {
+    width: 95%;
+    margin-bottom: 3em;
+  }
+  /* しっかり記録 */
+  .shiya {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .shiya div {
+    width: 95%;
+    margin-bottom: 1.5em;
+  }
+  .shiya_box {
+    flex-wrap: wrap;
+  }
+  .shiya_box figure {
+    width: 51%;
+    margin: 0 auto;
+  }
+  .shiya_box figure img {
+    width: 100%;
+  }
+  .shiya_box div {
+    width: 100%;
+  }
+  .shiya_box h3 {
+    margin: 0.5em 0 0;
+    text-align: center;
+  }
+  /* 使いやすい機能 */
+  .function {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .function div {
+    width: 95%;
+  }
+  .function div figure {
+    width: 100%;
+  }
+  .function div figure img {
+    width: 51%;
+  }
+  .function div h3 {
+    margin: 0;
+  }
+  .function div p {
+    margin: 15px 0 0 0;
+  }
+  /* 録画仕様テーブル */
+  .spec_section p {
+    width: 95%;
+    ;
+  }
+  .recseat {
+    width: 95%;
+  }
+  /* 製品仕様テーブル */
+  .specseat {
+    width: 95%;
+  }
+  /* ダウンロード */
+  .d_load ul {
+    margin: 0 auto 50px auto;
+  }
+  .d_load ul a {
+    width: 80%;
+  }
+  .br_pc {
+    display: none;
+  }
+  .br_sp {
+    display: block;
+  }
+  .pc_hide {
+    display: block;
+    font-size: 0.8rem;
+  }
+}

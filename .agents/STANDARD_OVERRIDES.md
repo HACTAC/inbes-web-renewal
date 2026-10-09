@@ -5,6 +5,18 @@ updated: 2026-10-07
 
 # Standard Overrides
 
+## INBES-PRODUCTION-20261009-NEWS
+
+- Status: `active`
+- 対象: 今日付のリニューアル告知、旧サイトの増資案内移植、news詳細summary幅修正、仮原稿2件削除の本番反映1回のみ。
+- 例外: Runtimeの表示名指定・変更APIがないため、Reviewerの`alias_only`を許可する。独立レビュー自体は省略しない。
+- Reviewer: `01a11de8-62fb-7972-8388-5d4ed73ffab7`、返却表示名`Ptolemy`、希望alias`hirame`。実装不参加read-only、固定成果物に必須修正なし。
+- Human Approval: TAKIWAKI Daisuke、2026-10-09。「本番反映願います」、表示名例外の確認に「今回の表示名例外を承認する」、幅修正に「修正後公開までお願いします」。
+- 安全境界: 更新5ファイル、仮原稿HTML2件のゴミ箱退避のみ。画像・PHP・秘密・DNS・実メール設定を変更しない。
+- 期限: 今回の本番反映完了まで。他の公開へ再利用しない。
+- 復旧: Repo外のnews-20261009-v2/rollbackに保存した既存6ファイルを戻し、新規増資記事を撤去する。
+- 固定ZIP SHA256: `ad303ba707744766cdca9e5f9fb87659384f9b064d9a4756e0f2ce12dd649fa9`。
+
 ## INBES-STAGING-20261007-07
 
 - Status: `expired`（公開完了）
