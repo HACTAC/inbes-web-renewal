@@ -11,9 +11,17 @@
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.16.18",
+    "astro": "7.3.8",
+    "autoprefixer": "10.6.1",
     "iconoir": "^7.11.0",
-    "tailwindcss": "^3.4.17"
+    "postcss": "8.5.29",
+    "tailwindcss": "3.4.19"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=9.6.5"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }
