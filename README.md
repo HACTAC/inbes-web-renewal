@@ -387,3 +387,7 @@ Vercel、GitHub Pages、Cloudflare Pagesを本番環境には使用しない。G
 ## NAS運用
 
 引き継ぎ済みソースと限定した旧ページ修正をGitで管理する。更新手順は [NAS運用とGitHub統合](docs/handoff/nas-operations.md) を参照。
+
+## 開発環境の依存更新（2026-10-09）
+
+Node.js 22.12.0以上・npm 9.6.5以上を使用する。確認済みNodeは22.23.2。セットアップは`npm ci`。Astro 7.3.8へ更新し、Tailwind 3はPostCSSから処理する。残る制作時依存7件の適用条件と更新判断は[依存セキュリティ確認](docs/security/dependency-review-2026-10-09.md)を参照する。
