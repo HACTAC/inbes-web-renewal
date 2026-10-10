@@ -118,3 +118,9 @@ NASの非秘密記録：`/mnt/sites/.agents/inbes.jp/turnstile-authorized-retrie
 通常ブラウザーのUser-Agentで公開TOP200、originでもTOP200かつFTP indexと同一SHA。一方、originの既存contact/send.php GETは503 JSON ok:falseであることを確認。原因は未確定で、FTP Home Directory変更が原因と断定しない。元のホーム直下.inbes-contactの権限をcPanelで本人確認待ち。秘密の移行・Turnstile有効化は0。
 
 check-private-http.pyには公開TOP200とフォーム200/ok:trueのcontrolを追加して偽陽性を防ぎ、User-Agentを統一。オフライン5テストと独立レビューPASS。これは本番遮断検証の合格ではない。Stage AはFAILED/ROLLED_BACKを維持する。詳細NAS記録inbes-contained-runtime-stage-a-result-20261010.json。
+
+## Contained runtime production migration and Turnstile rollout
+
+Owner authorized moving runtime into the site, testing the new runtime, and removing the obsolete old folder after success. Production now uses `public_html/inbes.jp/.inbes-private`: owner-only directories/files, relative configuration/vendor/state/log references, and a root URL-denial rule before private data was copied. Native403 handling overrides the inherited error-page route; the original root configuration is retained outside the public site. Origin and canonical marker requests all returned403 while public controls remained200.
+
+The migrated handler and pointer passed GET initialization and both form-page checks. Existing SMTP and rate key were retained; the transient rate window started empty. Actual private configuration, state, log, and vendor targets returned403. Turnstile frontend was deployed as the reviewed17-file delta and the dedicated stored pair was used to enable private verification without secret output. GET initialization reports verification required; missing CSRF is rejected403. No real email was sent. The owner must remove the now-unreferenced home-level `.inbes-contact` using cPanel because fixed-site FTP does not reach it. End-to-end human challenge completion and SMTP delivery are separate from these no-mail checks.
