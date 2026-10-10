@@ -13,7 +13,7 @@ import subprocess
 REPO = Path(__file__).resolve().parents[1]
 PRIVATE_ROOT = Path('/mnt/sites/.agents')
 EXCLUSIONS = Path('/mnt/sites/.agents/inbes.jp/public-removed-paths.json')
-FORBIDDEN = {'.git', '.agents', '@eaDir', '#recycle', '.DS_Store', 'AGENTS.md', '_notes', 'node_modules'}
+FORBIDDEN = {'.inbes-private', '.git', '.agents', '@eaDir', '#recycle', '.DS_Store', 'AGENTS.md', '_notes', 'node_modules'}
 
 
 def digest(data):

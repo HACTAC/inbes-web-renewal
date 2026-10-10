@@ -69,6 +69,15 @@ class ReleaseTests(unittest.TestCase):
     def apply(self):
         release.apply_release(self.ftp, self.excluded, self.state, self.review, 'approved test fixture')
 
+    def test_private_runtime_is_never_a_public_upload_candidate(self):
+        folder = self.repo / 'dist/.inbes-private'
+        folder.mkdir()
+        (folder / 'config.json').write_text('{"fixture":true}')
+        with self.assertRaises(ValueError):
+            release.plan_release(self.ftp, self.repo / 'dist', self.excluded, self.state)
+        self.assertEqual(self.ftp.writes, [])
+        self.assertFalse((self.state / 'plan.json').exists())
+
     def test_plan_is_read_only_and_apply_reads_back_fixed_delta(self):
         self.plan()
         self.assertEqual(self.ftp.writes, [])
