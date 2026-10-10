@@ -25,12 +25,31 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 
 def inspect(opener):
+    controls = []
+    for path in ("/", "/contact/send.php"):
+        url = ORIGIN + path
+        status, healthy = None, False
+        try:
+            request = urllib.request.Request(url, headers={"Cache-Control": "no-store", "User-Agent": "Mozilla/5.0"})
+            with opener.open(request, timeout=10) as response:
+                status = response.status
+                healthy = status == 200 and response.geturl() == url
+                if healthy and path.endswith("send.php"):
+                    body = response.read(65537)
+                    data = json.loads(body) if len(body) <= 65536 else None
+                    healthy = isinstance(data, dict) and data.get("ok") is True
+        except urllib.error.HTTPError as error:
+            status = error.code
+            error.close()
+        except Exception:
+            healthy = False
+        controls.append({"path": path, "status": status, "healthy": healthy})
     outcomes = []
     for path in PATHS:
         for method in METHODS:
             url = ORIGIN + path
             req = urllib.request.Request(url, method=method,
-                    headers={"Cache-Control": "no-store"})
+                    headers={"Cache-Control": "no-store", "User-Agent": "Mozilla/5.0"})
             status, denied = None, False
             try:
                 with opener.open(req, timeout=10) as response:
@@ -44,7 +63,8 @@ def inspect(opener):
                 pass
             outcomes.append({"path": path, "method": method,
                              "status": status, "denied": denied})
-    return {"http_denial_verified": all(row["denied"] for row in outcomes),
+    return {"http_denial_verified": all(row["healthy"] for row in controls) and all(row["denied"] for row in outcomes),
+            "public_controls": controls,
             "requests": outcomes, "secrets_read_or_written": False}
 
 

@@ -109,3 +109,12 @@ NASの非秘密記録：`/mnt/sites/.agents/inbes.jp/turnstile-authorized-retrie
 独立レビューで、FTPのHome DirectoryとWeb/PHPのdocument rootは別設定と確認。cPanelのドメイン一覧で公開先を確認し、実PHPのdocument rootとの対応を確定してから移行する。FTPを`.inbes-contact`へ変更したことを公開先変更と扱わない。HTTP checkerの403はcanonical URLの結果であり、origin側でdenyが適用される設定と同一実体の公開経路も確認する。監査snapshotはtext枝と既存build一致枝の双方で`.inbes-private`を除外し、古いinventoryを使う場合にも秘密取得を避ける。既存静的planは更新ツールSHA変更により適用不可となるため、FTPサイトルート復帰後に新しいstateで再作成する。
 
 最終ソース準備レビューは独立hirame PASS、公開readyとは区別。本番private backupは`/mnt/sites/.agents/backups/inbes-private-before-contained-20261010`（8ファイル/279270bytes、dir0700/file0600）に保持。取得時点の退避でありatomic snapshotではない。mutable rate stateは切替時に最新値を確認する。値は会話・ログ・Gitへ出していない。本番書込みは0。
+
+
+## 非秘密の本番配置テスト結果（2026-10-10）
+
+本人の対象限定承認後、遮断設定と固定非秘密マーカー6件を配置し、全SHA/dir0700/file0600を読み戻し確認した。公開URLの20件は403だったが、同じPython User-Agentで公開TOPも403となり、フォルダーの遮断証拠とは扱わなかった。直接TLS/SNIでINBES originへ接続した検証パス20件は404。固定計画の403条件に合わず、不合格として作成分6ファイル/2ディレクトリだけを撤去し、不存在を確認した。既存handler/static/private configは変更していない。
+
+通常ブラウザーのUser-Agentで公開TOP200、originでもTOP200かつFTP indexと同一SHA。一方、originの既存contact/send.php GETは503 JSON ok:falseであることを確認。原因は未確定で、FTP Home Directory変更が原因と断定しない。元のホーム直下.inbes-contactの権限をcPanelで本人確認待ち。秘密の移行・Turnstile有効化は0。
+
+check-private-http.pyには公開TOP200とフォーム200/ok:trueのcontrolを追加して偽陽性を防ぎ、User-Agentを統一。オフライン5テストと独立レビューPASS。これは本番遮断検証の合格ではない。Stage AはFAILED/ROLLED_BACKを維持する。詳細NAS記録inbes-contained-runtime-stage-a-result-20261010.json。
