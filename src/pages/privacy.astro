@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { withBase } from "@/utils/paths";
+const usesTurnstile = (import.meta.env.PUBLIC_DEPLOY_ENV ?? "production") === "production" && Boolean((import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "").trim());
 ---
 
 <BaseLayout title="プライバシーポリシー">
@@ -25,6 +26,13 @@ import { withBase } from "@/utils/paths";
         <h2>第三者提供</h2>
         <p>法令に基づく場合を除き、本人の同意なく個人情報を第三者に提供しません。業務遂行に必要な範囲で外部委託先へ情報を共有する場合は、適切な管理を行います。</p>
       </section>
+      {usesTurnstile && (
+        <section>
+          <h2>迷惑送信の防止</h2>
+          <p>お問い合わせフォームでは、迷惑送信を防ぐためCloudflare Turnstileを利用しています。判定に必要なブラウザー等の利用環境に関する情報はCloudflareに送信されます。お問い合わせの入力内容をTurnstileの判定のために送信することはありません。</p>
+          <p>詳細は<a class="font-semibold text-primary underline underline-offset-4" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflareのプライバシーポリシー<span class="sr-only">（新しいタブで開きます）</span></a>をご確認ください。</p>
+        </section>
+      )}
       <section>
         <h2>お問い合わせ窓口</h2>
         <p>個人情報の開示、訂正、削除等に関するお問い合わせは、<a class="font-semibold text-primary underline underline-offset-4" href={withBase("/contact/")}>お問い合わせページ</a>よりご連絡ください。</p>
