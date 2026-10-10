@@ -17,7 +17,7 @@ if (($argv[1] ?? '') === '--child') {
         'message' => 'private request must not be logged'];
     $_FILES = [];
     if ($case === 'attachment') $_FILES['attachment'] = ['error' => UPLOAD_ERR_PARTIAL];
-    $_SESSION = ['contact_tokens' => [str_repeat('a', 64) => time()]];
+    $_SESSION = ['contact_tokens' => [str_repeat('a', 64) => time() - ($case === 'csrf_expired' ? 601 : 0)]];
     putenv('INBES_FORM_CONFIG=' . $root . '/.inbes-private/config.php');
     $GLOBALS['observation_http_status'] = 200;
     register_shutdown_function(static function (): void {
@@ -72,7 +72,7 @@ function observationClean(string $path): void
 }
 $base = sys_get_temp_dir() . '/inbes-observation-' . bin2hex(random_bytes(8));
 mkdir($base, 0700);
-$cases = ['wrapper', 'origin', 'fetch_site', 'csrf', 'validation', 'attachment', 'get', 'bootstrap_missing', 'bootstrap_unprivate', 'disabled', 'alternate', 'log_unavailable'];
+$cases = ['wrapper', 'origin', 'fetch_site', 'csrf', 'csrf_expired', 'validation', 'attachment', 'get', 'bootstrap_missing', 'bootstrap_unprivate', 'disabled', 'alternate', 'log_unavailable'];
 try {
     foreach ($cases as $case) {
         $root = $base . '/' . $case;
@@ -117,7 +117,7 @@ try {
             'wrapper' => ['request_received', 'service_failed'],
             'origin' => ['request_received', 'origin_rejected'],
             'fetch_site' => ['request_received', 'fetch_site_rejected'],
-            'csrf' => ['request_received', 'csrf_rejected'],
+            'csrf', 'csrf_expired' => ['request_received', 'csrf_rejected'],
             'validation', 'attachment' => ['request_received', 'validation_rejected'],
             'disabled', 'alternate' => ['request_received'],
             default => [],

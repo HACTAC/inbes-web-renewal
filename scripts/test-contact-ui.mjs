@@ -26,11 +26,13 @@ let checks = 0;
 try {
   browser = await chromium.launch({ ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE, args: ["--no-sandbox"] } : { channel: "chrome" }), headless: true });
   for (const width of [390, 1440]) {
-    for (const scenario of ["success", "rejected", "unavailable", "uncertain", "smtp-uncertain", ...(process.env.TEST_TURNSTILE === "true" ? ["challenge-failed", "challenge-expired", "verification-rejected", "verification-unavailable", "retry-success", "config-mismatch", "script-unavailable"] : [])]) {
+    for (const scenario of ["success", "expired-initial-token", "preflight-unavailable", "preflight-network-failed", "double-submit", "rejected", "unavailable", "uncertain", "smtp-uncertain", ...(process.env.TEST_TURNSTILE === "true" ? ["challenge-failed", "challenge-expired", "challenge-expired-during-preflight", "verification-rejected", "verification-unavailable", "retry-success", "config-mismatch", "script-unavailable"] : [])]) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       const errors = [];
       page.on("pageerror", (error) => errors.push(error.message));
       let posts = 0;
+      let gets = 0;
+      const requests = [];
       await page.route("**/*", async (route) => {
         if (route.request().url().startsWith("https://challenges.cloudflare.com/turnstile/v0/api.js")) {
           if (scenario === "script-unavailable") { await route.abort(); return; }
@@ -49,8 +51,21 @@ try {
         if (!route.request().url().startsWith(origin + "/")) { await route.abort(); return; }
         if (new URL(route.request().url()).pathname !== "/contact/send.php") { await route.continue(); return; }
         if (["unavailable", "challenge-failed", "config-mismatch", "script-unavailable"].includes(scenario)) { await route.fulfill({ status: 503, json: { ok: false } }); return; }
-        if (route.request().method() === "GET") { await route.fulfill({ json: { ok: true, token: "a".repeat(64), turnstileRequired: process.env.TEST_TURNSTILE === "true" && scenario !== "config-mismatch" } }); return; }
+        if (route.request().method() === "GET") {
+          gets++;
+          requests.push("GET");
+          if (gets === 2 && scenario === "preflight-unavailable") { await route.fulfill({ status: 503, json: { ok: false } }); return; }
+          if (gets === 2 && scenario === "preflight-network-failed") { await route.abort(); return; }
+          if (gets === 2 && scenario === "challenge-expired-during-preflight") {
+            await page.evaluate(() => window.__challengeOptions["expired-callback"]());
+          }
+          await route.fulfill({ json: { ok: true, token: (gets === 1 ? "a" : "b").repeat(64), turnstileRequired: process.env.TEST_TURNSTILE === "true" && scenario !== "config-mismatch" } }); return;
+        }
         posts++;
+        requests.push("POST");
+        // Simulate the server rejecting the old initial token after its TTL.
+        // Every accepted POST must carry the fresh token fetched while locked.
+        assert(route.request().postData().includes("b".repeat(64)));
         if (process.env.TEST_TURNSTILE === "true") assert(route.request().postData().includes("test-verification-token"));
         if (["verification-rejected", "verification-unavailable"].includes(scenario)) {
           await route.fulfill({ status: scenario === "verification-rejected" ? 403 : 503, json: { ok: false, uncertain: false, code: scenario.replace("-", "_") } }); return;
@@ -79,10 +94,23 @@ try {
         await page.locator('[name="email"]').fill("test@example.invalid");
         await page.locator('[name="message"]').fill("Test only; no real SMTP.");
         await page.locator('[name="privacy"]').check();
-        await button.click();
-        await page.locator(`[data-state="${["success", "challenge-expired"].includes(scenario) ? "success" : "error"}"]`).waitFor({ state: "visible" });
-        assert.equal(posts, 1);
-        if (["success", "challenge-expired", "uncertain", "smtp-uncertain"].includes(scenario)) assert(await button.isDisabled());
+        if (scenario === "double-submit") {
+          await page.evaluate(() => {
+            const form = document.querySelector('[data-contact-form]');
+            form.dispatchEvent(new Event("submit", { cancelable: true }));
+            form.dispatchEvent(new Event("submit", { cancelable: true }));
+          });
+        } else await button.click();
+        const succeeds = ["success", "expired-initial-token", "double-submit", "challenge-expired"].includes(scenario);
+        await page.locator(`[data-state="${succeeds ? "success" : "error"}"]`).waitFor({ state: "visible" });
+        const noPost = ["preflight-unavailable", "preflight-network-failed", "challenge-expired-during-preflight"].includes(scenario);
+        assert.equal(posts, noPost ? 0 : 1);
+        assert.deepEqual(requests.slice(0, noPost ? 2 : 3), noPost ? ["GET", "GET"] : ["GET", "GET", "POST"]);
+        if (noPost) {
+          assert.equal(gets, 2);
+          assert((await page.locator('[data-state="error"]').innerText()).includes("送信していません"));
+        }
+        if (succeeds || ["uncertain", "smtp-uncertain", "challenge-expired-during-preflight"].includes(scenario)) assert(await button.isDisabled());
         else await page.waitForFunction(() => !document.querySelector('[data-contact-form] button').disabled);
       }
       if (scenario === "retry-success") {

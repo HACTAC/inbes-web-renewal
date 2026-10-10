@@ -214,6 +214,23 @@ const turnstileSitekey = isFormEnabled ? (import.meta.env.PUBLIC_TURNSTILE_SITE_
       form.setAttribute("aria-busy", "true");
       sending.hidden = false;
       try {
+        // A form may remain open longer than the server token's lifetime.
+        // Keep the submit lock while obtaining a fresh token for this one POST.
+        token.value = "";
+        try {
+          await refreshToken();
+        } catch {
+          locked = false;
+          setEnabled(!sitekey || verificationToken !== "");
+          showError("送信前の準備ができなかったため、送信していません。時間をおいて再度お試しください。");
+          return;
+        }
+        if (sitekey && verificationToken === "") {
+          locked = false;
+          setEnabled(false);
+          showError("送信前の確認ができなかったため、送信していません。もう一度確認してください。");
+          return;
+        }
         const body = new FormData(form);
         if (sitekey) body.set("cf-turnstile-response", verificationToken);
         const response = await fetch(form.action, { method: "POST", body, credentials: "same-origin" });
