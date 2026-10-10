@@ -66,6 +66,10 @@ try {
     rejectsStorage($privateCheck, 'readable private root rejected');
     rejectsStorage($autoloadCheck, 'autoload also requires private root');
     chmod($private, 0700);
+    storageTestFile($policy, "Options -Indexes\nRequire all denied\n", 0644);
+    rejectsStorage($privateCheck, 'inherited error handler policy rejected');
+    storageTestFile($policy, "Options -Indexes\nRequire all denied\nErrorDocument 403 /403.php\n", 0644);
+    rejectsStorage($privateCheck, 'custom error route policy rejected');
     storageTestFile($policy, "Options -Indexes\nRequire all granted\n", 0644);
     rejectsStorage($privateCheck, 'modified policy rejected');
     storageTestFile($policy, InbesContact\PRIVATE_DENY_POLICY, 0644);

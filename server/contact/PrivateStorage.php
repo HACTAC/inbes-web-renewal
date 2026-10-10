@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace InbesContact;
 
 // Apache 2.4 / LiteSpeed deployment prerequisite, not proof of HTTP enforcement.
-const PRIVATE_DENY_POLICY = "Options -Indexes\nRequire all denied\n";
+// Use Apache's native denial response instead of inheriting a site's error route.
+const PRIVATE_DENY_POLICY = "Options -Indexes\nRequire all denied\nErrorDocument 403 default\n";
 
 function storageUnavailable(): never
 {
