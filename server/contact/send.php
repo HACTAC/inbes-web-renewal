@@ -4,6 +4,8 @@ declare(strict_types=1);
 use PHPMailer\PHPMailer\PHPMailer;
 
 require __DIR__ . '/FormRules.php';
+require __DIR__ . '/EventLog.php';
+require __DIR__ . '/Turnstile.php';
 
 ini_set('display_errors', '0');
 ini_set('log_errors', '0');
@@ -49,6 +51,9 @@ function configuredMailer(array $config): PHPMailer
 }
 
 $deliveryAttempted = false;
+$eventPath = null;
+$reference = null;
+$stage = 'configuration';
 try {
     foreach (['fileinfo', 'mbstring', 'openssl', 'zip'] as $extension) {
         if (!extension_loaded($extension)) {
@@ -82,6 +87,19 @@ try {
         !filter_var($config['from_address'], FILTER_VALIDATE_EMAIL) || !filter_var($config['to_address'], FILTER_VALIDATE_EMAIL)) {
         throw new RuntimeException('invalid configuration');
     }
+    if (($config['event_file'] ?? '') !== '') {
+        if (!is_string($config['event_file'])) {
+            throw new RuntimeException('invalid event configuration');
+        }
+        $eventPath = privateFile($config['event_file'], $root);
+    }
+    $turnstileEnabled = $config['turnstile_enabled'] ?? false;
+    if (!is_bool($turnstileEnabled) || ($turnstileEnabled &&
+        (!is_string($config['turnstile_secret'] ?? null) || $config['turnstile_secret'] === '' ||
+         in_array($config['turnstile_secret'], ['1x0000000000000000000000000000000AA', '2x0000000000000000000000000000000AA', '3x0000000000000000000000000000000AA'], true)))) {
+        throw new RuntimeException('invalid verification configuration');
+    }
+    $stage = 'request';
     $method = $_SERVER['REQUEST_METHOD'] ?? '';
     if (!in_array($method, ['GET', 'POST'], true)) {
         header('Allow: GET, POST');
@@ -111,7 +129,7 @@ try {
         $tokens[$token] = time();
         $_SESSION['contact_tokens'] = $tokens;
         session_write_close();
-        respond(200, ['ok' => true, 'token' => $token]);
+        respond(200, ['ok' => true, 'token' => $token, 'turnstileRequired' => $turnstileEnabled]);
     }
     $token = $_POST['token'] ?? null;
     $tokens = $_SESSION['contact_tokens'] ?? [];
@@ -123,8 +141,10 @@ try {
     if (!is_string($token) || !preg_match('/\A[a-f0-9]{64}\z/', $token) || !is_int($issued) || $issued < time() - 600) {
         respond(403, ['ok' => false]);
     }
+    $stage = 'validation';
     $data = InbesContact\submission($_POST);
     $attachment = InbesContact\attachment($_FILES);
+    $stage = 'rate_limit';
     $ip = $_SERVER['REMOTE_ADDR'] ?? '';
     if (!filter_var($ip, FILTER_VALIDATE_IP)) {
         throw new RuntimeException('client address unavailable');
@@ -148,6 +168,7 @@ try {
         $identity = hash_hmac('sha256', $ip, $config['rate_key']);
         $count = count(array_filter($state, static fn($row) => ($row['id'] ?? null) === $identity));
         if ($count >= 5 || count($state) >= 100) {
+            InbesContact\recordEvent($eventPath, 'rate_limited', $stage, $reference);
             header('Retry-After: 3600');
             respond(429, ['ok' => false]);
         }
@@ -161,6 +182,15 @@ try {
         flock($stateFile, LOCK_UN);
         fclose($stateFile);
     }
+    if ($turnstileEnabled) {
+        $stage = 'verification';
+        $verification = InbesContact\verifyTurnstile($_POST['cf-turnstile-response'] ?? null, $config['turnstile_secret'], $origin['host']);
+        if ($verification !== 'accepted') {
+            InbesContact\recordEvent($eventPath, $verification === 'rejected' ? 'verification_rejected' : 'verification_unavailable', $stage, $reference);
+            respond($verification === 'rejected' ? 403 : 503, ['ok' => false, 'uncertain' => false, 'code' => 'verification_' . $verification]);
+        }
+    }
+    $stage = 'mailer';
     $autoload = realpath($config['autoload']);
     if (!$autoload || !is_file($autoload) || str_starts_with($autoload, $root . DIRECTORY_SEPARATOR)) {
         throw new RuntimeException('mailer unavailable');
@@ -175,10 +205,14 @@ try {
     if ($attachment !== null) {
         $mail->addAttachment($attachment['path'], $attachment['name'], PHPMailer::ENCODING_BASE64, $attachment['mime']);
     }
+    $stage = 'delivery';
+    InbesContact\recordEvent($eventPath, 'delivery_started', $stage, $reference);
     $deliveryAttempted = true;
     $mail->send();
+    InbesContact\recordEvent($eventPath, 'accepted', $stage, $reference);
     $replySent = false;
     if (($config['autoreply_enabled'] ?? false) === true) {
+        $stage = 'reply';
         try {
             $reply = configuredMailer($config);
             $reply->addAddress($data['email']);
@@ -186,7 +220,9 @@ try {
             $reply->Body = "{$data['name']} 様\n\n株式会社INBESへお問い合わせいただき、ありがとうございます。\n以下の内容でお問い合わせを受け付けました。\n\n受付番号: {$reference}\nお問い合わせ種別: {$data['category']}\n\n内容を確認のうえ、担当者よりご連絡いたします。\n\n本メールは、お問い合わせフォームをご利用いただいた方へ自動でお送りしています。\nお心当たりがない場合は、このメールを破棄してください。\n\n株式会社INBES\nhttps://inbes.jp/\n";
             $reply->send();
             $replySent = true;
+            InbesContact\recordEvent($eventPath, 'reply_sent', $stage, $reference);
         } catch (Throwable $error) {
+            InbesContact\recordEvent($eventPath, 'reply_failed', $stage, $reference);
             // A failed acknowledgement must not turn an accepted inquiry into a retry.
         }
     }
@@ -194,5 +230,6 @@ try {
 } catch (InbesContact\InvalidSubmission $error) {
     respond(422, ['ok' => false]);
 } catch (Throwable $error) {
+    InbesContact\recordEvent($eventPath, 'service_failed', $stage, $reference);
     respond(503, ['ok' => false, 'uncertain' => $deliveryAttempted]);
 }

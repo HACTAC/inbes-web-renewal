@@ -21,6 +21,7 @@ const {
 
 const deploymentEnvironment = import.meta.env.PUBLIC_DEPLOY_ENV ?? "production";
 const isFormEnabled = deploymentEnvironment === "production";
+const turnstileSitekey = isFormEnabled ? (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "").trim() : "";
 ---
 
 <form
@@ -31,6 +32,7 @@ const isFormEnabled = deploymentEnvironment === "production";
   data-contact-form
   data-form-enabled={String(isFormEnabled)}
   data-max-file-size="10485760"
+  data-turnstile-sitekey={turnstileSitekey || undefined}
 >
   <input type="hidden" name="category" value={categoryValue} />
   <input type="hidden" name="token" value="" />
@@ -75,6 +77,7 @@ const isFormEnabled = deploymentEnvironment === "production";
       </a>に同意します。
     </span>
   </label>
+  {turnstileSitekey && <div data-turnstile-widget aria-label="送信前の確認"></div>}
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
     <button class="button button-primary w-full sm:w-fit" type="submit" disabled aria-disabled="true">
       {isFormEnabled ? submitLabel : "ステージング環境では送信できません"}
@@ -99,6 +102,31 @@ const isFormEnabled = deploymentEnvironment === "production";
 </form>
 
 <script>
+  type TurnstileApi = {
+    render: (element: HTMLElement, options: Record<string, unknown>) => string;
+    reset: (id: string) => void;
+  };
+  let turnstileLoader: Promise<TurnstileApi> | undefined;
+  const loadTurnstile = () => {
+    turnstileLoader ??= new Promise<TurnstileApi>((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      const timer = window.setTimeout(() => reject(new Error("Verification unavailable")), 15000);
+      script.addEventListener("load", () => {
+        window.clearTimeout(timer);
+        const api = (window as Window & { turnstile?: TurnstileApi }).turnstile;
+        if (api) resolve(api);
+        else reject(new Error("Verification unavailable"));
+      });
+      script.addEventListener("error", () => {
+        window.clearTimeout(timer);
+        reject(new Error("Verification unavailable"));
+      });
+      document.head.append(script);
+    });
+    return turnstileLoader;
+  };
   document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
     if (form.dataset.formEnabled !== "true") {
       form.addEventListener("submit", (event) => event.preventDefault());
@@ -115,6 +143,12 @@ const isFormEnabled = deploymentEnvironment === "production";
 
     if (!submit || !error || !success || !sending || !token) return;
 
+    const sitekey = form.dataset.turnstileSitekey;
+    const widgetElement = form.querySelector<HTMLElement>("[data-turnstile-widget]");
+    let verificationToken = "";
+    let widgetId: string | undefined;
+    let widgetApi: TurnstileApi | undefined;
+    let locked = false;
     const setEnabled = (enabled: boolean) => {
       submit.disabled = !enabled;
       submit.setAttribute("aria-disabled", String(!enabled));
@@ -126,13 +160,40 @@ const isFormEnabled = deploymentEnvironment === "production";
       if (result.ok !== true || typeof result.token !== "string" || !/^[a-f0-9]{64}$/.test(result.token)) {
         throw new Error("Invalid form token");
       }
+      if ((sitekey && result.turnstileRequired !== true) || (!sitekey && result.turnstileRequired === true)) {
+        throw new Error("Verification configuration mismatch");
+      }
       token.value = result.token;
-      setEnabled(true);
+      setEnabled(!locked && (!sitekey || verificationToken !== ""));
     };
     const showError = (message: string) => {
       error.hidden = false;
       error.querySelector("span")?.replaceChildren(document.createTextNode(message));
     };
+    if (sitekey && widgetElement) {
+      void loadTurnstile().then((api) => {
+        widgetApi = api;
+        widgetId = api.render(widgetElement, {
+          sitekey, action: "contact", language: "ja", size: "flexible",
+          callback: (value: string) => {
+            verificationToken = value;
+            setEnabled(!locked && token.value !== "" && verificationToken !== "");
+          },
+          "expired-callback": () => {
+            verificationToken = "";
+            setEnabled(false);
+          },
+          "error-callback": () => {
+            verificationToken = "";
+            setEnabled(false);
+            showError("送信前の確認ができませんでした。入力内容を控えたうえで、ページを再読み込みしてください。");
+          }
+        });
+      }).catch(() => {
+        setEnabled(false);
+        showError("送信前の確認をご利用いただけません。時間をおいて再度お試しください。");
+      });
+    }
     void refreshToken().catch(() => {
       showError("現在フォームをご利用いただけません。時間をおいて再度お試しください。");
     });
@@ -148,18 +209,31 @@ const isFormEnabled = deploymentEnvironment === "production";
         return;
       }
 
+      locked = true;
       setEnabled(false);
       form.setAttribute("aria-busy", "true");
       sending.hidden = false;
       try {
-        const response = await fetch(form.action, { method: "POST", body: new FormData(form), credentials: "same-origin" });
+        const body = new FormData(form);
+        if (sitekey) body.set("cf-turnstile-response", verificationToken);
+        const response = await fetch(form.action, { method: "POST", body, credentials: "same-origin" });
         const result = await response.json();
         if (!response.ok || result.ok !== true) {
           if (result.uncertain === true) {
             showError("受付結果を確認できませんでした。重複送信を避けるため、再送前にお電話でご確認ください。");
             return;
           }
-          showError(response.status === 429 ? "送信回数の上限に達しました。時間をおいてお試しください。" : "送信できませんでした。入力内容をご確認のうえ、再度お試しください。");
+          if (sitekey) {
+            verificationToken = "";
+            if (widgetApi && widgetId !== undefined) widgetApi.reset(widgetId);
+          }
+          token.value = "";
+          locked = false;
+          if (result.code === "verification_unavailable") {
+            showError("送信前の確認をご利用いただけません。時間をおいて再度お試しください。");
+          } else if (result.code === "verification_rejected") {
+            showError("送信前の確認をもう一度行ってから、再度お試しください。");
+          } else showError(response.status === 429 ? "送信回数の上限に達しました。時間をおいてお試しください。" : "送信できませんでした。入力内容をご確認のうえ、再度お試しください。");
           await refreshToken();
           return;
         }
