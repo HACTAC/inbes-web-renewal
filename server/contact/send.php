@@ -56,6 +56,16 @@ try {
         }
     }
     $root = realpath($_SERVER['DOCUMENT_ROOT'] ?? '');
+    // Observe configuration failures before the private wrapper can throw.
+    // This fixed bootstrap path is optional: logging failure changes no response.
+    if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && is_string($root)) {
+        try {
+            $eventPath = privateFile($root . '/.inbes-private/events.jsonl', $root);
+        } catch (Throwable $error) {
+            $eventPath = null;
+        }
+        InbesContact\recordEvent($eventPath, 'request_received', $stage, null);
+    }
     $configPath = getenv('INBES_FORM_CONFIG');
     if ($configPath === false || $configPath === '') {
         $configPath = require __DIR__ . '/settings-path.php';
@@ -82,6 +92,8 @@ try {
         !filter_var($config['from_address'], FILTER_VALIDATE_EMAIL) || !filter_var($config['to_address'], FILTER_VALIDATE_EMAIL)) {
         throw new RuntimeException('invalid configuration');
     }
+    // Once configuration is available, preserve its selected/disabled log target.
+    $eventPath = null;
     if (($config['event_file'] ?? '') !== '') {
         if (!is_string($config['event_file'])) {
             throw new RuntimeException('invalid event configuration');
@@ -101,9 +113,13 @@ try {
         respond(405, ['ok' => false]);
     }
     if ($method === 'POST' && ($_SERVER['HTTP_ORIGIN'] ?? '') !== rtrim($config['origin'], '/')) {
+        InbesContact\recordEvent($eventPath, 'origin_rejected', $stage, null);
         respond(403, ['ok' => false]);
     }
     if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && !in_array($_SERVER['HTTP_SEC_FETCH_SITE'], ['same-origin', 'none'], true)) {
+        if ($method === 'POST') {
+            InbesContact\recordEvent($eventPath, 'fetch_site_rejected', $stage, null);
+        }
         respond(403, ['ok' => false]);
     }
     session_name('inbes_contact');
@@ -134,6 +150,7 @@ try {
     }
     session_write_close();
     if (!is_string($token) || !preg_match('/\A[a-f0-9]{64}\z/', $token) || !is_int($issued) || $issued < time() - 600) {
+        InbesContact\recordEvent($eventPath, 'csrf_rejected', $stage, null);
         respond(403, ['ok' => false]);
     }
     $stage = 'validation';
@@ -220,6 +237,7 @@ try {
     }
     respond(200, ['ok' => true, 'reference' => $reference, 'replySent' => $replySent]);
 } catch (InbesContact\InvalidSubmission $error) {
+    InbesContact\recordEvent($eventPath, 'validation_rejected', $stage, null);
     respond(422, ['ok' => false]);
 } catch (Throwable $error) {
     InbesContact\recordEvent($eventPath, 'service_failed', $stage, $reference);

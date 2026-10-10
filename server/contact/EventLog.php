@@ -9,7 +9,7 @@ function recordEvent(?string $path, string $event, string $stage, ?string $refer
     if ($path === null) {
         return false;
     }
-    $events = ['delivery_started', 'accepted', 'reply_sent', 'reply_failed', 'service_failed', 'verification_rejected', 'verification_unavailable', 'rate_limited'];
+    $events = ['delivery_started', 'accepted', 'reply_sent', 'reply_failed', 'service_failed', 'verification_rejected', 'verification_unavailable', 'rate_limited', 'request_received', 'origin_rejected', 'fetch_site_rejected', 'csrf_rejected', 'validation_rejected'];
     $stages = ['configuration', 'request', 'validation', 'rate_limit', 'verification', 'mailer', 'delivery', 'reply'];
     if (!in_array($event, $events, true) || !in_array($stage, $stages, true) ||
         ($reference !== null && !preg_match('/\A[a-f0-9]{16}\z/', $reference))) {
