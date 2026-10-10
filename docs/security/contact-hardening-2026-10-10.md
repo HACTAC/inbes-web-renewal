@@ -2,7 +2,7 @@
 
 ## 現在の状態
 
-送信結果の記録とTurnstile連携を作業ブランチに実装した。本番未反映。Cloudflareアカウントの権限・本番キーの準備待ち。自動監視・通知は未設定。
+送信結果の記録とTurnstile連携を作業ブランチに実装した。本番未反映。本人によるCloudflare手動ダッシュボード準備・本番キー保存・取得/転送承認待ち。Turnstileのみを対象とし、Zone追加・DNS/NS/WAF変更や管理APIトークンは今回不要。自動監視・通知は未設定。
 
 公開フォームへのGETは200、PHPバージョンの公開ヘッダーはない。登録済みFTP権限では公開ルート外のPHPMailerを取得できなかった。本番PHP/PHPMailerの実稼働バージョンは未確認であり、ローカルCLIのPHP 8.2.34を本番のバージョンとして扱わない。
 
@@ -41,7 +41,7 @@ PHPは既存の入力・ファイル・送信回数検査後にSiteverifyを一�
 
 ## 本番反映
 
-1. Cloudflareに`inbes.jp`用Managedウィジェットを作成（actionはブラウザー側contact、pre-clearance不要）。本番キー取得までテスト用キーで公開しない。
+1. 本人がCloudflareへログインし、同用途の既存ウィジェットがあれば優先する。必要なら作成直前承認後、`inbes.jp`用Managedウィジェットを作成（actionはブラウザー側contact、pre-clearance不要）。実装は現在のorigin `https://inbes.jp`を検査する。wwwは必要性とorigin整合を確認せず追加しない。本番キー取得までテスト用キーで公開しない。
 2. 本番PHPの必要拡張（既存fileinfo/mbstring/openssl/zip）とHTTPS外部通信を確認。非公開環境で`php server/contact/check-runtime.php /absolute/private/vendor/autoload.php`を実行できればバージョンと拡張のみ取得できる。このCLIファイルを公開しない。
 3. 非公開のログファイル作成、現在の私有設定のバックアップ、`event_file`とTurnstile設定を準備。SMTP値をログやGitに出さない。
 4. PHP公開対象は`send.php`・既存`FormRules.php`・新`EventLog.php`・新`Turnstile.php`を個別管理する。サンプル、CLI、テスト、composer、非公開設定をディレクトリごと公開しない。
@@ -66,3 +66,17 @@ PHPは既存の入力・ファイル・送信回数検査後にSiteverifyを一�
 - 本番フルハンドラーの実メールは送信していない。ローカルPHPはmbstring/zipがなく、既存FormRulesの拡張依存の実行テストは今回も未実施。
 
 公式テスト手順：https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+
+## maguro.localからの引渡し受領・取得経路の最小追加
+
+2026-10-10の本人メッセージと非秘密資料`/mnt/sites/.agents/inbes.jp/turnstile-preparation-maguro-20261010.txt`を確認。同一保存先優先、手動ダッシュボード管理を第一案とする。先に新規プロジェクト、Identity、管理APIトークンを作らない。
+
+- 保存先：Website Management / `9c44515d-195c-42bd-8d67-46eedf30f896` / prod / `/sites/inbes-jp`。
+- 追加予定名：`TURNSTILE_SITE_KEY`（公開）と`TURNSTILE_SECRET_KEY`（非公開）。保存行為は本人操作または行為直前の明示承認。
+- `scripts/turnstile-settings.py`は専用の既存`inbes_infisical.py`の固定scope・専用Identity・HTTPS/redirect拒否を使う、独立した2項目consumer。既存FTP6項目の関数やJSONのkeys指定は変えない。
+- importでは読取り・認証しない。CLIも保存機能も持たない。取得/転送の明示承認後に限り`consume_settings(consumer, approved=True)`を呼ぶ。今回は呼んでおらず、実際の追加キー権限・consumer bindingは未検証。
+- imports/reference展開なし、sharedのこの2キーだけを個別要求。scope不一致、404/403、空/非文字列/隠された値は停止。別Identity、旧Project、MacBook資格、Personal/Business bundleへのfallbackなし。
+- 公開consumerは`PUBLIC_TURNSTILE_SITE_KEY`だけを受ける。PHP consumerは`turnstile_secret`だけを非公開runtimeへ渡す。`turnstile_enabled`は自動設定しない。runtime設定の転送と有効化は別の明示承認が必要で、Infisical保存だけではサーバーに届かない。
+- モックだけの5テストで、未承認時のreader未ロード、固定2キー/scope、値分離、失敗時停止と値非表示を確認。実Infisical認証/資格取得/転送/保存は0。
+
+Cloudflareログイン、ウィジェット/資格発行・保存、秘密転送、本番公開、実メール、新規アカウント、DNS/NS/WAFの変更は今回未実行。API管理は必要性が生じた時だけ対象AccountのTurnstile EditとAccount IDを検討し、発行/保存の直前に本人承認を得る。
