@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require __DIR__ . '/FormRules.php';
 require __DIR__ . '/EventLog.php';
 require __DIR__ . '/Turnstile.php';
+require __DIR__ . '/PrivateStorage.php';
 
 ini_set('display_errors', '0');
 ini_set('log_errors', '0');
@@ -22,13 +23,7 @@ function respond(int $status, array $body): never
 
 function privateFile(string $path, string $documentRoot): string
 {
-    $real = realpath($path);
-    if ($real === false || $real !== $path || !is_file($real) || is_link($path) ||
-        $real === $documentRoot || str_starts_with($real, $documentRoot . DIRECTORY_SEPARATOR) ||
-        (fileperms($real) & 0077) !== 0 || (fileperms(dirname($real)) & 0077) !== 0) {
-        throw new RuntimeException('private configuration unavailable');
-    }
-    return $real;
+    return InbesContact\privateStorageFile($path, $documentRoot);
 }
 
 function configuredMailer(array $config): PHPMailer
@@ -191,10 +186,7 @@ try {
         }
     }
     $stage = 'mailer';
-    $autoload = realpath($config['autoload']);
-    if (!$autoload || !is_file($autoload) || str_starts_with($autoload, $root . DIRECTORY_SEPARATOR)) {
-        throw new RuntimeException('mailer unavailable');
-    }
+    $autoload = InbesContact\privateAutoload($config['autoload'], $root);
     require $autoload;
     $reference = bin2hex(random_bytes(8));
     $mail = configuredMailer($config);

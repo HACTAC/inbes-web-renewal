@@ -7,3 +7,6 @@ references/
 __pycache__/
 .venv/
 node_modules
+
+# Runtime private data is provisioned separately, never source/public assets.
+.inbes-private
