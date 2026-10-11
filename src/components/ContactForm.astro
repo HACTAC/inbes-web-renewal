@@ -174,7 +174,7 @@ const turnstileSitekey = isFormEnabled ? (import.meta.env.PUBLIC_TURNSTILE_SITE_
       void loadTurnstile().then((api) => {
         widgetApi = api;
         widgetId = api.render(widgetElement, {
-          sitekey, action: "contact", language: "ja", size: "flexible",
+          sitekey, action: "contact", language: "ja", size: "flexible", theme: "light",
           callback: (value: string) => {
             verificationToken = value;
             setEnabled(!locked && token.value !== "" && verificationToken !== "");
