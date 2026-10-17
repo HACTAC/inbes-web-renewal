@@ -14,14 +14,14 @@ type Props = {
 };
 
 const {
-  title = "INBES株式会社",
+  title = "株式会社INBES",
   description = "INBESは、日本で売るための商品づくりを支える会社です。",
   entrance = false,
   siteMode = "shared",
   ogImage
 } = Astro.props;
 
-const pageTitle = title === "INBES株式会社" ? title : `${title} | INBES株式会社`;
+const pageTitle = title === "株式会社INBES" ? title : `${title} | 株式会社INBES`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const socialImage = ogImage ? new URL(withBase(ogImage), Astro.site ?? Astro.url).href : undefined;
 const headerNavigation = siteMode === "products"
@@ -54,7 +54,7 @@ const isCurrent = (href: string) => {
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="INBES株式会社" />
+    <meta property="og:site_name" content="株式会社INBES" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
