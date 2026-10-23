@@ -23,6 +23,8 @@ const {
 
 const pageTitle = title === "株式会社INBES" ? title : `${title} | 株式会社INBES`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const siteRootUrl = new URL(withBase("/"), Astro.site ?? Astro.url).href;
+const organizationId = new URL("#organization", siteRootUrl).href;
 const socialImage = ogImage ? new URL(withBase(ogImage), Astro.site ?? Astro.url).href : undefined;
 const headerNavigation = siteMode === "products"
   ? productNavigation
@@ -63,9 +65,10 @@ const isCurrent = (href: string) => {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": organizationId,
       name: "株式会社INBES",
       alternateName: "INBES",
-      url: canonicalUrl,
+      url: siteRootUrl,
       logo: new URL(withBase("/assets/brand/inbes-logo-horizontal.svg"), Astro.site ?? Astro.url).href,
       telephone: "+81-42-316-9823",
       faxNumber: "+81-42-316-9824",
@@ -85,6 +88,15 @@ const isCurrent = (href: string) => {
         addressCountry: "JP"
       }
     })}></script>
+    {Astro.url.pathname === withBase("/") && <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": new URL("#website", siteRootUrl).href,
+      name: "株式会社INBES",
+      alternateName: "INBES",
+      url: siteRootUrl,
+      publisher: { "@id": organizationId }
+    })}></script>}
     <link rel="icon" href={withBase("/assets/brand/inbes-symbol-positive.svg")} type="image/svg+xml" />
     <title>{pageTitle}</title>
     {enableAnalytics && <script is:inline define:vars={{ measurementId }}>
