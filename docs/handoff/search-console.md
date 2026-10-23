@@ -48,6 +48,35 @@ subdomains, not all site visits or AI citations; before/after is not causal proo
 Rollback: stop invoking the reader. No public-site changes to undo. Keep private
 reports as evidence. Revoking Google consent is an owner operation, not automatic.
 
+## Public disclosure pages (separate release)
+
+The administrative reader stays private. Two public information pages describe
+its actual function/data handling, without a login form, credentials, tracking or
+browser-side API access. They are excluded from the sitemap and have noindex.
+
+- App homepage: `https://inbes.jp/site-analytics/`
+- App privacy: `https://inbes.jp/site-analytics/privacy/`
+
+Google branding must use this app homepage with its matching privacy link, after
+both pages have actually been published and read back. Current corporate-homepage
+branding alone does not describe the tool. Existing general privacy text stays
+unchanged. These new public disclosures need explicit two-file release approval;
+local preparation is not publication or a Google verification guarantee.
+
+Build with `PUBLIC_SITE_URL=https://inbes.jp PUBLIC_DEPLOY_ENV=production` and
+release only `site-analytics/index.html` and `site-analytics/privacy/index.html`.
+Default same-environment build comparison confirmed all pre-existing 138 files
+remain byte-identical; new pages need no extra assets or existing-page edits.
+Preflight requires the new directory to be absent; stop on collision. Rollback
+removes only newly added same-hash pages and empty newly created directories,
+preserving any intervening changes. Do not reupload all dist or credentials.
+
+Public disclosures intentionally state that local search reports currently have
+no automatic deletion deadline, queries/URLs may contain names, analysis uses
+OpenAI, and revocation is separate from deletion of saved data. Do not replace
+these facts with unimplemented retention/training promises. Scope/data-sharing
+changes require updated disclosures and applicable consent.
+
 References:
 - https://developers.google.com/webmaster-tools/v1/how-tos/authorizing
 - https://developers.google.com/webmaster-tools/v1/searchanalytics/query

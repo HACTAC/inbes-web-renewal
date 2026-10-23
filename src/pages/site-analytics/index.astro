@@ -1,0 +1,15 @@
+---
+import AnalyticsInfoLayout from "@/layouts/AnalyticsInfoLayout.astro";
+import { withBase } from "@/utils/paths";
+---
+<AnalyticsInfoLayout title="サイト管理用の検索分析連携">
+  <p class="label">株式会社INBES · サイト管理者向け</p>
+  <h1>サイト管理用の検索分析連携</h1>
+  <p>INBES Search Console NASは、株式会社INBESのウェブサイト（inbes.jp）の検索状況を管理者が確認するための専用ツールです。サイト管理者と、委託された運用担当者が利用します。一般のお客様がGoogleアカウントで登録・ログインするサービスではありません。</p>
+  <h2>できること</h2>
+  <p>管理者が許可したGoogle Search Consoleのデータを読み取り、検索結果での表示回数、クリック数、クリック率、平均掲載順位、検索語句、ページ別・端末別の実績、サイトマップの処理状況を確認します。公開前後の比較や、検索設定の改善に役立てます。</p>
+  <h2>Googleアカウントとの連携</h2>
+  <p>Googleの認証画面で、Search Consoleの読み取り専用権限を許可します。このツールが取得する対象はinbes.jpのドメインプロパティです。Googleアカウント内のGmail本文やDriveファイル、お問い合わせフォームの入力内容は、この連携では取得しません。Google上のサイト設定の変更・削除も行いません。</p>
+  <h2>データの取り扱い</h2>
+  <p>取得したデータは非公開の管理環境で保存・分析し、管理者への報告に利用します。分析にはAI支援環境を利用します。詳しい取得項目、保存、共有、削除・連携解除の方法は、<a href={withBase("/site-analytics/privacy/")}>管理用連携のプライバシー説明</a>をご確認ください。</p>
+</AnalyticsInfoLayout>
