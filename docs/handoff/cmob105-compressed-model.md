@@ -27,7 +27,8 @@ Use GET-only browser checks on the actual page for successful model loading,
 correct new URL, rotation/orbit interaction and desktop/mobile viewport.
 Do not submit a contact form or change unrelated assets/settings.
 
-Rollback restores the original product page first, confirms old source URL,
-then removes only this operation's newly added exact-SHA model. Preserve any
-intervening changed file. Keep all journals/pending ownership records; never
-overwrite them on a failed re-run. No broad mirror/purge or directory deletion.
+Rollback restores the original product page first and confirms the old source
+URL. Retain both valid model files: already-open or cached new HTML may still
+request the new URL. Any later orphan-asset cleanup is separate, after cache use
+is assessed. Preserve intervening changed files and all journals/pending ownership
+records; never overwrite them on a failed re-run. No broad purge/directory deletion.
