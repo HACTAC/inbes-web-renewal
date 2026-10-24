@@ -1,5 +1,12 @@
 import { withBase } from "@/utils/paths";
 import { getNewsHref, newsItems } from "@/data/news";
+import { productCategories } from "@/data/products";
+
+// Index current same-site product pages already linked from the visible catalogue.
+const productRoutes = productCategories.flatMap(({ products }) => products)
+  .map(({ url }) => new URL(url))
+  .filter((url) => url.origin === "https://inbes.jp")
+  .map((url) => url.pathname);
 
 const routes = [
   "/",
@@ -14,12 +21,13 @@ const routes = [
   "/privacy/",
   "/cookies/",
   "/news/",
-  ...newsItems.map(getNewsHref)
+  ...newsItems.map(getNewsHref),
+  ...productRoutes
 ];
 
 export const GET = ({ site, url }: { site?: URL; url: URL }) => {
   const origin = site ?? url;
-  const urls = routes
+  const urls = [...new Set(routes)]
     .map((route) => `  <url><loc>${new URL(withBase(route), origin).href}</loc></url>`)
     .join("\n");
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
