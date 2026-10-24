@@ -552,13 +552,14 @@ $(document).ready(function() {
    });
 });
   
-// リンクが "#" の時にトップにスクロール
+// 動画モーダルを除く、有効なページ内リンクだけスクロール
 $(function(){
-  $('a[href^="#"]').click(function() {
+  $('a[href^="#"]').not('.play_button_link, [data-remodal-target]').click(function() {
     const speed = 500; // スクロールスピード(ミリ秒)
-    const href= $(this).attr("href");
-    const target = $(href == "#" || href == "" ? 'html' : href);
-    const position = target.offset().top;
+    const href = $(this).attr("href");
+    const target = href == "#" || href == "" ? document.documentElement : document.getElementById(href.slice(1));
+    if (!target) return;
+    const position = $(target).offset().top;
     $('body,html').animate({scrollTop:position}, speed, 'swing');
     return false;
   });
