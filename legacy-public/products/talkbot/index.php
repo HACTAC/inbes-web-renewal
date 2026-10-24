@@ -111,8 +111,8 @@ $PRICE_TALKBOT = "¥22,800-（税込み）"
         </nav>
       </div>
     </div>
-    <video src="img/mv.mp4" autoplay muted playsinline loop>
-      <source src="img/mv.mp4" poster="img/poster.jpg" type="video/mp4">
+    <video src="/assets/videos/talkbot-main-8fe1685dbbe8.mp4" autoplay muted playsinline loop>
+      <source src="/assets/videos/talkbot-main-8fe1685dbbe8.mp4" poster="img/poster.jpg" type="video/mp4">
     </video>
     <div class="main_blk"> <img class="main_p" src="img/tb_main.png" alt="ITB1W" />
       <p class="m_copy">伝われば世界は広がる</p>
