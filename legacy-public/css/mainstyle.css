@@ -1,0 +1,582 @@
+@charset "UTF-8";
+body {
+  font:
+    16px/140% "Lucida Grande",
+    "Lucida Sans Unicode",
+    "Hiragino Kaku Gothic Pro",
+    "ヒラギノ角ゴ Pro W3",
+    "メイリオ",
+    Meiryo,
+    "ＭＳ Ｐゴシック",
+    Helvetica,
+    Arial,
+    Verdana,
+    sans-serif;
+  *font-family: "ＭＳ Ｐゴシック", "Lucida Sans Unicode", sans-serif;
+  background-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  background: #ffffff;
+  width: 100%;
+  min-width: 1000px;
+  color: #76797c;
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+/* ~~ エレメント / タグセレクター ~~ */
+ul,
+ol,
+dl {
+  padding: 0;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+a {
+  & img {
+    border: none;
+  }
+}
+a:link {
+  color: #333;
+  text-decoration: none;
+}
+a:visited {
+  color: #333;
+  text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+/* ~~ このコンテナが他のすべての div を囲み、パーセンテージに基づいた幅を指定します。~~ */
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0;
+}
+.last_sec {
+  margin: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+header {
+  max-width: 997px;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.logo {
+  margin: 8px 0 20px 10px;
+}
+h1.maincopy {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 10px;
+  padding: 0;
+}
+.topnavi {
+  height: 46px;
+  float: right;
+  margin: 0 0 0 0;
+  padding: 0 12px;
+  vertical-align: central;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-position: center;
+  background: url(../img/red_bar.gif) repeat-x center;
+  & span {
+    padding: 14px 20px;
+    display: inline-block;
+    height: 18px;
+    margin-right: 10px;
+    color: #fdfdfd;
+    font-size: 18px;
+    background: url(../img/red_bar.gif) repeat-x center;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -o-transition: 0.7s;
+    transition: 0.7s;
+  }
+  & a {
+    text-decoration: none;
+  }
+}
+.topnavi a span:hover {
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -o-transition: 0.7s;
+  transition: 0.7s;
+  background: #e6e6e6;
+  color: #c03;
+  -webkit-box-shadow: inset 0px 3px 5px 0 #777; /* Safari, Chrome用 */
+  -moz-box-shadow: inset 0px 3px 5px 0 #777; /* Firefox用 */
+  box-shadow: inset 0px 3px 5px 0 #777; /* CSS3 */
+}
+.bread {
+  width: 990px;
+  margin: 10px 0;
+  & span {
+    padding: 10px;
+    & a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+/* ~~ これはレイアウト情報です。~~ 
+
+1) 余白は、div の上部または下部にのみ配置されます。この div 内のエレメントには、それ自体に余白があるので、ボックスモデル計算を行う必要がありません。ただし、div 自体に両側の余白やボーダーを指定した場合、その値が加算されたものが合計幅になることに注意してください。div 内のエレメントの余白を削除し、さらにその div 内に、全体のデザインに必要な幅や余白を指定していない 2 つ目の div を追加することもできます。
+
+*/
+.content {
+  padding: 10px 0 0;
+  width: 100%;
+}
+.content ul,
+.content ol {
+  padding: 0 15px 15px 40px;
+}
+/* ~~ TOPページ ~~ */
+.culm3 {
+  height: 149px;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  & img {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
+.culm3:hover {
+  border: #c03 solid 1px;
+}
+/* ~~ 製品情報一覧 ~~ */
+.item_container {
+  display: flex;
+  width: 100%;
+}
+.products {
+  padding: 0;
+  background: #ffffff;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  & h2 {
+    font-size: 18px;
+    margin: 15px 0 15px 15px;
+    padding: 0;
+  }
+  & p {
+    font-size: 16px;
+    margin: 15px;
+    padding: 0;
+    line-height: 150%;
+  }
+  & img {
+    width: 100%;
+  }
+}
+div:hover.products {
+  padding: 0;
+  background: #e6e6e6;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* ~~ 製品情報一覧 特定販売先専用モデル~~ */
+.tokutei {
+  margin-left: 0.5em;
+  padding: 0.1em 0.25em 0.15em;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 14px;
+}
+.pdficon {
+  width: 20px !important;
+}
+/* ~~ 生産完了品 ~~ */
+.discon h2 {
+  font-size: 18px;
+  margin: 15px 0 15px 15px;
+  padding: 0;
+}
+/* ~~ 製品ページ内 ~~ */
+.main_photo {
+  width: 100%;
+}
+/* ~~ 右側ナビ ~~ */
+.subcontent {
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.subcontent h4 {
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+.subcontent ul {
+  padding: 0;
+  margin: 0 0 0 3px;
+  list-style: none;
+}
+.subcontent li {
+  padding: 5px 0;
+  margin: 0;
+  font-size: 14px;
+}
+.subcontent li img {
+  margin: 0 3px 0 0;
+}
+.g_photo {
+  padding: 0;
+  margin-bottom: 10px;
+}
+/* ~~ メインエリア ~~ */
+#m_area {
+  width: 735px;
+  margin: 10px;
+  padding: 0;
+  float: left;
+  & section {
+    margin-bottom: 50px;
+    display: block;
+    border-bottom: #ccc solid 1px;
+  }
+}
+#m_area h1 {
+  font-size: 220%;
+  margin: 2% 0 5% 0;
+  padding: 0;
+  font-weight: normal;
+}
+#m_area h2 {
+  font-size: 120%;
+  border-left: #c03 solid 5px;
+  padding: 0 0 0 5px;
+  margin: 0 0 10px 0;
+}
+#m_area h3 {
+  font-size: 110%px;
+  margin: 0 0 5px 10px;
+  padding: 0;
+}
+#m_area p {
+  margin: 0 10px 30px 10px;
+  padding: 0;
+  font-size: 100%;
+  line-height: 180%;
+}
+#m_area .spec table {
+  width: 700px;
+  margin: 0 10px;
+  font-size: 14px;
+}
+#m_area .spec td {
+  padding: 5px;
+  border-bottom: #cccccc solid 1px;
+}
+#m_area .spec tr:hover {
+  background: #f3f3f3;
+}
+#m_area .kome {
+  margin: 3px 10px 30px 10px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 120%;
+}
+#m_area .rectime table {
+  width: 700px;
+  margin: 0 10px;
+  font-size: 14px;
+  text-align: center;
+}
+#m_area .rectime td:hover {
+  background: #ffe4f5;
+}
+#m_area .rectime th {
+  padding: 5px;
+  border-bottom: #999999 solid 1px;
+  border-right: #999999 solid 1px;
+  background-color: #cccccc;
+}
+#m_area .rectime td {
+  padding: 5px;
+  border-bottom: #999999 solid 1px;
+  border-right: #999999 solid 1px;
+  text-align: center;
+}
+#m_area .rectime td:hover {
+  background: #ffe4f5;
+}
+/* ~~ 受託開発 ~~ */
+#oemodm {
+  width: 948px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #ffffff;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+#oemodm h2 {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  padding: 0;
+}
+#oemodm p {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  padding: 0;
+  line-height: 150%;
+}
+/* ~~ 企業情報 ~~ */
+#corp_info {
+  width: 948px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #ffffff;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  & table {
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 15px 0;
+    line-height: 150%;
+  }
+  & td {
+    border-bottom: #cccccc solid 1px;
+    padding: 10px;
+    vertical-align: top;
+  }
+}
+#g_cont {
+  margin: 20px auto;
+  background: #e6e6e6;
+  padding: 20px;
+  vertical-align: top;
+  list-style: none;
+  font-size: 18px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  /*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+}
+#g_cont li {
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 16px;
+}
+/* ~~ お問い合わせ ~~ */
+#askform {
+  width: 948px;
+  margin: 20px 10px;
+  padding: 15px;
+  background: #ffffff;
+  border: #cccccc solid 1px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  & table {
+    width: 100%;
+    padding: 15px;
+    background: #ffffff;
+  }
+  & td {
+    padding: 15px;
+    background: #ffffff;
+    border-bottom: #cccccc solid 1px;
+  }
+  & h2 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+  & p {
+    font-size: 14px;
+    margin: 0 0 15px 0;
+    padding: 0;
+    line-height: 150%;
+  }
+}
+/* ~~ フッター ~~ */
+.footer {
+  font-size: 14px;
+  padding: 10px 0 0 0;
+  margin: 0 auto;
+  background: #9f0f1e;
+  color: #fdfdfd;
+  clear: both;
+  min-height: 50px;
+  & div {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 980px;
+  }
+}
+address {
+  font-style: normal;
+  margin: 10px;
+}
+.copylight {
+  font-size: 10px;
+  margin: 0 0 0 10px;
+  padding: 0 0 10px 0;
+}
+/* ~~ その他の float/clear クラス ~~ */
+.fltrt {
+  float: right;
+}
+.fltlft {
+  float: left;
+}
+.clearfloat {
+  clear: both;
+  height: 0;
+  font-size: 1px;
+  line-height: 0px;
+}
+.st_line {
+  height: 1px;
+  border: none;
+  border-top: #ccc solid 1px;
+  color: #333;
+}
+/* ~~ グリッド表 ~~ */
+.glid1 {
+  width: 984px;
+  margin: 10px 0;
+}
+.glid2 {
+  width: 47%;
+  margin: 10px;
+}
+.glid3 {
+  width: 311px;
+}
+.glid4 {
+  width: 225px;
+  margin: 10px;
+  float: left;
+}
+/* ~~ 背景のみ変更 ~~ */
+.bg_gray1 {
+  background-color: #e6e6e6;
+}
+/* ~~ 角丸させる ~~ */
+.round5 {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.round9 {
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+}
+/* ~~ テキストサイズを変更させる ~~ */
+.txt20 {
+  font-size: 20px;
+  margin: 50px 0 10px 10px;
+  padding: 0;
+}
+.red {
+  color: #f00;
+}
+/* ~~ 不具合のお知らせ ~~ */
+.huguai {
+  max-width: 950px;
+  margin: 20px auto 20px 0 !important;
+  padding: 15px !important;
+  /* box-shadow */
+  box-shadow: 0px 8px 6px -5px #c9c9c9;
+  /* border-radius */
+  border-radius: 6px;
+  /* border */
+  border: 1px solid #cccccc;
+}
+/* 商品一覧ページ セクション */
+#products-page section {
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 100%;
+  }
+  .item_container {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body {
+    min-width: 1000px;
+  }
+  #corp_info iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 948 / 350;
+  }
+}
+@media screen and (max-width: 990px) {
+  body {
+    min-height: 990px;
+  }
+  .bread {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 948px) {
+  #corp_info {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #askform {
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    & table {
+      width: 100%;
+      table-layout: fixed;
+    }
+    & textarea {
+      width: 90%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .glid2 {
+    width: 100%;
+  }
+  .minibanner_link {
+    width: 50%;
+  }
+}

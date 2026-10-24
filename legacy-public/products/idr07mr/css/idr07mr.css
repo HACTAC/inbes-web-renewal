@@ -1,0 +1,1096 @@
+@charset "UTF-8";
+html {
+  visibility: hidden;
+  overflow-x: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
+body {
+  width: 100%;
+  font-size: 18px;
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background: rgba(250, 250, 250, 1.00);
+  margin: 0 auto 0 auto;
+  padding: 0;
+  color: #000;
+  line-height: 1.8em;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: fot-udkakugo-large-pr6n, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+p {
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.9rem;
+}
+/* ~~ エレメント / タグセレクター ~~ */
+ul, ol, dl {
+  padding: 0;
+  margin: 0;
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+/* ~~ ソリッド線にフロートクリア要素を追加 ~~ */
+hr {
+  height: 1px;
+  border: none;
+  border-top: 1px #999999 solid;
+  clear: both;
+}
+img {
+  border-radius: 10px;
+}
+a img { /* このセレクターは、一部のブラウザーでイメージをリンクで囲んだ場合にイメージの周囲に表示される初期設定の青いボーダーを削除します。 */
+  border: none;
+}
+/* ~~ サイトのリンクのスタイル付けは、ホバー効果を作成するセレクターグループも含め、この順序にする必要があります。~~ */
+a:link {
+  color: #414958;
+  text-decoration: none;
+  padding-bottom: 1px;
+}
+a:visited {
+  color: #4E5869;
+}
+a:hover, a:active, a:focus {
+  text-decoration: underline;
+}
+header {
+  width: 100%;
+  margin: 0 auto 30px auto;
+  padding: 150px 0 100px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  /*background: #555 url("../products/idr04rs/img/main_bg.jpg") no-repeat;*/
+  background-blend-mode: multiply;
+}
+.obi {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.78);
+  position: fixed;
+  margin: 0;
+  z-index: 10;
+}
+.head_waku {
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.logo {
+  width: 160px;
+  position: absolute;
+  top: 20px;
+  left: 3%;
+}
+header h1 {
+  width: 60%;
+  max-width: 600px;
+  margin: 100px auto 0;
+}
+.bg_header {
+  background: #555 url("../img/bg1.jpg") no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  color: rgba(255, 255, 255, 1.00);
+}
+
+.bg_filter {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* TOP動画
+-----------------------------------------*/
+.headvideo {
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+  max-width: 800px;
+  width: 80%;
+  min-width: 320px;
+  /*box-shadow: 0px 15px 50px;*/
+  filter: drop-shadow(0px 15px 50px black);
+}
+/* コンテンツ部分の動画
+-----------------------------------------*/
+.normal_video {
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+  max-width: 800px;
+  width: 80%;
+  min-width: 320px;
+}
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.youtube iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 15px;
+}
+.main_p {
+  width: 150px;
+  text-align: center;
+}
+.m_copy {
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.p_name {
+  font-weight: 300;
+  font-size: 1.2rem;
+  text-align: center;
+}
+/* コンテンツ
+-----------------------------------------*/
+article {}
+section {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 0;
+  margin-bottom: 0;
+}
+.busi {
+  padding-top: 50px !important;
+}
+section h2 {
+  font-size: 2rem;
+  line-height: 180%;
+  text-align: center;
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5em;
+}
+/* 機種紹介 */
+.model {
+  margin: 0 auto;
+  padding: 100px 0;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.model figure {
+  width: 55%;
+  margin: auto;
+  text-align: center;
+}
+.model figure img {
+  width: 100%;
+}
+.model div {
+  width: 35%;
+  margin: auto;
+}
+.model h1 {
+  font-size: 1.35rem;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.model h3 {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  margin: 0;
+}
+.model h5 {
+  font-size: 1rem;
+  margin: 2rem 0 0 0;
+}
+.p_name {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+}
+.p_name div {
+  width: 70%;
+}
+.p_name figure {
+  width: 30%;
+}
+.p_name figure img {
+  width: 100%;
+}
+.p_name h4 {
+  font-size: 2rem;
+  margin: 10px 0;
+  font-family: mr-eaves-modern, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.model p {
+  font-size: 0.85rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5em;
+}
+.jancode {
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+/*どんな映像も見逃さない*/
+.view {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.view div:first-child {
+  width: 65%;
+  text-align: left;
+  margin: 0 auto 4em;
+}
+.view div {
+  width: 48%;
+  text-align: left;
+  margin-bottom: 4em;
+}
+.view div figure {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.view div figure img {
+  width: 100%;
+}
+.view div h3 {
+  margin: 0 0 0.75em 0;
+}
+.view div p {
+  margin: 15px 0 0 0;
+}
+/* 視野角 */
+.g_bg {
+  background: rgba(100, 100, 100, 1.00);
+  margin: 0;
+  color: rgba(255, 255, 255, 1.00);
+}
+.fanction {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.fanction div h2 {
+  font-size: 2rem;
+  margin: 0 0 60px 0;
+  text-align: left;
+  display: inline-block;
+  font-weight: 600;
+  font-style: normal;
+}
+.fanction_box {
+  width: 48%;
+  text-align: left;
+  margin-bottom: 1em;
+}
+.fanction_box img {
+  height: 130px;
+  float: left;
+  margin: 0 30px 0 0;
+}
+.fanction_box h4 {
+  font-size: 1.3rem;
+  margin: 0;
+  display: inline-block;
+}
+.fanction_box p {
+  margin: 15px 0 60px 0;
+  padding-left: 160px;
+}
+.fanction h5 {
+  font-size: 1rem;
+  margin: 80px 0 0 0;
+}
+.maru {
+  border-radius: 50%;
+  width: 30%;
+}
+/* デジタルインナーミラー */
+.bg_dm {
+  background: #555 url("../img/bg2.jpg") no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  color: rgba(255, 255, 255, 1.00);
+}
+
+.bg_dm p {
+  text-align: center;
+}
+.d_mirror {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.d_mirror div {
+  width: 48%;
+  text-align: center;
+  position: relative;
+}
+.d_mirror div figure {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.m_on, .m_off {
+  position: absolute;
+  top: 0.75em;
+  left: 1.5em;
+  border-radius: 50px;
+  padding: 0.25em 1em;
+}
+.m_on {
+  background: rgba(214, 0, 3, 1.00);
+}
+.m_off {
+  background: #333;
+}
+.d_mirror div figure img {
+  width: 100%;
+}
+.d_mirror figure figcaption {
+  font-size: 1.3rem;
+  font-family: fot-udkakugo-large-pr6n, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.d_mirror div h3 {
+  margin: 0;
+}
+.d_mirror div p {
+  margin: 15px 0 0 0;
+}
+/*映像特徴 */
+.eizo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.eizo div {
+  width: 45%;
+  text-align: left;
+  position: relative;
+}
+.eizo h3 {
+  font-size: 1.3rem;
+  margin: 0.75em 0 1em 0;
+}
+.eizo img {
+  width: 100%;
+  margin: 0 auto 0 auto;
+  padding: 0;
+}
+.eizo p {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+/*取り付け*/
+.fix_compact {
+  height: 550px;
+  background-color: rgba(164, 125, 116, 1);
+  margin-top: 200px;
+}
+.fix_compact div {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 90%;
+  margin: auto;
+}
+.fix_compact h2 {
+  width: 40%;
+  max-width: 1100px;
+  margin: 2em 0;
+  padding: 0;
+  margin: auto;
+  line-height: 1.8;
+  font-size: 2rem;
+  line-height: 180%;
+  color: #fff;
+}
+.fix_compact h2 span {
+  line-height: 1;
+  font-size: 0.9rem;
+}
+.fix_compact figure {
+  width: 60%;
+  margin: -100px 0 0 0;
+  padding: 0;
+}
+.fix_compact figure img {
+  width: 100%;
+  object-fit: cover;
+}
+.fix_method {
+  width: 90%;
+  max-width: 1040px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0px 5px 5px #ccc;
+  margin-top: -150px;
+  margin-bottom: 100px;
+}
+.fix_method div {
+  width: 56%;
+}
+.fix_method div h3 {
+  font-size: 1.6rem;
+}
+.fix_method figure {
+  width: 38%;
+  margin: 0;
+  padding: 0;
+}
+.fix_method figure img {
+  width: 100%;
+}
+.fix_method figure figcaption {
+  font-size: 1.3rem;
+  font-family: fot-udkakugo-large-pr6n, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+/* 製品仕様セクション */
+.spec_section {
+  margin: 0 auto;
+}
+.spec_section h3 {
+  width: 90%;
+  font-size: 1.5rem;
+  margin: 60px auto 30px;
+  text-align: center;
+}
+.spec_section p {
+  width: 90%;
+  font-size: 1rem;
+  margin: 10px auto 30px;
+  text-align: left;
+}
+.spec_section figure {
+  width: 80%;
+  margin: 100px auto 30px;
+}
+.spec_section figure img {
+  width: 100%;
+}
+/* 録画時間テーブル */
+.recseat {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.recseat tr {
+  border-bottom: solid 1px rgba(204, 165, 156, 1);
+}
+.recseat th {
+  background: rgba(164, 125, 116, 1);
+  color: #fff;
+  padding: 2%;
+}
+.recseat td {
+  padding: 2%;
+  text-align: center;
+  border-left: solid 1px rgba(204, 165, 156, 1);
+}
+.recseat td span {
+  min-width: 95px;
+  display: inline-block;
+}
+/* 製品仕様テーブル */
+.specseat {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.specseat tr {
+  border-bottom: solid 1px rgba(204, 165, 156, 1);
+}
+.specseat th {
+  background: rgba(164, 125, 116, 1);
+  color: #fff;
+  padding: 2%;
+}
+.specseat td {
+  padding: 2%;
+  border-left: solid 1px rgba(204, 165, 156, 1);
+  width: 40%;
+}
+.specseat td span {
+  min-width: 95px;
+  display: inline-block;
+}
+/*別売りオプション*/
+.bg_oa {
+  background: #555 url("../img/bg3.jpg") no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  color: rgba(255, 255, 255, 1.00);  
+}
+
+/*オプション*/
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  margin-bottom: 3em;
+}
+.option figure {
+  width: 40%;
+  margin: 0;
+  padding: 0;
+}
+.option figure img {
+  width: 100%;
+}
+.option div {
+  width: 40%;
+}
+.option div h3 {
+  margin: 0 0 0.25em 0;
+  padding: 0;
+}
+.option div h4 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  font-family: mr-eaves-modern, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.acc_dl_text i {
+  margin-right: 0.25em;
+}
+.acc_dl_text a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+p.acc_dl_text, p.acc_text, .option div > p.jancode {
+  text-align: left;
+}
+/* ダウンロード */
+.d_load {}
+.d_load ul {
+  width: 90%;
+  margin: 0 auto 100px auto;
+  padding: 2% 0;
+  text-align: left;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.d_load ul a {
+  padding: 0;
+  margin: 0 0 0 0;
+  text-decoration: none;
+  text-align: center;
+  width: 23%;
+}
+.d_load ul a li {
+  list-style: none;
+  margin: 0 0 0 0;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 13% 10% 10% 10%;
+  text-align: center;
+}
+.d_load ul a li img {
+  width: 20%;
+  margin: -1% auto 5% auto;
+  vertical-align: middle;
+  display: block;
+}
+.d_load ul a li:hover {
+  background-color: #ccc;
+}
+.br_pc {
+  display: block;
+}
+.br_sp {
+  display: none;
+}
+.txtred {
+  color: #CC0000;
+}
+.pc_hide {
+  display: none;
+}
+
+/* ビューワー */
+.viewerImage {
+  width: 90%; 
+  margin: auto; 
+  display: flex;
+}
+
+.viewerText {
+  text-align: center;
+}
+
+.viewerUl {
+  flex-wrap: initial !important;
+  gap: 1em;
+}
+
+
+@media screen and (max-width: 834px) {
+  header {
+    /*height: 550px;*/
+  }
+  .Nav {
+    border-top: none;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .mainbnr a {
+    width: 30%;
+  }
+  .mainbnr div h2 {
+    font-size: 1.15rem;
+  }
+  /* TOPページの目立つお知らせ欄 */
+  .closeinfo h5 {
+    font-size: 0.9rem;
+  }
+  .closeinfo h6 {
+    font-size: 0.9rem;
+  }
+  .closeinfo p {
+    font-size: 0.8rem;
+  }
+  /* 見出し */
+  article h2 {
+    font-size: 1.6rem;
+    letter-spacing: 0.3em;
+  }
+  /* 機種紹介 */
+  .model {
+    display: block;
+  }
+  .model div {
+    width: 80%;
+    margin: 0 auto 100px auto;
+  }
+  .model h3:after {
+    width: 50%;
+  }
+  .fanction {
+    display: block;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  .fanction div {
+    width: 80%;
+    margin: auto;
+  }
+  .bg_dm p { 
+    top: -5.5%;
+    left: 1.5%;
+    font-size: 0.6em;
+  }
+
+  /*映像特徴 */
+  .eizo {
+    display: block;
+  }
+  .eizo div {
+    width: 80%;
+    margin: 0 auto 4em;
+  }
+  /*取り付け*/
+  .fix_compact {
+    height: 900px;
+    margin-top: 0;
+  }
+  .fix_compact div {
+    width: 80%;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  .fix_compact h2 {
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 2em auto;
+  }
+  .fix_compact figure {
+    width: 100%;
+    margin: auto;
+  }
+  .fix_method {
+    width: 72%;
+    flex-wrap: wrap;
+    margin-top: -250px;
+  }
+  .fix_method div {
+    width: 100%;
+  }
+  .fix_method div h3 {
+    font-size: 1.6rem;
+  }
+  .fix_method figure {
+    width: 48%;
+  }
+  .fix_method figure figcaption {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  /* 製品仕様テーブル */
+  .spec_section p {
+    width: 80%;
+    ;
+  }
+  .recseat {
+    width: 80%;
+    display: table;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .recseat th, .recseat td {
+    padding: auto 10px;
+  }
+  .recseat th {
+    min-width: 60px;
+  }
+  /* 製品仕様テーブル */
+  .specseat {
+    width: 80%;
+  }
+  .specseat td {
+    width: initial;
+  }
+  .specseat tr {
+    border-bottom: none;
+  }
+  .specseat th, .specseat td {
+    display: block;
+    text-align: center;
+    border-left: none;
+  }
+  .specseat td span {
+    display: block;
+    min-width: initial;
+  }
+  /*オプション*/
+  .option {
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+  .option figure {
+    width: 80%;
+  }
+  .option figure img {
+    width: 100%;
+  }
+  .option div {
+    width: 80%;
+  }
+  .option div h3 {
+    margin: 0 0 0.25em 0;
+    padding: 0;
+  }
+  /* ダウンロード */
+  .d_load ul a {
+    margin: 4% auto;
+    width: 51%;
+  }
+  .viewerText {
+    padding: 1em 0;
+    text-align: justify;
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Nav > ul { 
+    background-color: rgba(164, 125, 116, 0.78);
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  header {
+    /*height: 355px;*/
+  }
+  header .logo {
+    width: 120px;
+    top: 16px;
+  }
+  header h1 {
+    top: 60px;
+  }
+  .obi {
+    height: 60px;
+  }
+  header video {
+    width: 95%;
+    display: block;
+    height: 330px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    object-fit: cover;
+    object-position: 50% 100%;
+    position: absolute;
+  }
+  .headvideo {
+    width: 100%;
+    top: 200px;
+  }
+  .youtube {
+    width: 85%;
+    margin: auto;
+    padding-top: 0;
+    aspect-ratio: 16/9;
+  }
+  .youtube iframe {
+    /*border-radius: 0;*/
+  }
+  section {
+    padding: 50px 0;
+  }
+  .model {
+    padding: 0;
+  }
+  .main_blk {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .main_p {
+    width: 110px;
+    text-align: center;
+  }
+  .m_copy {
+    font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .p_name {
+    font-weight: 300;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .main_blk h2 img {
+    width: 140px;
+  }
+  article.g_bg .view div{
+    width: 100%;
+  }
+  .bg_dm p {
+    font-size: 0.5em;
+    top: -3.5em;   
+  }
+  div.d_mirror figure figcaption {
+    font-size: 0.8em;
+  }
+  .fanction_box p {
+    padding-left: 0px;
+  }
+  /* 表 */
+  .recseat {
+    display: table;
+  }
+  .recseat th {
+    font-size: 0.8em;
+  }
+  .spec_section figure {
+    width: 100%;
+    margin: auto;
+  }
+  /* 機種紹介 */
+  .model {
+    max-width: 450px;
+  }
+  .model div {
+    margin: 0 auto 30px auto;
+  }
+  .model figure {
+    width: 85%;
+  }
+  .model h3 {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+  }
+  .p_name {
+    width: 100%;
+    text-align: left;
+    margin: 1em 0;
+    flex-wrap: wrap;
+  }
+  .p_name div {
+    width: 100%;
+  }
+  .p_name figure {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .p_name figure img {
+    width: 100%;
+  }
+  .p_name h4 {
+    font-size: 2rem;
+    margin: 10px 0;
+    font-family: mr-eaves-modern, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .model h5 {
+    font-size: 1rem;
+    margin: 0 0 0 0;
+  }
+  .model p {
+    font-size: 0.85rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    line-height: 1.5em;
+  }
+  /*映像特徴 */
+  .eizo {
+    display: block;
+  }
+  .eizo div {
+    width: 90%;
+    margin: 0 auto 4em;
+  }
+  /* 見出し */
+  article h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+  .fanction {}
+  .fanction div {
+    text-align: left;
+  }
+  .fanction div h2 {
+    font-size: 1.4rem !important;
+  }
+  .fanction_box {
+    width: 100%;
+    text-align: left;
+  }
+  .fanction_box img {
+    width: 60%;
+    height: auto;
+    margin: 0 20% 20px 20%;
+  }
+  .fanction_box h4 {
+    text-align: center;
+    margin: auto;
+    display: block;
+  }
+  /*取り付け*/
+  .fix_compact {
+    height: 900px;
+    margin-top: 0;
+  }
+  .fix_compact div {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .fix_compact h2 {
+    width: 100%;
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 2em auto;
+  }
+  .fix_compact figure {
+    width: 100%;
+    margin: auto;
+  }
+  .fix_method {
+    margin-top: -400px;
+  }
+  .fix_method div {
+    width: 100%;
+  }
+  .fix_method div h3 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .fix_method figure {
+    width: 90%;
+    margin: 1em auto 1em auto;
+  }
+  /* ダウンロード */
+  .d_load ul {
+    margin: 0 auto 50px auto;
+  }
+  .d_load ul a {
+    width: 80%;
+  }
+  .br_pc {
+    display: none;
+  }
+  .br_sp {
+    display: block;
+  }
+  .pc_hide {
+    display: block;
+    font-size: 0.8rem;
+  }
+}
+
+/* ランドスケープ処理 */
+@media screen and (orientation: landscape) {
+  .model {
+    padding: 0;
+    transform: padding 1s;
+  }
+  section#lineup {
+    padding: 0;
+  }
+  
+  
+}
