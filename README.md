@@ -390,4 +390,4 @@ Vercel、GitHub Pages、Cloudflare Pagesを本番環境には使用しない。G
 
 ## 開発環境の依存更新（2026-10-09）
 
-Node.js 22.12.0以上・npm 9.6.5以上を使用する。確認済みNodeは22.23.2。セットアップは`npm ci`。Astro 7.3.8へ更新し、Tailwind 3はPostCSSから処理する。残る制作時依存7件の適用条件と更新判断は[依存セキュリティ確認](docs/security/dependency-review-2026-10-09.md)を参照する。
+Node.js 22.19.0以上・npm 9.6.5以上を使用する。確認済みNodeは22.23.2。セットアップは`npm ci`。Astro 7.3.8とTailwind 3を維持し、TailwindはPostCSSから処理する。2026-10-24の制作時依存監査は0件。[最新の依存更新と互換性確認](docs/security/dependency-review-2026-10-24.md)を参照する。以前の判断は[2026-10-09の確認記録](docs/security/dependency-review-2026-10-09.md)に保持する。
