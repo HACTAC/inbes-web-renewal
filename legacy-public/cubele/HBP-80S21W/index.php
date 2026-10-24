@@ -25,7 +25,7 @@
 <meta name="copyright" content="Copyright (C) INBES Co.,Ltd.">
 <meta name="Keywords" content="パワーバンクキューブ HBP-80S21W">
 <meta name="ROBOTS" content="パワーバンクキューブ HBP-80S21W">
-<meta name="Description" content="">
+<meta name="Description" content="パワーバンクキューブ HBP-80S21Wは、容量88.8Whの小型ポータブル電源と21Wソーラーパネルのセット。AC・USB出力やLEDライトを備え、防災の備えやアウトドアに活用できます。製品仕様・取扱説明書をご案内します。">
 <link href="css/sg_footer.css" rel="stylesheet" type="text/css">
 <link href="css/g_navi.css" rel="stylesheet" type="text/css">
 <link href="css/accordion.css" rel="stylesheet" type="text/css">
@@ -42,10 +42,10 @@
 <link rel="canonical" href="https://inbes.jp/cubele/HBP-80S21W/">
 <!-- Canonical設定 --> 
 <!-- ogp -->
-<meta property="og:url" content="https://inbes.jp/cubele/"/>
+<meta property="og:url" content="https://inbes.jp/cubele/HBP-80S21W/"/>
 <meta property="og:type" content="product"/>
 <meta property="og:title" content="パワーバンクキューブ HBP-80S21W"/>
-<meta property="og:description" content=""/>
+<meta property="og:description" content="パワーバンクキューブ HBP-80S21Wは、容量88.8Whの小型ポータブル電源と21Wソーラーパネルのセット。AC・USB出力やLEDライトを備え、防災の備えやアウトドアに活用できます。製品仕様・取扱説明書をご案内します。"/>
 <meta property="og:site_name" content="パワーバンクキューブ HBP-80S21W"/>
 <meta property="og:image" content=""/>
 <!-- /ogp --> 

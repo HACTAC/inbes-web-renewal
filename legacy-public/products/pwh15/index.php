@@ -17,20 +17,20 @@
 <!-- OGP -->
 <meta property="og:title" content="PWH15 | 電源不要高圧洗浄ホースセット">
 <meta property="og:type" content="website">
-<meta property="og:description" content="電源を必要としない高圧洗浄ホースが登場。6種類の噴射パターンで車、窓、床、水やりなど幅広く使えます。">
+<meta property="og:description" content="PWH15は、電源不要の高圧洗浄ホースセット。6種類の噴射パターンと洗剤ボトルに対応し、洗車や窓・床の清掃、庭の水やりに使えます。通水時に約5mから約15mへ伸びるホースを採用。仕様や取付方法、取扱説明書をご案内します。">
 <meta property="og:site_name" content="PWH15 | 電源不要高圧洗浄ホースセット" />
 <meta property="og:image" content="https://inbes.jp/img/ogp/pwh15.jpg">
 <meta property="og:url" content="https://inbes.jp/products/pwh15/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="">
 <meta name="twitter:title" content="PWH15 | 電源不要高圧洗浄ホースセット">
-<meta name="twitter:description" content="電源を必要としない高圧洗浄ホースが登場。6種類の噴射パターンで車、窓、床、水やりなど幅広く使えます。">
+<meta name="twitter:description" content="PWH15は、電源不要の高圧洗浄ホースセット。6種類の噴射パターンと洗剤ボトルに対応し、洗車や窓・床の清掃、庭の水やりに使えます。通水時に約5mから約15mへ伸びるホースを採用。仕様や取付方法、取扱説明書をご案内します。">
 <meta name="twitter:image" content="https://inbes.jp/img/ogp/pwh15.jpg">
 <title>PWH15 | 電源不要高圧洗浄ホースセット</title>
 <meta name="copyright" content="Copyright (C) INBES Co.,Ltd.">
 <meta name="Keywords" content="電源不要高圧洗浄ホースセット,インベス,INBES">
 <meta name="ROBOTS" content="電源不要高圧洗浄ホースセット,インベス,INBES">
-<meta name="Description" content="">
+<meta name="Description" content="PWH15は、電源不要の高圧洗浄ホースセット。6種類の噴射パターンと洗剤ボトルに対応し、洗車や窓・床の清掃、庭の水やりに使えます。通水時に約5mから約15mへ伸びるホースを採用。仕様や取付方法、取扱説明書をご案内します。">
 <link href="./css/pwh15.css" rel="stylesheet" type="text/css">
 <link href="./css/pwh15_footer.css" rel="stylesheet" type="text/css">
 <link href="./css/g_navi.css" rel="stylesheet" type="text/css">
