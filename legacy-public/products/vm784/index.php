@@ -26,22 +26,22 @@ function inbes_filesize( $filepath ) {
 <meta name="msapplication-config" content="https://inbes.jp/products/idr04rs/icons/browserconfig.xml">
 <meta name="theme-color" content="#000000">
 <!-- OGP -->
-<meta property="og:title" content="VM785 | 7.8インチ縦横モニター">
+<meta property="og:title" content="VM784 | 7.8インチ縦横モニター">
 <meta property="og:type" content="website">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="VM785 | 7.8インチ縦横モニター" />
+<meta property="og:description" content="VM784は、縦置き・横置きで使える7.8インチのサブモニター。SNSのタイムライン確認やパソコンの画面拡張に活用できます。USB Type-C・HDMIの接続条件、仕様、取扱説明書をご案内します。">
+<meta property="og:site_name" content="VM784 | 7.8インチ縦横モニター" />
 <meta property="og:image" content="">
-<meta property="og:url" content="https://inbes.jp/products/vm875/">
+<meta property="og:url" content="https://inbes.jp/products/vm784/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="">
-<meta name="twitter:title" content="VM785 | 7.8インチ縦横モニター">
-<meta name="twitter:description" content="超縦長圧倒的に見やすい7.8インチ縦横型サブモニター">
+<meta name="twitter:title" content="VM784 | 7.8インチ縦横モニター">
+<meta name="twitter:description" content="VM784は、縦置き・横置きで使える7.8インチのサブモニター。SNSのタイムライン確認やパソコンの画面拡張に活用できます。USB Type-C・HDMIの接続条件、仕様、取扱説明書をご案内します。">
 <meta name="twitter:image" content="">
 <title>VM784 | 7.8インチ縦横モニター </title>
 <meta name="copyright" content="Copyright (C) INBES Co.,Ltd.">
 <meta name="Keywords" content="7.8インチ縦横モニター,インベス,INBES">
 <meta name="ROBOTS" content="7.8インチ縦横モニター,インベス,INBES">
-<meta name="Description" content="">
+<meta name="Description" content="VM784は、縦置き・横置きで使える7.8インチのサブモニター。SNSのタイムライン確認やパソコンの画面拡張に活用できます。USB Type-C・HDMIの接続条件、仕様、取扱説明書をご案内します。">
 <link href="./css/vm784.css" rel="stylesheet" type="text/css">
 <link href="./css/vm784_footer.css" rel="stylesheet" type="text/css">
 <link href="./css/g_navi.css" rel="stylesheet" type="text/css">
