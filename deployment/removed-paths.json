@@ -21,7 +21,7 @@
     "bulenu/pocketcam4k/js/res_nav.js",
     "bulenu/smartgrip/.DS_Store",
     "bulenu/smartgrip/b_images/.DS_Store",
-    "bulenu/smartgrip/b_images/b_images/144ppi/\u30a2\u30bb\u30c3\u30c8 9.png",
+    "bulenu/smartgrip/b_images/b_images/144ppi/アセット 9.png",
     "bulenu/smartgrip/b_images/b_images/app_img.svg",
     "bulenu/smartgrip/b_images/b_images/blenu_logo.svg",
     "bulenu/smartgrip/b_images/b_images/button1.png",
@@ -91,7 +91,7 @@
     "bulenu/smartgrip2/download/sg2_materials/sg2_zoom.jpg",
     "bulenu/smartgrip2/download/sg2_materials/sg_hand.jpg",
     "bulenu/smartgrip2/download/sg2_materials/usb.jpg",
-    "bulenu/smartgrip2/download/sg2_materials/\u3053\u3099\u5229\u7528\u898f\u7d04.txt",
+    "bulenu/smartgrip2/download/sg2_materials/ご利用規約.txt",
     "bulenu/smartgrip2/js/remodal.min.js",
     "css/.DS_Store",
     "css/products.css",
@@ -830,7 +830,7 @@
     "news/idr04rs_update.html",
     "news/itb1w.html",
     "news/pc4k1_android.html",
-    "news/pdf/\u8cc7\u672c\u91d1\u5897\u8cc7\u306e\u304a\u77e5\u3089\u305b.pdf",
+    "news/pdf/資本金増資のお知らせ.pdf",
     "products/.DS_Store",
     "products/asr12/.DS_Store",
     "products/asr12/p/.DS_Store",
@@ -898,8 +898,8 @@
     "products/idr0203r/img/wdr.jpg",
     "products/idr04rs/dl/IDR-04RS20220526.zip",
     "products/idr04rs/dl/IDR-04RS_update_manual.pdf",
-    "products/idr04rs/dl/IDR-04RS\u30b7\u30b9\u30c6\u30e0\u66f4\u65b0\u624b\u9806.pdf",
-    "products/idr04rs/dl/IDR-04RS\u30b7\u30b9\u30c6\u30e0\u66f4\u65b0\u65b9\u6cd5_DL\u7de8.pdf",
+    "products/idr04rs/dl/IDR-04RSシステム更新手順.pdf",
+    "products/idr04rs/dl/IDR-04RSシステム更新方法_DL編.pdf",
     "products/idr04rs/dl/idr04rs_leaflet.pdf",
     "products/idr04rs/icons/android-chrome-192x192.png",
     "products/idr04rs/icons/android-chrome-512x512.png",
@@ -1136,7 +1136,9 @@
     "slider/jquery.bxslider.js",
     "slider/jquery.bxslider.min.js",
     "slider/plugins/jquery.easing.1.3.js",
-    "slider/plugins/jquery.fitvids.js"
+    "slider/plugins/jquery.fitvids.js",
+    "contact.php",
+    "mailform/mail.php"
   ],
   "note": "Active exclusions only; three repaired background images restored separately."
 }
