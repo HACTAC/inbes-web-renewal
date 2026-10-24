@@ -214,7 +214,7 @@
       ]);
 
       const ModelViewerElement = customElements.get('model-viewer');
-      ModelViewerElement.meshoptDecoder = decoder;
+      ModelViewerElement.meshoptDecoderLocation = "/js/meshopt_decoder.js";
 
       const container = document.getElementById('model-container');
       const viewer = document.createElement('model-viewer');
@@ -257,7 +257,7 @@ mv.updateFraming();
       viewer.style.height = '80svh';
 
 
-      viewer.src = "/assets/models/demodata_cuble.glb";
+      viewer.src = "/assets/models/cmob105-meshopt-20261024.glb";
       /*
             viewer.addEventListener('load', () => {
               console.log("モデルの読み込みが完了しました。マテリアルを解析します。");
