@@ -137,7 +137,7 @@
     <header id="top">
       <div class="mainView">
         <video class="mainVideo" autoplay loop muted playsinline>
-          <source src="./movie/kazekonu_top_1.mp4">
+          <source src="/assets/videos/kazekonu-main-f20ee19f0451.mp4">
         </video>
         <div class="p_title">
           <div>
@@ -155,7 +155,7 @@
       </div>
       <div class="kiri_Video">
         <video autoplay loop muted playsinline>
-          <source src="./movie/kemuri2_1.mp4">
+          <source src="/assets/videos/kazekonu-smoke-d87fad20eddc.mp4">
         </video>
         <p>※加湿器による効果のイメージです。</p>
       </div>
