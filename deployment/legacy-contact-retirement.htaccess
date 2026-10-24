@@ -1,0 +1,8 @@
+# INBES-LEGACY-CONTACT-RETIRED:START
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^contact\.php$ https://inbes.jp/contact/ [R=301,L,QSD]
+RewriteRule ^mailform/mail\.php$ - [G,L]
+</IfModule>
+# INBES-LEGACY-CONTACT-RETIRED:END
+
