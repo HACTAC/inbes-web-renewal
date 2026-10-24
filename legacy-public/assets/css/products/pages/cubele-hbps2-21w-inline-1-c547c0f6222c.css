@@ -1,0 +1,11 @@
+
+    .slick-dots li button:before {
+        line-height: 0px;
+    }
+    .slick-next {
+    right: 2%;
+}
+    .slick-prev {
+        left: 2%;
+    z-index: 1000;
+}

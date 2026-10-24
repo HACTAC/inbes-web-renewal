@@ -977,3 +977,8 @@ border-radius: 0;
 .pc_hide { display:block;
 	font-size: 0.8rem;}
 }
+
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

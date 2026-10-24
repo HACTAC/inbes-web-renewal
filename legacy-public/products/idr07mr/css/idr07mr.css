@@ -1094,3 +1094,7 @@ p.acc_dl_text, p.acc_text, .option div > p.jancode {
   
   
 }
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

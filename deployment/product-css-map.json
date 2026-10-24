@@ -1,0 +1,338 @@
+{
+  "baseline_commit": "f4206c73fa806574f96dd210aa8034317a108a19",
+  "shared_groups": [
+    {
+      "path": "assets/css/products/shared/remodal-default-theme-55681c3b2669.css",
+      "sha256": "55681c3b26695c642575f9b2574aeb3b99daaa41ed26b722378496b81aaa0600",
+      "aliases": [
+        "bulenu/smartgrip2/css/remodal-default-theme.css",
+        "cubele/HBP-80S21W/css/remodal-default-theme.css",
+        "cubele/cmob105/css/remodal-default-theme.css",
+        "cubele/css/remodal-default-theme.css",
+        "cubele/hbp201s21w/css/remodal-default-theme.css",
+        "cubele/hbps2-21w/css/remodal-default-theme.css",
+        "cubele/ibps/css/remodal-default-theme.css",
+        "products/md1500/css/remodal-default-theme.css",
+        "products/pwh15/css/remodal-default-theme.css"
+      ],
+      "bytes": 5718
+    },
+    {
+      "path": "assets/css/products/shared/accordion-5b87886430fa.css",
+      "sha256": "5b87886430fa38684535153e16eccf47172619d5a20be2b501a7d00561b70c07",
+      "aliases": [
+        "bulenu/smartgrip2/css/accordion.css",
+        "css/accordion.css",
+        "cubele/HBP-80S21W/css/accordion.css",
+        "cubele/cmob105/css/accordion.css",
+        "cubele/css/accordion.css",
+        "cubele/hbp201s21w/css/accordion.css",
+        "cubele/hbps2-21w/css/accordion.css",
+        "cubele/ibps/css/accordion.css",
+        "products/kazekonu/css/accordion.css",
+        "products/md1500/css/accordion.css",
+        "products/pwh15/css/accordion.css",
+        "products/vm784/css/accordion.css"
+      ],
+      "bytes": 3409
+    },
+    {
+      "path": "assets/css/products/shared/remodal-7bc0fc95a15f.css",
+      "sha256": "7bc0fc95a15f98ac44af1ecd6ef8da258504a6ff4b37caa0797423d03bcb77e8",
+      "aliases": [
+        "bulenu/smartgrip2/css/remodal.css",
+        "cubele/HBP-80S21W/css/remodal.css",
+        "cubele/cmob105/css/remodal.css",
+        "cubele/css/remodal.css",
+        "cubele/hbp201s21w/css/remodal.css",
+        "cubele/hbps2-21w/css/remodal.css",
+        "cubele/ibps/css/remodal.css",
+        "products/md1500/css/remodal.css",
+        "products/pwh15/css/remodal.css",
+        "products/vm784/css/remodal.css"
+      ],
+      "bytes": 1602
+    },
+    {
+      "path": "assets/css/products/shared/g_navi-700663f109ce.css",
+      "sha256": "700663f109ce9808e323cd2deb8e6da6d8ecc5bcaad06a9479ec56f734e7d3e5",
+      "aliases": [
+        "cubele/cmob105/css/g_navi.css",
+        "cubele/hbps2-21w/css/g_navi.css",
+        "cubele/ibps/css/g_navi.css"
+      ],
+      "bytes": 5122
+    },
+    {
+      "path": "assets/css/products/shared/simplebox-30e97fd24ebe.css",
+      "sha256": "30e97fd24ebec470aa6604d3d9fd3076d77babd6ef84600cdbd3cd7c451386d0",
+      "aliases": [
+        "cubele/cmob105/css/simplebox.min.css",
+        "cubele/hbps2-21w/css/simplebox.min.css",
+        "cubele/ibps/css/simplebox.min.css"
+      ],
+      "bytes": 1690
+    },
+    {
+      "path": "assets/css/products/shared/sg_footer-8abc6623f368.css",
+      "sha256": "8abc6623f36880b6b00d25f4b3fe73fa1c559595af59227a676267fe0322608e",
+      "aliases": [
+        "cubele/css/sg_footer.css",
+        "cubele/hbp201s21w/css/sg_footer.css",
+        "products/md1500/css/sg_footer.css"
+      ],
+      "bytes": 1600
+    },
+    {
+      "path": "assets/css/products/shared/sg_footer-7de2296ade11.css",
+      "sha256": "7de2296ade11d7a051c37e366032b58a410753d3006677efa07f8ae34d0f8e80",
+      "aliases": [
+        "cubele/cmob105/css/sg_footer.css",
+        "cubele/hbps2-21w/css/sg_footer.css",
+        "cubele/ibps/css/sg_footer.css"
+      ],
+      "bytes": 1570
+    },
+    {
+      "path": "assets/css/products/shared/sg_footer-1bf488ca96d6.css",
+      "sha256": "1bf488ca96d6b9d68ac0a99d8fde385dc5990fbc0882daabe6784e268120fbe6",
+      "aliases": [
+        "bulenu/smartgrip2/css/sg_footer.css",
+        "products/pwh15/css/pwh15_footer.css",
+        "products/vm784/css/vm784_footer.css"
+      ],
+      "bytes": 1399
+    },
+    {
+      "path": "assets/css/products/shared/fade-89772e9c1953.css",
+      "sha256": "89772e9c1953a9ad54dd234fa9374cefb2ff210e771a08571ecc51cf6ef2c316",
+      "aliases": [
+        "products/idr06r/css/fade.css",
+        "products/idr07mr/css/fade.css"
+      ],
+      "bytes": 446
+    }
+  ],
+  "inline_stylesheets": [
+    {
+      "page": "/cubele/HBP-80S21W/",
+      "path": "assets/css/products/pages/cubele-HBP-80S21W-inline-1-7558426db8f8.css",
+      "bytes": 1505
+    },
+    {
+      "page": "/cubele/HBP-80S21W/",
+      "path": "assets/css/products/pages/hbp80-presentation-216c92abbf35.css",
+      "bytes": 481,
+      "static_attributes_consolidated": 19
+    },
+    {
+      "page": "/cubele/hbps2-21w/",
+      "path": "assets/css/products/pages/cubele-hbps2-21w-inline-1-c547c0f6222c.css",
+      "bytes": 160
+    },
+    {
+      "page": "/products/pwh15/",
+      "path": "assets/css/products/pages/products-pwh15-inline-1-527de2ab67f9.css",
+      "bytes": 152
+    },
+    {
+      "page": "/products/vm784/",
+      "path": "assets/css/products/pages/products-vm784-inline-1-be6a2cd642ae.css",
+      "bytes": 293
+    },
+    {
+      "page": "/products/idr06r/",
+      "path": "assets/css/products/pages/products-idr06r-inline-1-f2566124caae.css",
+      "bytes": 503
+    },
+    {
+      "page": "/products/idr07mr/",
+      "path": "assets/css/products/pages/products-idr07mr-inline-1-42ffbf710114.css",
+      "bytes": 173
+    }
+  ],
+  "entry_changes": [
+    {
+      "path": "cubele/hbp201s21w/index.html",
+      "before_sha256": "0c82a4ce8189968260ff3028204683cd1206750cc39102bb792436cca45ad697",
+      "after_sha256": "e3b08aaf12812c81be1ba296cb61de1899cc7d2165e5e73fb6d04b331aff8783"
+    },
+    {
+      "path": "cubele/HBP-80S21W/index.php",
+      "before_sha256": "3a9aa4672b667a69fe21c09e3c814993130efd012ac4fd52131480ccf0298792",
+      "after_sha256": "b27efa8f45d692976052521ea9cc4e41fbdca2debc2221dc9f61dc3c81ea90c6"
+    },
+    {
+      "path": "cubele/index.html",
+      "before_sha256": "b3e8e41a595dcb0c722a3d3af370ce2cd273ea93cf45ee766dc84e83302efb0a",
+      "after_sha256": "cd330d05fad950773a2c430ef3afe4538a8572490aa70c8b704d630d32f84428"
+    },
+    {
+      "path": "cubele/cmob105/index.php",
+      "before_sha256": "e63c29f3a5027b9336ae7171e2bfe5bd71c7cd1a22505c954fa65301ca00732b",
+      "after_sha256": "f037051d964c1ef40d868d520b41e7839f2c3fa703301bdd003840eb10db3654"
+    },
+    {
+      "path": "cubele/ibps/index.html",
+      "before_sha256": "35d1ab42e44f4b05f4a86d5440540afde6e5fb2cd852ace0593937efb4ad95b7",
+      "after_sha256": "2450766adcb05fdf16baa6258c3223d349e3ec1a2a1c78c8e23767f2b956fedf"
+    },
+    {
+      "path": "cubele/hbps2-21w/index.html",
+      "before_sha256": "780e102df2bd4e63d3a473a725a7fc31488aaa0d99484c97112e62c032531513",
+      "after_sha256": "bdf7c60b0f916a29e282fa6d5f877395c8b2729ba12da3b0b0eeb410ce454a88"
+    },
+    {
+      "path": "products/md1500/index.php",
+      "before_sha256": "ed9385f63182533e2bfa3abda4f16c94e855366cdbe9d85166e7e9d265616f08",
+      "after_sha256": "f1b747568511875c7a3356cd78a97d779eeecd6a3853723630e26f443286039c"
+    },
+    {
+      "path": "products/pwh15/index.php",
+      "before_sha256": "d50c368f4bc45cef3255d6e5f726d2ff77373d689568c42186cdc1f87abc4f3a",
+      "after_sha256": "6bfc38360fbbef8c1cedb9adedf9533468b71410d8d3b56a431e40f7528f48d3"
+    },
+    {
+      "path": "bulenu/smartgrip2/index.html",
+      "before_sha256": "1dfe4a86027db39b2b0274cf285131bb9c932c324357cb18da423e80b2026f7e",
+      "after_sha256": "e42d917d5514428c1490cc3034f8e590e5d2768ed8dcd73d46707407922b560d"
+    },
+    {
+      "path": "products/vm784/index.php",
+      "before_sha256": "9395c453d3d7ecdfb1a19c4a6eaacef8c8e6147bd5aef3d4b6856b87a679eed8",
+      "after_sha256": "daf4085244c8826d1d63814578a39d981a8b90409dfb77b5309c8e83bb4e4fcc"
+    },
+    {
+      "path": "products/idr06r/index.php",
+      "before_sha256": "feb7162a06f89c860b0aca6c49c2ef027a9274b4114bd339c14815099b803b2e",
+      "after_sha256": "91e763350e8c90bd544f1137fce83209642a5278bae1e8d82205dd4a36807e3d"
+    },
+    {
+      "path": "products/idr07mr/index.php",
+      "before_sha256": "a5c90f7964f5a9c7ebb4534aedafd57eacaa34d3a6f930f5f561b16ec425a12a",
+      "after_sha256": "69e57d9893a3172a0fe41c4d8794d976eb3faf0ae884315383f2d115f80a73ad"
+    },
+    {
+      "path": "products/kazekonu/index.php",
+      "before_sha256": "156f42bc189b8dc086c37291cea6d6e78e15e397fd02262e839fc482f5d13ba5",
+      "after_sha256": "66d75541f0d4adbf5f086334c6749551249873a621ed27b718cade06feb215ad"
+    },
+    {
+      "path": "products/talkbot/index.php",
+      "before_sha256": "b763cadd4181224b9b405381092d47bb9979eb1b790637969564ddbdf131e4ec",
+      "after_sha256": "a53e8c8f992b123c7ad4e3cfaabba0bc023fc7560f292df2a7b20f17b0cd8709"
+    },
+    {
+      "path": "products/asr12.php",
+      "before_sha256": "343802ce6fd36b584037e331dffcfd278e86523cc7dc6776738db8d39011babf",
+      "after_sha256": "67d3d6a4618a48ad44c0dd3b320fad92ee3888219d35c82d7ae9eb36495437f9"
+    },
+    {
+      "path": "inc/head/css_link.php",
+      "before_sha256": "dbf57242c279df781d1be11660885991ef710bec43ceb3c893dc4aeb1bf9ca4a",
+      "after_sha256": "026129c32bcc723bd798ede09f2d5e2494d02e37d829586a1ced1cc5c7b5e50f"
+    }
+  ],
+  "legacy_aliases_retained": true,
+  "normal_visible_copy_or_images_changed": false,
+  "managed_stylesheets": [
+    "bulenu/smartgrip2/css/accordion.css",
+    "bulenu/smartgrip2/css/g_navi.css",
+    "bulenu/smartgrip2/css/remodal-default-theme.css",
+    "bulenu/smartgrip2/css/remodal.css",
+    "bulenu/smartgrip2/css/sg_footer.css",
+    "bulenu/smartgrip2/css/smartgrip.css",
+    "css/accordion.css",
+    "css/g_navi.css",
+    "css/mainstyle.css",
+    "cubele/HBP-80S21W/css/accordion.css",
+    "cubele/HBP-80S21W/css/g_navi.css",
+    "cubele/HBP-80S21W/css/remodal-default-theme.css",
+    "cubele/HBP-80S21W/css/remodal.css",
+    "cubele/HBP-80S21W/css/sg_footer.css",
+    "cubele/HBP-80S21W/css/style.css",
+    "cubele/cmob105/css/accordion.css",
+    "cubele/cmob105/css/cuble_cmobs105.css",
+    "cubele/cmob105/css/g_navi.css",
+    "cubele/cmob105/css/remodal-default-theme.css",
+    "cubele/cmob105/css/remodal.css",
+    "cubele/cmob105/css/sg_footer.css",
+    "cubele/cmob105/css/simplebox.min.css",
+    "cubele/css/accordion.css",
+    "cubele/css/cuble.css",
+    "cubele/css/g_navi.css",
+    "cubele/css/remodal-default-theme.css",
+    "cubele/css/remodal.css",
+    "cubele/css/sg_footer.css",
+    "cubele/hbp201s21w/css/accordion.css",
+    "cubele/hbp201s21w/css/cuble.css",
+    "cubele/hbp201s21w/css/g_navi.css",
+    "cubele/hbp201s21w/css/remodal-default-theme.css",
+    "cubele/hbp201s21w/css/remodal.css",
+    "cubele/hbp201s21w/css/sg_footer.css",
+    "cubele/hbps2-21w/css/accordion.css",
+    "cubele/hbps2-21w/css/cuble_ibps.css",
+    "cubele/hbps2-21w/css/g_navi.css",
+    "cubele/hbps2-21w/css/remodal-default-theme.css",
+    "cubele/hbps2-21w/css/remodal.css",
+    "cubele/hbps2-21w/css/sg_footer.css",
+    "cubele/hbps2-21w/css/simplebox.min.css",
+    "cubele/ibps/css/accordion.css",
+    "cubele/ibps/css/cuble_ibps.css",
+    "cubele/ibps/css/g_navi.css",
+    "cubele/ibps/css/remodal-default-theme.css",
+    "cubele/ibps/css/remodal.css",
+    "cubele/ibps/css/sg_footer.css",
+    "cubele/ibps/css/simplebox.min.css",
+    "lightbox/css/lightbox.css",
+    "products/idr06r/css/fade.css",
+    "products/idr06r/css/idr06r.css",
+    "products/idr06r/css/idr06r_footer.css",
+    "products/idr07mr/css/fade.css",
+    "products/idr07mr/css/idr07mr.css",
+    "products/idr07mr/css/idr07mr_footer.css",
+    "products/kazekonu/css/accordion.css",
+    "products/kazekonu/css/g_navi.css",
+    "products/kazekonu/css/kazekonu.css",
+    "products/kazekonu/css/kazenokuBase.css",
+    "products/kazekonu/css/kazenokuBase_footer.css",
+    "products/md1500/css/accordion.css",
+    "products/md1500/css/g_navi.css",
+    "products/md1500/css/md1500.css",
+    "products/md1500/css/remodal-default-theme.css",
+    "products/md1500/css/remodal.css",
+    "products/md1500/css/sg_footer.css",
+    "products/pwh15/css/accordion.css",
+    "products/pwh15/css/g_navi.css",
+    "products/pwh15/css/hose.css",
+    "products/pwh15/css/pwh15.css",
+    "products/pwh15/css/pwh15_footer.css",
+    "products/pwh15/css/remodal-default-theme.css",
+    "products/pwh15/css/remodal.css",
+    "products/talkbot/css/talkbot.css",
+    "products/talkbot/css/talkbot_footer.css",
+    "products/vm784/css/accordion.css",
+    "products/vm784/css/g_navi.css",
+    "products/vm784/css/hose.css",
+    "products/vm784/css/remodal-default-theme.css",
+    "products/vm784/css/remodal.css",
+    "products/vm784/css/vm784.css",
+    "products/vm784/css/vm784_footer.css"
+  ],
+  "font_fallback_stylesheets": [
+    "bulenu/smartgrip2/css/smartgrip.css",
+    "cubele/HBP-80S21W/css/style.css",
+    "cubele/cmob105/css/cuble_cmobs105.css",
+    "cubele/css/cuble.css",
+    "cubele/hbp201s21w/css/cuble.css",
+    "cubele/hbps2-21w/css/cuble_ibps.css",
+    "cubele/ibps/css/cuble_ibps.css",
+    "products/idr06r/css/idr06r.css",
+    "products/idr07mr/css/idr07mr.css",
+    "products/kazekonu/css/kazenokuBase.css",
+    "products/md1500/css/md1500.css",
+    "products/pwh15/css/pwh15.css",
+    "products/talkbot/css/talkbot.css",
+    "products/vm784/css/vm784.css"
+  ]
+}

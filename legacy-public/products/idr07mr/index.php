@@ -30,11 +30,11 @@
   <meta name="Keywords" content="ドライブレコーダー,インベス,INBES">
   <meta name="ROBOTS" content="ドライブレコーダー,インベス,INBES">
   <meta name="Description" content="どんな瞬間も見逃さない。超高画質ドライブレコーダー IDR-07MR 2つのカメラが車両の前後をしっかり記録">
-  <link href="css/idr07mr.css" rel="stylesheet" type="text/css">
+  <link href="/products/idr07mr/css/idr07mr.css?v=f2bbec67a61a" rel="stylesheet" type="text/css">
   <link href="css/idr07mr_footer.css" rel="stylesheet" type="text/css">
-  <link href="css/fade.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/fade-89772e9c1953.css" rel="stylesheet" type="text/css">
   <link href="../../css/g_navi.css" rel="stylesheet" type="text/css">
-  <link href="../../css/accordion.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="../../js/jquery-3.7.0.min.js"></script>
   <script type="text/javascript" src="../../js/res_nav.js"></script>
   <script src="https://kit.fontawesome.com/628fbcc19c.js" crossorigin="anonymous"></script>
@@ -85,19 +85,7 @@
       });
     });
   </script>
-  <style>
-    footer {
-      background: rgba(164, 125, 116, 1);
-    }
-
-    .obi {
-      background: rgba(164, 125, 116, 0.78);
-    }
-
-    .g_bg {
-      background: #A47D74;
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/products/pages/products-idr07mr-inline-1-42ffbf710114.css">
 </head>
 
 <body>

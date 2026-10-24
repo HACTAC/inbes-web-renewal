@@ -315,9 +315,6 @@ div:hover.products {
   font-size: 14px;
   text-align: center;
 }
-#m_area .rectime td:hover {
-  background: #ffe4f5;
-}
 #m_area .rectime th {
   padding: 5px;
   border-bottom: #999999 solid 1px;

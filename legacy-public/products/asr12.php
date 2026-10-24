@@ -22,7 +22,7 @@
   <link rel="shortcut icon" href="../favicon.ico">
   <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
   <title>ASR12 | 製品情報 | 株式会社INBES</title>
-  <link href="../css/mainstyle.css" rel="stylesheet" type="text/css">
+  <link href="/css/mainstyle.css?v=dff9f0bcd7df" rel="stylesheet" type="text/css">
   <script src="../lightbox/js/modernizr.custom.js"></script>
   <script src="../lightbox/js/jquery-1.10.2.min.js"></script>
   <script src="../lightbox/js/lightbox-2.6.min.js"></script>

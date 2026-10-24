@@ -745,3 +745,7 @@ article h2 {
     display: block;
   }
 }
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

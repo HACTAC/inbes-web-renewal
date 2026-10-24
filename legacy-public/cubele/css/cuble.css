@@ -737,8 +737,7 @@ section {
     }
   }
 }
-}
-figure.ios, figure.play {}
+
 & a:hover {
   opacity: 0.8;
 }
@@ -782,21 +781,7 @@ figure.ios {
     height: 60px;
   }
 }
-}
-.dli-caret-right {
-  display: inline-block;
-  vertical-align: middle;
-  color: #333;
-  line-height: 1;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  border-width: 0.375em 0.64952em;
-  border-left-color: currentColor;
-  border-right: 0;
-  margin-left: 4px;
-}
+
 /*右の写真*/
 .r_photo {
   border-radius: 10px 0 0 10px;
@@ -1035,23 +1020,8 @@ figure.ios {
     font-size: 1em;
   }
 }
-}
-#option {
-  & .option_carousel {
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    & .carousel_wrapper {
-      & img {
-        width: 100%;
-        height: auto;
-        /*border-radius: 15px;*/
-        aspect-ratio: 3/2;
-        object-fit: cover;
-      }
-    }
-  }
-}
+
+/*border-radius: 15px;*/
 /* slick */
 ul.slick-dots {
   bottom: 15px;
@@ -2706,4 +2676,8 @@ footer {
     opacity: 0;
     transition: 1s opacity;
   }
+}
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
 }

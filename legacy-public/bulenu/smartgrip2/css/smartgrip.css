@@ -979,3 +979,7 @@ footer address img{
 		font-size: 14px;
 	}
 }
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

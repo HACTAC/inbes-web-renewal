@@ -766,21 +766,7 @@ section {
 	  }
   }
 }
-}
-.dli-caret-right {
-  display: inline-block;
-  vertical-align: middle;
-  color: #333;
-  line-height: 1;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  border-width: 0.375em 0.64952em;
-  border-left-color: currentColor;
-  border-right: 0;
-  margin-left: 4px;
-}
+
 /*右の写真*/
 .r_photo {
   border-radius: 10px 0 0 10px;
@@ -2788,4 +2774,8 @@ margin: 0 auto 1em;
     opacity: 0;
     transition: 1s opacity;
   }
+}
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
 }

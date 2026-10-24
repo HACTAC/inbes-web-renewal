@@ -231,10 +231,7 @@
     display: block;
     border-bottom: solid 1px #dddddd;
   }
-  .Nav > ul > li a {
-    color: #fff;
-  }
-  .Nav > ul > li.parent.open > a::before {
+    .Nav > ul > li.parent.open > a::before {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }

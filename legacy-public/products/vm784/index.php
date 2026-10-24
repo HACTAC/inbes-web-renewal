@@ -42,11 +42,11 @@ function inbes_filesize( $filepath ) {
 <meta name="Keywords" content="7.8インチ縦横モニター,インベス,INBES">
 <meta name="ROBOTS" content="7.8インチ縦横モニター,インベス,INBES">
 <meta name="Description" content="VM784は、縦置き・横置きで使える7.8インチのサブモニター。SNSのタイムライン確認やパソコンの画面拡張に活用できます。USB Type-C・HDMIの接続条件、仕様、取扱説明書をご案内します。">
-<link href="./css/vm784.css" rel="stylesheet" type="text/css">
-<link href="./css/vm784_footer.css" rel="stylesheet" type="text/css">
+<link href="/products/vm784/css/vm784.css?v=0b52dcd79b4c" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/sg_footer-1bf488ca96d6.css" rel="stylesheet" type="text/css">
 <link href="./css/g_navi.css" rel="stylesheet" type="text/css">
-<link href="./css/accordion.css" rel="stylesheet" type="text/css">
-<link href="css/remodal.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-7bc0fc95a15f.css" rel="stylesheet" type="text/css">
 <link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="./css/hose.css">
 <script src="./js/jquery.min.js"></script>
@@ -151,18 +151,7 @@ function inbes_filesize( $filepath ) {
     <div class="mainBg">
       <div class="top_items">
         <div>
-          <style>
-            .play_button_link {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: 100;
-            }
-            .play_button_link img {
-              width: 100%;
-            }
-          </style>
+          <link rel="stylesheet" href="/assets/css/products/pages/products-vm784-inline-1-be6a2cd642ae.css">
           
           <!-- ボタン -->
           <a href="#mov1" class="play_button_link">

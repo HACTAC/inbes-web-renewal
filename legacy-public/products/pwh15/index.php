@@ -31,12 +31,12 @@
 <meta name="Keywords" content="電源不要高圧洗浄ホースセット,インベス,INBES">
 <meta name="ROBOTS" content="電源不要高圧洗浄ホースセット,インベス,INBES">
 <meta name="Description" content="PWH15は、電源不要の高圧洗浄ホースセット。6種類の噴射パターンと洗剤ボトルに対応し、洗車や窓・床の清掃、庭の水やりに使えます。通水時に約5mから約15mへ伸びるホースを採用。仕様や取付方法、取扱説明書をご案内します。">
-<link href="./css/pwh15.css" rel="stylesheet" type="text/css">
-<link href="./css/pwh15_footer.css" rel="stylesheet" type="text/css">
+<link href="/products/pwh15/css/pwh15.css?v=f777fe1116dc" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/sg_footer-1bf488ca96d6.css" rel="stylesheet" type="text/css">
 <link href="./css/g_navi.css" rel="stylesheet" type="text/css">
-<link href="./css/accordion.css" rel="stylesheet" type="text/css">
-<link href="css/remodal.css" rel="stylesheet" type="text/css">
-<link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-7bc0fc95a15f.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-default-theme-55681c3b2669.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="./css/hose.css">
 <script src="./js/jquery.min.js"></script> 
 <script type="text/javascript" src="./js/res_nav.js"></script> 
@@ -106,15 +106,7 @@
   </div>
 </div>
 <header id="top">
-  <style>
-    .play_button_link {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 100;
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/products/pages/products-pwh15-inline-1-527de2ab67f9.css">
   
   <!-- ボタン -->
   <a href="#mov1" class="play_button_link"><img class="play_button" src="img/play2.svg" alt=""></a>

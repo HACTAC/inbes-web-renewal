@@ -37,12 +37,12 @@ function inbes_filesize( $filepath ) {
 <meta name="description" content="小型ながら布団や衣類、靴の乾燥に対応する「ドライスマート MD-1500」。省エネ設計で日常使いに最適、冬や梅雨の季節に便利なコンパクト乾燥機です。">
 <meta name="keywords" content="ドライスマート, MD-1500, 布団乾燥機, コンパクト乾燥機, 省エネ乾燥機, 衣類乾燥機, 靴乾燥機, 冬用乾燥機, 梅雨対策, 家庭用乾燥機">
 <meta name="robots" content="index, follow">
-<link href="./css/sg_footer.css" rel="stylesheet" type="text/css">
-<link href="./css/g_navi.css" rel="stylesheet" type="text/css">
-<link href="./css/accordion.css" rel="stylesheet" type="text/css">
-<link href="./css/remodal.css" rel="stylesheet" type="text/css">
-<link href="./css/remodal-default-theme.css" rel="stylesheet" type="text/css">
-<link href="./css/md1500.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/sg_footer-8abc6623f368.css" rel="stylesheet" type="text/css">
+<link href="/products/md1500/css/g_navi.css?v=cb98763239a4" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-7bc0fc95a15f.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-default-theme-55681c3b2669.css" rel="stylesheet" type="text/css">
+<link href="/products/md1500/css/md1500.css?v=c0bbaaab86a2" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
@@ -140,7 +140,7 @@ return false;
       </div>
 		<h1 class="item_name"><span>コンパクトマルチ乾燥機</span><span>ドライスマート</span><span>MD-1500</span></h1>
       <div style="display: flex; justify-content: center; flex-wrap: wrap;"> 
-        <p class="price" style="">直販価格<span>19,800円</span> (税込)</p>
+        <p class="price">直販価格<span>19,800円</span> (税込)</p>
         <br>
         <p>※商品価格の他に別途送料(1000円)がかかります。</p>
       </div>
@@ -313,7 +313,7 @@ return false;
     <p>浴室乾燥やドラム式乾燥機と比べても、強モードでの使用でも経済的。<br>
 1日30分、月30日使用しても、電気代は約148円（家電公取協による目安単価1kWhあたり31円で算出）。家計にもやさしい乾燥機です。</p>
     <!--h3>電気製品の電力使用量目安</h3>
-    <img class="power_fig" style="" src="./images/poweruseage.svg" alt="">
+    <img class="power_fig" src="./images/poweruseage.svg" alt="">
     <p>上記は一般的な電力量の目安です。<br>
       ご使用の際は実際に使う機器の電力量を確認の上、使用可能時間を計算してご利用ください。</p--> 
   </section>

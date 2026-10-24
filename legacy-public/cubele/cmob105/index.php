@@ -11,7 +11,15 @@
     'meta_keywords' => $product_type,
     'meta_robots' => $product_type,
     'meta_description' => '「燃えない、爆発しない」次世代の安全性を。従来の液系リチウムイオン電池の弱点を克服した半固体バッテリーが登場。',
-    'css_link' => '/cubele/cmob105/css/cuble_cmobs105.css'
+    'shared_css' => [
+      'accordion.css' => '/assets/css/products/shared/accordion-5b87886430fa.css',
+      'g_navi.css' => '/assets/css/products/shared/g_navi-700663f109ce.css',
+      'remodal-default-theme.css' => '/assets/css/products/shared/remodal-default-theme-55681c3b2669.css',
+      'remodal.css' => '/assets/css/products/shared/remodal-7bc0fc95a15f.css',
+      'sg_footer.css' => '/assets/css/products/shared/sg_footer-7de2296ade11.css',
+      'simplebox.min.css' => '/assets/css/products/shared/simplebox-30e97fd24ebe.css',
+    ],
+    'css_link' => '/cubele/cmob105/css/cuble_cmobs105.css?v=aeefe56725cb'
   ];
   include $_SERVER['DOCUMENT_ROOT'] . '/inc/head.php';
   ?>

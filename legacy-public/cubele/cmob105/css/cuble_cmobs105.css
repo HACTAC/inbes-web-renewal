@@ -1830,3 +1830,8 @@ footer {
     bottom: 12vh;
   }
 }
+
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

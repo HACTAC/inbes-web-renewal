@@ -2942,3 +2942,7 @@ footer {
     transition: 1s opacity;
   }
 }
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

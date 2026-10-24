@@ -34,10 +34,10 @@ $PRICE_TALKBOT = "¥22,800-（税込み）"
   <meta name="Keywords" content="tallbot,トークボット,翻訳機,通訳機,音声翻訳機,音声翻訳,双方向翻訳,トーク翻訳,撮影翻訳,文字翻訳,録音翻訳,オフライン翻訳,78ヶ国語,4ヶ国語,英語,中国語,韓国語,広東語,ドイツ語,フランス語,ペルシャ語,ロシア語,インベス,INBES">
   <meta name="ROBOTS" content="tallbot,トークボット,翻訳機,通訳機,音声翻訳機,音声翻訳,双方向翻訳,トーク翻訳,撮影翻訳,文字翻訳,録音翻訳,オフライン翻訳,78ヶ国語,4ヶ国語,英語,中国語,韓国語,広東語,ドイツ語,フランス語,ペルシャ語,ロシア語,インベス,INBES">
   <meta name="Description" content="伝われば世界は広がる。Wi-Fiに接続して使う双方向マルチ翻訳機 talkbot.(トークボット) 旅行や海外出張、外国人の方への接客や語学学習にも使えます">
-  <link href="./css/talkbot.css" rel="stylesheet" type="text/css">
+  <link href="/products/talkbot/css/talkbot.css?v=ff28ec83d782" rel="stylesheet" type="text/css">
   <link href="./css/talkbot_footer.css" rel="stylesheet" type="text/css">
   <link href="./../../css/g_navi.css" rel="stylesheet" type="text/css">
-  <link href="./../../css/accordion.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="./../../js/res_nav.js"></script>
   <!-- Canonical設定 -->

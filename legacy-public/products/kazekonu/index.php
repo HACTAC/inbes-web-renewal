@@ -31,10 +31,10 @@
   <meta name="Keywords" content="車用エアコンガード,インベス,INBES">
   <meta name="ROBOTS" content="車用エアコンガード,インベス,INBES">
   <meta name="Description" content="カーエアコンのルーバーに取付けるだけでエアコンの直風が心地よい間接風に変わります。冷暖房の直風による目の乾きや不快な肌感を軽減して車内を快適にします。">
-  <link href="./css/kazenokuBase.css" rel="stylesheet" type="text/css">
+  <link href="/products/kazekonu/css/kazenokuBase.css?v=25d08ede0dba" rel="stylesheet" type="text/css">
   <link href="./css/kazenokuBase_footer.css" rel="stylesheet" type="text/css">
   <link href="./css/g_navi.css" rel="stylesheet" type="text/css">
-  <link href="./css/accordion.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="./css/kazekonu.css">
   <script src="./js/jquery.min.js"></script>
   <script type="text/javascript" src="./js/res_nav.js"></script>
@@ -124,7 +124,7 @@
         </a>
         <nav class="Nav" role="navigation" aria-label="メインメニュー">
           <p class="navbtn"><a href="javascript:void(0)"><span>メニューを閉じる</span></a></p>
-          <ul style="">
+          <ul>
             <li><a href="#about">特徴</a></li>
             <li><a href="#lineup">LINE UP</a></li>
             <li><a href="#method">使い方</a></li>
