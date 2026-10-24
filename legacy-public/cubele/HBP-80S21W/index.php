@@ -28,10 +28,10 @@
 <meta name="Description" content="パワーバンクキューブ HBP-80S21Wは、容量88.8Whの小型ポータブル電源と21Wソーラーパネルのセット。AC・USB出力やLEDライトを備え、防災の備えやアウトドアに活用できます。製品仕様・取扱説明書をご案内します。">
 <link href="css/sg_footer.css" rel="stylesheet" type="text/css">
 <link href="css/g_navi.css" rel="stylesheet" type="text/css">
-<link href="css/accordion.css" rel="stylesheet" type="text/css">
-<link href="css/remodal.css" rel="stylesheet" type="text/css">
-<link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-7bc0fc95a15f.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/products/shared/remodal-default-theme-55681c3b2669.css" rel="stylesheet" type="text/css">
+<link href="/cubele/HBP-80S21W/css/style.css?v=4f9d6040a68b" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 <script type="text/javascript" src="js/res_nav.js"></script> 
 <script type="text/javascript" src="js/animation.js"></script> 
@@ -61,95 +61,10 @@
 <!-- Font --> 
 <script src="js/typekit.js"></script>
 <link href="http://fonts.cdnfonts.com/css/gotham-bold" rel="stylesheet" >
+<link rel="stylesheet" href="/assets/css/products/pages/hbp80-presentation-216c92abbf35.css">
 </head>
 <body>
-<style>
-  * {
-    min-width: 0;
-    min-height: 0;
-  }
-  .YouTube {
-    aspect-ratio: 16 / 9;
-  }
-  .YouTube iframe {
-    width: 100%;
-    height: 100%;
-  }
-  
- .mainvisuial-image > div {
-    position: absolute; 
-    bottom: -5px; 
-    left: 35%;
-  }  
-  .play_button_link{
-    top: 55%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .remodal {
-    max-height: auto;
-    padding: 0;
-    background: transparent;
-  }
-	
-	.carousel_wrapper {
-		position: relative;
-	}
-	.carousel_anotation {
-		position: absolute;
-		top: 0;
-		left: 64px;
-	}
-	small.annotation {
-		text-align: justify;
-	}
-  
-  @media screen and (max-width: 1100px) {
-     .mainvisuial-image > div {
-      position: absolute; 
-      bottom: -5px; 
-      left: 30%;
-    }    
-  }
-  @media screen and (max-width: 800px) {
-     .mainvisuial-image > div {
-      position: absolute; 
-      bottom: -5px; 
-      left: 10%;
-    }    
-  }
-  @media screen and (max-width: 600px) {
-     .mainvisuial-image > div {
-      position: absolute; 
-      bottom: -5px; 
-      left: initial;
-    }    
-  }
-  @media screen and (max-width: 480px) {
-    .mainvisuial-image > div {
-      position: absolute; 
-      bottom: -5px; 
-      left: initial;
-    } 
-    .header_name img {
-      width: 200px;
-    }
-  }
-  
-  
-  
-  @media screen and (orientation: landscape) and (max-height: 600px){
-    .mainvisual-text {
-      background: initial !important;
-      text-shadow: 3px 3px #231815;
-      transition: background 0.2s ease-out;
-    }
-  }
-
-
-
-</style>
+<link rel="stylesheet" href="/assets/css/products/pages/cubele-HBP-80S21W-inline-1-7558426db8f8.css">
 <div class="obi">
   <div class="head_waku">
     <div class="header_name">
@@ -173,7 +88,7 @@
 <div class="cuble_main">
 <!--<figure class="cb_logo">&nbsp; <img src="images/cb_logo.svg"> </figure>-->
 <div class="mainvisuial-image">
-  <div style=""> <img src="images/main_front.png" alt="" style="width: 100%; height: auto;"> </div>
+  <div> <img src="images/main_front.png" alt="" class="inbes-product-image-fluid"> </div>
 </div>
 <div> <span>
   <h1 class="mainvisual-text" style="background: #231815; width: auto; bottom: initial; padding: 1em; line-height: 59px; transition: background 0.2s ease-out;">いつも、そばに。<br>
@@ -188,7 +103,7 @@
   <section id="feature">
     <div class="__flex-column">
       <div class="w90_640 fadeUpTrigger">
-        <h2 style="text-align: center;">電気の備蓄、ポータブル電源。<br>
+        <h2 class="inbes-product-center">電気の備蓄、ポータブル電源。<br>
           軽量コンパクトで使い方も簡単。</h2>
         <p></p>
       </div>
@@ -204,8 +119,8 @@
         <h1>HBP-80S21W<span style="vertical-align: top;">24000mAh/88.8Wh</span></h1>
         <figure> <img src="images/spec/ic1.svg" alt=""> <img src="images/spec/ic2.svg" alt=""> <img src="images/spec/ic3.svg" alt=""> <img src="images/spec/ic4.svg" alt=""> <img src="images/spec/ic5.svg" alt=""> <img src="images/spec/ic6.svg" alt=""> </figure>
       </div>
-      <div style="display: flex; justify-content: center;">
-        <p class="price" style="">希望小売価格<span>42,680円</span> (税込)</p>
+      <div class="inbes-product-flex-center">
+        <p class="price">希望小売価格<span>42,680円</span> (税込)</p>
       </div>
 	  
     </div>
@@ -215,12 +130,12 @@
   <section id="feature">
     <div class="flex-column">
       <div class="w100_640 fadeUpTrigger">
-        <h2 style="text-align: center;">ライフラインの維持に。<br>
+        <h2 class="inbes-product-center">ライフラインの維持に。<br>
           スマートフォン8台分の充電が可能。</h2>
         <p>災害時に家族との連絡手段だけでなく、<br class="br_pc">
           被災情報や避難場所など情報収集にも必須なスマートフォン。<br class="br_pc">
           USBの挿し口が4つあり、家族全員分のスマートフォンが同時に充電可能です。</p>
-        <div style="text-align: center;"> <img src="images/lifeline.png" alt="" style="width:100%; max-width: 800px;"></div>
+        <div class="inbes-product-center"> <img src="images/lifeline.png" alt="" class="inbes-product-image-800"></div>
       </div>
     </div>
   </section>
@@ -229,15 +144,15 @@
   <section id="feature">
     <div class="flex-column_" style="overflow-x: hidden; width: 100%;">
       <div class="w100_640 fadeUpTrigger">
-        <h2 style="text-align: center;">いつ起こるかわからない災害。<br>
+        <h2 class="inbes-product-center">いつ起こるかわからない災害。<br>
           小型家電にも使用でき、<br>
           普段使いやアウトドアでも活躍</h2>
         <p></p>
         <div class="carousel" style="width: 100%; ">
-          <div style="display: flex; justify-content: center;"> <img src="images/outdoor.png" alt="" style="width:100%; max-width: 800px; align-self: flex-start;"> </div>
-          <div style="display: flex; justify-content: center;"> <img src="images/denkimoufu.jpg" alt="" style="width:100%; max-width: 800px; align-self: flex-start;"> </div>
-          <div style="display: flex; justify-content: center;"> <img src="images/dvd.jpg" alt="" style="width:100%; max-width: 800px; align-self: flex-start;"> </div>
-          <div style="display: flex; justify-content: center;"> <img src="images/pc.jpg" alt="" style="width:100%; max-width: 800px; align-self: flex-start;"> </div>
+          <div class="inbes-product-flex-center"> <img src="images/outdoor.png" alt="" class="inbes-product-image-800-start"> </div>
+          <div class="inbes-product-flex-center"> <img src="images/denkimoufu.jpg" alt="" class="inbes-product-image-800-start"> </div>
+          <div class="inbes-product-flex-center"> <img src="images/dvd.jpg" alt="" class="inbes-product-image-800-start"> </div>
+          <div class="inbes-product-flex-center"> <img src="images/pc.jpg" alt="" class="inbes-product-image-800-start"> </div>
         </div>
       </div>
       <div class="meyas">
@@ -372,7 +287,7 @@
       <div class="area2">
         <div class="o_title" style="width:100%;">
           <div>
-            <div> <img src="images/light.png" style=""> </div>
+            <div> <img src="images/light.png"> </div>
           </div>
         </div>
       </div>
@@ -398,7 +313,7 @@
   <section id="feature">
     <div class="flex-column">
       <div class="w90_640 fadeUpTrigger">
-        <h2 style="text-align: center;">フル充電しておけば、<br>
+        <h2 class="inbes-product-center">フル充電しておけば、<br>
           半年に一度の補充電で、<br>
           いざという時への備えも安心。</h2>
         <p>充電時間は約5時間。<br class="br_pc">
@@ -412,12 +327,12 @@
   <section id="feature">
     <div class="flex-column">
       <div class="w90_640 fadeUpTrigger">
-        <h2 style="text-align: center;">ソーラーパネル付属で、<br>
+        <h2 class="inbes-product-center">ソーラーパネル付属で、<br>
           停電してても太陽光で再充電が可能。</h2>
         <p>折りたたみ可能な大型ソーラパネル付きで、電池が切れても安心。<br class="br_pc">
           さらに単独での使用もでき、コードを繋げば直接スマートフォンの充電もできます。</p>
       </div>
-      <div style="display: flex; justify-content: center;"> <img src="images/solarpanel.jpg" alt="" style="width:100%; max-width: 800px;"> </div>
+      <div class="inbes-product-flex-center"> <img src="images/solarpanel.jpg" alt="" class="inbes-product-image-800"> </div>
     </div>
   </section>
 </article>

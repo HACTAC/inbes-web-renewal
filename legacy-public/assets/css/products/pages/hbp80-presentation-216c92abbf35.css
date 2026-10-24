@@ -1,0 +1,6 @@
+/* Static HBP80 presentation; keep runtime widths/transforms in JavaScript. */
+body .inbes-product-center { text-align: center; }
+body .inbes-product-flex-center, body .slick-initialized .inbes-product-flex-center { display: flex; justify-content: center; }
+body .inbes-product-image-800 { width: 100%; max-width: 800px; }
+body .inbes-product-image-800-start { width: 100%; max-width: 800px; align-self: flex-start; }
+body .inbes-product-image-fluid { width: 100%; height: auto; }

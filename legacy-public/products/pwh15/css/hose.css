@@ -1,0 +1,418 @@
+
+
+
+.mainView {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+ 
+}
+.mainView > div{
+    margin: 0 auto;
+    padding: 0;
+	display: flex;
+	width: 90%;
+	max-width: 900px;
+	justify-content: center;
+	align-items: center;
+}
+
+.p_title{
+    background-color: rgba(0, 0, 0, 0.78);
+	color: white;
+	padding: 1em 1.5em;
+	width: 50%;
+}
+.p_title h1{
+    font-size: 2rem;
+	line-height: 1.5;
+	margin: 0;
+}
+.p_title h2{
+	font-size: 2.5rem;
+	line-height: 1.8;
+	margin: 0;
+	font-family: mr-eaves-modern, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.main_photo {
+    margin: 0;
+	padding: 0;
+	width: 50%;
+}
+.main_photo img{
+    width: 100%;
+	margin: 0 0 -6px 0;
+	padding: 0;
+}
+#about{
+width: 100%;
+max-width: 900px;
+
+}
+#about,#point{
+margin: -80px auto 0;
+	padding-top:80px;
+}
+.method_wrap{
+width: 100%;
+max-width: 900px;
+margin: 0 auto;	
+}
+.method_wrap{
+padding: 50px 0;
+}
+
+.about {
+    margin: 0;
+    padding: 0;
+}
+
+.about img{
+    width: 100%;
+    vertical-align: bottom;
+    pointer-events: none;
+}
+
+.about_bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-image: url(../img/about_bg.png);
+    padding-bottom: 2em;
+}
+
+.pattern_wrap {
+    width: 80%;
+    margin: auto;
+}
+
+.pattern_header, .pattern_text {
+    padding: 1em 0 0 0;
+}
+.pattern_header{
+    font-size: 2.5em;
+    font-weight: 800;
+	margin-bottom: 0;
+}
+
+.pattern_image_wrap {
+    width: 80%;
+    margin: auto;
+}
+
+.pattern_image_wrap img{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.mode_wrap {
+    width: 80%;
+    margin: auto;
+}
+
+.mode_wrap img{
+    width: 45%;
+}
+
+.mode_header {
+    font-size: 2em;
+    font-weight: 800; 
+}
+
+.pattern_emphasis {
+    color: #cf9d4d;
+}
+
+.operation_wrap {
+    padding: 2em 2em;
+    text-align: justify;
+}
+.operation_wrap h3{
+	margin-top: 1.5em;
+    margin-bottom: 0;
+}
+.mode_blocks div{
+    margin-right: 2em;
+    }
+.blocks2 {
+    display: flex;
+
+}
+.blocks2 div{
+    flex-grow: 1;
+}
+
+.flexItem30 {
+    flex-basis:30%;
+}
+
+.flexItem70 {
+    flex-basis:70%;
+}
+
+.bg_gray {
+    background: #252525;
+    color: #fff;
+}
+
+.hose_structure_wrap{
+    background:#fcfdfd;
+}
+
+
+.hose_structure {
+    width: 80%;
+    margin: auto;
+}
+
+.salescopy_wrap{
+    padding: 1em 1em;
+    margin: 0 0 0 0;
+    background: #252525;
+    color: #fff;
+    line-height: 1.5em;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.salescopy_emphasis {
+    color: #cf9d4d;
+    font-size: 1.5em;
+}
+
+.hose_description {
+    padding: 2em 2em;
+}
+
+.method_image{
+    text-align: center;
+	margin: 0;
+	padding: 0;
+    
+}
+.method_image img{
+    width: 100%;
+    pointer-events: none;
+}
+
+.method_header {
+    text-align: center;
+    color: #3e3a39;
+    border:solid 3px #3e3a39;
+	margin-bottom: 1em;
+}
+
+.method_annotation{
+    margin: 0.5em 0;
+}
+.method_annotation::before{
+    content: "※ "
+}
+
+.option_wrap {
+    padding-top: 100px;
+    width:100%;
+	max-width: 900px;
+    margin: auto;
+}
+
+
+.option_wrap figure {
+    text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.option_wrap img {
+    margin: auto;
+    width: 100%;
+    pointer-events: none;
+}
+
+.option_header {
+    text-align: center;
+    color: #fff;
+    border:solid 2px #fff; 
+	margin-bottom: 2em;
+}
+
+.specifications_wrap {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width:100%;
+	max-width: 900px;
+    margin: auto;
+}
+
+.specifications_header {
+    text-align: center;
+    color: #fff;
+    border:solid 2px #fff;
+	margin-bottom: 2em;
+}
+
+.precautions_header {
+    text-align: center;
+    color: #fff;
+    border:solid 2px #fff;
+}
+
+.specifications_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2em;
+}
+
+.specifications_table tr:nth-child(odd) {
+    color: #231815;
+    background-color: #cf9d4d;
+}
+.specifications_table tr td{
+    padding: 0.75em 0.5em ;
+	font-size: 1rem;
+}
+
+
+@media screen and (max-width: 834px) {
+
+.mainView > div{
+    margin: 0 auto;
+    padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column-reverse;
+	width: 100%;
+}
+
+.p_title{
+	width: 80%;
+	margin-bottom: 3em;
+}
+.p_title h1{
+    font-size: 1.6rem;
+	margin: 0;
+}
+.p_title h2{
+	font-size: 2rem;
+	line-height: 1.8;
+	margin: 0;
+}
+.main_photo {
+    margin: 0;
+	padding: 0;
+	width: 65%;
+}
+.main_photo img{
+    width: 100%;
+	margin: 0 0 -6px 0;
+	padding: 0;
+}
+	
+    .mode_header {
+        font-size: 1.25em;
+    }
+
+    .pattern_image_wrap img{
+        width: 100%;
+    }
+
+
+    .salescopy_wrap{
+        margin: 0;
+		padding-left: 10%;
+    }
+
+    .hose_description_blocks{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    .hose_description{
+        padding: 2em 10%;
+    }
+
+    .operation_blocks {
+        flex-wrap: wrap;
+    }
+
+    .operation_wrap h3
+    {
+        width: 80%;
+        margin: auto;
+    }
+	.operation_wrap p
+    {
+        width: 80%;
+        margin: 0 auto 2em;
+    }
+	.method_wrap div{
+	width: 80%;
+	margin: auto;
+}
+	.option_wrap{
+	width: 80%;
+	margin: auto;
+}
+	.specifications_wrap{
+	width: 80%;
+	margin: auto;
+}
+
+}
+
+@media screen and (max-width: 480px) {
+	#about,#point,#specs,#d_load{
+margin: -60px auto 0;
+	padding-top:60px;
+}
+	.p_title{
+	width: 70%;
+	margin-bottom: 2em;
+}
+	.p_title h1{
+    font-size: 1.4rem;
+	margin: 0;
+}
+.p_title h2{
+	font-size: 1.8rem;
+	line-height: 1.6;
+}
+    .pattern_header {
+        font-size: 1.5em;
+    }
+    .mode_header {
+        font-size: 1.25em;
+    }
+    .mode_blocks {
+        flex-wrap: wrap;
+    }
+
+    .mode_wrap img {
+        width: 100%;
+        margin: auto;
+    }
+    .salescopy_wrap {
+        font-size: 1.25em;
+    }
+	.method_header {
+    font-size: 1rem;
+}
+	.option_wrap{
+       padding-top: 50px;
+    }
+    .option_wrap figure{
+        margin: 0;
+        padding: 0;
+    }
+    .option_wrap img{
+        width: 100%;
+    }
+	.specifications_wrap{
+       padding-top: 50px;
+    }
+    .specifications_table tr td{
+	font-size: 0.9rem;
+}
+}

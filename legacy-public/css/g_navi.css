@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/* Nav
+-----------------------------------------*/
+.Nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100001;
+  font-family: tbudgothic-std, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+    & ul {
+        
+    }
+}
+.Nav ul {
+  list-style: none;
+  font-family: tbudgothic-std, sans-serif;
+}
+.Nav .navbtn {
+  display: none;
+}
+.navbtn {
+  right: -5%;
+}
+.Nav ul.close {
+  display: none;
+  border-top: solid 1px #F5F4F0;
+}
+.Nav > ul {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.Nav > ul > li {
+  position: relative;
+  font-size: 1.1rem;
+  display: inline-block;
+  font-family: tbudgothic-std, sans-serif;
+  font-weight: 500;
+}
+.Nav > ul > li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  padding: 26px 15px 22px;
+  font-size: 1.1rem;
+  font-family: tbudgothic-std, sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1.00);
+  z-index: 10002;
+}
+.Nav > ul > li.parent > a {
+  padding-right: 25px;
+}
+.Nav > ul > li.parent > a::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  margin: -6px 0 0 0;
+  border-top: solid 2px rgba(255, 255, 255, 1.00);
+  border-right: solid 2px rgba(255, 255, 255, 1.00);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.Nav > ul > li.parent.open > a {
+  color: #999;
+}
+.Nav > ul > li.parent.open > a::after {
+  background: none;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.Nav > ul > li a:hover {
+  color: rgba(0, 0, 0, 1.00);
+}
+.Nav > ul > li a::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.Nav > ul > li a, .Nav > ul > li a::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.Nav > ul > li a::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(.5);
+  transform: scale(.5);
+}
+.Nav > ul > li a:hover::after {
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+/* 2階層 */
+.Nav > ul > li > ul {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
+.Nav > ul > li > ul li {
+  white-space: nowrap;
+}
+.Nav > ul > li > ul li a {
+  position: relative;
+  padding: 12px 27px 12px 27px;
+  color: rgba(0, 0, 0, 1.00);
+}
+.Nav > ul > li > ul li a::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 6px;
+  height: 6px;
+  margin: -6px 0 0 0;
+  border-top: solid 2px rgba(0, 0, 0, 1.00);
+  border-right: solid 2px rgba(0, 0, 0, 1.00);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.Nav > ul > li > ul li a:hover {
+  text-decoration: none;
+}
+.Nav > ul > li > ul li ul li a {
+  padding-left: 42px;
+}
+.Nav > ul > li > ul li ul li a::before {
+  left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .Nav .navbtn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 15px;
+  }
+  .Nav .navbtn a, .Nav .navbtn a.close {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: none;
+  }
+  .Nav .navbtn a::before, .Nav .navbtn a.close::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    content: "";
+    width: 20px;
+    height: 3px;
+    background-color: #FFF;
+    transition: .2s;
+  }
+  .Nav .navbtn a.open::before {
+    top: 19px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  .Nav .navbtn a::after, .Nav .navbtn a.close::after {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    content: "";
+    width: 20px;
+    height: 3px;
+    background-color: #FFF;
+    transition: .2s;
+  }
+  .Nav .navbtn a.open::after {
+    bottom: 18px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  .Nav .navbtn a.open {}
+  .Nav .navbtn a span {
+    display: block;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+  .Nav .navbtn a span::after, .Nav .navbtn a.close span::after {
+    position: absolute;
+    top: 19px;
+    left: 10px;
+    content: "";
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+  }
+  .Nav .navbtn a.open span::after {
+    display: none;
+  }
+  .Nav > ul {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    z-index: 100000;
+    background-color: rgba(0, 0, 0, 0.70);
+  }
+  .Nav > ul > li {
+    display: block;
+    border-bottom: solid 1px #dddddd;
+  }
+  .Nav > ul > li a {
+    color: #fff;
+  }
+  .Nav > ul > li.parent.open > a::before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .Nav > ul > li.parent.open {
+    border-bottom: none;
+  }
+  .Nav > ul > li.parent.open > a {
+    color: #FFF;
+  }
+  .Nav > ul > li > ul {
+    background-color: #fbfbfb;
+    position: static;
+  }
+  .Nav > ul > li > ul li a {
+    border-bottom: solid 1px #dddddd;
+    background-color: rgba(240, 240, 240, 0.8);
+    color: rgba(0, 0, 0, 1.00);
+  }
+  .Nav > ul > li > ul li a:hover {
+    background-color: #fff;
+  }
+}
+@media screen and (max-width: 480px) {
+  .Nav {
+    top: -6px;
+    right: 0;
+  }
+}

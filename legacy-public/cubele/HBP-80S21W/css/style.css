@@ -1,0 +1,1534 @@
+@charset "UTF-8";
+/* line 2, _cuble.scss */
+html {
+  visibility: hidden; }
+  /* line 4, _cuble.scss */
+  html.wf-active {
+    visibility: visible; }
+
+/* line 9, _cuble.scss */
+body {
+  width: 100%;
+  font-size: 16px;
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background: #fff;
+  margin: 0 auto 0 auto;
+  padding: 0;
+  color: #000;
+  line-height: 1.5rem; }
+
+/* line 21, _cuble.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif';
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  color: #231815; }
+
+/* line 28, _cuble.scss */
+p {
+  font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #231815;
+  line-height: 1.7rem; }
+
+/* ~~ エレメント / タグセレクター ~~ */
+/* line 37, _cuble.scss */
+ul, ol, dl {
+  padding: 0;
+  margin: 0;
+  /*	font-family: a-otf-ud-shin-go-pr6n, sans-serif;*/
+  font-weight: 300;
+  font-style: normal; }
+
+/* ~~ ソリッド線にフロートクリア要素を追加 ~~ */
+/* ~~ img調整 ~~ */
+/* line 47, _cuble.scss */
+a img {
+  /* このセレクターは、一部のブラウザーでイメージをリンクで囲んだ場合にイメージの周囲に表示される初期設定の青いボーダーを削除します。 */
+  border: none; }
+
+/* ~~ サイトのリンクのスタイル付けは、ホバー効果を作成するセレクターグループも含め、この順序にする必要があります。~~ */
+/* line 52, _cuble.scss */
+a {
+  text-decoration: none; }
+  /* line 54, _cuble.scss */
+  a:link {
+    color: #414958;
+    text-decoration: none;
+    padding-bottom: 1px; }
+  /* line 59, _cuble.scss */
+  a:visited {
+    color: #4E5869; }
+  /* line 62, _cuble.scss */
+  a:hover, a:active, a:focus {
+    text-decoration: none; }
+
+/* 見出し
+-----------------------------------------*/
+/* line 69, _cuble.scss */
+h2 {
+  font-size: 2.3rem;
+  line-height: 180%; }
+
+/* line 73, _cuble.scss */
+h3 {
+  font-size: 2.125rem;
+  line-height: 180%; }
+
+/* line 78, _cuble.scss */
+h4 {
+  font-size: 1.5rem;
+  line-height: 180%; }
+
+/* line 82, _cuble.scss */
+p {
+  font-size: 1rem; }
+
+/* ~~ ヘッダー　メインビジュアル ~~ */
+/* line 87, _cuble.scss */
+header {
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  display: block;
+  background-image: url("../images/main_background_1.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: center center;
+  background-repeat: no-repeat; }
+
+/* line 99, _cuble.scss */
+.cuble_main {
+  width: 90%;
+  height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative; }
+  /* line 105, _cuble.scss */
+  .cuble_main h1 {
+    position: absolute;
+    width: 100%;
+    top: 25vh;
+    left: 3vw;
+    right: auto;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    line-height: 2em;
+    font-size: 41px;
+    color: #FFF; }
+
+/* line 121, _cuble.scss */
+.cb_logo {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 90px;
+  left: auto;
+  right: 2vw;
+  margin: 0;
+  padding: 0; }
+  /* line 130, _cuble.scss */
+  .cb_logo img {
+    width: 100%; }
+
+/* グローバルナビゲーション
+-----------------------------------------*/
+/* line 137, _cuble.scss */
+.header_name {
+  width: 45%;
+  font-size: 1.47em;
+  padding-left: 20px; }
+  /* line 141, _cuble.scss */
+  .header_name p {
+    font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif' !important; }
+
+/* line 147, _cuble.scss */
+.right_nav {
+  width: 45%; }
+
+/* line 150, _cuble.scss */
+.obi {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(174, 38, 24, 0.85);
+  position: fixed;
+  margin: 0;
+  z-index: 10; }
+
+/* line 159, _cuble.scss */
+.head_waku {
+  width: 100%;
+  max-width: 1100px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  color: #fff; }
+
+/* グローバルナビゲーション */
+/* line 170, _cuble.scss */
+.Nav {
+  position: static;
+  text-align: right; }
+  /* line 173, _cuble.scss */
+  .Nav ul {
+    font-family: a-otf-ud-shin-go-pr6n, sans-serif; }
+
+/* line 178, _cuble.scss */
+.Nav > ul > li a {
+  font-size: 18px;
+  color: #fff; }
+
+/* コンテンツ
+-----------------------------------------*/
+/* line 185, _cuble.scss */
+section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10vh 0;
+  margin-bottom: 0; }
+  /* line 190, _cuble.scss */
+  section img {
+    height: auto; }
+
+/* メイン写真スライダー */
+.main_slide{
+	width: 80%;
+	max-width:600px;
+	margin: 0 auto;
+}
+.carousel{
+	width: 100%;
+	margin: 0 auto;
+}
+.carousel div{
+	width: 100%;
+	margin: 0 auto;
+}
+.carousel div img{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.price{
+	width: 80%;
+	margin: 1.8em auto 0 auto;
+	text-align: center;
+}
+.price span{
+	font-size: 2.3rem;
+	vertical-align: middle;
+	font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif';
+  font-weight: 600;
+  font-style: normal;
+	margin-left: 0.25em;
+}
+
+
+/* セクション背景色 */
+/* line 196, _cuble.scss */
+.item_about {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto; }
+  /* line 200, _cuble.scss */
+  .item_about h1 {
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1;
+    display: block; }
+    /* line 205, _cuble.scss */
+    .item_about h1 span {
+      margin-left: 1em;
+      padding: 0.5em;
+      font-size: 1rem;
+      background: #000000;
+      color: #FFFFFF;
+      line-height: 1;
+      display: inline-block; }
+  /* line 216, _cuble.scss */
+  .item_about figure {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; }
+    /* line 222, _cuble.scss */
+    .item_about figure img {
+      width: 16%; }
+
+/* セクション背景色 */
+/* ~~ 1カラム */
+/* ~~ 2カラム */
+/* flexbox縦並びクラス */
+/* line 235, _cuble.scss */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; }
+
+/* 特徴 */
+/* line 242, _cuble.scss */
+section#feature {
+  /*	max-width: 2000px;*/ }
+
+/* line 245, _cuble.scss */
+#feature h2 {
+  margin-bottom: 0; }
+
+/* line 249, _cuble.scss */
+#feature .two_innner:first-child {
+  background: #fff url("../images/100v_200s.jpg") no-repeat;
+  background-size: 120% auto;
+  background-position: right center;
+  padding-bottom: 40%; }
+
+/* line 255, _cuble.scss */
+#feature .two_innner:last-child {
+  background: #fff url("../images/100v_500s.jpg") no-repeat;
+  background-size: 120% auto;
+  background-position: left center;
+  padding-bottom: 40%; }
+
+/* line 261, _cuble.scss */
+#feature p {
+  text-align: center; }
+
+/* line 265, _cuble.scss */
+.meyas {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 1.5em;
+  flex-wrap: wrap;
+  max-width: 650px;
+  margin: 3em auto 6em; }
+  /* line 272, _cuble.scss */
+  .meyas div {
+    width: 50%;
+    vertical-align: top; }
+    /* line 275, _cuble.scss */
+    .meyas div img {
+      padding: 0;
+      margin-left: 50px; }
+    /* line 279, _cuble.scss */
+    .meyas div div {
+      width: calc(100% - 110px);
+      text-align: left;
+      margin: 0 0 2em 0;
+      padding: 0;
+      display: inline-block; }
+      /* line 286, _cuble.scss */
+      .meyas div div h4 {
+        text-align: left;
+        margin: 0;
+        display: inline; }
+      /* line 292, _cuble.scss */
+      .meyas div div p {
+        text-align: left !important;
+        margin: 0;
+        padding: 0; }
+
+/* 給電の目安 */
+/* line 303, _cuble.scss */
+.item {
+  width: 50px;
+  height: 50px; }
+
+/* 専用オプション */
+/* line 310, _cuble.scss */
+section#option {
+  color: #fff;
+  background: #595757; }
+
+/* line 314, _cuble.scss */
+#option .g_wrapper {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  text-align: center;
+  grid-row-gap: 3em;
+  align-items: flex-start;
+  grid-template-areas: "area1 area2" "area3 area4";
+  margin-top: 3em !important; }
+
+/* line 327, _cuble.scss */
+#option .area1 {
+  grid-area: area1; }
+
+/* line 330, _cuble.scss */
+#option .area2 {
+  grid-area: area2; }
+
+/* line 333, _cuble.scss */
+#option .area2 p {
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif' !important; }
+
+/* line 337, _cuble.scss */
+#option .g_wrapper div .o_title {
+  margin: 0 auto;
+  width: 99%; }
+
+/* line 341, _cuble.scss */
+#option .g_wrapper > div:nth-child(2),
+#option .g_wrapper > div:last-child {
+  text-align: right; }
+
+/* line 345, _cuble.scss */
+#option .g_wrapper > div:nth-child(4) figcaption {
+  text-align: center; }
+
+/* line 349, _cuble.scss */
+#option .g_wrapper div figure {
+  margin: 0; }
+
+/* line 352, _cuble.scss */
+#option .g_wrapper div:nth-child(3) figure {
+  margin: 0 auto;
+  width: 40%; }
+
+/* line 356, _cuble.scss */
+#option .g_wrapper img {
+  width: 100%; }
+
+/* line 359, _cuble.scss */
+#option .g_wrapper > div:last-child img {
+  width: 90%; }
+
+/* line 362, _cuble.scss */
+#option .two {
+  justify-content: flex-start;
+  align-items: center; }
+
+/* line 366, _cuble.scss */
+#option .g_wrapper h3,
+#option .two_innner h4 {
+  margin: 0;
+  text-align: left; }
+
+/* line 371, _cuble.scss */
+#option .g_wrapper h3 {
+  font-size: 2.1vw; }
+
+/* line 374, _cuble.scss */
+#option .two_innner h4 {
+  font-size: 2.6vw; }
+
+/* line 377, _cuble.scss */
+#option .two_innner:last-child {
+  text-align: left; }
+
+/* line 380, _cuble.scss */
+#option .two_innner small {
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif' !important; }
+
+/* 製品仕様 */
+/* line 384, _cuble.scss */
+section#specs {
+  width: 80%;
+  max-width: 1100px; }
+
+/* line 388, _cuble.scss */
+#specs h3 {
+  width: 90%;
+  font-size: 1.5rem;
+  margin: 60px auto 30px;
+  text-align: center; }
+
+/* line 394, _cuble.scss */
+#specs p {
+  width: 90%;
+  font-size: 1rem;
+  margin: 10px auto 30px;
+  text-align: left; }
+
+/* 2カラムテーブル */
+/* line 401, _cuble.scss */
+.two_table {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: column; }
+
+/* line 407, _cuble.scss */
+.dengen_spec {
+  width: 56%; }
+
+/* line 411, _cuble.scss */
+.panel_spec {
+  width: 40%; }
+
+/* 製品仕様テーブル */
+/* line 417, _cuble.scss */
+.specseat {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif' !important; }
+  /* line 423, _cuble.scss */
+  .specseat tr {
+    /*  border-bottom: solid 1px #707070;*/ }
+  /* line 426, _cuble.scss */
+  .specseat th {
+    background: #E0E0E0;
+    color: #1A1311;
+    font-weight: normal;
+    padding: 2%;
+    border-bottom: solid 1px #fff; }
+  /* line 433, _cuble.scss */
+  .specseat td:first-child {
+    width: 7.5em; }
+  /* line 436, _cuble.scss */
+  .specseat td, .specseat th {
+    padding: 0.5em 0.5em;
+    border-left: solid 1px #707070;
+    border-bottom: solid 1px #707070; }
+
+/* line 446, _cuble.scss */
+.powerSupplyGuideTable {
+  width: 90%;
+  max-width: 800px;
+  margin: 2em auto 0;
+  border-spacing: 0;
+  border-collapse: collapse; }
+  /* line 452, _cuble.scss */
+  .powerSupplyGuideTable th {
+    border: 1px #000 solid;
+    background: #cccccc;
+    padding: 0.5em; }
+  /* line 457, _cuble.scss */
+  .powerSupplyGuideTable th:first-child {
+    min-width: 6em; }
+  /* line 460, _cuble.scss */
+  .powerSupplyGuideTable th:nth-child(2) {
+    min-width: 6em; }
+  /* line 463, _cuble.scss */
+  .powerSupplyGuideTable td {
+    border: 1px #000 solid;
+    padding: 0.5em; }
+
+/* line 469, _cuble.scss */
+.specseat td:nth-of-type(1) {
+  border-left: none; }
+
+/* line 473, _cuble.scss */
+.specseat td span {
+  min-width: 95px;
+  display: inline-block; }
+
+/* 付属品 */
+/* line 479, _cuble.scss */
+.parts_list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+  /* line 483, _cuble.scss */
+  .parts_list li {
+    list-style: none;
+    padding: 0.5em; }
+
+/* ダウンロード */
+/* line 490, _cuble.scss */
+section#d_load {
+  width: 80%;
+  max-width: 1100px;
+  padding-top: 8vh; }
+
+/* line 496, _cuble.scss */
+#d_load .d_flex {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around; }
+
+/* line 502, _cuble.scss */
+#d_load .d_flex a {
+  text-decoration: none;
+  text-align: center;
+  width: 30%;
+  min-width: 140px;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 2em 0em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+
+/* line 515, _cuble.scss */
+#d_load .d_flex a img {
+  width: 29%;
+  margin: 0 auto;
+  display: block; }
+
+/* line 521, _cuble.scss */
+#d_load .d_flex a:hover {
+  background-color: #ccc; }
+
+/* line 525, _cuble.scss */
+.br_sp {
+  display: none; }
+
+/* フッター
+-----------------------------------------*/
+/* line 529, _cuble.scss */
+footer {
+  color: #231815 !important;
+  background: #c9caca !important;
+  position: relative;
+  padding: 30px 0 30px 0;
+  margin-top: 3em; }
+
+/* line 536, _cuble.scss */
+footer dd,
+footer address,
+.copyright {
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'sans-serif' !important; }
+
+/* トップへ戻るボタン*/
+/* line 543, _cuble.scss */
+.top-arrow {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 10vh;
+  right: 10vw; }
+
+/* 免責事項*/
+/* line 551, _cuble.scss */
+footer div dl {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 30px; }
+
+/* line 556, _cuble.scss */
+footer div dl dt {
+  font-size: 1.2rem;
+  margin-bottom: 10px; }
+
+/* line 560, _cuble.scss */
+footer div dl dd {
+  font-size: 0.6875rem; }
+
+/* line 563, _cuble.scss */
+footer p {
+  text-align: center;
+  font-size: 0.6875rem;
+  line-height: 1rem; }
+
+/* 会社住所*/
+/* line 569, _cuble.scss */
+footer address {
+  font-size: 0.6875rem;
+  text-align: center;
+  padding-top: 4vh; }
+
+/* line 574, _cuble.scss */
+footer address img {
+  width: 50px; }
+
+/* line 577, _cuble.scss */
+footer .copylight {
+  font-size: 0.6875rem; }
+
+/* アニメーション
+-----------------------------------------*/
+/* line 587, _cuble.scss */
+.fadeInRight {
+  animation: SlideIn_From_Right 0.8s 1; }
+
+/* line 590, _cuble.scss */
+.fadeInLeft {
+  animation: SlideIn_From_Left 0.8s 1; }
+
+/* line 593, _cuble.scss */
+.fadeUp {
+  animation: SlideIn_Down_Up 0.8s 1; }
+
+/*アニメーションの設定*/
+@keyframes SlideIn_From_Right {
+  0% {
+    opacity: 0;
+    transform: translateX(64px); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes SlideIn_From_Left {
+  0% {
+    opacity: 0;
+    transform: translateX(-64px); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes SlideIn_Down_Up {
+  0% {
+    opacity: 0;
+    transform: translateY(64px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+/* 横長表示の場合 */
+@media (min-aspect-ratio: 16 / 9) {
+  /* メインビジュアル */
+  /*
+  	.cuble_main h1{
+  		background: #000;
+  	}
+  */ }
+@media screen and (max-width: 480px) {
+  /* 見出し */
+  /* line 675, _cuble.scss */
+  h2 {
+    font-size: 1.8rem;
+    line-height: 180%; }
+
+  /* line 679, _cuble.scss */
+  h3 {
+    font-size: 1.5rem;
+    line-height: 180%; }
+
+  /* line 683, _cuble.scss */
+  
+  /* line 687, _cuble.scss */
+  
+  /* ロゴ */
+  /* line 692, _cuble.scss */
+  
+  /* グローバルメニュー */
+  /* line 698, _cuble.scss */
+  
+  /* line 701, _cuble.scss */
+  
+  /* line 705, _cuble.scss */
+  
+  /* line 708, _cuble.scss */
+  
+  /* line 711, _cuble.scss */
+  
+  /* line 714, _cuble.scss */
+  
+  /* メインビジュアル */
+  /* ~~ ヘッダー　メインビジュアル ~~ */
+  /* line 719, _cuble.scss */
+  header {
+    background: url("../images/top_bg_sp.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center; }
+
+  /* line 724, _cuble.scss */
+  
+  /* line 727, _cuble.scss */
+  
+  /* メインビジュアル */
+  /* line 732, _cuble.scss */
+  
+  /* line 735, _cuble.scss */
+  
+  /* line 743, _cuble.scss */
+  
+  /* セクション */
+  /* line 748, _cuble.scss */
+  
+  /* ラインナップ */
+  /* line 753, _cuble.scss */
+  
+  /* line 756, _cuble.scss */
+  
+  /* line 759, _cuble.scss */
+  
+  /* line 762, _cuble.scss */
+  
+  /* すべての端子 */
+  /* line 767, _cuble.scss */
+  
+  /* 特徴 */
+  /* line 771, _cuble.scss */
+  
+  /* 急速充電 */
+  /* line 775, _cuble.scss */
+  
+  /* LEDライト */
+  /* line 779, _cuble.scss */
+  
+  /* line 782, _cuble.scss */
+  
+  /* ポイント */
+  /* line 786, _cuble.scss */
+  
+  /* 専用オプション */
+  /* line 790, _cuble.scss */
+  
+  /* line 793, _cuble.scss */
+  
+  /* 製品仕様テーブル */
+  /* line 799, _cuble.scss */
+  .scroll_table table {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.8rem; }
+
+  /* line 806, _cuble.scss */
+  
+  /* ダウンロード */
+  /* line 811, _cuble.scss */
+  
+  /* フッター */
+  /* line 816, _cuble.scss */
+  
+  /* トップへ戻る */
+  /* line 820, _cuble.scss */
+  
+  /* line 825, _cuble.scss */
+  
+  /* 免責事項 */
+  /* line 829, _cuble.scss */
+  }
+@media screen and (max-width: 320px) {
+  /* line 839, _cuble.scss */
+  
+  /* グローバルメニュー */
+  /* line 843, _cuble.scss */
+  
+  /* メインビジュアル */
+  /* line 847, _cuble.scss */
+  
+  /* line 850, _cuble.scss */
+  
+  /* line 853, _cuble.scss */
+  
+  /* ラインナップ */
+  /* line 857, _cuble.scss */
+  
+  /* すべての端子 */
+  /* line 861, _cuble.scss */
+  
+  /* 急速充電器 */
+  /* line 866, _cuble.scss */
+  
+  /* LEDライト */
+  /* line 870, _cuble.scss */
+  
+  /* line 873, _cuble.scss */
+  
+  /* 4つのポイント */
+  /* line 877, _cuble.scss */
+  
+  /* 専用オプション */
+  /* line 881, _cuble.scss */
+  
+  /* line 884, _cuble.scss */
+  
+  /* line 887, _cuble.scss */
+  
+  /* 製品仕様 */
+  /* line 891, _cuble.scss */
+  
+  /* ダウンロード */
+  /* line 895, _cuble.scss */
+  
+  /* トップへ戻る */
+  /* line 899, _cuble.scss */
+  }
+/* 横長表示の場合 */
+@media (min-aspect-ratio: 16 / 9) {
+  /* メインビジュアル */
+  /*
+  	.cuble_main h1{
+  		background: #000;
+  	}
+  */ }
+@media screen and (max-width: 320px) {
+  /* line 3, _cuble_320.scss */
+  h2 {
+    font-size: 1.2rem; }
+
+  /* グローバルメニュー */
+  /* line 7, _cuble_320.scss */
+  .header_name p {
+    font-size: 0.5em; }
+
+  /* メインビジュアル */
+  /* line 11, _cuble_320.scss */
+  .cb_logo {
+    width: 70px; }
+
+  /* line 14, _cuble_320.scss */
+  .cuble_main h1 {
+    font-size: 1.2em; }
+
+  /* line 17, _cuble_320.scss */
+  .play_button {
+    width: 70px; }
+
+  /* ラインナップ */
+  /* line 21, _cuble_320.scss */
+  #lineup .two .two_innner figure:last-child {
+    margin-top: 1em; }
+
+  /* すべての端子 */
+  /* line 25, _cuble_320.scss */
+  #all_terminal .types_block {
+    width: 85%;
+    margin-top: 2em; }
+
+  /* 急速充電器 */
+  /* line 30, _cuble_320.scss */
+  section#fast_charge {
+    padding: 2em 0; }
+
+  /* LEDライト */
+  /* line 34, _cuble_320.scss */
+  #led_light .two_innner:last-child .wrapper {
+    margin: 10em auto 0 !important; }
+
+  /* line 37, _cuble_320.scss */
+  section#led_light {
+    padding-bottom: 2em; }
+
+  /* 4つのポイント */
+  /* line 41, _cuble_320.scss */
+  #point .two .two_innner {
+    margin-bottom: 3em; }
+
+  /* 専用オプション */
+  /* line 45, _cuble_320.scss */
+  #option h2 {
+    margin-top: 0; }
+
+  /* line 48, _cuble_320.scss */
+  #option .g_wrapper {
+    margin-top: 3em !important; }
+
+  /* line 51, _cuble_320.scss */
+  #option .g_wrapper {
+    grid-row-gap: 2em; }
+
+  /* 製品仕様 */
+  /* line 55, _cuble_320.scss */
+  section#specs {
+    padding-bottom: 1em; }
+
+  /* ダウンロード */
+  /* line 59, _cuble_320.scss */
+  .app_download a {
+    font-size: 14px; }
+
+  /* トップへ戻る */
+  /* line 63, _cuble_320.scss */
+  .top-arrow {
+    bottom: 12vh; } }
+@media screen and (max-width: 480px) {
+  /* 見出し */
+  /* line 5, _cuble_480.scss */
+  h2 {
+    font-size: 1.6rem;
+    line-height: 180%; }
+
+  /* line 9, _cuble_480.scss */
+  h3 {
+    font-size: 1.4rem;
+    line-height: 180%; }
+
+  /* line 13, _cuble_480.scss */
+  h4 {
+    font-size: 1.2rem;
+    line-height: 180%; }
+
+  /* line 17, _cuble_480.scss */
+  p {
+    font-size: 1rem;
+    line-height: 180%; }
+
+  /* ロゴ */
+  /* line 22, _cuble_480.scss */
+  .logo {
+    width: 150px;
+    padding: 5px 0 12px;
+    top: 16px; }
+
+  /* グローバルメニュー */
+  /* line 28, _cuble_480.scss */
+  .obi {
+    height: 60px; }
+
+  /* line 31, _cuble_480.scss */
+  .Nav .navbtn {
+    margin: 10px auto;
+    right: 0px; }
+
+  /* line 35, _cuble_480.scss */
+  .Nav > ul {
+    top: 60px; }
+
+  /* line 38, _cuble_480.scss */
+  .head_waku {
+    height: 60px; }
+
+  /* line 41, _cuble_480.scss */
+  .header_name {
+    padding-left: 10px; }
+
+  /* line 44, _cuble_480.scss */
+  .header_name p {
+    font-size: 0.6em; }
+
+  /* メインビジュアル */
+  /* ~~ ヘッダー　メインビジュアル ~~ */
+  /* line 52, _cuble_480.scss */
+  header {
+    padding-bottom: 0px; }
+
+  /* line 55, _cuble_480.scss */
+  header h1 {
+    width: 90%;
+    margin-top: 60px; }
+
+  /* メインビジュアル */
+  /* line 60, _cuble_480.scss */
+  .cuble_main {
+    width: 100%; }
+
+  /* line 63, _cuble_480.scss */
+  .cuble_main h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    bottom: 10%;
+    top: 30vh;
+    left: 0; }
+
+  /* line 71, _cuble_480.scss */
+  .cb_logo {
+    width: 90px;
+    top: 60px; }
+
+  /* セクション */
+  /* line 76, _cuble_480.scss */
+  section {
+    width: 100%;
+    margin: 0 auto; }
+	
+
+  /* itemabout */
+  /* line 81, _cuble_480.scss */
+  .item_about {
+    margin: 0 auto; }
+
+  /* line 84, _cuble_480.scss */
+  .item_about h1 {
+    width: 100%;
+    font-size: 1.7rem;
+    padding-bottom: 0.5em; }
+
+  /* line 89, _cuble_480.scss */
+  .item_about h1 span {
+    margin: 1em auto 0;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    display: inline-block; }
+
+  /* line 96, _cuble_480.scss */
+  .item_about figure {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+
+  /* line 104, _cuble_480.scss */
+  .item_about figure img {
+    width: 32%;
+    margin-bottom: 3%; }
+
+  /* ラインナップ */
+  /* line 110, _cuble_480.scss */
+  #lineup .two .two_innner figure {
+    width: 80%; }
+
+  /* line 113, _cuble_480.scss */
+  #lineup .two .two_innner:first-child figure:first-child img {
+    width: 80%; }
+
+  /* line 116, _cuble_480.scss */
+  #lineup .two .two_innner:last-child figure:first-child img {
+    width: 100%; }
+
+  /* line 119, _cuble_480.scss */
+  #lineup .two .two_innner figure:last-child {
+    margin-top: 1.5em; }
+
+  /* すべての端子 */
+  /* line 124, _cuble_480.scss */
+  section#all_terminal {
+    padding-top: 1em; }
+
+  /* 特徴 */
+  /* line 128, _cuble_480.scss */
+  #feature_1 figure {
+    width: auto; }
+
+  /* 急速充電 */
+  /* line 132, _cuble_480.scss */
+  section#fast_charge {
+    padding-top: 3em; }
+
+  /* LEDライト */
+  /* line 136, _cuble_480.scss */
+  section#led_light {
+    padding-top: 2em; }
+
+  /* line 139, _cuble_480.scss */
+  #led_light .two_innner:last-child .wrapper {
+    margin: 12em auto 0 !important; }
+
+  /* ポイント */
+  /* line 143, _cuble_480.scss */
+  section#point {
+    padding: 1.5em 0 1em; }
+
+  /* 専用オプション */
+  /* line 147, _cuble_480.scss */
+  section#option {
+    padding: 2em 0; }
+
+  /* line 150, _cuble_480.scss */
+  #option .g_wrapper {
+    margin-top: 4em !important; }
+
+  /* 2カラムテーブル */
+  /* line 154, _cuble_480.scss */
+  .two_table {
+    display: block;
+    margin: 0 auto; }
+
+  /* line 159, _cuble_480.scss */
+  .dengen_spec {
+    width: 100%; }
+
+  /* line 163, _cuble_480.scss */
+  .panel_spec {
+    width: 100%; }
+
+  /* 製品仕様テーブル */
+  /* line 169, _cuble_480.scss */
+  .scroll_table table {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.625rem; }
+
+  /* line 176, _cuble_480.scss */
+  section#specs {
+    padding-bottom: 1em; }
+
+  /* 付属品 */
+  /* line 181, _cuble_480.scss */
+  .parts_list li {
+    padding: 0.5em;
+    width: 100%;
+    text-align: center; }
+
+  /* ダウンロード */
+  /* line 189, _cuble_480.scss */
+  #d_load .d_flex a {
+    width: 49%; }
+
+  /* フッター */
+  /* line 194, _cuble_480.scss */
+  footer {
+    padding-top: 30px; }
+
+  /* トップへ戻る */
+  /* line 198, _cuble_480.scss */
+  .top-arrow {
+    width: 60px;
+    bottom: 8vh;
+    right: 5vw; }
+
+  /* line 203, _cuble_480.scss */
+  .top-arrow img {
+    width: 100%; }
+
+  /* 免責事項 */
+  /* line 207, _cuble_480.scss */
+  footer div dl dd,
+  footer p,
+  footer address,
+  footer .copylight {
+    font-size: 0.75rem; } }
+/* 横幅640px */
+@media screen and (max-width: 640px) {
+  /* 横幅90%指定 */
+  /* line 4, _cuble_640.scss */
+  .w90_640 {
+    width: 90% !important;
+    padding: 0 5% 0 !important;
+    margin: 0 auto !important; }
+
+  /* 横幅100%指定 */
+  /* line 11, _cuble_640.scss */
+  .w100_640 {
+    width: 100% !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 0; }
+
+  /* line 17, _cuble_640.scss */
+  .w100_640 p {
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: justify; }
+
+  /* 見出し */
+  /* line 24, _cuble_640.scss */
+  h2 {
+    font-size: 4.8vw;
+    text-align: left; }
+
+  /* メインビジュアル */
+  /* line 29, _cuble_640.scss */
+  .cb_logo {
+    width: 100px; }
+
+  /* line 32, _cuble_640.scss */
+  .cuble_main h1 {
+    font-size: 1.5em; }
+
+/* メイン写真スライダー */
+.main_slide{
+	
+}
+.price{
+	margin: 1.8em auto 0 auto;
+	text-align: center !important;	
+	}
+	
+.price span{
+	font-size: 1.6rem;
+}
+	
+  /* ラインナップ */
+  /* line 36, _cuble_640.scss */
+  section#lineup {
+    width: 90%;
+    padding: 4em 0 0; }
+
+  /* line 40, _cuble_640.scss */
+  #lineup .two .two_innner {
+    width: 80%; }
+
+  /* line 43, _cuble_640.scss */
+  #lineup .two .two_innner:first-child {
+    margin-bottom: 4em; }
+
+  /* 特徴 */
+  /* line 49, _cuble_640.scss */
+  #feature p {
+    text-align: left;
+    margin-bottom: 3em; }
+
+  /* 急速充電 */
+  /* line 54, _cuble_640.scss */
+  section#fast_charge {
+    padding-top: 6em; }
+
+  /* line 57, _cuble_640.scss */
+  #fast_charge .fc_title {
+    position: static; }
+
+  /* line 60, _cuble_640.scss */
+  #fast_charge .fc_bg_img {
+    padding-top: 2em; }
+
+  /* line 63, _cuble_640.scss */
+  .br_pc {
+    display: none; }
+
+  /* LEDライト */
+  /* line 67, _cuble_640.scss */
+  #led_light .led_bg_img {
+    background: #fff url("../images/led_sp.jpg") no-repeat;
+    background-size: 120% auto;
+    background-position: center top; }
+
+  /* line 72, _cuble_640.scss */
+  #led_light .two {
+    flex-direction: column-reverse;
+    padding-bottom: 120%; }
+
+  /* line 76, _cuble_640.scss */
+  #led_light .led_bg_img .two .two_innner {
+    width: 100%; }
+
+  /* line 79, _cuble_640.scss */
+  #led_light .two_innner:last-child .wrapper {
+    padding: 0 !important;
+    margin: 15em auto 0 !important; }
+
+  /* 4つのポイント */
+  /* line 84, _cuble_640.scss */
+  #point .two {
+    flex-direction: column; }
+
+  /* line 87, _cuble_640.scss */
+  #point .two .two_innner {
+    width: 100%; }
+
+  /* line 90, _cuble_640.scss */
+  #point .two .two_innner figure {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    left: 9%; }
+
+  /* 専用オプション */
+  /* line 97, _cuble_640.scss */
+  #option h2 {
+    text-align: center; }
+
+  /* line 100, _cuble_640.scss */
+  #option .g_wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: center;
+    grid-row-gap: 3em;
+    align-items: flex-start;
+    grid-template-areas: "area1" "area3" "area4" "area2";
+    margin-top: 5em !important; }
+
+  /* line 114, _cuble_640.scss */
+  #option .g_wrapper h3 {
+    font-size: 5vw; }
+
+  /* line 117, _cuble_640.scss */
+  #option .two_innner h4 {
+    font-size: 6vw; }
+
+  /* line 120, _cuble_640.scss */
+  #option .two {
+    flex-direction: row;
+    justify-content: center; }
+
+  /* line 124, _cuble_640.scss */
+  #option .two_innner small {
+    font-size: 2vw; }
+
+  /* line 127, _cuble_640.scss */
+  #option .g_wrapper div .o_title {
+    width: 75%; }
+
+  /* line 130, _cuble_640.scss */
+  #option .g_wrapper h3,
+  #option .two_innner h4 {
+    text-align: center; }
+
+  /* line 134, _cuble_640.scss */
+  #option .two_innner:last-child {
+    text-align: right; }
+
+  /* line 137, _cuble_640.scss */
+  #option .g_wrapper div:nth-child(3) figure {
+    width: 35%; }
+
+  /* line 140, _cuble_640.scss */
+  #option .g_wrapper > div:nth-child(2),
+  #option .g_wrapper > div:last-child {
+    text-align: center; }
+
+  /* 製品仕様 */
+  /* line 145, _cuble_640.scss */
+  #specs h2 {
+    text-align: center; }
+
+  /* line 148, _cuble_640.scss */
+  #specs .specseat {
+    margin: 2em auto; }
+
+  /* line 151, _cuble_640.scss */
+  #d_load h2 {
+    text-align: center; }
+
+  /* line 154, _cuble_640.scss */
+  .top-arrow {
+    width: 60px;
+    bottom: 5vh; }
+
+  /* ダウンロード */
+  /* line 159, _cuble_640.scss */
+  section#d_load {
+    padding-top: 4vh; }
+
+  /* line 162, _cuble_640.scss */
+  #d_load .d_flex {
+    flex-wrap: wrap;
+    margin-top: 2em; }
+
+  /* line 166, _cuble_640.scss */
+  #d_load .d_flex a {
+    width: 32%;
+    margin-bottom: 0.5em; }
+
+  /* line 171, _cuble_640.scss */
+  .meyas {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 3em; }
+
+  /* line 176, _cuble_640.scss */
+  .meyas div {
+    display: block;
+    text-align: center; }
+
+  /* line 181, _cuble_640.scss */
+  .meyas div div {
+    width: 100%;
+    margin: 0; }
+
+  /* line 185, _cuble_640.scss */
+  .meyas div div h4 {
+    display: block;
+    text-align: center !important; }
+
+  /* line 189, _cuble_640.scss */
+  .meyas div div p {
+    display: block;
+    text-align: center !important; }
+
+  /* line 193, _cuble_640.scss */
+  .meyas div img {
+    margin-left: 0; }
+
+  /* 給電の目安 */
+  /* line 198, _cuble_640.scss */
+  .item {
+    width: 50px;
+    height: 50px; } }
+@media screen and (max-width: 768px) {
+  /* セクション */
+  /* line 5, _cuble_768.scss */
+  section {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 0;
+    padding: 4em 0; }
+
+  /* line 11, _cuble_768.scss */
+  .two div {
+    width: 100%; }
+
+  /* line 14, _cuble_768.scss */
+  .two .two_innner {
+    width: 60%; }
+
+  /* グローバルナビゲーション */
+  /* line 19, _cuble_768.scss */
+  .Nav {
+    border-top: none;
+    top: 0;
+    right: 0;
+    width: 100%; }
+
+  /* line 25, _cuble_768.scss */
+  .head_waku {
+    width: 100%; }
+
+  /* line 28, _cuble_768.scss */
+  .header_name {
+    font-size: 1em; }
+
+  /* すべての端子 */
+  /* line 32, _cuble_768.scss */
+  section#all_terminal {
+    padding-top: 3em; }
+
+  /* line 35, _cuble_768.scss */
+  #all_terminal .g_wrapper {
+    grid-template-columns: 100%;
+    grid-template-areas: "title" "bg" "types"; }
+
+  /* line 41, _cuble_768.scss */
+  #all_terminal .bg_block {
+    background: #fff url("../images/all_t_left_sp.jpg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    padding-bottom: 60%; }
+
+  /* line 47, _cuble_768.scss */
+  #all_terminal .types_block {
+    margin: 0 auto;
+    margin-top: 4em; }
+
+  /* line 51, _cuble_768.scss */
+  #all_terminal .title_block {
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 0 5vw 0 !important;
+    margin: 0 auto !important; }
+
+  /* line 57, _cuble_768.scss */
+  #all_terminal .title_block p {
+    margin-bottom: 2em; }
+
+  /* 専用オプション */
+  /* line 61, _cuble_768.scss */
+  #option .two {
+    flex-direction: column; }
+
+  /* line 64, _cuble_768.scss */
+  #option .two .two_innner {
+    width: 100%; }
+
+  /* 製品仕様 */
+  /* line 68, _cuble_768.scss */
+  section#specs {
+    width: 90%; }
+
+  /* フッター */
+  /* line 73, _cuble_768.scss */
+  footer {
+    padding-top: 50px; }
+
+  /* 改行調整 */
+  /* line 77, _cuble_768.scss */
+  .br_sp {
+    display: block; }
+
+  /* アニメーション
+  -----------------------------------------*/
+  /* line 80, _cuble_768.scss */
+  .fadeInRight {
+    animation: none; }
+
+  /* line 83, _cuble_768.scss */
+  .fadeInLeft {
+    animation: none; }
+
+  /* line 86, _cuble_768.scss */
+  .fadeUp {
+    animation: none; } }
+@media screen and (min-width: 1100px) {
+  /* 100Vコンセプト */
+  /* line 3, _cuble_1100.scss */
+  #feature .two_innner:first-child,
+  #feature .two_innner:last-child {
+    background-size: calc(120% + 550px - 50vw) auto; } }
+
+/*# sourceMappingURL=style.css.map */
+
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

@@ -1,0 +1,27 @@
+
+    footer {
+      background-color: #577f89;
+    }
+
+    .model {
+      justify-content: center;
+    }
+
+    header h1 {
+      background: #577f89;
+      color: #fff;
+    }
+
+    .image_bg_1 {
+      background: url(https://inbes.jp/products/idr06r/img/bg_1.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .bg_filter {
+      color: white;
+      backdrop-filter: brightness(0.6);
+      -webkit-backdrop-filter: brightness(0.6);
+    }
+  

@@ -1,0 +1,985 @@
+@charset "UTF-8";
+html {
+  visibility: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
+
+body{
+	width:100%;
+	font-size: 16px;
+	font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	background:  rgba(250,250,250,1.00);
+	margin:0 auto 0 auto;
+	padding:0;
+	color: #000;
+	line-height:1.5rem;
+	}
+h1,h2,h3,h4,h5,h6{
+	font-family: fot-udkakugo-large-pr6n, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	}
+h2{
+	margin-top: 0;
+}
+p { 
+	font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+p { 
+	line-height:1.9rem;
+}
+
+/* ~~ エレメント / タグセレクター ~~ */
+ul, ol, dl { 
+	padding: 0;
+	margin: 0;
+	font-family: a-otf-ud-shin-go-pr6n, sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+/* ~~ ソリッド線にフロートクリア要素を追加 ~~ */
+hr{
+	height: 1px;
+	border: none;
+	border-top: 1px #999999 solid;
+	clear:both;
+	}
+/* ~~ img調整 ~~ */
+a img { /* このセレクターは、一部のブラウザーでイメージをリンクで囲んだ場合にイメージの周囲に表示される初期設定の青いボーダーを削除します。 */
+	border: none;
+}
+
+/* ~~ サイトのリンクのスタイル付けは、ホバー効果を作成するセレクターグループも含め、この順序にする必要があります。~~ */
+a:link {
+	color:#414958;
+	text-decoration:none; 
+	padding-bottom:1px;
+}
+a:visited {
+	color: #4E5869;
+}
+a:hover, a:active, a:focus { 
+	text-decoration:underline;
+}
+a{
+	text-decoration: none;
+}
+/* 見出し
+-----------------------------------------*/
+h2{
+	font-size: 2.5rem;
+	line-height: 180%;
+}
+h3{
+	font-size: 1.6rem;
+	line-height: 180%;
+}
+h4{
+	font-size: 1.3rem;
+	line-height: 180%;
+}
+#feature_1 h2,
+#feature_2 h2,
+#functions h2,
+#linkage h2,
+#functions h2,
+#specs h2
+{
+	margin-top: 80px;
+	margin-bottom: 100px;
+}
+
+/* ~~ ヘッダー　メインビジュアル ~~ */
+header {
+	width: 100%;
+	margin: 0 auto;
+	height: 100vh;
+	display: block;
+	background: #fff url("../b_images/sg_hand_mainbackground_web.png") no-repeat;
+	background-size: cover;
+  	background-blend-mode: multiply;
+/*	background-position: bottom center;*/
+}
+.smargrip_main{
+	width: 90%;
+	height: 100vh;
+	max-width: 1100px;
+	margin: 0 auto;
+	position: relative
+}
+.sg_logo{
+	position: absolute;
+	width: 30%;
+	top:25%;
+	left: auto;
+  	right: 0;
+	margin: 0 ;
+	padding: 0;
+}
+.sg_logo img{
+	width: 100%;
+}
+.rote{
+	position: absolute;
+	width: 30%;
+	bottom: 5%;
+	left: 0;
+	margin: 0 ;
+	padding: 0;
+}
+.rote img{
+	width: 100%;
+}
+.smargrip_main h1{
+	position: absolute;
+	width: 50%;
+	left: auto;
+  	right: 0;
+	bottom: 5%;
+	margin: 0 ;
+	padding: 0;
+	text-align: right;
+	line-height: 1.7em;
+	font-size: 38px;
+	color : #003342;
+}
+.mv-heading figure img{
+	width: 250px;
+	height: auto;
+}
+
+.logo{
+	width: 240px;
+	position: absolute;
+	top:28px;
+	left:3%;
+}
+.smargrip_main .play_button {
+	position: absolute;
+    width: 90px;
+	top:46vh;
+	left: 0;
+  	right: 0;
+	margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.6));
+	opacity: 0.8;
+}
+.smargrip_main a:hover .play_button{
+	opacity: 1;
+}
+.remodal {
+    box-sizing: border-box;
+    width: 85vw;
+    max-width: 1920px;
+	height: calc(85vw * 0.5625);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    color: #2b2e38;
+}
+.remodal iframe{
+	width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* グローバルナビゲーション
+-----------------------------------------*/
+.obi{
+	width:100%;
+	height:80px;
+	background-color:rgba(250,250,250,0.3);
+	position: fixed;
+	margin:0;
+	z-index:10;
+}
+.head_waku{
+	width:100%;
+	max-width:1100px;
+	height:80px;
+	position: relative;
+	margin: auto;
+	top:0;
+	left:0;
+	right: 0;
+}
+/* コンテンツ
+-----------------------------------------*/
+section{
+	width:70%;
+	max-width:1100px;
+	margin:0 auto;
+	padding:80px 0;
+	margin-bottom: 0;
+}
+section h2,
+section h3,
+section h4{
+	text-align: center;
+	margin-bottom: 1.8em;
+	color : #003342;
+}
+section img{
+	width: 100%;
+	height: auto;
+}
+
+/* セクション背景色 */
+.g_bg{
+	background : #F3EFE9;
+	background : rgba(243, 239, 233, 1);
+}
+.b_bg{
+	background : #C6DEE7;
+  	background : rgba(198, 222, 231, 1);
+}
+.lg_bg{
+	background : #e8e8e8;
+}
+
+/* ~~ 1カラム */
+.one{
+	display: block;
+    margin: 0 auto;
+    z-index: 5;
+    max-width: 800px;
+    width: 70%;
+    min-width: 320px;
+}
+/* ~~ 2カラム */
+.two{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+.two div{
+	width: 47%;
+	text-align:center;
+	margin-bottom: 3em;
+}
+.two h3{
+	margin-top: 30px;
+	margin-bottom:20px; 
+}
+.two figure{
+	margin: 0;
+}
+.two p{
+	text-align:center;
+	margin-top: 10px;
+}
+.two .two_innner{
+	width: 80%;
+	margin: 0 auto;
+}
+.two_inner p {
+  text-align: justify;
+}
+
+/* 3カラム */
+.three{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+.three div{
+	width: calc(96% / 3);
+	text-align:center;
+	margin-bottom: 3em;
+  border-radius: 15px;
+}
+.three h3{
+	margin-top: 30px;
+	margin-bottom:20px; 
+}
+.three figure{
+	margin: 0;
+}
+.three p{
+	text-align:center;
+	margin-top: 10px;
+}
+.three .three_innner{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.three_innner img {
+  border-radius: 10px;
+}
+
+.three_innner p {
+  text-align: justify;
+}
+
+/* 特徴紹介 */
+#feature_1 figure{
+	width: 80%;
+}
+
+/* インライン動画 */
+
+.video-box {
+  position: relative;
+}
+/* video */
+.video-box video{
+  position: relative;
+object-fit: contain;
+	aspect-ratio:16 / 9;
+	margin: 0 calc(50% - 43vw);
+  width: 86vw;
+	border-radius: 20px;
+}
+/* text */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  /*z-index: 100;*/
+}
+.text-box h3 {
+  position: relative;
+  font-size: 3vw;
+  font-weight: bold;
+  line-height: 1.8;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+	text-shadow: 0 3px 3px #000;
+}
+
+/* 機能紹介 */
+#functions{
+	padding-bottom: 20px;
+}
+
+/* アプリダウンロード */
+.app{
+	margin-top: 100px;
+}
+#app_name{
+	font-size: 2.5rem;
+	line-height: 60px;
+	margin-bottom: 40px;
+}
+small{
+	font-size:70%;
+}
+
+.app_download a{
+	display: block;
+	max-width: 360px;
+	background: #8099A0;
+	text-align: center;
+	padding: 20px;
+	color: #fff;
+	margin: 0 auto;
+	border-radius: 15px;
+}
+.app_download a:hover{
+	background : #003A4B;
+	text-decoration: none;
+}
+.app figure{
+	margin: 0 auto;
+	margin-bottom: 50px;
+	width: 250px;
+	height: auto;
+}
+.install{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+}
+.install div{
+	width: 47%;
+}
+.install p{
+	margin-top: 0;
+}
+.install .app_install{
+	width: 100%;
+	margin: 0;
+	display: flex;
+	align-items: baseline;
+	
+}
+.install .app_install img{
+	width: 100%;
+}
+.install .app_install figure{
+	margin: 0;
+	max-height: 60px;
+	height: 40px;
+	
+}
+.install .app_install figure.ios{
+	padding: 0 0 0 0;
+}
+.install .app_install figure.play{
+	padding: 0 0 0 0;
+}
+
+/* 製品仕様セクション */
+.spec_section {
+  margin: 0 auto;
+}
+.spec_section h3{
+  width: 90%;
+	font-size: 1.5rem;
+	margin: 60px auto 30px;
+	text-align: center;
+}
+.spec_section p{
+  width: 90%;
+	font-size: 1rem;
+	margin: 10px auto 30px;
+	text-align:left;
+}
+
+/* 製品仕様テーブル */
+.specseat {
+	width: 100%;
+  margin: 20px auto;
+border-collapse: collapse;
+  border-spacing: 0;
+}
+.specseat tr {
+  border-bottom: solid 1px #231815;
+}
+.specseat th {
+  background : #003342;
+  background : rgba(0, 51, 66, 1);
+  color: #fff;
+  padding:2%;
+  border-bottom: solid 1px #fff;
+}
+.specseat td {
+  padding: 2%;
+border-left: solid 1px #231815;
+}
+.specseat td span{
+  min-width: 95px;
+	display: inline-block;
+}
+
+/* ダウンロード */
+.d_load {
+}
+.d_load ul{
+	width: 90%;
+	margin: 0 auto 100px auto ;
+	padding: 2% 0;
+	text-align:left;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap:wrap;
+	align-items: center;
+}
+.d_load ul a {
+	padding:0;
+	margin: 0 0 0 0;
+	text-decoration: none;
+	text-align:center;
+	width: 23%;
+}
+.d_load ul a li{
+	list-style: none;
+	margin: 0 0 0 0;
+	background-color: #eee;
+	border-radius: 10px;
+	padding:13% 10% 10% 10%;
+	text-align: center;
+}
+.d_load ul a li img{
+	width: 20%;
+	margin:-1% auto 5% auto;
+	vertical-align:middle;
+	display: block;
+}
+
+.d_load ul a li:hover{
+	background-color: #ccc;
+}
+
+.br_sp { display:none; }
+
+/* フッター
+-----------------------------------------*/
+footer{
+	background : #003342 !important;
+	position: relative;
+	padding: 80px 0 20px 0;
+}
+/* トップへ戻るボタン*/
+.top-arrow{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom:4vh;
+	right: 10vw;
+}
+/* 免責事項*/
+footer div dl{
+	margin-bottom: 30px;
+}
+footer div dl dt{
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+footer div dl dd{
+	font-size: 0.85rem;
+}
+footer p{
+	text-align: left;
+	font-size: 0.85rem;
+	line-height: 1rem
+}
+/* 会社住所*/
+footer address{
+	text-align: left;
+	padding-top: 5vh;
+}
+footer address img{
+	margin:0;
+}
+/*
+@media screen and (min-width: 2500px) {
+	header {
+		background-position: 100% -500px; 
+	}
+	
+}
+
+@media screen and (min-width: 1950px) {
+	header {
+		background-position: 100% -100px; 
+	}
+}
+*/
+
+/* 横長表示の場合 */
+@media (min-aspect-ratio: 8/5) {
+	/* メインビジュアル */
+	.rote{
+		width: 20%;
+	}
+	.smargrip_main h1{
+		line-height: 1.3em;
+	}
+
+}
+
+@media screen and (max-width: 1024px){
+	/* メインビジュアル */
+	header {
+		background-position: bottom -200px;
+	}
+	/* アプリダウンロード */
+	.install .app_install figure.play{
+		padding: 0 3em 0 0;
+	}
+	.install .app_install figure.ios{
+		padding: 0 0.5em 0 3em;
+	}
+	
+}
+
+@media screen and (max-width: 768px) {
+	/* セクション */
+	section{
+		width:90%;
+		margin:0 auto;
+		padding:70px 0;
+		margin-bottom: 0;
+	}
+	.two div{
+		width:100%;	
+	}
+	.two .two_innner{
+		width: 60%;	
+	}
+  .two_innner p {
+    text-align: justify;
+  }
+  
+  .three div{
+		width:100%;	
+	}
+	.three .three_innner{
+		width: 60%;	
+	}
+  .three_innner p {
+    text-align: justify;
+  }
+	/* 見出し */
+	h2{
+		font-size: 2rem;
+		line-height: 180%;
+	}
+	h3{
+		font-size: 1.5rem;
+		line-height: 180%;
+	}
+	h4{
+		font-size: 1.3rem;
+		line-height: 180%;
+	}
+	/* メインビジュアル */
+	header {
+		padding-bottom: 70px;
+		background: #fff url("../b_images/sg_hand_mainbackground_sp.png") no-repeat;
+		background-size: cover;
+	}
+	header h1{
+		margin-top:40px; 
+	}
+	/* グローバルナビゲーション */
+  	.Nav {
+  		border-top:none;
+	  	top:0;
+		right: 0;
+	  	width: 100%;
+  	}
+	.head_waku{
+		width:100%;
+	}
+	.Nav .navbtn a::before, .Nav .navbtn a.close::before,
+	.Nav .navbtn a span::after, .Nav .navbtn a.close span::after,
+	.Nav .navbtn a::after, .Nav .navbtn a.close::after{
+		background-color: #003342 !important;
+	}
+	/* 機能紹介・アプリ連携 */
+	#feature_1 h2,
+	#feature_2 h2,
+	#functions h2,
+	#linkage h2,
+	#functions h2,
+	#specs h2{
+		margin-top: 0px;
+	}
+	/*インライン動画*/
+	.text-box h3 {
+  font-size: 5vw;
+}
+	
+	/* メインビジュアル */
+	.smargrip_logo{
+		top: 7vh;
+		width: 100%;
+	}
+	.sg_logo{
+		top: 10%;
+		width: 40%;
+	}
+	.smargrip_logo figure{
+		padding-right: 10px;
+		padding-top: 20px;
+	}
+	.smargrip_logo img{
+		width: 300px;
+	}
+	.mv-heading{
+		width: 90%;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+	.mv-heading figure{
+		margin: 0;
+		margin-bottom: 20px;	
+	}
+	.mv-heading h1{
+		width: 100%;
+		text-align: left;
+		font-size: 32px;
+	}
+	
+	/* アプリ連動 */
+	.app {
+		width: 65%;
+		margin: 0 auto;
+    	margin-top: 0px;
+	}
+  .app_icon_image {
+
+  }
+	.install{
+		flex-wrap: wrap;
+		width: 70%;
+		margin: 50px auto 0;
+	}
+	.install figure{
+		text-align: center;
+	}
+	.install>figure{
+		margin: 0 auto;
+	}
+	.install div{
+		width: 100%;
+	}
+	.install .app_install{
+		margin: auto;
+		margin-top: 30px;
+	}
+	.install .app_install figure{
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+	.install .app_install img.ios {
+    	width: 90%;
+	}
+	.app_download a{
+		max-width: 250px;
+		margin-bottom: 2em;
+	}
+
+	/* 製品仕様テーブル */
+ 	.specseat {
+    	width: 90%;
+	 	margin: auto;
+  	}
+  	.specseat .thead {
+    	display: none;
+  	}
+  	.specseat tr {
+	 	border: none;
+  	}
+	.specseat th{
+		width: 35%;
+		background: #003342 !important;
+	}
+	 .specseat td {
+    	margin-bottom: 0;
+		border: none;
+ 	}
+  	.specseat th:first-child {
+    	background:rgba(80,80,80,1.00);
+    	color: #fff;
+    	font-weight: bold;
+    	text-align: center;
+	 	margin: 1em 0 0.5em;
+	 	padding: 1em 0;
+  	}
+  	.specseat td:before {
+    	content: attr(data-label);
+    	font-weight: bold;
+    	margin: 0 0 0 0;
+		display: block;
+  	}
+	/* パッケージの内容 */
+	#package .one{
+		width: 100%;
+	}
+	#package figure{
+		margin-left: 2em;
+		margin-right: 2em;
+	}
+
+	/* ダウンロード */
+	#d_load{
+		padding-top: 30px;
+	}
+	.d_load ul{
+		margin-bottom: 0;	
+	}
+	.d_load ul a {
+		margin: 4% auto;
+		width: 51%;
+	}
+	/* フッター */
+	footer{
+		padding-top: 50px;	
+	}
+	/* 改行調整 */
+	.br_sp { display:block; }
+	
+}
+
+
+@media screen and (max-width: 480px) {
+	/* 見出し */
+	h2{
+		font-size: 1.5rem;
+		line-height: 180%;
+	}
+	h3{
+		font-size: 1.4rem;
+		line-height: 180%;
+	}
+	h4{
+		font-size: 1.2rem;
+		line-height: 180%;
+	}
+	/* ロゴ */	
+	.logo{
+		width: 150px;
+		padding: 5px 0 12px;
+		top: 16px;
+	}
+	/* グローバルメニュー */	
+	.obi{
+		height:60px;
+	}
+	.Nav .navbtn{
+		margin: 10px auto;
+		right: 2vw;
+	}
+	/* メインビジュアル */
+	header{
+		padding-bottom: 0px;	
+	}
+	header h1{
+		width: 90%;
+		margin-top: 60px;
+	}
+	/* メインビジュアル */
+	.smargrip_logo{
+		top: 5vh;
+	}
+	.smargrip_logo img{
+		width: 200px;
+	}
+	.smargrip_main h1{
+		width: 100%;
+		text-align: left;
+		font-size: 6vw;
+		bottom: 10%;
+	}
+	.rote{
+		width: 40%;
+		bottom: 32%;	
+	}
+	/* セクション */	
+	section{
+		width:90%;
+		margin:0 auto;
+		padding:30px 0;
+		margin-bottom: 0;
+	}
+	.one{
+		min-width: 300px;
+		max-width: auto;
+	}
+	/* 特徴 */
+	#feature_1 figure{
+		width: auto;
+	}
+	/* アプリ連動 */
+	.install figure{
+		max-height: auto;
+  	 	height: auto;
+	}
+	.install .app_install figure{
+		max-height: inherit;
+    	height: auto;
+		width: 50%;
+	}
+	.install .app_install{
+		width: 100%;
+		flex-wrap: wrap;
+		margin: 0 auto;
+		align-items: center;
+	}
+	.install .app_install img.ios,
+	.install .app_install img.play{
+		display: block;
+		width: 100% !important;
+		margin: 0 auto;
+		padding-bottom: 20px;
+		height: 12vh;
+	}
+	.install .app_install figure.ios{
+		padding: 0;
+		width: 45%;
+	}
+	.install .app_install figure.play{
+		padding:0;
+	}
+	.app figure{
+		width: 100%;
+	}
+	#app_name{
+		font-size:2rem;	
+	}
+	small{
+		font-size: 50%;	
+	}
+	/* 製品仕様テーブル */
+	.specseat th,
+	.specseat td{
+		width: 100%;
+		display: block;
+	}
+	.specseat td{
+		text-align: left;	
+	}
+	/* 機能紹介・アプリ連携 */
+	#feature_1 h2,
+	#feature_2 h2,
+	#functions h2,
+	#linkage h2,
+	#functions h2,
+	#specs h2{
+		margin-top: 20px;
+		margin-bottom: 50px;
+	}
+	/* ダウンロード */
+	.d_load ul{
+		margin: 0 auto 50px auto ;
+	}
+	.d_load ul a {
+		width: 80%;
+	}
+	
+	
+	.pc_hide { display:block;
+	font-size: 0.8rem;}
+	/* フッター */
+	footer{
+		padding-top: 30px;
+	}
+	/* トップへ戻る */
+	.top-arrow{
+		width: 80px;
+		bottom:2vh;
+		right: 5vw;
+	}
+	.top-arrow img{
+		width:100%;
+	}
+	/* 免責事項 */
+	footer div dl dd,
+	footer p,
+	footer address,
+	footer .copylight
+	{
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	/* ダウンロード */
+	.app_download a{
+		font-size: 14px;
+	}
+}
+/* INBES: keep the page readable when webfont loading falls back. */
+html.wf-inactive {
+  visibility: visible;
+}

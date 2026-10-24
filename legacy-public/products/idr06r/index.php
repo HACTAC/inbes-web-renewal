@@ -45,11 +45,11 @@ function inbes_filesize($filepath)
   <meta name="Keywords" content="ドライブレコーダー,インベス,INBES">
   <meta name="ROBOTS" content="ドライブレコーダー,インベス,INBES">
   <meta name="Description" content="ミラーの裏にスッキリ収まるコンパクトな前後2カメラドライブレコーダー IDR-06R">
-  <link href="css/idr06r.css" rel="stylesheet" type="text/css">
+  <link href="/products/idr06r/css/idr06r.css?v=715cab8b728d" rel="stylesheet" type="text/css">
   <link href="css/idr06r_footer.css" rel="stylesheet" type="text/css">
-  <link href="css/fade.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/fade-89772e9c1953.css" rel="stylesheet" type="text/css">
   <link href="../../css/g_navi.css" rel="stylesheet" type="text/css">
-  <link href="../../css/accordion.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/products/shared/accordion-5b87886430fa.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="../../js/jquery-3.7.0.min.js"></script>
   <script type="text/javascript" src="../../js/res_nav.js"></script>
   <script src="https://kit.fontawesome.com/628fbcc19c.js" crossorigin="anonymous"></script>
@@ -100,33 +100,7 @@ function inbes_filesize($filepath)
       });
     });
   </script>
-  <style>
-    footer {
-      background-color: #577f89;
-    }
-
-    .model {
-      justify-content: center;
-    }
-
-    header h1 {
-      background: #577f89;
-      color: #fff;
-    }
-
-    .image_bg_1 {
-      background: url(img/bg_1.png);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .bg_filter {
-      color: white;
-      backdrop-filter: brightness(0.6);
-      -webkit-backdrop-filter: brightness(0.6);
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/products/pages/products-idr06r-inline-1-f2566124caae.css">
 </head>
 
 <body>
